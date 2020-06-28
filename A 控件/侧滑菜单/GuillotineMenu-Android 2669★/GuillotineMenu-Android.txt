@@ -1,0 +1,4 @@
+https://github.com/Yalantis/GuillotineMenu-Android
+
+Neat library, that provides a simple way to implement guillotine-styled animation https://yalantis.com/
+库，它提供了一个简单的方法来实现guillotine风格的动画https://yalantis.com/

@@ -1,0 +1,6 @@
+﻿https://github.com/jenly1314/GiftSurfaceView
+🌷 直播间送礼物拼图案动画控件
+
+GiftSurfaceView 最初出自于2014年开发HalloStar项目时所写，主要用于HalloStar项目直播间的送礼物动画。现在想来，那夕阳下的奔跑，是我逝去的青春。因高仿全民TV项目时想起，所以抽空整理了下，以此记录。
+
+Gif展示

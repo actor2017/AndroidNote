@@ -1,0 +1,22 @@
+加权限:<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+绑定:
+//1.获取电话管理器
+TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//2.获取sim卡序列号
+String simSerialNumber = tm.getSimSerialNumber();
+System.out.println("simSerialNumber:" + simSerialNumber);
+PrefUtils.putString(getApplicationContext(), GlobalConstants.PREF_BIND_SIM,simSerialNumber);
+
+
+//############################################################
+获取手机号(注意要加权限)
+
+    private String getPhoneNumber1() {
+        TelephonyManager tm = (TelephonyManager) getSystemService(this.TELEPHONY_SERVICE);
+        String phoneNumber1 = tm.getLine1Number();//SIM1卡手机号,有些是+86开头
+        if (phoneNumber1.length() > 11) {
+            phoneNumber1 = phoneNumber1.substring(phoneNumber1.length() - 11, phoneNumber1.length());
+        }
+        return phoneNumber1;
+    }

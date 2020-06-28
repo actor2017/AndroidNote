@@ -1,0 +1,23 @@
+<TextView  
+    android:layout_width="match_parent"  
+    android:layout_height="56dp"  
+    android:layout_centerInParent="true"  
+    android:layout_marginTop="36dp"  
+    android:background="?android:attr/selectableItemBackground"  //设置这个背景即可
+    android:clickable="true"  
+    android:gravity="center"  
+    android:text="Hello World!"/>  
+
+
+或者下面这样:
+    <style name="click_ripple">
+        <item name="android:background">?android:attr/selectableItemBackground
+        </item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+<TextView 
+    style="@style/click_ripple"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">

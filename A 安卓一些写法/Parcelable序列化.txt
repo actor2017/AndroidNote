@@ -1,0 +1,82 @@
+https://www.jianshu.com/p/df35baa91541
+
+可以实现 Serializable 也可以序列化
+
+Android中实现Parcelable, 效率更高, 将序列化之后的数据写入到一个共享内存中
+1，声明实现Parcelable接口。
+2，覆写writeToParcel方法，将对象序列化为Parcel对象。
+3，实现内部Parcelable.Creator<T>对象，覆写createFromParcel方法，来将对象反序列化。
+
+public class Person implements Parcelable {
+
+	private String name;
+	private Integer age;
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Person() {
+	}
+
+	public Person(String name, Integer age) {
+		this.name = name;
+		this.age = age;
+	}
+
+        /**
+         * 描述
+         * 返回的是内容的描述信息
+         * 只针对一些特殊的需要描述信息的对象,需要返回1,其他情况返回0就可以
+         */
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	/**
+	 * 序列化对象
+	 */
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(name);
+		dest.writeInt(age);
+	}
+	
+	public static final Creator<Person> CREATOR = new Creator<Person>() {
+		
+                //创建指定长度的原始对象数组
+		@Override
+		public Person[] newArray(int size) {
+			return new Person[size];
+		}
+		
+		/**
+		 * 反序列化对象, 从序列化对象中，获取原始的对象
+		 */
+		@Override
+		public Person createFromParcel(Parcel source) {
+			Person person = new Person();
+			person.name = source.readString();
+			person.age = source.readInt();
+			return person;
+		}
+	}; 
+}

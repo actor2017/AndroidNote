@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customswitch="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aswitch.activity.MainActivity">
+
+    <com.aswitch.view.CustomSwitch
+        android:id="@+id/my_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        customswitch:slideBackground="@drawable/bg_tset1_longlong"
+        customswitch:slideSrc="@drawable/button_test"
+        customswitch:toggleState="false"/>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+M = moveto   相当于 android Path 里的moveTo(),用于移动起始点  
+L = lineto   相当于 android Path 里的lineTo()，用于画线  
+H = horizontal lineto     用于画水平线  
+V = vertical lineto       用于画竖直线  
+C = curveto               相当于cubicTo(),三次贝塞尔曲线  
+S = smooth curveto        同样三次贝塞尔曲线，更平滑  
+Q = quadratic Belzier curve             quadTo()，二次贝塞尔曲线  
+T = smooth quadratic Belzier curveto    同样二次贝塞尔曲线，更平滑  
+A = elliptical Arc   相当于arcTo()，用于画弧  
+Z = closepath     相当于closeTo(),关闭path  

@@ -1,0 +1,23 @@
+https://github.com/dueeeke/dkplayer
+
+基于IjkPlayer的视频播放器，支持直播点播，悬浮窗播放，广告播放，边播边缓存；支持重力感应自动全屏；完美实现ListView和RecyclerView列表播放；支持清晰度切换；支持一行代码切换MediaPlayer和ExoPlayer；模仿抖音效果demo；Android O PiP demo
+
+特性
+支持直播和点播。
+支持调整显示比例:默认、原始大小、16:9、4:3、铺满屏幕、居中裁剪。
+支持滑动调节播放进度、声音、亮度；双击播放、暂停；保存播放进度。
+支持边播边缓存，使用了AndroidVideoCache。
+支持弹幕，使用了DanmakuFlameMaster。
+支持Https，rtsp，concat协议。
+支持播放本地视频以及raw和assets视频。
+支持重力感应自动进入/退出全屏以及手动进入/退出全屏，全屏状态下可锁定。
+完美实现列表播放（RecyclerView和ListView），列表自动播放。
+支持列表小窗全局悬浮播放，Android 8.0画中画功能。
+支持连续播放一个列表的视频。
+支持广告播放。
+支持清晰度切换。
+支持扩展自定义播放内核，MediaPlayer、ExoPlayer等。
+支持完全自定义控制层。
+支持多路播放器同时播放，没有任何控制UI的纯播放
+无缝衔接播放demo。
+抖音demo。

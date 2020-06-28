@@ -1,0 +1,29 @@
+后台返回Json中不合法的属性字段
+
+{"code":200,"message":"成功","data":""}
+
+解析成UserInfo 会报错, 因为json中 data 是String类型, 而下方实体不是String 类型:
+public class UserInfo {
+
+    /**
+     * code : 200
+     * message : 成功
+     * data :
+     */
+
+    public int code;
+    public String message;
+    public DataBean data;
+
+    public static class DataBean {
+        /**
+         * id : 2
+         * name : 木子李111
+         * sex : 1
+         */
+
+        public int     id;
+        public String  name;
+        public int     sex;
+    }
+}

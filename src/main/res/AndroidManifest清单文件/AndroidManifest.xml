@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.actor.androidl"	    <!--包名-->
+		  android:installLocation="auto">	<!--开发者以及用户决定程序的安装位置--->
+		  
+
+    <!--http://www.freebuf.com/articles/terminal/60778.html
+        Android属性 allowBackup 安全风险源于adb backup容许任何一个能够打开USB
+        调试开关的人从Android手机中复制应用数据到外设，一旦应用数据被备份之后，
+        所有应用数据都可被用户读取；adb restore容许用户指定一个恢复的数据来源
+        （即备份的应用数据）来恢复应用程序数据的创建。因此，当一个应用数据被备份之后，
+        用户即可在其他Android手机或模拟器上安装同一个应用，
+        以及通过恢复该备份的应用数据到该设备上，在该设备上打开该应用即可恢复到被备份的应用程序的状态。
+
+        尤其是通讯录应用，一旦应用程序支持备份和恢复功能，攻击者即可通过adb backup和adb restore
+        进行恢复新安装的同一个应用来查看聊天记录等信息；对于支付金融类应用，攻击者可通过此来进行恶意支付、
+        盗取存款等；因此为了安全起见，开发者务必将allowBackup标志值设置为false来关闭应用程序的备份和恢复功能，
+        以免造成信息泄露和财产损失。-->
+    <application
+        android:name=".utils.MyApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="${app_name}"			<!--可在gradle中替换 app_name 或者 直接写 String-->
+		android:supportsRtl="true"			<!--支持从右到左的布局-->
+		android:networkSecurityConfig="@xml/network_security_config" <!--适配网络, 见网络文件夹-->
+		android:usesCleartextTraffic="true"	<!--usesCleartextTraffic: Android P(9.0)的默认所有Http的请求都被阻止, 并且这个属性的默认值从true改变为false-->
+        android:theme="@style/DefaultTheme"
+		android:resizeableActivity="true"	<!--resizeableActivity: 支持分屏(<application 或 <activity 设置)-->
+		tools:replace="android:label,android:allowBackup"	<!--replace 可用多个拼接-->
+		>
+		
+		<!-- label:会在桌面创建一个这个名称的图标 -->
+        <activity
+            android:name=".MainActivity"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"	<!--设置主题: 没标题栏&全屏-->
+			android:exported="false"			<!--★是否支持其它应用调用当前组件. 有intent-filter 默认true; 没有intent-filter默认false, 四大组件都有这个属性-->
+			android:excludeFromRecents="true"	<!--从最近的排除-->
+			android:clearTaskOnLaunch="false"	<!--每次从桌面进入都启动这个根Activity(只有在根Activity有效)-->
+			android:process="remote"			<!--多进程就是在Service或Activity的属性里面设置remote属性-->
+			android:stateNotNeeded="false"		<!--默认false. if=true: 当Activity重启时不会调用onSaveInstanceState(),
+												//onCreate()方法中的Bundle参数将会用null值传进去, Activity每次启动都跟第一次启动一样。-->
+												
+			<!--设置屏幕方向, 在代码中设置竖屏, setContentView()之前:
+							setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);-->
+			android:screenOrientation="portrait|			<!--(肖像)竖屏-->
+										landscape|			<!--(风景,风景画,山水画)横屏-->
+										sensor|				<!--传感器, 自适应-->
+										sensorLandscape|..."<!---->
+										user				<!--用户当前的首选方向?-->
+										behind		<!--继承Activity堆栈中当前Activity下面的那个Activity的方向-->
+										nosensor	<!--忽略物理感应器——即显示方向与物理感应器无关，
+												不管用户如何旋转设备显示方向都不会随着改变("unspecified"设置除外)-->
+										unspecified	<!--未指定，此为默认值，由Android系统自己选择适当的方向，
+												选择策略视具体设备的配置情况而定，因此不同的设备会有不同的方向选择-->
+										
+			<!--keyboardHidden.使activity不敏感屏幕朝向的变化(不会销毁再创建activity)-->
+            android:configChanges="orientation|keyboard|screenSize"<!--smallestScreenSize|keyboardHidden|navigation-->
+            android:label="main"
+			
+			<!--windowSoftInputMode 是Activity主窗口与软键盘的交互模式，可以用来避免输入法面板遮挡问题-->
+            android:windowSoftInputMode="stateAlwaysHidden	<!--当该Activity主窗口获取焦点时，软键盘总是被隐藏的
+            |stateAlwaysVisible					//当该Activity主窗口获取焦点时，软键盘总是显示的状态
+            |stateHidden						//用户选择Activity时，软键盘总是被隐藏
+            |stateUnchanged						//当这个Activity出现时，软键盘将一直保持在上一个Activity里的状态，无论是隐藏还是显示
+            |stateUnspecified					//软键盘的状态并没有指定，系统将选择一个合适的状态或依赖于主题的设置
+            |stateVisible						//软键盘通常是可见的,即使在界面上没有输入框的情况下也能够强制召唤出来
+
+            |adjustNothing						//当显示软键盘时，不调整window的布局. 下方有输入框时会被挡住
+            |adjustPan							//该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间, 有可能挡住输入框
+            |adjustResize						//该Activity总是调整屏幕的大小以便留出软键盘的空间
+            |adjustUnspecified"				//默认设置，通常由系统自行决定是隐藏还是显示. 系统去判断内容区域可滚动为adjustPan,不可滚动为adjustResize -->
+			
+			android:supportsPictureInPicture="true"	//是否支持"画中画"显示。如果 android:resizeableActivity 为 false，将忽略该属性。
+			
+			<!--合并规则标记-->
+			tools:node="merge"             		<!--节点只要不冲突就会被合并-->
+			        or "merge-only-attributes"  <!--只合并较低优先级的声明中的属性-->
+			        or "remove"            		<!--从生成的 XML 中删除所注解的元素。不论是否可能冲突，低优先级的声明都不会被合并进去-->
+			        or "removeAll"            	<!--移除所有相同节点类型（不是关键必须的）的元素-->
+			        or "replace"            	<!--在高优先级 Manifest 中添加，完全替换低优先级-->
+			        or "strict"            	<!--当另一个具有相同标识的节点存在并且不是严格相等时，将导致构建失败-->
+			tools:remove="attr移除某个属性"
+			>
+            
+			<layout android:defaultHeight="500dp"	//指定在自由形状模式时 Activity 的默认大小、位置和最小尺寸, 这些属性影响 Activity 在多窗口模式中的行为
+			  android:defaultWidth="600dp"
+			  android:gravity="top|end"
+			  android:minimalSize="450dp" />
+			  
+			
+			<!-- 意图过滤器,可以在Activity写多个,例如打电话程序 -->
+            <intent-filter>
+				<!-- action:动作.这儿.MAIN表示程序入口,还有很多action,见图片action -->
+                <action android:name="android.intent.action.MAIN"/>
+
+				<!-- LAUNCHER表示启动器,会创建应用的桌面图标(否则桌面找不到这个程序) -->
+				<!-- category:意图类别.这儿.LAUNCHER表示启动器,APP_MAPS,MUSIC,HOME★,DEFULT(没写就是默认?)还有很多类别,见图片category -->
+                <category android:name="android.intent.category.LAUNCHER"/>
+				<!--  加上这句,桌面就不显示图标, 加上之后别的app打开本app获取的intent为空 -->
+                <!--<data android:scheme="abcdefg"/>-->
+            </intent-filter>
+			
+			<intent-filter>
+				<!--其它程序打开这个activity:intent.setAction("com.google.sample.fade");-->
+                <action android:name="com.google.sample.fade"/>
+
+                <!--如果清单文件有,代码必须写intent.setData(Uri.parse("callPhone://110")),否则报错如下↓-->
+                <data android:scheme="callPhone"/>
+                <category android:name="android.intent.category.DEFAULT"/><!--这句必写,否则报错ActivityNotFoundException-->
+            </intent-filter>
+        </activity>
+		
+        <activity
+            android:name=".TransitionsActivity"
+			android:label="trans"
+            android:configChanges="orientation|keyboardHidden">
+			<!-- 会在桌面创建第2个图标,名称=trans,用于启动这个Activity -->
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

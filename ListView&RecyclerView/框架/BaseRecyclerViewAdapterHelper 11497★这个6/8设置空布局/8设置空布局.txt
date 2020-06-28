@@ -1,0 +1,18 @@
+比Listview的setEmptyView还要好用。
+
+https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/%E8%AE%BE%E7%BD%AE%E7%A9%BA%E5%B8%83%E5%B1%80
+
+1.设置View(没试过)
+mQuickAdapter.setEmptyView(getView());
+
+2.先绑定, 再设置layoutId(推荐)
+maAdapter.bindToRecyclerView(recyclerView);
+maAdapter.setEmptyView(R.layout.empty_layout);
+
+3.设置layoutId 1
+maAdapter.setEmptyView(R.layout.empty_layout, recyclerView);
+recyclerView.setAdapter(maAdapter);
+
+4.设置layoutId 2
+maAdapter.setEmptyView(R.layout.empty_layout, (ViewGroup) recyclerView.getParent());
+recyclerView.setAdapter(maAdapter);

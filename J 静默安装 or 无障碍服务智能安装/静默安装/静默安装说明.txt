@@ -1,0 +1,19 @@
+静默安装就是无声无息的在后台安装apk，没有任何界面提示。
+必须要root权限
+原理就是利用pm install命令来安装apk，pm uninstall 来卸载apk.
+pm install 命令的用法及参数解释如下:
+<code class="hljs haml">pm install [-l] [-r] [-t] [-i INSTALLER_PACKAGE_NAME] [-s] [-f] PATH
+Options:
+  -l: install the package with FORWARD_LOCK.
+  -r: reinstall an exisiting app, keeping its data.
+  -t: allow test .apks to be installed.
+  -i: specify the installer package name.
+  -s: install package on sdcard.
+  -f: install package on internal flash.</code>
+
+pm uninstall 命令的用法及参数解释如下:
+<code class="hljs livecodeserver">pm uninstall [-k] PACKAGE
+Options:
+  -k: keep the data and cache directories around.</code>
+
+

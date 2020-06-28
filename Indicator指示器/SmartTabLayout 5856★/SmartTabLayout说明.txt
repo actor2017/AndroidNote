@@ -1,0 +1,5 @@
+https://github.com/ogaclejapan/SmartTabLayout
+
+A custom ViewPager title strip which gives continuous feedback to the user when scrolling
+一个自定义的ViewPager标题条，滚动时向用户提供连续的反馈
+

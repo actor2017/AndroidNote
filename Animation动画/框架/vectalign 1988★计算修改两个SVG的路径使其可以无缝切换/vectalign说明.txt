@@ -1,0 +1,93 @@
+https://github.com/bonnyfone/vectalign
+
+问题
+如官方文件两条路必须是兼容以便它们可以被变形，这意味着路径必须由相同的SVG命令列表组成。(命令的长度和类型)。
+
+例相容路径:
+
+M 10,10 L 40,10 L 40,40 L 10,40 Z
+M 25,10 L 40,25 L 25,40 L 10,25 Z
+例不相容路径:
+
+M 10,10 L 40,10 L 40,40 L 10,40 Z
+M 30,30 L 10,10 C 14,25 20,30 10,49 L 3,3 L 0,8 Z
+
+
+创建一个AnimatedVectorDrawable包含使用不相容路径导致运行时异常，如下所示：
+android.view.InflateException: Binary XML file line #3 Can't morph from M 10,10 L 40,10 L 40,40 L 10,40 Z  to  M 30,30 L 10,10 C 14,25 20,30 10,49 L 3,3 L 0,8 Z
+        at android.animation.AnimatorInflater.setupAnimatorForPath(AnimatorInflater.java:337)
+        at android.animation.AnimatorInflater.parseAnimatorFromTypeArray(AnimatorInflater.java:283)
+...
+
+当变形只涉及简单的形状时，通过手工在任何地方插入或复制命令来修复路径是非常简单的；但是当形状的复杂性增加时，手工完成这项任务就变得相当繁琐(有时几乎是不可能的)。VectAlign自动对任意对SVG路径(不管它们的复杂性)进行对齐，在不改变原始图像的情况下创建一个新的Morphaphable路径。
+
+下载:https://bintray.com/artifact/download/bonnyfone/maven/vectalign-0.2-jar-with-dependencies.jar
+
+执行实例
+
+在GUI模式下运行VectAlign：
+
+java -jar  vectalign.jar 
+java -jar  vectalign.jar --gui
+在命令行模式下运行VectAlign：
+
+java -jar  vectalign.jar   --start "M 10,20..."   --end "M 30,30..."
+java -jar  vectalign.jar   --start image1.svg   --end image2.svg
+结果表示对齐(和兼容)输入路径/图像的版本：这些新路径最终可以使用AnimatedVectorDrawable而不会在“不能从X变成Y”例外情况：
+
+输出实例
+
+--------------------
+  ALIGNMENT RESULT  
+-------------------- 
+# new START sequence:  
+M 48.0,54.0 L 31.0,42.0 L 15.0,54.0 L 21.0,35.0 L 6.0,23.0 L 25.0,23.0 L 25.0,23.0 L 25.0,23.0 L 25.0,23.0 L 32.0,4.0 L 40.0,23.0 L 58.0,23.0 L 42.0,35.0 L 48.0,54.0 
+
+# new END sequence:  
+M 48.0,54.0 L 48.0,54.0 L 48.0,54.0 L 48.0,54.0 L 31.0,54.0 L 15.0,54.0 L 10.0,35.0 L 6.0,23.0 L 25.0,10.0 L 32.0,4.0 L 40.0,10.0 L 58.0,23.0 L 54.0,35.0 L 48.0,54.0 
+
+
+
+
+可供选择
+
+usage: java -jar vectalign.jar  [-g] [-s <"string"|txt_file|svg_file>] [-e <"string"|txt_file|svg_file>] [-m <BASE|LINEAR|SUB_BASE|SUB_LINEAR>] [-v] [-h]
+
+Align two VectorDrawable paths in order to allow morphing animations
+between them.
+
+ -g,--gui                                      Start VectAlign GUI
+ -s,--start <"string"|txt_file|svg_file>       Starting VectorDrawable
+                                               path ("string", txt file or
+                                               SVG file)
+ -e,--end <"string"|txt_file|svg_file>         Ending VectorDrawable path
+                                               ("string", txt file or SVG
+                                               file)
+ -m,--mode <BASE|LINEAR|SUB_BASE|SUB_LINEAR>   Aligning technique (default
+                                               is BASE)
+ -v,--version                                  Print the version of the
+                                               application
+ -h,--help
+
+
+它是如何工作的
+VectAlign是基于对尼德曼-温施在生物信息学中用来对蛋白质或核苷酸序列进行比对的算法。
+
+注释和已知问题
+这是一个面临复杂任务的实验工具。结果的质量可能因输入而异因此，魔兽世界效应所产生的动画不能保证。
+对齐复杂形状可以在一幅或两幅图像上创建视觉伪影。；在本例中，尝试简化原始SVG路径(例如，使用Inkscape)，然后再次运行VectAlign(另请参阅小贴士(第一节)。
+当引用SVG文件时，组成图像的所有路径组将合并到一个路径中。
+如果SVG路径太复杂，系统呈现程序将抛出一个无声的异常：“OpenGLRenderer：路径太大，无法呈现为纹理“；在这种情况下，您需要进一步简化您的图像。
+小贴士
+当改变复杂的对齐路径时，效果最好避免使用fillColor属性中的VectorDrawable并使用strokeColor只。这是因为填充的表面比笔画更容易受到伪影的影响，并且通常提供较少华丽的变形效果。
+作为一般规则，相似图像(就SVG复杂性而言)的形状要比非常不同的图像更好。
+如果您不喜欢变形的结果，请尝试通过简化SVG路径来更改原始图像(例如，使用Inkscape:https://inkscape.org/zh/)，然后再次运行VectAlign。
+自动画VectorDrawable是API 21+您可以使用 vector-compat(https://github.com/wnafee/vector-compat) 库来扩展对API 14+的支持。
+
+
+References
+DevBytes: Android Vector Graphics
+AnimatedVectorDrawable
+VectorDrawable
+VectorDrawableCompat on support library v7 (partial)
+SVG Paths Specification

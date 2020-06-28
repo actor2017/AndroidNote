@@ -1,0 +1,106 @@
+﻿https://github.com/tarek360/RichPath
+Rich Android Path. Draw as you want. Animate much as you can.
+
+1. In your layout.
+    <com.richpath.RichPathView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vector="@drawable/vector_drawable" />
+2. Find your richPath.
+// by path name
+RichPath richPath = richPathView.findRichPathByName("path_name");
+// or if it contains one path
+RichPath richPath = richPathView.findFirstRichPath();
+// or by index
+RichPath richPath = richPathView.findRichPathByIndex(0);
+3. Use the RichPathAnimator to animate your richPath.
+RichPathAnimator.animate(richPath)
+       .trimPathEnd(value1, value2, ...)
+       .fillColor(value1, value2, ...)
+       .start();
+Example
+notification icon vector drawable
+
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportHeight="32.0"
+    android:viewportWidth="32.0">
+
+    <group
+        android:pivotX="16"
+        android:pivotY="6.25">
+        <path
+            android:name="top"
+            android:fillColor="#FFF7F7F7"
+            android:pathData="M22,19.8v-5c0-3.1-1.6-5.6-4.5-6.3V7.8c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v0.7c-2.9,0.7-4.5,3.2-4.5,6.3v5l-2,2v1h16v-1L22,19.8z" />
+
+        <path
+            android:name="bottom"
+            android:fillColor="#FFF7F7F7"
+            android:pathData="M16,25.8c1.1,0,2-0.9,2-2h-4C14,24.9,14.9,25.8,16,25.8z" />
+    </group>
+</vector>
+XML
+    <com.richpath.RichPathView
+        android:id="@+id/ic_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vector="@drawable/ic_notifications" />
+Java
+
+
+RichPath top = notificationsRichPathView.findRichPathByName("top");
+RichPath bottom = notificationsRichPathView.findRichPathByName("bottom");
+
+RichPathAnimator.animate(top)
+        .interpolator(new DecelerateInterpolator())
+        .rotation(0, 20, -20, 10, -10, 5, -5, 2, -2, 0)
+        .duration(4000)
+        .andAnimate(bottom)
+        .interpolator(new DecelerateInterpolator())
+        .rotation(0, 10, -10, 5, -5, 2, -2, 0)
+        .startDelay(50)
+        .duration(4000)
+        .start();
+Installation
+Add the following dependency to your module build.gradle file:
+
+dependencies {
+	...
+	implementation 'com.github.tarek360.RichPath:animator:0.1.1'
+}
+Add this to your root build.gradle file (not your module build.gradle file) :
+
+allprojects {
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
+	}
+}
+More Control by the RichPathAnimator
+Animate multiple paths sequentially or at the same time
+RichPathAnimator
+       .animate(richPath1, richPath2)
+       .rotation(value1, value2, ...)
+
+       //Animate the same path or another with different animated attributes.
+       .andAnimate(richPath3)
+       .scale(value1, value2, ...)
+
+       //Animate after the end of the last animation.
+       .thenAnimate(richPath4)
+       .strokeColor(value1, value2, ...)
+
+       // start your animation 🎉
+       .start();
+Which one of the paths is clicked?
+richPathView.setOnPathClickListener(new RichPath.OnPathClickListener() {
+    @Override
+    public void onClick(RichPath richPath) {
+       if (richPath.getName().equals("path_name")) {
+           //TODO do an action when a specific path is clicked.
+       }
+    }
+});

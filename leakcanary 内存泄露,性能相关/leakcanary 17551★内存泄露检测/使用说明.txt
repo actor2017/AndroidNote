@@ -1,0 +1,35 @@
+https://github.com/square/leakcanary
+
+<!– SDCard中创建与删除文件权限 –>
+
+<uses-permission android:name=“android.permission.MOUNT_UNMOUNT_FILESYSTEMS”/>
+
+<!– 向SDCard写入数据权限 –>
+
+<uses-permission android:name=“android.permission.WRITE_EXTERNAL_STORAGE”/>
+
+
+
+2.添加依赖
+  debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+  releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+  // Optional, if you use support library fragments:
+  debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+
+3.在Application中:
+public class ExampleApplication extends Application {
+
+  @Override public void onCreate() {
+    super.onCreate();
+    if (LeakCanary.isInAnalyzerProcess(this)) {
+      // This process is dedicated to LeakCanary for heap analysis.//这个过程是致力于LeakCanary堆分析
+      // You should not init your app in this process.//在这个过程中你不应该初始化你的应用
+      return;
+    }
+    LeakCanary.install(this);
+    // Normal app init code...//正常的应用初始化代码
+  }
+}
+
+You're good to go! LeakCanary will automatically show a notification when an activity or support fragment memory leak is detected in your debug build.
+你可以走了!当在调试构建中检测到活动或支持片段内存泄漏时，leak金丝雀将自动显示通知。

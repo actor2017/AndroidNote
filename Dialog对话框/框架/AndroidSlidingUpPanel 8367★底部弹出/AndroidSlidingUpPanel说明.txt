@@ -1,0 +1,3 @@
+https://github.com/umano/AndroidSlidingUpPanel
+
+compile 'com.sothree.slidinguppanel:library:3.3.1'

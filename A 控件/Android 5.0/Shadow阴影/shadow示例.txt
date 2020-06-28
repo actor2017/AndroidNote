@@ -1,0 +1,6 @@
+https://blog.csdn.net/hewence1/article/details/39993415
+
+android:shadowColor="@color/black"	//阴影颜色
+android:shadowDx="0"			//阴影x坐标偏移
+android:shadowDy="10"			//阴影y坐标偏移
+android:shadowRadius="10"		//阴影半径, 默认0不显示

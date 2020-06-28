@@ -1,0 +1,4 @@
+https://github.com/AigeStudio/WheelPicker
+https://github.com/AigeStudio/WheelPicker/wiki/°ïÖúÎÄµµ
+
+compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.3'

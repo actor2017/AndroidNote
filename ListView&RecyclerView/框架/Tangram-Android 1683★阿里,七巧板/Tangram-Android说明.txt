@@ -1,0 +1,35 @@
+https://github.com/alibaba/Tangram-Android/blob/master/README-ch.md
+
+Tangram是一套动态化构建 Native 页面的框架，它包含 Tangram Android、Tangram iOS，管理后台等一些列基础设施。本工程是 Tangram Android 的sdk 项目地址，底层依赖于vlayout 和 UltraViewPager。
+
+特点
+Android iOS 双平台支持，iOS 版本参考开源库 Tangram-iOS。
+通过 json 创建页面视图，并提供了默认的解析器。
+可轻松实现页面视图的回收与复用。
+框架提供多种默认的布局方式。
+通过 json 数据或代码支持自定义布局样式。
+高性能，基于vlayout
+支持扩展功能模块
+
+基本概念
+
+卡片：同一区块的组件集合，负责对组件进行布局。
+组件：最小业务单元，好比 RecyclelrView 的 Item。
+默认卡片
+
+通用流式布局卡片（网格）
+线性布局卡片
+固定位置布局卡片
+滑动固定布局卡片
+滑动吸顶/吸底布局卡片
+一拖N布局卡片
+轮播布局卡片
+瀑布流布局卡片
+悬浮拖动布局卡片
+接入教程
+
+详情见上手教程。
+
+Tangram 文档
+
+详细的介绍文档参考这里。

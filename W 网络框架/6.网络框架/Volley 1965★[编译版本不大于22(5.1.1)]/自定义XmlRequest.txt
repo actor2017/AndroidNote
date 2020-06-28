@@ -1,0 +1,94 @@
+
+
+1、StringRequest是继承自Request类的，Request可以指定一个泛型类，这里指定的当然就是String了，
+2、StringRequest中提供了两个有参的构造函数，参数包括请求类型，请求地址，以及响应回调等，
+3、需要注意的是，在构造函数中一定要调用super()方法将这几个参数传给父类，因为HTTP的请求和响应都是在父类中自动处理的。
+4、由于Request类中的deliverResponse()和parseNetworkResponse()是两个抽象方法，因此StringRequest中需要对这两个方法进行实现。
+	(1)、deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，
+			并将response内容传入即可，这样就可以将服务器响应的数据进行回调了。
+	(2)、parseNetworkResponse()方法中则应该对服务器响应的数据进行解析，
+			其中数据是以字节的形式存放在NetworkResponse的data变量中的，这里将数据取出然后组装成一个String，
+			并传入Response的success()方法中即可。
+
+
+public class XMLRequest extends Request<XmlPullParser> {  
+  
+    private final Listener<XmlPullParser> mListener;  
+  
+    public XMLRequest(int method, String url, Listener<XmlPullParser> listener,  
+            ErrorListener errorListener) {  
+        super(method, url, errorListener);  
+        mListener = listener;  
+    }  
+  
+    public XMLRequest(String url, Listener<XmlPullParser> listener, ErrorListener errorListener) {  
+        this(Method.GET, url, listener, errorListener);  
+    }  
+  
+    @Override  
+    protected Response<XmlPullParser> parseNetworkResponse(NetworkResponse response) {  
+        try {  
+            String xmlString = new String(response.data,  
+                    HttpHeaderParser.parseCharset(response.headers));  
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();  
+            XmlPullParser xmlPullParser = factory.newPullParser();  
+            xmlPullParser.setInput(new StringReader(xmlString));  
+            return Response.success(xmlPullParser, HttpHeaderParser.parseCacheHeaders(response));  
+        } catch (UnsupportedEncodingException e) {  
+            return Response.error(new ParseError(e));  
+        } catch (XmlPullParserException e) {  
+            return Response.error(new ParseError(e));  
+        }  
+    }  
+  
+    @Override  
+    protected void deliverResponse(XmlPullParser response) {  
+        mListener.onResponse(response);  
+    }  
+  
+}  
+
+
+使用：
+
+	1. 创建请求队列
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+		
+	XMLRequest xmlRequest = new XMLRequest(  
+        "http://192.168.1.100:8080/news/news.xml",   //xml网址  
+		
+        new Response.Listener<XmlPullParser>() {  	 //获取Xml文件，并解析
+            @Override  
+            public void onResponse(XmlPullParser response) {  
+                try {  
+                    int eventType = response.getEventType();  
+                    while (eventType != XmlPullParser.END_DOCUMENT) {  
+                        switch (eventType) {  
+                        case XmlPullParser.START_TAG:  
+                            String nodeName = response.getName();  
+                            if ("title".equals(nodeName)) {  
+                                String pName = response.getAttributeValue(0);  
+                                Log.d("TAG", "pName is " + pName);  
+                            }  
+                            break;  
+                        }  
+                        eventType = response.next();  
+                    }  
+                } catch (XmlPullParserException e) {  
+                    e.printStackTrace();  
+                } catch (IOException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }, 
+		
+		new Response.ErrorListener() {  //失败回调
+            @Override  
+            public void onErrorResponse(VolleyError error) {  
+                Log.e("TAG", error.getMessage(), error);  
+            }  
+        }); 
+		
+	mQueue.add(xmlRequest);  
+	
+	

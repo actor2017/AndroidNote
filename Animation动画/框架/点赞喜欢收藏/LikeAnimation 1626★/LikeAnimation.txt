@@ -1,0 +1,3 @@
+https://github.com/frogermcs/LikeAnimation
+Android like button with delightful star animation inspired by Twitter's heart. See blog post for description.
+

@@ -1,0 +1,42 @@
+* Android Debug Bridge  安卓调试桥
+	* 连接开发工具和模拟器
+
+左ctrl + F11	模拟器旋转90°
+
+不配置也不影响开发
+用于dos下手动操作
+
+
+1.在环境变量新建 adb_HOME,路径输入如下:
+D:\Program Files\eclipseAndroid\eclipse\sdk\platform-tools
+
+2.把adb_HOME 添加入Path路径,如下:
+%adb_HOME%;
+
+
+adb shell	//获取超级用户管理员,挂载到Linux的空间
+# monkey	//有许多方法
+# monkey 2000	//测试2000次
+# top		//所有进程		??
+^c		//ctrl+c:转到c盘
+adb kill-server	//杀死adb
+adb devices 列出所有的设备
+
+adb start-server 开启adb服务
+
+adb kill-server	关闭adb服务
+
+adb logcat	查看Log
+
+adb install <应用程序(加扩展名)> 	安装应用程序
+adb install C:\Users\chao\Desktop\tyf.apk
+
+adb –s <模拟器名称>  install  <应用程序(加扩展名)>  安装应用到指定模拟器
+
+adb uninstall com.itheima.boot	卸载对应的程序
+
+adb pull <remote> <local> 
+
+adb push <local> <remote>
+
+emulator –avd <模拟器名称>

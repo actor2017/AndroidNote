@@ -1,0 +1,2 @@
+https://github.com/open-android/Android-DivergeView2
+仿美拍直播平台的点赞动画特效

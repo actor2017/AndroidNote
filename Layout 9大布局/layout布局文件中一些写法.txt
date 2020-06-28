@@ -1,0 +1,342 @@
+5大布局:
+1.线性布局: LinearLayout	应用场景：控件线性排列
+2.相对布局：RelativeLayout
+3.帧布局  ：FrameLayout		应用场景：一个控件叠在另外一个控件的上面
+4.表格布局：TableLayout		应用场景：办公类软件
+5.绝对布局：AbsoluteLayout	过时,应用常见：机顶盒
+
+//===================================公共属性=================
+公共属性:
+	background="#22ff0000"		背景色:小公举
+	background="#2200ff00"		背景色:宝强绿
+	background="@drawable/selector_item"	背景的selector用法,1.背景可以是2张图片 2.背景可以是2种颜色,
+						但是selector必须是drawable="@color/...",不能写color,且颜色只能写在color里面!
+	layout_width="match_parent"
+	layout_height="match_parent"
+	android:layout_centerHorizontal="true"	当前控件水平居中
+	gravity					内容居中
+	android:layout_gravity="center_vertical|start"当前控件在父元素的位置,注意这种写法
+	layout_width="0dp"
+	visibility="visible | invisible | gone"	布局显示/隐藏/消失
+	padding="8dp"				外边距
+	layout_margin="8dp"			内边距
+
+
+//=======================================================
+<LinearLayout
+	orientation="horizontal | vertical"	朝向
+	Layout_weight				额外空间分配(权重)
+
+<RelativeLayout
+	android:layout_above="@id/bnb_bottombar"在某控件之上
+        android:layout_below="@id/tv_id"	在某控件之下
+        android:layout_toRightOf="@id/iv_head"	在某控件右边
+
+<FrameLayout
+
+<TableLayout
+
+<AbsoluteLayout
+	layout_x	指定控件在父布局的x轴坐标
+	layout_y	指定控件在父布局的y轴坐标
+
+//--------------------------------------------------------------TextView-------------
+<TextView
+        android:id="@+id/tv_uninstall"
+        android:layout_width="wrap_content"
+        android:text="卸载"
+	android:gravity="center"				文字居中
+        android:textSize="18sp"
+				java代码:tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);//18sp
+        android:textColor="@color/black"
+	android:textStyle="bold"				//粗体
+				java代码:tv.getPaint().setFakeBoldText(true);//粗体
+				java代码:textview.setMaxLines(7);	     //最多7行
+        android:drawableTop="@drawable/ic_uninstall"		在"卸载"文字的正上方显示一张卸载的图片
+	android:drawablePadding="3dp"				卸载和图片之间的距离
+	android:paddingLeft="10dp"				图片离左面边界:10dp
+	android:textIsSelectable="true"				//长按文字可以复制，搜索,滑动
+				java代码:tv.setMovementMethod()方法，也可以支持对TextView的内容滑动，但对Textview内容不支持长按文字可以复制，搜索等。
+        android:layout_height="wrap_content"/>
+
+//--------------------------------------------------------------EditText--------------
+
+    <EditText
+        android:background="@null"				去掉下划线
+        android:background="@android:color/transparent"		去掉下划线?
+        android:imeOptions="actionNext | actionDone |actionSend"下一步,完成,发送.InputMethodService
+        android:maxLength="11"				最大长度
+        android:textCursorDrawable="@drawable/line"	自定义光标,可为shape和图片,="@null"时光标颜色与textColor相同
+        android:imeOptions="flagNoExtractUi"	横屏时,输入法可以设为直接在当前界面显示
+    android:inputType="none"
+    android:inputType="text"
+    android:inputType="textCapCharacters" 字母大写
+    android:inputType="textCapWords" 首字母大写
+    android:inputType="textCapSentences" 仅第一个字母大写
+    android:inputType="textAutoCorrect" 自动完成
+    android:inputType="textAutoComplete" 自动完成
+    android:inputType="textMultiLine" 多行输入
+    android:inputType="textImeMultiLine" 输入法多行（如果支持）
+    android:inputType="textNoSuggestions" 不提示
+    android:inputType="textUri" 网址
+    android:inputType="textEmailAddress" 电子邮件地址
+    android:inputType="textEmailSubject" 邮件主题
+    android:inputType="textShortMessage" 短讯
+    android:inputType="textLongMessage" 长信息
+    android:inputType="textPersonName" 人名
+    android:inputType="textPostalAddress" 地址
+    android:inputType="textPassword" 密码
+    android:inputType="textVisiblePassword" 可见密码
+    android:inputType="textWebEditText" 作为网页表单的文本
+    android:inputType="textFilter" 文本筛选过滤
+    android:inputType="textPhonetic" 拼音输入
+//数值类型
+    android:inputType="number" 数字
+    android:inputType="numberSigned" 带符号数字格式
+    android:inputType="numberDecimal" 带小数点的浮点格式
+    android:inputType="phone" 拨号键盘
+    android:inputType="datetime" 时间日期
+    android:inputType="date" 日期键盘
+    android:inputType="time" 时间键盘
+        
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:focusable="true"		//Edittext默认无焦点
+        android:focusableInTouchMode="true">	//Edittext默认无焦点
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="流动人口信息采集"
+                android:textColor="@color/black"/>
+
+//--------------------------------------------------------------Button----------------
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	textAllCaps="false"/>					显示小写,否则设置的小写字母会显示成大写
+
+//--------------------------------------------------------------------------------------
+    <RelativeLayout
+        android:id="@+id/rlImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ccc"		2dp的灰色背景,图片加载出来有留白
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"	通常宽高写死
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"	图片的显示比例方式:通过裁剪图片适应设置的大小
+	    android:scaleType="fitXY"		图片的显示比例方式:通过缩放适应宽高显示,会变形,还有其他,参见UniversalImageLoader
+            android:src="@drawable/image_demo"/>
+//--------------------------------------------------------------------------------------
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rb_bottom">			//在RadioGroup之上,不会包括RadioGroup★★★★★★
+    </android.support.v4.view.ViewPager>
+
+    <RadioGroup
+        android:id="@+id/rb_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_tab_bg"
+        android:gravity="center_vertical"			//所有子控件都垂直居中
+        android:orientation="horizontal">			//注:这里面有这个属性
+
+        <RadioButton
+		android:id="@+id/rb_home"
+		android:button="@null"				//如果不写这个,RadioButton的默认小圆点会一直显示
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:drawablePadding="3dp"			//不知啥用
+		android:drawableTop="@drawable/selector_home"
+		android:background="@android:color/transparent"	//背景设置成透明#00000000因为有时候不设置背景,小圆点去不掉
+		android:text="首页"
+		android:textColor="@color/selector_bottom_textcolor"
+		android:textSize="12sp"
+		android:gravity="center"
+		android:layout_gravity="center"
+		android:layout_weight="1"/>
+
+//------------------------------------------------ExpandableListView可膨胀的ListView---
+    <!--注意:groupIndicator可以设置指示器(每组的前面箭头)的显示与否-->
+    <ExpandableListView
+        android:id="@+id/elv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:groupIndicator="@null">
+    </ExpandableListView>
+
+//------------------------------------------------SlidingDrawer滑动的,抽屉------------
+<SlidingDrawer
+            android:id="@+id/drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:content="@+id/content"
+            android:handle="@+id/handle">
+
+            <RelativeLayout
+                android:id="@id/handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawer_bg">
+
+                <ImageView
+                    android:id="@+id/iv_arrow1"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/drawer_arrow_up"/>
+
+                <ImageView
+                    android:id="@+id/iv_arrow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_arrow1"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/drawer_arrow_up"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@id/content"
+                android:layout_width="match_parent"
+                android:layout_height="341dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/ContentStyle"
+                    android:text="进程管理设置"/>
+
+                <cn.itcast.mobilesafe12.view.SettingItemView
+                    android:id="@+id/siv_show_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    itcast:itcast_bg="first"
+                    itcast:itcast_title="显示系统进程"/>
+
+                <cn.itcast.mobilesafe12.view.SettingItemView
+                    android:id="@+id/siv_auto_kill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    itcast:itcast_bg="last"
+                    itcast:itcast_title="锁屏自动清理"/>
+
+            </LinearLayout>
+
+        </SlidingDrawer>
+
+//-----------------------------------CheckBox在Item上,设置没焦点,否则抢了ListView的Item的焦点-----------
+<!--focusable:没有焦点,否则ListView的Item没有焦点-->
+    <CheckBox
+        android:id="@+id/cb_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+
+//-------------------------------------------------画一条线--RecyclerView没有线----------------
+    <!--画一条线,RecyclerView没有线-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"/>
+
+//==========================================================================================
+
+        <!--include可以将其他布局文件直接导入到当前布局文件中,示例用法:layout/自定义旋转进度条/layout★★★★★★★★★★★★★★-->
+        <include layout="@layout/layout_loading"/>
+
+//---------------------------------------ImageButton---------------
+        <!--老师写法,和我的不一样
+            android:background="@null"  去掉背景,否则有一个默认的矩形背景
+            android:src="@drawable/add_selector"-->
+        <ImageButton
+            android:id="@+id/ib_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/add_selector"/>
+
+
+
+	<activity
+		android:theme="@android:style/Theme.Translucent"//透明界面
+//-----------------------------------------俄罗斯简单病毒界面-----
+<activity				   主题.   透明    .没有标题条.全屏(不能从上往下拉菜单)
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+//===================================================
+1.* 固定activity的屏幕朝向
+<activity
+            android:screenOrientation="sensor"//自适应
+            android:screenOrientation="landscape"//横屏
+            android:screenOrientation="portrait"//竖屏,默认
+
+2.* 使activity不敏感屏幕朝向的变化(不会销毁再创建activity)(现在一般都用这种)
+	*  android:configChanges="orientation|keyboard|screenSize"
+
+//===========================================去掉桌面图标====================
+	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+//==============================================广播优先级(打电话)============
+<receiver android:name="com.itheima.code_famer.HighCodeFarmerReceiver">
+            <intent-filter android:priority="1000">
+//===============================================================
+<TextView					//文字透明度(例:用于老师讲的计时器)
+	android:id="@+id/tv"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="0"
+	android:textColor="#22 ff 00 00">	//#22是文字透明度
+
+//=================================================================
+<ImageButton					//图片按钮,天生就可以按
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@null"		//否则有一个默认矩形背景
+            android:src="@drawable/add_selector"/>
+
+//=================================================================
+<!--右上角的设置-->安全卫士项目
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting"
+            android:scaleType="center"		//设置的src不会随background而放大
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:clickable="true"		//这个设置按钮可点击,默认不可点击
+            android:background="@drawable/btn_setting_normal"/>
+    </RelativeLayout>
+//=================================================================
+

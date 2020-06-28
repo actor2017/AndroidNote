@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_edit"
+        android:icon="@drawable/edit"
+        android:orderInCategory="80"
+        android:title="编辑"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/search"
+        android:orderInCategory="90"
+        android:title="搜索"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_add"
+        android:icon="@drawable/add"
+        android:orderInCategory="100"
+        android:title="退出"
+        app:showAsAction="never"/>
+</menu>
+    <!--关于showAsAction 展现在Action条目中的几个属性值有这几个：
+    always：使菜单项一直显示在ToolBar上。
+    ifRoom：如果有足够的空间，这个值会使菜单项显示在ToolBar上。
+    never：使菜单项永远都不出现在ToolBar上,在…的子项中显示。
+    withText：使菜单项和它的图标，菜单文本一起显示。-->

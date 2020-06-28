@@ -1,0 +1,6 @@
+https://github.com/journeyapps/zxing-android-embedded
+
+Port of the ZXing Android application as an Android library project, for embedding in an Android application.
+ZXing Android应用程序的端口作为Android库项目，用于嵌入Android应用程序
+
+基于zxing3.4.0, 即使替换过我自己生成的jar, 效果也还是差

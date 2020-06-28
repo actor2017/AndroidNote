@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--根布局可以直接是TextView,但要注意保留命名空间-->
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_toast_normal"
+    android:drawableLeft="@drawable/location"
+    android:text="未知号码"
+    android:textColor="@color/white"
+    android:textSize="18sp"/>

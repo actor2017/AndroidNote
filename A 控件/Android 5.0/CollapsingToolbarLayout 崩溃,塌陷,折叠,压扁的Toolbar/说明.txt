@@ -1,0 +1,125 @@
+CollapsingToolbarLayout extends FrameLayout(继承帧布局,所以有layout_gravity属性)
+是对Toolbar的包装并且实现了折叠app bar效果，使用时，要作为 AppbarLayout 的直接子View。
+
+CollapsingToolbarLayout有以下特性：
+
+（1）Collapsing可以设置title(折叠标题)
+当布局全部可见的时候，title 是最大的，当布局开始滑出屏幕，title 将变得越来越小，
+你可以通过setTitle（CharSequence） 来设置要显示的标题。
+注意：Toolbar 和CollapsingToolbarLayout 同时设置了title时，不会显示Toolbar的title而是显示CollapsingToolbarLayout
+ 的title，如果要显示Toolbar 的title，你可一在代码中添加如下代码：
+collapsingToolbarLayout.setTitle("");//app:titleEnabled="false"
+app:title="sdf"//设置了就不显示toolbar里的title,而显示CoolapsingToolbarLayout里的title.
+
+
+（2）contentScrim(内容纱布,可以设置透明)
+当CollapsingToolbarLayout滑动到一个确定的阀值时将显示或者隐藏内容纱布，也是展开时的渐变颜色
+可以通过setContentScrim(Drawable)来设置纱布的图片。
+
+
+提醒：纱布可以是图片也可以是颜色色值，如果要显示颜色，
+在xml 布局文件中用contentScrim属性添加，代码如下：
+
+app:contentScrim="@color/colorPrimary"
+
+
+
+
+（3）statusBarScrim（状态栏纱布,可以设置透明） 当CollapsingToolbarLayout滑动到一个确定的阀值时，状态栏显示或隐藏纱布，
+你可以通过setStatusBarScrim(Drawable)来设置纱布图片。(好像只能在5.0之上?)
+注意:使用前确保Status是透明,比如在setContentView之前加上:
+getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+提醒：同内容纱布一样，状态栏纱布可以是图片也可以是一个颜色值，如果要显示颜色值，在xml 中用statusBarScrim 属性指定。
+app:statusBarScrim="@color/deep_green"
+
+
+（4）Parallax scrolling children（有视差地滚动子View） 让CollapsingToolbarLayout 的子View 可以有视差的滚动，
+代码中设置:setCollapseMode(int collapseMode)
+需要在xml中用 添加如下代码：
+app:layout_collapseMode="parallax(视差) | none | pin(滚定)"//折叠模式(3种中写1种)
+
+
+（4.5）Pinned position children（固定子View的位置）子View可以固定在全局空间内，这对于实现了折叠并且允许通过滚动
+布局来固定Toolbar 这种情况非常有用。
+代码中设置:setCollapseMode(int collapseMode)
+在xml 中将collapseMode设为pin，代码如下：
+app:layout_collapseMode="pin"
+
+
+
+
+(4.6)none 或者 不设置
+跟随NestedScrollView的滑动一起滑动,NestedScrollView滑动多少距离他就会跟着走多少距离 
+
+
+(5)layout_collapseParallaxMultiplier折叠视差系数,parallax才有效果.(取值范围,包含[0-1])
+=0时:CollapsingToolbarLayout里的控件(例:图片)不折叠,直接上移
+=0.5:默认值.CollapsingToolbarLayout里的控件(例:图片)有折叠和上移效果.
+=1时:CollapsingToolbarLayout里的控件(例:图片)原地不动,不上移
+
+
+(6)CollapsingToolbarLayout布局中:
+app:titleEnabled="false";//然后toolbar中设置title,title就能固定不动(title不会上下移动)
+
+//=========================================
+以上就是CollapsingToolbarLayout的一些特性，有了CollapsingToolbarLayout，配合AppbarLayout我们就可以很轻松的做出
+这种折叠header的效果了，请看效果图：Coll_toolbar1.gif
+
+我们再来看一下设置了Content scrim(内容纱布) 的效果：Coll_toolbar2.gif
+
+//======================================下面示例写法===========
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.kuchuanyun.test.CoordinatorLayoutActivity">
+
+    <!--AppBarLayout extends LinearLayout-->
+    <!--★注意:最好在这里设置高度,不给toolbar设置高度,默认@dimen/app_bar_height(180dp)-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true">
+
+        <!--★注意:app:theme="@style/ToolBarTheme"写在这里,写在toolbar里没什么卵用-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorAccent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:statusBarScrim="@color/deep_green"
+            //app:expandedTitleMarginStart="48dp"//展开的title的marginStart
+            //app:expandedTitleMarginEnd="64dp"//展开的title的marginEnd
+            //app:expandedTitleTextAppearance="@style/ExpandedAppBar"//展开时title的样式
+            //app:collapsedTitleTextAppearance=”@style/Text1”折叠时title的样式里面可以定义字体大小颜色等
+            app:theme="@style/ToolBarTheme">
+
+            <!--★注意:这里layout_height="?attr/actionBarSize",否则title不显示-->
+            <!--★注意:titleTextColor这个属性在这里没什么卵用-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0"
+                app:title="这是Toolbar,高=200,最小高度=默认.">
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/large_text"/>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

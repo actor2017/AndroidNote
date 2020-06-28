@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--layer-list 层的集合,分成了3层-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--进度条背景-->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="20dip"/>
+            <!--圆角,半径5dp
+
+            渐变,从什么颜色到什么颜色
+            <gradient
+                    android:startColor="#ff9d9e9d"
+                    android:centerColor="#ff5a5d5a"
+                    android:centerY="0.75"
+                    android:endColor="#ff747674"
+                    android:angle="270"
+            />
+            -->
+
+            <!--纯色,★★★注意:如果这儿设置成白色,下载的时候会有少量白色在进度条中★★★-->
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+
+    <!--缓冲进度-->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+
+                <corners android:radius="20dip"/>
+                <!--圆角,半径5dp
+
+                渐变,从什么颜色到什么颜色
+                <gradient
+                        android:startColor="#80ffd300"
+                        android:centerColor="#80ffb600"
+                        android:centerY="0.75"
+                        android:endColor="#a0ffcb00"
+                        android:angle="270"
+                />-->
+
+                <solid android:color="#E69191"/>
+            </shape>
+        </clip>
+    </item>
+
+    <!--进度-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+
+                <corners android:radius="20dip"/>
+                <!--圆角,半径5dp
+
+                渐变,从什么颜色到什么颜色
+                android:centerY="0.75"
+                android:angle="270"
+                android:centerColor="#ffffb600"-->
+                <gradient
+                    android:endColor="#a1fb4c"
+                    android:startColor="#00B9FC"
+                    />
+
+                <!--<solid android:color="#CEEDF9"/>-->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

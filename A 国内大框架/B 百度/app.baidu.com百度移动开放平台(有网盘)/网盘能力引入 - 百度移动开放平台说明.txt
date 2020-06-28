@@ -1,0 +1,3 @@
+网盘能力引入 - 百度移动开放平台
+需要下载客户端,并且授权登录,才能上传/下载东西.
+http://app.baidu.com/wangpan/homepage

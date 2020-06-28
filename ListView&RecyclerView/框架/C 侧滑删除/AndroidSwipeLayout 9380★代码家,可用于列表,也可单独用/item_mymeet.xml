@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="81dp"
+    android:layout_marginTop="@dimen/margin_5_dp">
+
+    <!-- Bottom View 底部view-->
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_red"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_10_dp"
+            android:background="@color/color_black_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!--SwipeLayout的最后一个孩子是SurfaceView，其他孩子都是BottomView-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_10_dp"
+            android:background="@color/color_black_back"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/mm_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_15_dp"
+                android:layout_marginTop="@dimen/margin_15_dp"
+                android:text="°"
+                android:textColor="@color/color_red"
+                android:textSize="20sp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/mm_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="@dimen/margin_15_dp"
+                android:layout_marginRight="@dimen/margin_5_dp"
+                android:layout_toLeftOf="@+id/mm_type"
+                android:layout_toRightOf="@+id/mm_icon"
+                android:text="第十九次技术论坛大会"
+                android:textColor="@color/color_black1"
+                android:textSize="@dimen/txt_size_14_sp"/>
+
+            <TextView
+                android:id="@+id/mm_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mm_title"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:layout_marginBottom="@dimen/margin_15_dp"
+                android:layout_toRightOf="@+id/mm_icon"
+                android:text="开会时间 2018-02-22"
+                android:textColor="@color/color_black1"
+                android:textSize="@dimen/txt_size_14_sp"/>
+
+
+            <TextView
+                android:id="@+id/mm_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:layout_marginBottom="@dimen/margin_15_dp"
+                android:layout_toLeftOf="@+id/mm_type"
+                android:background="@drawable/shape_background_red"
+                android:paddingLeft="@dimen/margin_8_dp"
+                android:paddingTop="@dimen/margin_3_dp"
+                android:paddingRight="@dimen/margin_8_dp"
+                android:paddingBottom="@dimen/margin_3_dp"
+                android:text="评论"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/txt_size_13_sp"
+                android:visibility="gone"/>
+
+
+            <TextView
+                android:id="@+id/mm_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:layout_marginBottom="@dimen/margin_15_dp"
+                android:layout_toLeftOf="@+id/right"
+                android:paddingLeft="@dimen/margin_5_dp"
+                android:paddingTop="@dimen/margin_3_dp"
+                android:paddingRight="@dimen/margin_5_dp"
+                android:paddingBottom="@dimen/margin_3_dp"
+                android:text=""
+                android:textColor="@color/color_black2"
+                android:textSize="@dimen/txt_size_13_sp"/>
+
+            <ImageView
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/margin_15_dp"
+                android:src="@drawable/mine_right"/>
+        </RelativeLayout>
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

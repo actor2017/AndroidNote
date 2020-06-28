@@ -1,0 +1,18 @@
+https://github.com/Ajian-studio/GAHonorClock
+
+Imitate the honor phone's clock（仿华为荣耀时钟效果）
+
+1、Image mask
+图像掩码
+The following image shows how the above animation can be implemented by masking.
+下面的图像显示了如何通过掩蔽来实现上述动画。
+
+2、Path mask
+路径掩码
+
+In this implementations, we use path to simulate a mask, and result is as follow:
+在此实现中，我们使用PATH模拟掩码，结果如下：
+
+
+3、Calculation In this implementations, we draw the special clock scale lines by calculation, and result is as follow:
+在此实现中，我们通过计算绘制特殊的时钟刻度线，结果如下：

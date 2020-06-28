@@ -1,0 +1,4 @@
+https://github.com/Alex-Jerry/Android-BLE
+
+AndroidBLE蓝牙框架，包括扫描、连接、设置通知、发送数据、读取、接收数据和OTA升级以及各种直观的回调，近乎一行代码植入项目，可扩展配置蓝牙相关操作。
+

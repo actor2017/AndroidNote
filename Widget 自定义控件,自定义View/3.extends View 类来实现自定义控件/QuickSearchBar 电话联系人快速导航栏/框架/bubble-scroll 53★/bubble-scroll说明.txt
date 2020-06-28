@@ -1,0 +1,6 @@
+https://github.com/kongnanlive/bubble-scroll
+
+注意:好像不能添加依赖.
+
+更多特效:
+https://dribbble.com/NikitaDuhovny

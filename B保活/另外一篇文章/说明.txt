@@ -1,0 +1,279 @@
+Android进程保活全攻略（上）
+http://blog.csdn.net/u012124438/article/details/53141113
+
+另外这篇文章说明:
+**a) 将Service设置为前台服务 
+b) 在service的onstart方法里返回 STATR_STICK 
+c) 添加Manifest文件属性值为android:persistent=“true” 注意：该方法需要系统签名
+d) 覆写Service的onDestroy方法 
+e) 监听一堆系统静态广播 
+f) 监听第三方应用的静态广播 
+g) AlarmManager唤醒 
+h) 账户同步，定时唤醒 
+i) 1像素悬浮层 
+j) GCM或其它3方推送 
+k) 应用间互相拉起 
+l) 心跳唤醒 
+m)Native进程拉起 
+n) 双进程守护**
+
+
+Android进程保活全攻略（中）
+http://blog.csdn.net/u012124438/article/details/53143601
+9) 1像素悬浮层 
+**思路：**1像素悬浮层是传说的QQ黑科技，监控手机锁屏解锁事件，在屏幕锁屏时启动1个像素的 Activity，在用户解锁时将 Activity 销毁掉。注意该 Activity 需设计成用户无感知。通过该方案，可以使进程的优先级在屏幕锁屏时间由4提升为最高优先级1。 
+保活强度： 
+前台进程，跟前台服务差不多。需要权限，不敌force-stop 
+实现代码： 
+首先定义 Activity，并设置 Activity 的大小为1像素：
+
+public class MainActivity extends AppCompatActivity {
+    private static final StringTAG="keeplive";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+        Window window = getWindow();
+        window.setGravity(Gravity.LEFT|Gravity.TOP);
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.x=0;
+        params.y=0;
+        params.height=1;
+        params.width=1;
+        window.setAttributes(params);
+    }
+}
+
+
+其次，从 AndroidManifest 中通过如下属性，排除 Activity 在 RecentTask 中的显示：
+<activity
+    android:name=".KeepAliveActivity"
+    android:excludeFromRecents="true"
+    android:exported="false"
+    android:finishOnTaskLaunch="false"
+    android:launchMode="singleInstance"
+    android:process=":live"
+    android:theme="@style/LiveActivityStyle"
+    >
+</activity>
+
+
+最后，控制 Activity 为透明：
+<stylename="LiveActivityStyle">
+   <itemname="android:windowBackground">@android:color/transparent</item>
+   <itemname="android:windowFrame">@null</item>
+   <itemname="android:windowNoTitle">true</item>
+   <itemname="android:windowIsFloating">true</item>
+   <itemname="android:windowIsTranslucent">true</item>
+   <itemname="android:windowContentOverlay">@null</item>
+   <itemname="android:windowAnimationStyle">@null</item>
+   <itemname="android:windowDisablePreview">true</item>
+   <itemname="android:windowNoDisplay">true</item>
+</style>
+
+
+Activity 启动与销毁时机的控制：
+public class KeepLiveReceiver extends BroadcastReceiver {
+    privateContextmContext;
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+            KeepLiveManeger.getInstance(mContext).startKeepLiveActivity();
+        } else if (action.equals(Intent.ACTION_USER_PRESENT)) {
+            KeepLiveManeger.getInstance(mContext).destroyKeepLiveActivity();
+        }
+        KeepLiveManeger.getInstance(mContext).startKeepLiveService();
+    }
+}
+
+
+
+10) 应用间互相拉起 
+**思路：**app之间知道包名就可以相互唤醒了，比如你杀了我qq，只要微信还在就能确保随时唤醒qq。还有百度全系app都通过bdshare实现互拉互保，自定义一个广播，定时发，其他app收广播自起等
+
+
+11) 心跳唤醒 
+思路：微信保活技术，依赖系统特性：长连接网络回包机制 
+保活强度：不敌force-stop，需要网络，API level >= 23的doze模式会关闭所有的网络 
+代码实现：
+public class HeartbeatService extends Service implements Runnable {
+    private Thread mThread;
+    public int count = 0;
+    private boolean isTip = true;
+    private static String mRestMsg;
+    private static String KEY_REST_MSG = "KEY_REST_MSG";
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                if (count > 1) {
+
+                    count = 1;
+                    if (isTip) {
+                        //判断应用是否在运行
+                        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                        List<RunningTaskInfo> list = am.getRunningTasks(3);
+                        for (RunningTaskInfo info : list) {
+                            if (info.topActivity.getPackageName().equals("org.yhn.demo")) {
+                                //通知应用，显示提示“连接不到服务器”
+                                Intent intent = new Intent("org.yhn.demo");
+                                intent.putExtra("msg", true);
+                                sendBroadcast(intent);
+                                break;
+                            }
+                        }
+
+                        isTip = false;
+                    }
+                }
+                if (mRestMsg != "" && mRestMsg != null) {
+                    //向服务器发送心跳包
+                    sendHeartbeatPackage(mRestMsg);
+                    count += 1;
+                }
+
+                Thread.sleep(1000 * 3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sendHeartbeatPackage(String msg) {
+        HttpGet httpGet = new HttpGet(msg);
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        // 发送请求
+        HttpResponse httpResponse = null;
+        try {
+            httpResponse = httpClient.execute(httpGet);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (httpResponse == null) {
+            return;
+        }
+
+        // 处理返回结果
+        final int responseCode = httpResponse.getStatusLine().getStatusCode();
+        if (responseCode == HttpStatus.SC_OK) {
+            //只要服务器有回应就OK
+            count = 0;
+            isTip = true;
+        } else {
+            Log.i("@qi", "responseCode " + responseCode);
+        }
+
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void onStart(Intent intent, int startId) {
+        Log.i("@qi", "service onStart");
+        //从本地读取服务器的URL，如果没有就用传进来的URL
+        mRestMsg = getRestMsg();
+        if (mRestMsg == null || mRestMsg == "") {
+            mRestMsg = intent.getExtras().getString("url");
+        }
+        setRestMsg(mRestMsg);
+
+        mThread = new Thread(this);
+        mThread.start();
+        count = 0;
+
+        super.onStart(intent, startId);
+    }
+
+    public String getRestMsg() {
+        SharedPreferences prefer = getSharedPreferences("settings.data", Context.MODE_PRIVATE);
+
+        return prefer.getString(KEY_REST_MSG, "");
+    }
+
+    public void setRestMsg(String restMsg) {
+        SharedPreferences prefer = getSharedPreferences("settings.data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefer.edit();
+        editor.putString(KEY_REST_MSG, restMsg);
+        editor.commit();
+    }
+
+}
+
+
+最后别忘了注册Server和GET_TASKS
+
+<service
+    android:name=".demo.HeartbeatService"
+    android:label="QServer"
+    android:persistent="true" >
+    <intent-filter>
+        <action android:name="HeartbeatService" />
+    </intent-filter>
+</service>
+<uses-permission android:name="android.permission.GET_TASKS" />
+
+<uses-permission android:name="android.permission.GET_TASKS" />
+
+
+
+12) Native进程拉起 
+思路：开启native子进程，定时发intent 
+保活强度：单杀可以杀死，force close 5.0以上无效，5.0以下部分手机无效，第三方软件下无效，且无法保证实时常驻 
+实现代码： 
+首先开启一个c进程，将需要保活的service名字传递进去
+private static void start(Context context, Class<?> daemonClazzName, int interval) {
+   String cmd = context.getDir(BIN_DIR_NAME, Context.MODE_PRIVATE)
+      .getAbsolutePath() + File.separator + DAEMON_BIN_NAME;
+
+   /* create the command string */
+   StringBuilder cmdBuilder = new StringBuilder();
+   cmdBuilder.append(cmd);
+   cmdBuilder.append(" -p ");
+   cmdBuilder.append(context.getPackageName());
+   cmdBuilder.append(" -s ");
+   cmdBuilder.append(daemonClazzName.getName());
+   cmdBuilder.append(" -t ");
+   cmdBuilder.append(interval);
+
+   try {
+      Runtime.getRuntime().exec(cmdBuilder.toString()).waitFor();
+   } catch (IOException | InterruptedException e) {
+      Log.e(TAG, "start daemon error: " + e.getMessage());
+   }
+}
+
+然后定时给自己主进程发一个intent，如果主进程挂掉了，就可以顺利拉起来保证存活。
+
+while(sig_running)
+{
+   interval = interval < SLEEP_INTERVAL ? SLEEP_INTERVAL : interval;
+   select_sleep(interval, 0);
+
+   LOGD(LOG_TAG, "check the service once, interval: %d", interval);
+
+   /* start service */
+   start_service(package_name, service_name);
+}
+
+但这只是一个没有主动权的消息轮询器，说是守护其实很勉强，而且，这是要建立在保证c进程不挂的基础上，才能轮询，但是就目前来看，只有5.0以下的非国产机才会有这样的漏洞。也就是说在force close的时候，系统忽略c进程的存在，5.0以上包括5.0的哪怕源生系统也会连同c进程一起清理掉，国产机就更不用说了。就算是这样，在5.0以下的非国产机上，如果安装了获取root权限的360\cm的话，也是可以直接清理掉，也就是说会失效。
+
+native进程守护缺点非常明显，那就是守护是单向的，也就是说只能a保b，b保不了a；a保b也不是在b死了立刻拉起来，要等到了时间才会去拉。那如何解决这个native进程的缺点呢？那就是通过双进程守护，下一篇我将详细讲解如何通过Linux层来实现双进程守护。
+
+

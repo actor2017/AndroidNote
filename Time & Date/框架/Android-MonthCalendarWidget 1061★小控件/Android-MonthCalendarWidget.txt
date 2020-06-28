@@ -1,0 +1,4 @@
+https://github.com/romannurik/Android-MonthCalendarWidget
+
+A simple example of a responsive Month Calendar app widget for Android
+一个简单的例子，一个响应的Android月历应用程序小部件

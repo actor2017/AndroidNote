@@ -1,0 +1,6 @@
+如果是图片/背景图片/背景颜色,写在drawable目录中.
+如果是文字颜色,写在color目录中.
+
+学习资料:
+Android 图像绘制之 Drawable http://www.jianshu.com/p/4cd87e3c43d6
+Android 图像绘制之 Drawable(二) http://www.jianshu.com/p/4134e2352d65

@@ -1,0 +1,5 @@
+https://github.com/guilhermesgb/marqueeto
+EditTexts with floating labels and marquee ellipsize.
+
+
+compile 'com.github.guilhermesgb:marqueeto:1.1.14'

@@ -1,0 +1,10 @@
+https://github.com/codbking/CalendarExaple
+android高仿钉钉和小米的自定义日历控件（支持阴历和阳历，左右无限翻页viewpager）
+
+一些特点：
+
+可以自定义日历控件UI
+支持快速滑动
+支持农历和阳历
+界面UI缓存和日历数据缓存
+扩展view支持listView的滑动

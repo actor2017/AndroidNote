@@ -1,0 +1,19 @@
+https://github.com/Ereza/CustomActivityOnCrash
+
+DefaultErrorActivity 就是这个页面
+R.layout.customactivityoncrash_default_error_activity
+
+//配置是CrashConfig, 不是CaocConfig, 无语
+CrashConfig.Builder.create()
+        .backgroundMode(CrashConfig.BACKGROUND_MODE_SILENT) //default: CrashConfig.BACKGROUND_MODE_SHOW_CUSTOM
+        .enabled(false) //default: true
+        .showErrorDetails(false) //default: true
+        .showRestartButton(false) //default: true
+        .logErrorOnRestart(false) //default: true
+        .trackActivities(true) //default: false
+        .minTimeBetweenCrashesMs(2000) //default: 3000
+        .errorDrawable(R.drawable.ic_custom_drawable) //default: bug image
+        .restartActivity(YourCustomActivity.class) //default: null (your app's launch activity)
+        .errorActivity(YourCustomErrorActivity.class) //default: null (default error activity)
+        .eventListener(new YourCustomEventListener()) //default: null
+        .apply();

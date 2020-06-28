@@ -1,0 +1,76 @@
+1.添加权限:
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+
+2.拍照裁剪
+Intent cameraintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+ // 指定调用相机拍照后照片的储存路径
+cameraintent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(tempFile));
+startActivityForResult(cameraintent,PHOTO_REQUEST_TAKEPHOTO);
+
+3.
+// 激活系统图库，选择一张图片
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        //不知道这行和下面一行什么区别
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //不知道这行和上面一行什么区别
+        intent.setType("image/*");
+        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
+        startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
+
+
+4.// 裁剪图片意图(可写成方法)
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");//url需要传入
+        intent.putExtra("crop", "true");
+        // 裁剪框的比例，1：1
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // 裁剪后输出图片的尺寸大小
+        intent.putExtra("outputX", 250);
+        intent.putExtra("outputY", 250);
+
+        intent.putExtra("outputFormat", "JPEG");// 图片格式
+        intent.putExtra("noFaceDetection", true);// 取消人脸识别
+        intent.putExtra("return-data", true);
+        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
+        startActivityForResult(intent, PHOTO_REQUEST_CUT);
+
+
+
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PHOTO_REQUEST_GALLERY && resultCode == Activity.RESULT_OK) {
+            // 从相册返回的数据
+            if (data != null) {
+                // 得到图片的全路径
+                Uri uri = data.getData();
+                crop(uri);
+            }
+        } else if (requestCode == PHOTO_REQUEST_CAREMA) {
+            // 从相机返回的数据
+            if (hasSdcard()) {
+                crop(Uri.fromFile(tempFile));
+            } else {
+                Toast.makeText(MainActivity.this, "未找到存储卡，无法存储照片！", 0).show();
+            }
+
+        } else if (requestCode == PHOTO_REQUEST_CUT) {
+            // 从剪切图片返回的数据
+            if (data != null) {
+                Bitmap bitmap = data.getParcelableExtra("data");
+                this.iv_image.setImageBitmap(bitmap);
+            }
+            try {
+                // 将临时文件删除
+                tempFile.delete();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }

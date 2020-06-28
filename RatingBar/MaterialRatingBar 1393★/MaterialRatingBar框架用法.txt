@@ -1,0 +1,11 @@
+https://github.com/DreaminginCodeZH/MaterialRatingBar
+
+2.添加依赖:compile 'me.zhanghai.android.materialratingbar:library:1.0.2'
+
+3.layout示例用法:
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialRatingBar.RatingBar" />
+
+4.可以实现自定义,大小实在不行就写5个MaterialRatingBar排列,每个1颗星...

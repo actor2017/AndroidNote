@@ -1,0 +1,3 @@
+https://github.com/zcweng/SwitchButton
+SwitchButton.An beautiful+lightweight+custom-style-easy switch widget for Android,minSdkVersion >= 11
+

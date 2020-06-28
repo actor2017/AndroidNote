@@ -1,0 +1,54 @@
+https://github.com/getActivity/XToast
+超级 Toast
+博客地址：悬浮窗需求终结者
+
+已投入公司项目多时，没有任何毛病，可胜任任何需求，点击此处下载Demo
+
+想了解实现原理的可以点击此链接查看：XToast 源码
+
+
+本框架意在解决一些极端需求，如果是普通的 Toast 封装推荐使用 ToastUtils
+集成步骤
+dependencies {
+    implementation 'com.hjq:xtoast:2.0'
+}
+使用案例
+new XToast(XToastActivity.this) // 传入 Application 表示设置成全局的
+        .setView(R.layout.toast_hint)
+        .setDraggable() // 设置成可拖拽的
+		.setDuration(1000) // 设置显示时长
+		.setAnimStyle(android.R.style.Animation_Translucent) // 设置动画样式
+        .setImageDrawable(android.R.id.icon, R.mipmap.ic_dialog_tip_finish)
+        .setText(android.R.id.message, "点我消失")
+        .setOnClickListener(android.R.id.message, new OnClickListener<TextView>() {
+
+            @Override
+            public void onClick(XToast toast, TextView view) {
+				// 点击这个 View 后消失
+                toast.cancel();
+            }
+        })
+        .show();
+混淆规则
+-keep class com.hjq.xtoast.** {*;}
+框架亮点（原生 Toast 无法实现的功能）
+支持自定义 Toast 动画样式
+
+支持自定义 Toast 显示时长
+
+支持监听 Toast 的显示和销毁
+
+支持监听 Toast 中点击事件
+
+支持一键开启 Toast 拖拽功能
+
+支持 Toast 全局显示（需要权限）
+
+作者的其他开源项目
+架构工程：AndroidProject
+
+权限封装：XXPermissions
+
+吐司封装：ToastUtils
+
+标题栏封装：TitleBar

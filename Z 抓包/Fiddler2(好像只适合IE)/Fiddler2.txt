@@ -1,0 +1,7 @@
+手机抓包
+启动Fiddler
+Options-->Allow remote com...
+重启
+手机连接电脑热点
+手机wifi高级,服务器主机名:电脑ip
+端口:8888

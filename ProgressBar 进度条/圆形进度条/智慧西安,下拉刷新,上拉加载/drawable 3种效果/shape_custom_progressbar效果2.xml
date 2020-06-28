@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--加入rotate让他选择起来-->
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="720">
+
+    <!--useLevel:是否一点一点的显示,如果=false,就是一个渐变红圈在转,不炫了-->
+    <shape
+        android:innerRadius="10dp"
+        android:shape="ring"
+        android:thickness="3dp"
+        android:useLevel="false">
+
+        <!--经试验,加不加solid在这里的效果一样-->
+        <!--<solid android:color="#f00"/>-->
+
+        <!--渐变-->
+        <gradient
+            android:centerColor="#af00"
+            android:endColor="#fff"
+            android:startColor="#f00"/>
+
+    </shape>
+</rotate>

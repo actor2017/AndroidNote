@@ -1,0 +1,162 @@
+1.网址:http://www.bmob.cn/
+
+2.注册登录q3,bmob2017
+
+3.创建应用,点击应用-->设置,获取Application ID,例:6d29e6ca3e4d1cd96a6fa301e2b08481
+
+4.下载导入SDK,直接添加libs里的内容到工程的libs目录下.
+或者添加Gradle来进行包依赖管理classpath 'com.android.tools.build:gradle:1.2.3'??????
+注意:lib文件夹一般只能识别.jar包,不能识别.so库,所以有2种解决方法:
+	1.把so库放到main/jniLibs里面
+	2.做一个映射:在build.gradle的"android{"里写:	(可百度studio so库)
+    sourceSets {
+        main {
+	    //jni.srcDirs = []	//不需要jni,这儿删掉
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+5.配置权限
+<!--允许联网 --> 
+<uses-permission android:name="android.permission.INTERNET" /> 
+<!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  --> 
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+<!--获取wifi网络状态的信息 --> 
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+<!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+<uses-permission android:name="android.permission.WAKE_LOCK" /> 
+<!--获取sd卡写的权限，用于文件上传和下载-->
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<!--允许读取手机状态 用于创建BmobInstallation--> 
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+6.初始化BmobSDK(可在Application中初始化)
+在你应用程序启动的Activity的onCreate()方法中初始化Bmob功能。代码如下所示：
+//提供以下两种方式进行初始化操作：
+
+        //第一：默认初始化
+        Bmob.initialize(this, "Your Application ID");
+
+        //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
+        //BmobConfig config =new BmobConfig.Builder(this)
+        ////设置appkey
+        //.setApplicationId("Your Application ID")
+        ////请求超时时间（单位为秒）：默认15s
+        //.setConnectTimeout(30)
+        ////文件分片上传时每片的大小（单位字节），默认512*1024
+        //.setUploadBlockSize(1024*1024)
+        ////文件的过期时间(单位为秒)：默认1800s
+        //.setFileExpiration(2500)
+        //.build();
+        //Bmob.initialize(config);
+
+7.添加一行数据
+首先创建JavaBean（对应为Bmob后台的数据表，
+更详细的解释请查看Android开发文档:http://docs.bmob.cn/data/Android/b_developdoc/doc/index.html）
+示例写法:
+public class Person extends BmobObject {
+    private String name;
+    private String address;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+添加数据,示例写法:
+Person p2 = new Person();
+p2.setName("lucky");
+p2.setAddress("北京海淀");
+p2.save(new SaveListener<String>() {//注:操作_User表不能用save(),老师用的signUp()
+    @Override
+    public void done(String objectId,BmobException e) {
+        if(e==null){
+            toast("添加数据成功，返回objectId为："+objectId);
+        }else{
+            toast("创建数据失败：" + e.getMessage());
+        }
+    }
+});
+//-----------------------------------
+老师示例写法:
+/**
+ * Description: 用户的bean类
+ * 没有按照文档写继承BmobObject ,其实里面有一个BmobUser,老师写法
+ */
+public class User extends BmobUser {
+    public User(String username,String passward){
+        this.setUsername(username);
+        this.setPassword(passward);
+    }
+}
+添加数据,老师示例写法:(居然是主线程)
+User user = new User(username, password);
+user.signUp(new SaveListener<User>() {  //bmob添加数据
+	@Override
+	public void done(User user, final BmobException e) {
+		if (e == null) {                //添加数据成功
+			ToastUtils.show(RegisterActivity.this, "添加数据成功");
+		else {                        //添加数据失败
+			ToastUtils.show(RegisterActivity.this, e.getMessage());
+		}
+
+
+8.如果toast出添加数据成功的消息，你会在Bmob后台对应Application Id的数据表中看到有一行新增的数据，如下图所示：
+
+9.获取一行数据
+//查找Person表里面id为6b6c11c537的数据
+BmobQuery<Person> bmobQuery = new BmobQuery<Person>();
+bmobQuery.getObject("6b6c11c537", new >QueryListener<Person>() {
+    @Override
+    public void done(Person object,BmobException e) {
+        if(e==null){
+            toast("查询成功");
+        }else{
+            toast("查询失败：" + e.getMessage());
+        }
+    }
+});
+
+10.修改一行数据
+//更新Person表里面id为6b6c11c537的数据，address内容更新为“北京朝阳”
+Person p2 = new Person();
+p2.setAddress("北京朝阳");
+p2.update("6b6c11c537", new UpdateListener() {
+
+    @Override
+    public void done(BmobException e) {
+        if(e==null){
+            toast("更新成功:"+p2.getUpdatedAt());
+        }else{
+            toast("更新失败：" + e.getMessage());
+        }
+    }
+
+});
+
+11.删除一行数据		//写在子线程
+Person p2 = new Person();
+p2.setObjectId("6b6c11c537");
+p2.delete(new UpdateListener() {	//或者直接p2.delete();子线程
+
+    @Override
+    public void done(BmobException e) {
+        if(e==null){
+            toast("删除成功:"+p2.getUpdatedAt());
+        }else{
+            toast("删除失败：" + e.getMessage());
+        }
+    }
+
+});
+
+12.源码下载
+快速入门相关源码下载:http://www.bmob.cn/static/Bmob_android_quickstart.zip

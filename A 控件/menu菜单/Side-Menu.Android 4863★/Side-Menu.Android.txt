@@ -1,0 +1,4 @@
+https://github.com/Yalantis/Side-Menu.Android
+
+Side menu with some categories to choose. https://yalantis.com
+有一些类别可供选择的侧菜单。https://yalantis.com

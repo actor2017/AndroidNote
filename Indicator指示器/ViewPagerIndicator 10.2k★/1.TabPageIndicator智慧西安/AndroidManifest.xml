@@ -1,0 +1,6 @@
+
+		
+		<!-- 在Activity页面 ,配置了页签的主题(哪个Activity在用页签,就在哪个Activity设置)-->
+        <activity
+            android:name=".activity.MySelfActivity"
+            android:theme="@style/Theme.PageIndicatorDefaults"/>

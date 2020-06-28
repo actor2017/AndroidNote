@@ -1,0 +1,15 @@
+
+    <!--获取IMEI-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        String imei = telephonyManager.getDeviceId();
+
+注意:
+  android 10获取不要imei.
+
+if (Build.VERSION.SDK_INT >= 29/*Q*/) {
+            return "";
+        }
+//可通过androidId代替
+ String androidID = DeviceUtils.getAndroidID();

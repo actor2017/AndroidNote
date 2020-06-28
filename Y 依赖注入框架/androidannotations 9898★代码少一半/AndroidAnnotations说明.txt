@@ -1,0 +1,47 @@
+https://github.com/androidannotations/androidannotations
+http://androidannotations.org/
+
+代码少一半
+
+Code sample
+Is your Android code easy to write, read, and maintain?
+
+Look at that:
+
+@EActivity(R.layout.translate) // Sets content view to R.layout.translate
+public class TranslateActivity extends Activity {
+
+    @ViewById // Injects R.id.textInput
+    EditText textInput;
+
+    @ViewById(R.id.myTextView) // Injects R.id.myTextView
+    TextView result;
+
+    @AnimationRes // Injects android.R.anim.fade_in
+    Animation fadeIn;
+
+    @Click // When R.id.doTranslate button is clicked 
+    void doTranslate() {
+         translateInBackground(textInput.getText().toString());
+    }
+
+    @Background // Executed in a background thread
+    void translateInBackground(String textToTranslate) {
+         String translatedText = callGoogleTranslate(textToTranslate);
+         showResult(translatedText);
+    }
+   
+    @UiThread // Executed in the ui thread
+    void showResult(String translatedText) {
+         result.setText(translatedText);
+         result.startAnimation(fadeIn);
+    }
+
+    // [...]
+}
+
+缺点:
+1.Manifest中注册的activity要在元类名后加下划线"_"
+2.使用注解的控件和方法不能使用private修饰符
+3.大型项目并不适用
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QrcodeScanView">
+
+        <!--扫描线drawable/color-->
+        <attr name="qrsvScanLineDrawable" format="reference" />
+
+        <!--扫描框drawable/color-->
+        <attr name="qrsvScanFrameDrawable" format="reference" />
+
+        <attr name="qrsvScanLineHeight" format="dimension" />
+
+        <!--扫描时间-->
+        <attr name="qrsvDuration" format="integer" />
+
+        <!--线的扫描区域宽度, 这个属性感觉没用-->
+        <attr name="qrsvFrameWidth" format="dimension" />
+        <!--线的扫描区域高度, 这个属性感觉没用-->
+        <attr name="qrsvFrameHeight" format="dimension" />
+
+        <!--扫描框厚度-->
+        <attr name="qrsvFramePadding" format="dimension" />
+        <attr name="qrsvFramePaddingLeft" format="dimension" />
+        <attr name="qrsvFramePaddingRight" format="dimension" />
+        <attr name="qrsvFramePaddingTop" format="dimension" />
+        <attr name="qrsvFramePaddingBottom" format="dimension" />
+
+        <!--线的宽度-->
+        <attr name="qrsvLineWidth" format="dimension" />
+
+        <!--扫描线高度百分比-->
+        <attr name="qrsvLineHeight" format="float|dimension" />
+
+        <!--扫描线的margin-->
+        <attr name="qrsvLinePadding" format="dimension" />
+        <attr name="qrsvLinePaddingLeft" format="dimension" />
+        <attr name="qrsvLinePaddingRight" format="dimension" />
+        <attr name="qrsvLinePaddingTop" format="dimension" />
+        <attr name="qrsvLinePaddingBottom" format="dimension" />
+
+        <!--边框颜色-->
+        <attr name="qrsvDimBorder" format="color" />
+    </declare-styleable>
+</resources>

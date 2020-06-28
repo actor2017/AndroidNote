@@ -1,0 +1,12 @@
+https://github.com/Diolor/Swipecards
+
+A Tinder-like Android library to create the swipe cards effect. You can swipe left or right to like or dislike the content.
+一个类似于tinder的Android库来创建滑动卡片效果。你可以向左或向右滑动来喜欢或不喜欢内容。
+
+It handles greatly asynchronous loading of adapter's data and uses the same layout parameters as FrameLayout (you may use android:layout_gravity in your layout xml file).
+它处理适配器数据的异步加载，并使用与FrameLayout相同的布局参数(您可以在布局xml文件中使用android:layout_gravity)。
+
+
+http://gradleplease.appspot.com/#com.lorentzos.swipecards(获取版本号)
+compile 'com.lorentzos.swipecards:library:X.X.X@aar'
+

@@ -1,0 +1,18 @@
+1.在AndroidManifest.xml的 <manifest 标签里面声明应用的userid
+android:sharedUserId="android.uid.system"
+
+2.添加权限
+    <!--要报错,添加ignore属性-->
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions"/>
+    <uses-permission
+        android:name="android.permission.DELETE_PACKAGES"
+        tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/><!--这个属性加上好像没什么用-->
+
+3.静默安装APP的时候调用命令“pm install”
+
+4.注意:要用系统签名(我们ftp可以直接签名)
+
+5.本例安装调用:ApkUtil.installApk(Context context, String apkPath);

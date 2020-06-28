@@ -1,0 +1,6 @@
+.9.png图片, .9图, 9Patch图
+
+用于局部拉伸, D:\develop\androidStudiosSDK\sdk\tools\draw9patch.bat用来编辑图片
+>上边线控制水平拉伸范围
+>左边线控制竖直拉伸范围
+>右边线和下边线控制内容填充范围

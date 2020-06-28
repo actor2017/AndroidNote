@@ -1,0 +1,123 @@
+https://github.com/lzyzsd/JsBridge
+https://stilljin.blog.csdn.net/article/details/83314866 Android混合开发（一）——移动端与前端交互之JSBridge引入
+
+首先是引入资源文件
+repositories {
+    // ...
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.github.lzyzsd:jsbridge:1.0.4'
+}
+
+
+1.XML示例
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JsBridge.JsBridgeActivity">
+
+    <com.github.lzyzsd.jsbridge.BridgeWebView
+        android:id="@+id/JsBridgeWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.github.lzyzsd.jsbridge.BridgeWebView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="給Html发送消息并返回消息"
+        android:id="@+id/button3"
+        android:background="#266161"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+
+
+2.Register a Java handler function so that js can call
+
+    webView.registerHandler("submitFromWeb", new BridgeHandler() {
+        @Override
+        public void handler(String data, CallBackFunction function) {
+            Log.i(TAG, "handler = submitFromWeb, data from web = " + data);
+            function.onCallBack("submitFromWeb exe, response data from Java");
+        }
+    });
+
+
+3.js can call this Java handler method "submitFromWeb" through:
+WebViewJavascriptBridge.callHandler(
+        'submitFromWeb'
+        , {'param': str1}
+        , function(responseData) {
+            document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+        }
+    );
+
+
+4.You can set a default handler in Java, so that js can send message to Java without assigned handlerName
+webView.setDefaultHandler(new DefaultHandler());
+
+
+window.WebViewJavascriptBridge.send(
+        data
+        , function(responseData) {
+            document.getElementById("show").innerHTML = "repsonseData from java, data = " + responseData
+        }
+    );
+
+
+5.Register a JavaScript handler function so that Java can call
+WebViewJavascriptBridge.registerHandler("functionInJs", function(data, responseCallback) {
+        document.getElementById("show").innerHTML = ("data from Java: = " + data);
+        var responseData = "Javascript Says Right back aka!";
+        responseCallback(responseData);
+    });
+
+
+6.Java can call this js handler function "functionInJs" through:
+webView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunction() {
+        @Override
+        public void onCallBack(String data) {
+
+        }
+    });
+
+
+7.You can also define a default handler use init method, so that Java can send message to js without assigned handlerName
+for example:
+
+    bridge.init(function(message, responseCallback) {
+        console.log('JS got a message', message);
+        var data = {
+            'Javascript Responds': 'Wee!'
+        };
+        console.log('JS responding with', data);
+        responseCallback(data);
+    });
+
+
+webView.send("hello");//will print 'JS got a message hello' and 'JS responding with' in webview console.
+
+
+8.Notice
+
+This lib will inject a WebViewJavascriptBridge Object to window object. So in your js, before use WebViewJavascriptBridge, you must detect if WebViewJavascriptBridge exist. If WebViewJavascriptBridge does not exit, you can listen to WebViewJavascriptBridgeReady event, as the blow code shows:
+
+    if (window.WebViewJavascriptBridge) {
+        //do your work here
+    } else {
+        document.addEventListener(
+            'WebViewJavascriptBridgeReady'
+            , function() {
+                //do your work here
+            },
+            false
+        );
+    }
+
+

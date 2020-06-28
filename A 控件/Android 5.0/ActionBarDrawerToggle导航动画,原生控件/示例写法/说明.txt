@@ -1,0 +1,11 @@
+http://blog.csdn.net/lmj623565791/article/details/45303349
+大致思路
+整体实现还是比较容易的，首先需要引入DrawerLayout（如果你对DrawerLayout不了解，可以参考 
+Android DrawerLayout 高仿QQ5.2双向侧滑菜单)，然后去初始化mActionBarDrawerToggle，mActionBarDrawerToggle实际上是个DrawerListener，设置mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);就已经能够实现上面点击Nav Icon切换效果了。当然了细节还是挺多的。
+
+我们的效果图，左侧菜单为Fragment，内容区域为Fragment，点击左侧菜单切换内容区域的Fragment即可。关于Fragment的知识，可以查看：Android Fragment 你应该知道的一切
+
+private ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+drawerLayout.setDrawerListener(toggle);
+toggle.syncState();
+toggle.onConfigurationChanged(newConfig);//Configuration

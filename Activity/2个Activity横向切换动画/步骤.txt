@@ -1,0 +1,44 @@
+有2种方法,style或者代码中.
+一.在style中统一设置
+<item name="android:windowAnimationStyle">@style/Animation.Activity.Customer</item>
+
+    <style name="Animation.Activity.Customer" parent="@android:style/Animation.Activity">
+
+        <!-- 进入一个新的Activity的时候，A->B B进入动画 -->
+
+        <item name="android:activityOpenEnterAnimation">@anim/right_in</item>
+
+        <!-- 进入一个新的Activity的时候，A->B A退出动画 -->
+
+        <item name="android:activityOpenExitAnimation">@anim/left_out</item>
+
+        <!-- 退出一个Activity的时候，B返回到A A进入动画 -->
+
+        <item name="android:activityCloseEnterAnimation">@anim/left_in</item>
+
+        <!-- 退出一个Activity的时候，B返回到A B退出动画 -->
+
+        <item name="android:activityCloseExitAnimation">@anim/right_out</item>
+    </style>
+
+
+二.或者在代码中设置
+1.在res/目录下创建文件夹:anim
+
+2.右击文件夹→创建Animation resource file动画
+
+4.上一页动画示例写法:overridePendingTransition()在切换Activity的时候才掉动画
+    @Override
+    public void goToPre() {
+        startActivity(new Intent(this, Setup3Activity.class));
+        finish();
+        overridePendingTransition(R.anim.anim_pre_enter, R.anim.anim_pre_exit);
+    }
+  下一页动画实例写法:
+    @Override
+    public void goToNext() {
+        startActivity(new Intent(this, Setup5Activity.class));
+        finish();
+        overridePendingTransition(R.anim.anim_next_enter, R.anim.anim_next_exit);
+    }
+}

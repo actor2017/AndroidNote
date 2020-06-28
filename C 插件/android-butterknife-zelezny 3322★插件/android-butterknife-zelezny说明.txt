@@ -1,0 +1,34 @@
+﻿https://github.com/avast/android-butterknife-zelezny
+
+Android Studio plug-in for generating ButterKnife injections from selected layout XML.
+Simple plug-in for Android Studio/IDEA that allows one-click creation of Butterknife view injections.
+
+How to install
+
+in Android Studio: go to Preferences → Plugins → Browse repositories and search for ButterKnife Zelezny
+or
+
+download it and install via Preferences → Plugins → Install plugin from disk
+Make sure you have latest Butterknife lib on your classpath
+Right click on usage of desired layout reference (e.g. R.layout.main in your Activity or Fragment), then Generate and Generate ButterKnife Injections
+Pick injections you want, you also have an option to create ViewHolder for adapters.
+Click Confirm and enjoy injections in your code with no work!
+Contributing
+
+Pull requests are welcomed!
+
+make sure you stick to our coding style.
+follow Getting Started with Plugin Development
+make sure you have Java 6 installed if you want to publish it in the plugin repository
+Common issue: The plugin is not working after I updated to new Android Studio
+
+AS promts you to update plugins after update, you need to update them before using
+Make sure you have Butterknife on your classpath
+Make sure that your cursor is placed on a layout ID in a class having one of these types: Activity, Fragment, custom View or Adapter
+Why 'Zelezny'?
+
+
+
+Jan Železný is a famous Czech javelin thrower, Olympic champion and world record holder. With Zelezny's javelin, your butter knife will be much sharper!
+
+See our other Czech personalities who help with #AndroidDev.

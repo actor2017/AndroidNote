@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--如果ListView的头布局是相对布局的话，有可能会出现一些莫名其妙的问题，这个是系统的bug-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="150dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+        </android.support.v4.view.ViewPager>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#accc">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:textColor="#000"/>
+
+            <!--右下角的小圆点,从例子程序打印的ActivityManager而得之,sample用了这个-->
+            <!--fillColor:移动点的颜色
+                pageColor:原点里面的颜色
+                strokeColor:圆环的颜色
+                radius:原的半径
+                strokeWidth:圆环的宽度-->
+            <com.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="10dip"
+                app:fillColor="#FF888888"
+                app:pageColor="#88FF0000"
+                app:radius="10dp"
+                app:strokeColor="#FF000000"
+                app:strokeWidth="2dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

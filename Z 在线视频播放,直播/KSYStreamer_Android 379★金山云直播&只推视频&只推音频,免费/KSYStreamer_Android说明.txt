@@ -1,0 +1,11 @@
+https://github.com/ksvc/KSYStreamer_Android
+http://v.ksyun.com/
+
+金山云Android采集推流SDK(Livestream SDK)，支持内置/自定义美颜(Beauty Filter)、美声(Beauty Voice)、软硬编(Software/Hardware Encoder) 、网络自适应(Network Auto Adapt)、混音(Voice Mixer)、混响(Reverb)、画中画(PIP)、连麦(RTC)、动态贴纸(Sticker)、大眼瘦脸(Bigger Eyes and Smaller Faces)
+
+版本说明&Demo下载:(KSYLive_Android的Demo,不是本例的Demo)
+https://github.com/ksvc/KSYStreamer_Android
+
+编译的时候如果编译通不过,把gradle的版本改成自己版本,例:gradle:2.2.2
+
+注意:本例的代码只是推流.

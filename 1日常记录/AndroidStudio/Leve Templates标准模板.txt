@@ -1,0 +1,16 @@
+File and Code Templates:
+/**
+ * description: 描述
+ * company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
+ * @author    : 李大发
+ * date       : $DATE$ on $HOUR$
+ * @version 1.0
+ */
+
+Live Templates -> user -> declaration(手动输入dec...,一般用于Activity/Fragment中):
+/**
+ * description: 描述
+ * company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
+ * @author    : 李大发
+ * date       : $DATE$ on $HOUR$
+ */

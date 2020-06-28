@@ -1,0 +1,4 @@
+https://github.com/amlcurran/ShowcaseView
+http://www.jianshu.com/p/b21753a100c4
+
+compile 'com.github.amlcurran.showcaseview:library:5.4.3'

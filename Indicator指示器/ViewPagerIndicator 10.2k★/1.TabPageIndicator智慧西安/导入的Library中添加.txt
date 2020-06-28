@@ -1,0 +1,11 @@
+7.运行app,发现页签猛地向右一拉的时候,会把左边LeftMenuFragment拉出来,父控件拦截了飞快滑动的事件,
+  所以要在导入的Library的TabPageIndicator中重写dispatchTouchEvent(),如下:
+
+    //当用户触摸到页签控件的时候，请求父控件别拦截事件
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        LogUtils.Warn(ev.getAction()+"");//选择Warn级别日志,发现打印0,3.没有1.2
+        //请求父类,祖类别拦截触摸事件
+        getParent().requestDisallowInterceptTouchEvent(true);
+        return super.dispatchTouchEvent(ev);
+    }

@@ -1,0 +1,16 @@
+https://github.com/armcha/AutoLinkTextView
+
+compile 'com.github.armcha:AutoLinkTextView:0.3.0'
+
+<com.luseen.autolinklibrary.AutoLinkTextView
+         android:id="@+id/active"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+
+
+AutoLinkTextView autoLinkTextView = (AutoLinkTextView) findViewById(R.id.active);
+
+autoLinkTextView.addAutoLinkMode(
+                AutoLinkMode.MODE_PHONE);
+
+具体使用看网站

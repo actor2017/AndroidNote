@@ -1,0 +1,18 @@
+https://github.com/hongyangAndroid/baseAdapter
+Android 万能的Adapter for ListView,RecyclerView,GridView等，支持多种Item类型的情况。
+
+ForRecyclerView
+compile 'com.zhy:base-rvadapter:3.0.3'
+
+ForListView
+compile 'com.zhy:base-adapter:3.0.3'
+
+
+mRecyclerView.setAdapter(new CommonAdapter<String>(this, R.layout.item_list, mDatas)
+{
+    @Override
+    public void convert(ViewHolder holder, String s)
+    {
+        holder.setText(R.id.id_item_list_title, s);
+    }
+});

@@ -1,0 +1,3 @@
+
+//通过与运算保留最后八位 MotionEvent.ACTION_MASK = 255 //1111 1111
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {

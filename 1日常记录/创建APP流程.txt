@@ -1,0 +1,7 @@
+1.全屏
+2.固定屏幕朝向
+3.屏幕适配(百分比适配)
+4.MyApplication并在清单文件中添加
+5.BaseActivity
+6.ButterKnife
+7.SVN

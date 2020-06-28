@@ -1,0 +1,4 @@
+https://github.com/JoanZapata/android-pdfview
+
+[DEPRECATED] A fast PDF reader component for Android development http://joanzapata.com/android-pdfview/
+[不推荐]用于Android开发的快速PDF阅读器组件http://joanzapata.com/android-pdfview/

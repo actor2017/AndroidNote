@@ -1,0 +1,20 @@
+https://github.com/Bilibili/boxing/blob/master/README_CN.md
+
+基于MVP模式的Android多媒体选择器。
+特性
+
+支持自定义UI
+支持多/单图片选择和预览，单图裁剪功能
+支持gif
+支持视频选择功能
+提供图片压缩
+Download
+
+核心版本：只包含核心功能。 实现版本：在核心功能之上添加了实现界面。
+
+核心版本
+compile 'com.bilibili:boxing:0.8.0'                              
+实现版本
+
+compile 'com.bilibili:boxing-impl:0.8.0'
+

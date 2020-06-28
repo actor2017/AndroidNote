@@ -1,0 +1,6 @@
+WebRTC JavaScript库用于音频/视频以及屏幕Activity记录。它支持Chrome、Firefox、Opera、Android和微软Edge。平台:Linux、Mac和Windows。
+
+RecordRTC: WebRTC JavaScript Library for Audio+Video+Screen Recording
+
+Demo: https://www.webrtc-experiment.com/RecordRTC/
+

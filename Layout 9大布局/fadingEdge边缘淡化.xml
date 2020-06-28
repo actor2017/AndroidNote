@@ -1,0 +1,21 @@
+
+<View
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:fadingEdge="none|horizontal|vertical"	//边缘淡化方向, api < 14 时才管用, 高版本使用: requiresFadingEdge
+	android:fadingEdgeLength="25dp"					//默认12px
+	android:requiresFadingEdge="vertical" />
+
+
+mWebView.getHorizontalFadingEdgeLength();
+mWebView.getVerticalFadingEdgeLength();
+mWebView.isHorizontalFadingEdgeEnabled();
+mWebView.isScrollbarFadingEnabled();
+mWebView.isVerticalFadingEdgeEnabled();
+mWebView.setFadingEdgeLength(100);
+mWebView.setHorizontalFadingEdgeEnabled(true);
+mWebView.setVerticalFadingEdgeEnabled(true);
+
+https://www.jianshu.com/p/78bf0f2e44d1
+http://www.voidcn.com/article/p-thoeaxja-bpp.html
+顶部不需要fadingEdge效果，直接重写getTopFadingEdgeStrength()，返回0就可以了

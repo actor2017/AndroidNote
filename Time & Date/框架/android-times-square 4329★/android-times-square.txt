@@ -1,0 +1,4 @@
+https://github.com/square/android-times-square
+
+Standalone Android widget for picking a single date from a calendar view.
+用于从日历视图中选择单个日期的独立Android小部件。

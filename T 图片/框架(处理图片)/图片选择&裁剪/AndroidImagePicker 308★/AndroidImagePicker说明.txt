@@ -1,0 +1,3 @@
+https://github.com/easonline/AndroidImagePicker
+一个安卓的imagePicker，你可以选择一个或多个图像，把它裁剪成头像，拍一张照片，用它，预览和缩放等。
+

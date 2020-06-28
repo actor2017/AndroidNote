@@ -1,0 +1,3 @@
+https://github.com/ssseasonnn/RxDownload
+
+基于RxJava打造的下载工具, 支持多线程下载和断点续传,使用Kotlin编写

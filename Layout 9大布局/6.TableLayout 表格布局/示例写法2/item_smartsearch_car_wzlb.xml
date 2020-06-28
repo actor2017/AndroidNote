@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    tools:context=".activity.SmartSearchCarActivity">
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="10dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/empty"/>
+
+    <!--最后一列可以横向扩展-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="3">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_cph"
+                android:textColor="@color/orange_f60"
+                android:textSize="18sp"
+                tools:text="渝A77775"/>
+
+            <!--由于日期太长,所以layout_span=3-->
+            <TextView
+                android:id="@+id/tv_wzsj"
+                android:layout_marginLeft="10dp"
+                android:layout_span="3"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="2017-12-21 18:10:57"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="车身颜色: "
+                android:textColor="@color/green_3cc51f"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_csys"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="大白色"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="车牌颜色: "
+                android:textColor="@color/green_3cc51f"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_cpys"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="蓝"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="车速:"
+                android:textColor="@color/green_3cc51f"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_cs"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="200"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="车牌类型: "
+                android:textColor="@color/green_3cc51f"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_cplx"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="suv"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="卡口:"
+                android:textColor="@color/green_3cc51f"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_kk"
+                android:layout_span="3"
+                android:textColor="@color/gray_666"
+                android:textSize="14sp"
+                tools:text="卡口"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="违章行为: "
+                android:textColor="@color/blue_10aeff"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_wzxw"
+                android:textColor="@color/blue_10aeff"
+                android:textSize="14sp"
+                tools:text="超速"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
+    <!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="1dp"-->
+    <!--android:background="@color/white"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="5dp"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--tools:context=".activity.SmartSearchCarActivity">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="车牌号:"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:textSize="18sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cph"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:textColor="@color/orange_f60"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="渝A77770"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minWidth="130dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="车身颜色: "-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_csys"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="大白色"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:text="车牌颜色: "-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cpys"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="蓝"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minWidth="130dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="车速:"-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cs"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="200"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:text="车牌类型: "-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_cplx"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="suv"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="违章时间: "-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_wzsj"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="2017-12-21 18:10:57"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="卡口:"-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_kk"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="卡口"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="违章行为: "-->
+    <!--android:textColor="@color/green_3cc51f"-->
+    <!--android:textSize="16sp"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_wzxw"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/gray_666"-->
+    <!--android:textSize="16sp"-->
+    <!--tools:text="超速"/>-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->

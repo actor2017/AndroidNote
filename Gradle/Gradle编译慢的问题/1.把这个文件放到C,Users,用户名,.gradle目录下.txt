@@ -1,0 +1,20 @@
+http://www.jianshu.com/p/200d55b4d40a
+
+第一步：配置.gradle文件夹目录（开启Gradle单独守护线程）
+
+在windows系统的C:\Users\用户名\.gradle目录下创建gradle.properties文件（有直接用），然后添加以下内容，添加之后会在所以的项目中生效（有内容则并入），添加后全局生效
+
+org.gradle.daemon=true  // 开启线程守护，第一次编译时开线程，之后就不会再开了
+  
+org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8  // 配置编译时的虚拟机大小
+  
+org.gradle.parallel=true  // 开启并行编译，相当于多条线程再走
+  
+org.gradle.configureondemand=true   启用新的孵化模式
+
+作者：PingerOne
+链接：http://www.jianshu.com/p/200d55b4d40a
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+

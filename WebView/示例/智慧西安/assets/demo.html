@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<script language="javascript">
+    /* This function is invoked by the activity,
+	   安卓调用js方法:webView.loadUrl("javascript:wave()"); */
+    function wave() {
+        alert("Android调用Js啦");
+    }
+</script>
+<body>
+<!-- Js调用Android代码,
+		window :webView
+		android:安卓代码中webView.addJavascriptInterface(this,"android");添加到webView中的对象
+		hehe   :上面这个对象中的hehe(String str)方法 -->
+<a onClick="window.android.hehe('你好啊')">Click Me</a>
+</body>
+</html>

@@ -1,0 +1,66 @@
+compile 'com.android.support:design:25.1.1'
+
+CoordinatorLayout使用新的思路通过协调调度子布局的形式实现触摸影响布局的形式产生动画效果。主要用于作为顶层布局和协调子布局。
+它有两种使用场景：
+
+
+1,作为 一个应用顶层的装饰布局，也就是一个Activity Layout 的最外一层布局。
+
+2,作为一个或多个有特定响应动作的容器。
+
+CoordinatorLayout 可以协调子View，而这些子View 的具体响应动作是通过 behavior 来指定的。如果你有特定的需求，你就需要自己定义一个特定的 Behavior,Google 也给我们定义了一些常用的Behavior，如后面要用的到的 appbar_scrolling_view_behavior ，用于协调 AppbarLayout 与 ScrollView 滑动的Behavior，如下：
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kuchuanyun.test.CoordinatorLayoutActivity">
+
+    ... ...
+
+    <android.support.v4.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">//通过 layout_behavior 属性来指定 Behavior
+        <TextView
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_margin="18dp"
+
+            android:text="@string/large_text"/>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+    <TextView
+        android:fitsSystemWindows="true"
+        android:id="@+id/toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="16dp"
+        android:alpha="0"
+        android:elevation="10dp"
+        android:gravity="center_vertical"
+        android:text="这可能是RxJava 2.x最好的学习Demo"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_behavior="@string/simple_view_behavior"
+        app:svb_dependOn="@id/home_appbar"??????????????????????????????????????????????
+        app:svb_dependType="y"
+        app:svb_targetAlpha="1"
+        app:svb_targetY="0dp"/>
+</android.support.design.widget.CoordinatorLayout>
+
+http://blog.csdn.net/huachao1001/article/details/51554608

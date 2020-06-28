@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hc.studyCoordinatorLayout.MainActivity">
+
+    <!-- 这个是黄色的button -->
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="300dp"
+        android:background="#FFCC00"
+        android:text="Hello"
+        app:layout_behavior="com.hc.studyCoordinatorLayout.MyBehavior" />
+
+	<!-- 这个是蓝色view -->
+    <com.hc.studyCoordinatorLayout.TempView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="300dp"
+        android:background="#3366CC"  />
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,4 @@
+https://github.com/jpardogo/FlabbyListView
+
+Android library to display a ListView whose cells are not rigid but flabby and react to ListView scroll.
+Android库来显示一个列表视图，它的单元格不是刚性的，而是松弛的，并对列表视图滚动做出反应

@@ -1,0 +1,36 @@
+https://github.com/daimajia/NumberProgressBar
+
+Gradle
+
+dependencies {
+   compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+}
+Maven
+
+<dependency>
+    <groupId>com.daimajia.numberprogressbar</groupId>
+    <artifactId>library</artifactId>
+    <version>1.4</version>
+    <type>apklib</type>
+</dependency>
+Use it in your own code:
+
+	<com.daimajia.numberprogressbar.NumberProgressBar
+		android:id="@+id/number_progress_bar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+
+
+
+Use the preset style just like below:
+
+	<com.daimajia.numberprogressbar.NumberProgressBar
+		android:id="@+id/number_progress_bar"
+		style="@style/NumberProgressBar_Default"
+	/>
+In the above picture, the style is :
+
+NumberProgressBar_Default NumberProgressBar_Passing_Green NumberProgressBar_Relax_Blue NumberProgressBar_Grace_Yellow NumberProgressBar_Warning_Red NumberProgressBar_Funny_Orange NumberProgressBar_Beauty_Red NumberProgressBar_Twinkle_Night
+
+You can get more beautiful color from kular, and you can also contribute your color style to NumberProgressBar!

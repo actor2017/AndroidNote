@@ -1,0 +1,42 @@
+http://blog.csdn.net/lmj623565791/article/details/39474553
+
+Matrix
+数据结构：3维矩阵；
+内部存储：new Float[9] ; 内部就是个一维数组，内部9个元素；可以进行setValues(float[] values)进行初始化
+每个元素代表的意思：
+[java] view plain copy
+{  
+        MSCALE_X, MSKEW_X, MTRANS_X,    
+                MSKEW_Y, MSCALE_Y, MTRANS_Y,    
+                MPERSP_0, MPERSP_1, MPERSP_2    
+};    
+字面上，应该能看出来哪个代表x方向缩放，哪个代表垂直方向的偏移量吧~~有不认识的3个，没事，请无视。
+操作
+比如你想要设置matrix的偏移量为200，100
+你可以这么写：
+[java] view plain copy
+Matrix transMatrix = new Matrix();  
+        float[] values = new float[] { 1.0, 0, 200, 0, 1.0, 100, 0, 0, 1.0 };  
+        transMatrix.setValues(values);  
+
+
+可以这么写：
+Matrix transMatrix = new Matrix();  
+        transMatrix.postTranslate(200, 100);  
+
+
+APIS:
+1.初始化
+Matrix matrix = new Matrix();//只new一个对象
+transMatrix.setValues(values);
+
+2.平移
+transMatrix.postTranslate(200, 100);
+
+3.x方向缩放比例
+        float[] values = new float[9];
+        matrix.getValues(values);
+        float scaleX = values[Matrix.MSCALE_X];
+
+
+

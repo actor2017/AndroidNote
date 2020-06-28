@@ -1,0 +1,6 @@
+new AlertDialog.Builder(self)
+	.setTitle("多选框")
+	.setMultiChoiceItems(new String[] {"选项1","选项2","选项3","选项4"}, null, null)
+	.setPositiveButton("确定", null)                
+	.setNegativeButton("取消", null)
+	.show();

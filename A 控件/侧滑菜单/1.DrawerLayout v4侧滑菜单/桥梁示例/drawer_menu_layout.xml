@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!--102/667=0.1529235382308846-->
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:src="@drawable/head_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1529235382308846"/>
+
+    <ImageView
+        android:id="@+id/iv_sex"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:src="@drawable/selector_sex"
+        app:layout_constraintBottom_toBottomOf="@id/iv_head"
+        app:layout_constraintRight_toRightOf="@id/iv_head"/>
+
+    <!--152/667=0.2278860569715142-->
+    <TextView
+        android:id="@+id/tv_nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_4d4d4d"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2478860569715142"
+        tools:text="soul24"/>
+
+    <!--222/667=0.3328335832083958-->
+    <LinearLayout
+        android:id="@+id/ll_self_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3328335832083958">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/menu_siile"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="个人信息"
+            android:textColor="#ff717171"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!--267/667=0.4002998500749625-->
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4002998500749625">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/menu_phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="手机号码"
+            android:textColor="#ff717171"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!--313/667=0.4692653673163418-->
+    <LinearLayout
+        android:id="@+id/ll_edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4692653673163418">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/menu_edit_password"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="修改密码"
+            android:textColor="#ff717171"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!--125.47/180=0.6970555555555556-->
+    <!--626/667=0.9385307346326837-->
+    <!--34/667=0.0509745127436282-->
+    <LinearLayout
+        android:id="@+id/ll_exit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/gray_fcfcfc"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.0509745127436282"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9385307346326837"
+        app:layout_constraintWidth_percent="0.6970555555555556">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/menu_exit"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="退出登录"
+            android:textColor="#fff34444"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

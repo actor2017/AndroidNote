@@ -1,0 +1,180 @@
+1.compile 'com.android.support:design:25.1.1'//21及以上,5.0
+
+http://blog.csdn.net/huachao1001/article/details/51558835
+注意：AppbarLayout 严重依赖于CoordinatorLayout，必须用于CoordinatorLayout 的直接子View，
+如果你将AppbarLayout 放在其他的ViewGroup 里面，那么它的这些功能是无效的。
+
+注意:AppbarLayout里面可以是任何控件,不一定是Toolbar!!!!!!!!!!!!!!
+一个ViewGroup，配合ToolBar与CollapsingToolbarLayout等使用。
+
+AppBarLayout继承自LinearLayout，布局方向为垂直方向。所以你可以把它当成垂直布局的LinearLayout来使用。
+AppBarLayout是在LinearLayou上加了一些材料设计的概念，它可以让你定制当某个可滚动View的滚动手势发生变化时，其内部的子View实现何种动作。
+通过app:layout_scrollFlags来指定，
+
+
+layout_scrollFlags有5种动作:
+    名称			向上滑动		向下滑动
+1.scroll(所有想滚动出屏幕的view都需要设置这个flag-没有设置这个flag的view将被固定在屏幕顶部。)
+2.scroll|enterAlways(enterAlways 这个flag让任意向下的滚动都会导致该view变为可见,启用快速“返回模式”)
+3.scroll|enterAlways|enterAlwaysCollapsed(当你的视图已经设置minHeight属性又使用此标志时，
+                              你的视图只划出最小高度，只有当滚动视图到达顶部时才划出完整高度)
+4.scroll|exitUntilCollapsed(抢ScrollableView的滑动,上滑时toolbar不消失,
+                   下滑时先滑出toolbar的minHeight,ScrollableView滑完后,toolbar再滑剩下的)
+5.scroll(or others 1-4)|snap(自动停靠,如果就只是snap一个属性,toolbar不能滑动)
+6.snapMargins ??
+
+
+NestedScrollView中的属性:只有CoordinatorLayout的直接子布局才能响应
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+唯一的作用是把自己（使用者）放到AppBarLayout的下面。所有View都能使用这个Behavior。
+
+
+//---------------------------------------------------------
+1, scroll ,子View 添加layout_scrollFlags属性 的值scroll 时，这个View将会随着可滚动View
+（如：ScrollView,以下都会用ScrollView 来代替可滚动的View ）一起滚动，就好像子View 是属于ScrollView的一部分一样
+
+<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <android.support.v7.widget.Toolbar
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:minHeight="?attr/actionBarSize"
+                app:title="AppbarLayout"
+
+                app:titleTextColor="@color/white"
+
+                app:layout_scrollFlags="scroll">
+
+
+               </android.support.v7.widget.Toolbar>
+
+//示例图片:1.layout_scrollFlags=scroll.gif
+</android.support.design.widget.AppBarLayout>
+//---------------------------------------------------------
+
+2, enterAlways ,子View 添加layout_scrollFlags属性 的值有enterAlways 时, 当ScrollView 向下滑动时，
+子View 将直接向下滑动，而不管ScrollView 是否在滑动。注意：要与scroll 搭配使用，否者是不能滑动的。
+<android.support.v7.widget.Toolbar
+
+                   android:layout_width="match_parent"
+
+                   android:layout_height="match_parent"
+
+                   android:minHeight="?attr/actionBarSize"
+                   app:title="AppbarLayout"
+
+                   app:titleTextColor="@color/white"
+
+                   app:layout_scrollFlags="scroll|enterAlways"
+/>2.layout_scrollFlags=scroll｜enterAlways.gif
+
+//---------------------------------------------------------
+
+3, enterAlwaysCollapsed 是对enterAlways 的补充，当ScrollView 向下滑动的时候，
+滑动View（也就是设置了enterAlwaysCollapsed 的View）下滑至折叠的高度，当ScrollView 到达滑动范围的结束值的时候，
+滑动View剩下的部分开始滑动。这个折叠的高度是通过View的minimum height （最小高度）指定的。
+<android.support.v7.widget.Toolbar
+
+                   android:layout_width="match_parent"
+
+                   android:layout_height="match_parent"
+
+                   android:minHeight="?attr/actionBarSize"
+                   app:title="AppbarLayout"
+
+                   android:gravity="bottom"
+
+                   android:layout_marginBottom="25dp"
+//这样会增大Toolbar高度
+                   android:paddingBottom="10dp"//这样不会增大Toolbar高度
+                   app:titleTextColor="@color/white"
+
+                   app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"/>3.gif
+
+//---------------------------------------------------------
+
+4,exitUntilCollapsed, 当ScrollView 滑出屏幕时（也就时向上滑动时），滑动View先响应滑动事件，滑动至折叠高度，
+也就是通过minimum height 设置的最小高度后，就固定不动了，再把滑动事件交给 scrollview 继续滑动。
+<android.support.v7.widget.Toolbar
+
+                   android:layout_width="match_parent"
+
+                   android:layout_height="match_parent"
+
+                   android:minHeight="?attr/actionBarSize"
+                   app:title="AppbarLayout"
+
+                   android:gravity="bottom"
+
+                   app:titleTextColor="@color/white"
+
+                   app:layout_scrollFlags="scroll|exitUntilCollapsed"/>
+
+4.gif
+
+//---------------------------------------------------------
+
+5, snap,意思是：在滚动结束后，如果view只是部分可见，它将滑动到最近的边界。比如，如果view的底部只有25%可见，
+它将滚动离开屏幕，而如果底部有75%可见，它将滚动到完全显示。
+解释：可能这段话有点难懂，解释一下，就是说，比如在屏幕的顶部有个View ，高度
+200dp,我向上滑动40％后停止，也就 40% 滑出了屏幕，剩下的60%留在屏幕，那么这
+个属性就会自动将屏幕外的40% 滑回屏幕，结果的整个View都留在屏幕上，相反，如果
+我向上将60%的部分滑出屏幕，然后停止滑动，那么这个属性会将剩下的40% 也自动滑
+出屏幕，结果是整个View都在屏幕之外。这就是上面所说的滑动到最近的边界。
+<android.support.v7.widget.Toolbar
+
+                   android:layout_width="match_parent"
+
+                   android:layout_height="match_parent"
+
+                   android:minHeight="?attr/actionBarSize"
+
+                   app:title="AppbarLayout"
+
+                   android:gravity="bottom"
+
+                   app:titleTextColor="@color/white"
+
+                   app:layout_scrollFlags="scroll|snap"/>
+
+5.gif
+
+//---------------------------------------------------------
+//---------------------------------------------------------
+2.2 AppbarLayout 的几个重要方法
+addOnOffsetChangedListener 当AppbarLayout 的偏移发生改变的时候回调，也就是子View滑动。
+removeOnOffsetChangedListener 移除监听器
+
+getTotalScrollRange 返回AppbarLayout 所有子View的滑动范围
+setExpanded (boolean expanded, boolean animate)设置AppbarLayout 是展开状态还是折叠状态，animate 动画
+setExpanded (boolean expanded) 设置AppbarLayout 是展开状态还是折叠状态,默认有动画
+
+
+//示例监听写法
+appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                swipeRefreshLayout.setEnabled(verticalOffset >= 0);//向上偏移是负数,0:刚好划出
+                if (verticalOffset == 0) {//完全展开状态
+                    state = CollapsingToolbarLayoutState.EXPANDED;//修改状态标记为展开
+                    ctlCollapsingToolbarLayout.setTitle("展开状态");//设置title为EXPANDED
+                } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {//收缩状态
+                    state = CollapsingToolbarLayoutState.COLLAPSED;//修改状态标记为折叠
+                    ctlCollapsingToolbarLayout.setTitle("收缩状态");//设置title不显示
+                    ivPlay.setVisibility(View.GONE);
+                    ivHeader.setVisibility(View.VISIBLE);
+                    bblPlay.setVisibility(View.VISIBLE);//显示播放按钮
+                } else {//中间状态
+                    if (state != CollapsingToolbarLayoutState.INTERNEDIATE) {
+                        ctlCollapsingToolbarLayout.setTitle("中间状态");//设置title为INTERNEDIATE
+                        state = CollapsingToolbarLayoutState.INTERNEDIATE;//修改状态标记为中间
+                        bblPlay.setVisibility(View.GONE);//由折叠变为中间状态时隐藏播放按钮
+                    }
+                }
+            }
+        });

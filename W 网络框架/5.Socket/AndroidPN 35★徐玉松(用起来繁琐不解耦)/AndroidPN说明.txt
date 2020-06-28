@@ -1,0 +1,7 @@
+写更优雅的程序，像写一手漂亮的字一样。 - 知乎专栏.htm
+徐玉松
+https://zhuanlan.zhihu.com/c_51051095
+https://zhuanlan.zhihu.com/p/22909985
+
+https://github.com/xuyusong/AndroidPN
+基于Androidpn的推送服务器方案，加入断线重连、心跳包、离线推送、标签推送、富文本推送。 

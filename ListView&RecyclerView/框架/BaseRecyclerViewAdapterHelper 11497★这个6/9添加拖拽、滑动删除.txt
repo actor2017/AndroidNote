@@ -1,0 +1,55 @@
+开启，监听即可，就是这么简单。
+
+https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/%E6%B7%BB%E5%8A%A0%E6%8B%96%E6%8B%BD%E3%80%81%E6%BB%91%E5%8A%A8%E5%88%A0%E9%99%A4
+
+拖拽和滑动删除的回调方法
+OnItemDragListener onItemDragListener = new OnItemDragListener() {
+    @Override
+    public void onItemDragStart(RecyclerView.ViewHolder viewHolder, int pos){}
+    @Override
+    public void onItemDragMoving(RecyclerView.ViewHolder source, int from, RecyclerView.ViewHolder target, int to) {}
+    @Override
+    public void onItemDragEnd(RecyclerView.ViewHolder viewHolder, int pos) {}
+}
+
+OnItemSwipeListener onItemSwipeListener = new OnItemSwipeListener() {
+    @Override
+    public void onItemSwipeStart(RecyclerView.ViewHolder viewHolder, int pos) {}
+    @Override
+    public void clearView(RecyclerView.ViewHolder viewHolder, int pos) {}
+    @Override
+    public void onItemSwiped(RecyclerView.ViewHolder viewHolder, int pos) {}
+};
+
+
+adapter需要继承BaseItemDraggableAdapter
+public class ItemDragAdapter extends BaseItemDraggableAdapter<String, BaseViewHolder> {
+    public ItemDragAdapter(List data) {
+        super(R.layout.item_draggable_view, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, String item) {
+        helper.setText(R.id.tv, item);
+    }
+}
+
+
+Activity使用代码
+mAdapter = new ItemDragAdapter(mData);
+
+ItemDragAndSwipeCallback itemDragAndSwipeCallback = new ItemDragAndSwipeCallback(mAdapter);
+ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemDragAndSwipeCallback);
+itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+// 开启拖拽
+mAdapter.enableDragItem(itemTouchHelper, R.id.textView, true);
+mAdapter.setOnItemDragListener(onItemDragListener);
+
+// 开启滑动删除
+mAdapter.enableSwipeItem();
+mAdapter.setOnItemSwipeListener(onItemSwipeListener);
+
+
+默认不支持多个不同的 ViewType 之间进行拖拽，如果开发者有所需求
+重写ItemDragAndSwipeCallback里的onMove()方法，return true即可

@@ -1,0 +1,16 @@
+https://github.com/facebook/rebound
+
+A Java library that models spring dynamics and adds real world physics to your app. http://facebook.github.io/rebound/
+一个Java库，它为spring动态建模，并将真实世界的物理添加到您的应用程序中。
+
+
+关于
+Rebound是一个模拟spring动力学的java库。通过将真实世界的物理介绍到您的应用程序，可以使用回弹模型来创建感觉自然的动画。
+
+反弹不是通用物理库; 然而，弹簧动力学可以用来驱动各种各样的动画。Rebound的简单性使其易于集成并用作构建块，用于创建更复杂的组件，如寻呼机，切换器和滚动器。
+
+有关示例和使用说明，请访问：
+
+facebook.github.io/rebound
+
+如果您希望为Web构建弹性动画，请查看Javascript版本。

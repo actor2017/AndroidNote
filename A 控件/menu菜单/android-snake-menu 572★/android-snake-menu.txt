@@ -1,0 +1,4 @@
+https://github.com/xmuSistone/android-snake-menu
+
+imitate Tumblr's menu, dragging animations look like a snake
+模仿Tumblr的菜单，拖动动画看起来像一条蛇

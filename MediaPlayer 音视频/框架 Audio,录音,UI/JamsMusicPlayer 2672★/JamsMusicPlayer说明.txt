@@ -1,0 +1,7 @@
+https://github.com/psaravan/JamsMusicPlayer
+
+一个开源的音乐播放器代码。JamsMusicPlayer本来是play store上的一个付费应用，因为google的付费应用必须显示开发者住址的政策而被迫下架。作者最终选择了将这个app开源出来。
+作者： IT程序狮 
+链接：http://www.imooc.com/article/2448
+来源：慕课网
+

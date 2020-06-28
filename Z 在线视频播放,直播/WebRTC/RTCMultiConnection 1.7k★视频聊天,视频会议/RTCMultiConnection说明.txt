@@ -1,0 +1,23 @@
+https://github.com/muaz-khan/RTCMultiConnection
+https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/ios-android.md(有源码和demo)
+这个demo是某一个平台生成的,apk反编译出来里面好像用的网页资源.so,暂时没有从这个demo中整理出android源码.
+
+RTCMultiConnection.zip:好像是这个平台编译的源码,没试过.(来自李文杰)
+
+网页
+https://rtcmulticonnection.herokuapp.com/demos/
+
+https://rtcmulticonnection.herokuapp.com/demos/One-to-One.html(和demo测试视频聊天的网页)
+
+
+添加权限:
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MICROPHONE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+

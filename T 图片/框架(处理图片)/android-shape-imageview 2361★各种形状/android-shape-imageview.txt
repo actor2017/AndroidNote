@@ -1,0 +1,12 @@
+https://github.com/siyamed/android-shape-imageview
+
+
+Custom shaped android imageview components
+自定义形状的android imageview组件
+
+-dontwarn android.support.v7.**
+-keep class android.support.v7.** { ; }
+-keep interface android.support.v7.* { ; }
+-keepattributes *Annotation,Signature
+-dontwarn com.github.siyamed.**
+-keep class com.github.siyamed.shapeimageview.**{ *; }

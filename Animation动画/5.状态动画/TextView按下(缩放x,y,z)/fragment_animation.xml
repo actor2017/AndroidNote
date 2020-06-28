@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--android:clickable="true"最好写上,否则必须加id并设置点击事件才有status-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/state_anim"
+        android:clickable="true"
+        android:gravity="center"
+        android:stateListAnimator="@drawable/state_anim"
+        android:text="状态动画"
+        android:textColor="#88000000"/>
+</FrameLayout>

@@ -1,0 +1,12 @@
+https://blog.csdn.net/huaxun66/article/details/53427771
+https://github.com/runner365/android_rtmppush_sdk
+android rtmp push sdk
+
+基于android的手机视频rtmp推流SDK，直播人需要的东东
+
+支持市面上绝大部分的rtmp服务器
+全软编, 设备适应性强；
+
+
+RTMP推荐开源服务器:
+SRS(simple rtmp server): 国产独立的RTMP服务， 地址: SRS

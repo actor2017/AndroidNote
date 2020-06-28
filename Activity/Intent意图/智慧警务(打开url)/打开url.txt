@@ -1,0 +1,8 @@
+
+    @OnClick(R.id.btn_update)
+    public void onClick() {
+        Uri uri = Uri.parse("http://120.76.78.204:8180/policetask4qr.apk");
+        Intent intent = new Intent(Intent.ACTION_VIEW);//如果括号内不写,有些应用不会下载
+        intent.setData(uri);
+        startActivity(intent);
+    }

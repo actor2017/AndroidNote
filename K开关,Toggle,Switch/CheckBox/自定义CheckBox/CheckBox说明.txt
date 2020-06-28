@@ -1,0 +1,17 @@
+
+<CheckBox
+    //style="@style/MyCheckboxStyle"		//这种方法也应该行,没试.
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    //android:background="@drawable/selector_checkbox"	//还要设android:button="@null",即整个CheckBox都是自定义样式
+    android:button="@drawable/selector_checkbox"//自定义button样式
+    android:checked="true"
+    android:paddingLeft="@dimen/margin_5_dp"	//文字和左边button间距
+    android:text="记住密码"/>
+
+
+还有一种是在style.xml文件中添加样式MyCheckboxStyle，并在布局文件中的style属性中设置：
+<style name="MyCheckboxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+    <item name="android:button">@drawable/selector_checkbox</item>
+</style>
+

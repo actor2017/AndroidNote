@@ -1,0 +1,7 @@
+https://github.com/umeng/umeng-muti-channel-build-tool
+
+友盟渠道打包工具(windows .net 4.0)
+
+打包：解压apk文件 -> 替换AndroidManifest.xml中的meta-data -> 压缩apk文件 -> 签名
+	读取渠道号：直接通过Android的API读取meta-data
+	特点：需要解压缩、压缩、重签名耗费时间较多，重签名会导致apk包在运行时有兼容性问题；

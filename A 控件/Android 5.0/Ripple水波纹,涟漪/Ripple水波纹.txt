@@ -1,0 +1,15 @@
+
+在res目录下新建drawable-v21. 然后建一个资源文件 如下所示：
+
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#dcdcdc"> //android:color 按下去的效果
+    <item> //默认效果
+        <shape>
+            <solid android:color="#0091eb" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+</ripple>
+
+需要注意的是，需要在drawable目录下新建同样名称的资源文件，否则在低版本上运行去闪退，因为找不到该文件，drawable-v21只在android5.0或以上系统有效。

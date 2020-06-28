@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#1A2F4E"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false">
+    <!--app:cardBackgroundColor="#70653cc7"-->
+    <!--app:cardCornerRadius="5dp"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!--android:textColor="#ffffffff"-->
+        <TextView
+            android:id="@+id/tv_number_for_trtc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3d5271"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:text="1"/>
+
+        <!--android:textColor="#ffffffff"-->
+        <!--android:text="虚位以待"-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="等待连线"
+            android:textColor="#3d5271"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/tx_cloud_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.tencent.rtmp.ui.TXCloudVideoView>
+
+    <!--屏蔽后, 显示封面-->
+    <ImageView
+        android:id="@+id/iv_cover_for_trtc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--android:background="@drawable/bg_chat_room_nick_name"-->
+    <TextView
+        android:id="@+id/tv_item_nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:visibility="gone"
+        tools:text="冯提莫"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/iv_close_for_trtc"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="right"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+</android.support.v7.widget.CardView>

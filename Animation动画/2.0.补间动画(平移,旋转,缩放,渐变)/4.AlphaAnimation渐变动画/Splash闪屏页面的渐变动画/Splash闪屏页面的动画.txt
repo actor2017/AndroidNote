@@ -1,0 +1,7 @@
+        /**
+         *设置splash闪屏页面的渐进渐出效果
+         */
+        RelativeLayout iv_splash = (RelativeLayout) findViewById(R.id.rl_splash_root);
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
+        alphaAnimation.setDuration(2000);
+        iv_splash.startAnimation(alphaAnimation);

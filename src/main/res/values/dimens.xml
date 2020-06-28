@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	
+    <!-- 状态栏高度,写成?android:attr/actionBarSize会报错: Failed to resolve attribute at index 6 -->
+    <dimen name="title_bar_height">55dp</dimen>
+
+	<!--可以写integer-->
+    <integer name="passwordLength">15</integer>
+	
+	<!-- 还有许多...... -->
+</resources>

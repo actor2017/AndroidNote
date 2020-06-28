@@ -1,0 +1,4 @@
+https://github.com/AirenSoft/OvenMediaEngine
+https://OvenMediaEngine.com/ome
+
+ffmpeg推送 rtmp流，浏览器通过webrtc播放

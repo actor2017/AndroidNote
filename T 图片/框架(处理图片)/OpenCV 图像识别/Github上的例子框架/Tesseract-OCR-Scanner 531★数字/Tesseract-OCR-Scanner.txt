@@ -1,0 +1,3 @@
+https://github.com/simplezhli/Tesseract-OCR-Scanner
+
+基于Tesseract-OCR实现自动扫描识别手机号

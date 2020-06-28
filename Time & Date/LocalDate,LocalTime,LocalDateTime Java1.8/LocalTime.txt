@@ -1,0 +1,15 @@
+public final class LocalTime implements Temporal, TemporalAdjuster, Comparable<LocalTime>, Serializable
+
+1.静态方法
+LocalTime from1 = LocalTime.from();
+LocalTime now1 = LocalTime.now();
+LocalTime of1 = LocalTime.of();
+LocalTime ofNanoOfDay = LocalTime.ofNanoOfDay();
+LocalTime ofSecondOfDay = LocalTime.ofSecondOfDay();
+LocalTime parse1 = LocalTime.parse();
+LocalTime MAX1 = LocalTime.MAX();
+LocalTime MIDNIGHT = LocalTime.MIDNIGHT();
+LocalTime MIN1 = LocalTime.MIN();
+LocalTime NOON = LocalTime.NOON();
+
+2.其余方法

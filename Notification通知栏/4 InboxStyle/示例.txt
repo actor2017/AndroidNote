@@ -1,0 +1,29 @@
+注意事项 
+1. 使用类android.support.v4.app.NotificationCompat.InboxStyle 
+2. 每行内容过长时并不会自动换行 
+3. addline可以添加多行 但是多余5行的时候每行高度会有截断 
+4. 同BigTextStyle 低版本上系统只能显示普通样式
+
+    public void inBoxStyle(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("InboxStyle");
+        builder.setContentText("InboxStyle演示示例");
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
+        android.support.v4.app.NotificationCompat.InboxStyle style = new android.support.v4.app.NotificationCompat.InboxStyle();
+        style.setBigContentTitle("BigContentTitle")
+                .addLine("第一行，第一行，第一行，第一行，第一行，第一行，第一行")
+                .addLine("第二行")
+                .addLine("第三行")
+                .addLine("第四行")
+                .addLine("第五行")
+                .setSummaryText("SummaryText");
+        builder.setStyle(style);
+        builder.setAutoCancel(true);
+        Intent intent = new Intent(this,SettingsActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,0);
+        builder.setContentIntent(pIntent);
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        Notification notification = builder.build();
+        manger.notify(TYPE_Inbox,notification);
+    }

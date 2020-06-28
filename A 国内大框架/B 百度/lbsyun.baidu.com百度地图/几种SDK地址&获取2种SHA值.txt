@@ -1,0 +1,36 @@
+1.官网:http://lbsyun.baidu.com/
+2.申请百度地图API密匙:http://lbsyun.baidu.com/apiconsole/key
+3.功能
+  1.Android定位SDK:http://lbsyun.baidu.com/index.php?title=android-locsdk#.E5.8A.9F.E8.83.BD.E4.BB.8B.E7.BB.8D
+  2.Android导航SDK:http://lbsyun.baidu.com/index.php?title=android-navsdk
+  3.LBS云检索:http://lbsyun.baidu.com/index.php?title=androidsdk/guide/lbscloud
+  4.计算工具"http://lbsyun.baidu.com/index.php?title=androidsdk/guide/tool
+		(调启百度地图、空间计算、坐标转换、空间关系判断、收藏夹)
+  5.Android鹰眼轨迹:http://lbsyun.baidu.com/index.php?title=android-yingyan
+  6.Android基础地图:http://lbsyun.baidu.com/index.php?title=androidsdk
+  7.Android检索功能:http://lbsyun.baidu.com/index.php?title=androidsdk/guide/retrieval
+		POI检索、公交信息查询、线路规划、地理编码、行政区边界数据检索、在线建议查询、
+		短串分享（包括POI搜索结果分享、驾车/公交/骑行/步行路线规划分享、反向地理编码结果分享）
+  8.Android全景功能:http://lbsyun.baidu.com/index.php?title=android-panosdk
+  9.Android SDK下载:http://lbsyun.baidu.com/sdk/download
+
+
+①.获取debug版本签名的sha1值:
+  http://blog.csdn.net/harvic880925/article/details/17618743
+  http://blog.csdn.net/donkor_/article/details/53487133(牛逼)
+
+  1.win + R-->cmd
+  2.输入cd .android
+  3.输入keytool -list -v -keystore debug.keystore会得到三种指纹证书,选取SHA1类型的证书,
+    默认C:\Documents and Settings\Administrator\.android
+  4.输入秘钥口令:android
+  5.把SHA1填入进去.
+  或者一次性输入:keytool -list -v -keystore C:\Users\Administrator\.android\debug.keystore
+  或者用以下更简单方法:
+      单击右边Gradle-->"APP名"—>"Tasks"—>"android"—>双击"signReport"即可,这时生成出来的只是debug的SHA1和MD5值.
+
+②.获取正式版本签名的sha1值:
+  keytool -list -v -keystore D:\Android\XXX\key.jks
+  然后输入密码
+
+③.然后生成应用秘钥（AK）

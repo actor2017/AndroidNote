@@ -1,0 +1,4 @@
+https://github.com/DesarrolloAntonio/FragmentTransactionExtended
+
+FragmentTransactionExtended is a library which provide us a set of custom animations between fragments.
+FragmentTransactionExtended是一个库，它为我们提供了一组 Fragment 之间的自定义动画。

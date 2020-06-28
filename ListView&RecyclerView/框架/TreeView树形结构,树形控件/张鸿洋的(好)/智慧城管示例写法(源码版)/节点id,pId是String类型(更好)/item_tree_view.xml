@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:minHeight="40dp"
+    android:padding="15dp"
+    tools:context=".activity.ChooseAreaActivity">
+    <!--这儿写成LinearLayout宽度不能填充屏幕,不知道是不是container是RelativeLayout的原因-->
+
+    <!--id_treenode_icon-->
+    <ImageView
+        android:id="@+id/iv_arrow"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        tools:src="@drawable/tree_ec"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/iv_arrow"
+        android:textColor="@color/gray_666"
+        android:textSize="16sp"
+        tools:text="贵州省"/>
+</RelativeLayout>

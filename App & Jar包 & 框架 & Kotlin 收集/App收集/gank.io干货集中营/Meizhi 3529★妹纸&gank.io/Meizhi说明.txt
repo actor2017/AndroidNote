@@ -1,0 +1,13 @@
+https://github.com/drakeet/Meizhi
+
+gank.io unofficial client, RxJava & Retrofit. (The project is no longer actively maintained, we have a better project: https://github.com/drakeet/rebase-android)
+
+
+GitHub - drakeet_Meizhi_ gank.io unofficial client, RxJava & Retrofit. (The project is no longer actively maintained, we have a better project_ https___github.com_drakeet_rebase-android).html
+
+
+每天自动更新一张精选妹纸图、一个小视频、一系列精选程序猿干货（周末不更新）。数据来自代码家的干货网站：http://gank.io
+
+Material Design, RxJava & Retrofit...
+
+下载：http://www.coolapk.com/apk/me.drakeet.meizhi

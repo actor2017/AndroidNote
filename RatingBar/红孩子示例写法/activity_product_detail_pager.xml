@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--viewpager-->
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp">
+                </android.support.v4.view.ViewPager>
+
+                <!--viewpager指示器-->
+                <!--右下角的小圆点,从例子程序打印的ActivityManager而得之,sample用了这个-->
+                <!--fillColor:移动点的颜色
+                    pageColor:原点里面的颜色
+                    strokeColor:圆环的颜色
+                    radius:原的半径
+                    strokeWidth:圆环的宽度-->
+                <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dip"
+                    app:fillColor="#FF888888"
+                    app:pageColor="#88FF0000"
+                    app:radius="10dp"
+                    app:strokeColor="#FF000000"
+                    app:strokeWidth="2dp"/>
+            </RelativeLayout>
+
+            <!--商品描述-->
+            <TextView
+                android:id="@+id/tv_good_describe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_abc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="市场价:"/>
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_abc"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="商品评分:"/>
+
+                    <!--
+                        android:rating="2.5"-->
+                    <RatingBar
+                        android:id="@+id/rb_score"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_marginRight="10dp"
+                        android:maxHeight="15dp"
+                        android:minHeight="15dp"
+                        android:rating="2.5"
+                        android:stepSize="0.01"/>
+                    <!--框架星星-->
+                    <!--<me.zhanghai.android.materialratingbar.MaterialRatingBar-->
+                    <!--android:id="@+id/rb_score"-->
+                    <!--style="@style/Widget.MaterialRatingBar.RatingBar"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="-3dp"-->
+                    <!--android:layout_marginRight="-3dp"-->
+                    <!--android:rating="2.5"-->
+                    <!--android:style="?android:attr/ratingBarStyleSmall"/>-->
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员价:"/>
+
+                <!--会员价-->
+                <TextView
+                    android:id="@+id/tv_vip_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/selector_arrows_right"
+                    android:textColor="@color/red"/>
+            </LinearLayout>
+
+            <!--选择框,如果没有选择规格/材质,这个要隐藏掉-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_select1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="       "/>
+
+                    <TextView
+                        android:id="@+id/tv_select_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_picker_detail"
+                        android:hint="请选择:  "/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_select2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="       "/>
+
+                    <TextView
+                        android:id="@+id/tv_select_material"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_picker_detail"
+                        android:hint="请选择:  "/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--画一条线-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_join_to_shopping_car"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_btn_login"
+                    android:text="加入购物车"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/btn_collect"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_btn_login"
+                    android:text="收藏"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/discount_background"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <!--优惠的描述-->
+                <TextView
+                    android:id="@+id/tv_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="40dp"/>
+            </LinearLayout>
+
+            <!--库存数量:-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="库存数量:"/>
+
+                <TextView
+                    android:id="@+id/tv_store_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/selector_arrows_right"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <!--用户评论:-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户评论:"/>
+
+                <TextView
+                    android:id="@+id/tv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/selector_arrows_right"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

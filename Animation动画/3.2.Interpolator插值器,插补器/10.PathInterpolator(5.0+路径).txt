@@ -1,0 +1,2 @@
+PathInterpolator:5.0+
+PathInterpolatorCompat:ºÊ»›

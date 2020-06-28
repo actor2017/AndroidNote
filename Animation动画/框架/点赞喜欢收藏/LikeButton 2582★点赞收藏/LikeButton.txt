@@ -1,0 +1,3 @@
+https://github.com/jd-alexander/LikeButton
+Like Button is a library that allows you to create a button with animation effects similar to Twitter's heart when you like something.
+

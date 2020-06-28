@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<!--这是一个灰色的头部,用于渐变-->
+    <gradient
+        android:startColor="#33000000"
+        android:endColor="#00000000"
+        android:angle="270" />
+
+</shape>
+<!--
+    作者：简名
+    链接：http://www.jianshu.com/p/06c0ae8d9a96
+    來源：简书
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。-->

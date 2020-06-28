@@ -1,0 +1,4 @@
+https://github.com/hongyangAndroid/AndroidChangeSkin
+一种完全无侵入的换肤方式，支持插件式和应用内，无需重启Activity.
+
+与之前发布的ChangeSkin思路完全不同https://github.com/hongyangAndroid/ChangeSkin，主要因为ChangeSkin依赖V4，V7的版本，以及干涉系统构造View的过程，于是希望找到一个几乎没有侵入的方式来实现，于是产生了AndroidChangeSkin，两个项目各有特点，目前两个项目代码都保留，欢迎试用与反馈。

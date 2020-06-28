@@ -1,0 +1,18 @@
+
+
+/**
+ * 1.调用拨号界面,不需要添加权限
+ * @param phone 电话号码
+ */
+private void call(String phone) {
+    startActivity(new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+phone)));
+}
+
+
+/**
+ * 2.直接拨打电话,需要添加权限<uses-permission android:name="android.permission.CALL_PHONE"/>
+ * @param phone 电话号码
+ */
+private void call(String phone) {
+    startActivity(new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+phone)));
+}

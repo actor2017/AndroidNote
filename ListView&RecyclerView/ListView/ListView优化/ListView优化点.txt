@@ -1,0 +1,28 @@
+static class ViewHolder {//静态
+    private TextView tv;
+    public ViewHolder(View convertView) {
+        tv = (TextView) convertView.findViewById(R.id.tv_address);
+    }
+}
+
+内存只加载一次,静态内部类不需要持有外部对象的引用,防止内存泄露.
+findViewById的次数是屏幕条目数+1条(convertView == null),然后复用缓存(convertView != null)
+
+
+    /**
+     * ListView的知识点：
+     * 1、ListView的优化
+     *      a、复用convertView，减少加载布局文件的次数
+     *      b、使用ViewHolder，减少findViewById的次数
+     *      c、分页加载
+     *      d、在滑动的过程中不去加载图片(如PullToRefresh中添加监听)lv.setOnScrollListener(new PauseOnScrollListener(UIL的一个方法));
+     *
+     *      ViewHolder-->static
+     *
+     * 2、ListView的item数据显示错乱
+     *      a、在刷新控件数据的时候，由于我们复用的缓存，但是在刷新控件数据的时候if  else没有考虑周全
+     *      b、在getView中如果有异步任务的时候，我们需要打一个tag(加载图片)
+     * 3、ListView显示多种布局类型
+     *
+     *      MyBaseAdapter：定义了规则，让组内成员实现，把困难的复杂的操作放到基类中进行处理
+     */

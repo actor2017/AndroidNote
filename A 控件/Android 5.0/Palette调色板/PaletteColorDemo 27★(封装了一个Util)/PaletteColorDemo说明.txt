@@ -1,0 +1,2 @@
+http://blog.csdn.net/lablenet/article/details/52340634
+https://github.com/LABELNET/PaletteColorDemo

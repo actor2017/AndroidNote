@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--LevelListDrawable,等级列表图片-->
+<!--这个文件写在drawable文件夹里-->
+imageView.setImageLevel();
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--[0,30]-->
+    <item
+        android:drawable="@color/colorAccent"
+        android:maxLevel="30"
+        android:minLevel="0"/>
+
+    <item
+        android:drawable="@color/colorPrimary"
+        android:maxLevel="60"
+        android:minLevel="31"/>
+
+    <item
+        android:drawable="@color/green"
+        android:maxLevel="100"
+        android:minLevel="61"/>
+</level-list>
+
+可不写minLevel
+当我们向LevelListDrawable对象提供一个Level值后，LevelListDrawable对象就会从前往后查看每一个<item>，
+当某个<item>节点的Level范围满足提供的那个Level值后，就会返回该<item>结点里指定的drawable。并且不会继续往后找。
+所以定义这个LevelListDrawable时要注意各个<item>的顺序。比如：
+1 <?xml version="1.0" encoding="utf-8"?>
+2 <level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+3     <item android:maxLevel="40" android:drawable="@drawable/b4" />   
+4     <item android:maxLevel="10" android:drawable="@drawable/b1" />
+5     <item android:maxLevel="20" android:drawable="@drawable/b2" />
+6     <item android:maxLevel="30" android:drawable="@drawable/b3" />    
+7 </level-list>
+那么无论提供什么样的Level值，都不会返回后面三个<item>里的drawable（这里如果提供的Level值超过40，将返回一个空对象）。

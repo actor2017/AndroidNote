@@ -1,0 +1,3 @@
+https://github.com/JakeWharton/DiskLruCache
+Java implementation of a Disk-based LRU cache which specifically targets Android compatibility. 
+基于磁盘的LRU缓存的Java实现，它专门针对Android兼容性。

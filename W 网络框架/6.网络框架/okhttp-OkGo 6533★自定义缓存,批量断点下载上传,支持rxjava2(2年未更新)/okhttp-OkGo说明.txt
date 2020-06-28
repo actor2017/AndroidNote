@@ -1,0 +1,11 @@
+https://github.com/jeasonlzy/okhttp-OkGo
+
+OkGo - 3.0 震撼来袭，该库是基于 Http 协议，封装了 OkHttp 的网络请求框架，比 Retrofit 更简单易用，支持 RxJava，RxJava2，支持自定义缓存，支持批量断点下载管理和批量上传管理功能
+
+工程结构全新优化
+支持RxJava
+支持RxJava2
+支持自定义缓存策略
+支持下载管理
+支持上传管理
+

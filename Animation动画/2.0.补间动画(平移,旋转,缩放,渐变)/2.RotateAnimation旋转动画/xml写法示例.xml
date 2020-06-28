@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<rotate xmlns:android="http://schemas.android.com/apk/res/android" >  
+      <rotate  
+            android:fromDegrees="0"   
+            android:interpolator="@android:anim/linear_interpolator"//LinearInterpolator匀速，Accelerateinterpolator加速、DecelerateInterpolator减速  
+            android:pivotX="50%"		//可以给具体数也可以给百分比
+            android:pivotY="50%"		//可以给具体数也可以给百分比
+            android:toDegrees="359"  
+            android:duration = "1500"  
+            android:repeatCount = "-1"	//重复的次数，默认为0，必须是int，-1表示不停止
+			android:startOffset="0"		//延时
+			android:repeatMode="reverse"//restart，即重头开始重新运行，可以为reverse即从结束开始向前重新运行
+			android:detachWallpaper="boolean"//是否在壁纸上运行??
+			android:zAdjustment="normal"//表示被animated的内容在运行时在z轴上的位置，默认为normal。normal保持内容当前的z轴顺序top运行时在最顶层显示bottom运行时在最底层显示
+            android:drawable = "@drawable/ic_launcher"  
+            android:visible = "true">  
+        </rotate>  
+  
+</rotate>
+
+//代码中使用
+Animation rotate = AnimationUtils.loadAnimation(this, R.drawable.rotate_anim);
+view.setAnimation(rotate);

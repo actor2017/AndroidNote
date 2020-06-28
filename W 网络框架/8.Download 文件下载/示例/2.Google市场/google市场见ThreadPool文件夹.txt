@@ -1,0 +1,26 @@
+
+                    case MyDownloadManager.STATE_NONE:
+                        //开始下载
+                        MyDownloadManager.getInstance().startDownload(data);
+                        //UiUtils.toast("点击了下载按钮");
+                        break;
+                    case MyDownloadManager.STATE_DOWNLOADING:
+                        //暂停下载
+                        MyDownloadManager.getInstance().pauseDownload(data);
+                        break;
+                    case MyDownloadManager.STATE_SUCCESS:
+                        //安装APK文件
+                        MyDownloadManager.getInstance().installApk(data);
+                        break;
+                    case MyDownloadManager.STATE_ERROR:
+                        //重新下载apk文件
+                        MyDownloadManager.getInstance().startDownload(data);
+                        break;
+                    case MyDownloadManager.STATE_WATING:
+                        //将等待的任务停止掉
+                        MyDownloadManager.getInstance().pauseDownload(data);
+                        break;
+                    case MyDownloadManager.STATE_PAUSE:
+                        //继续下载
+                        MyDownloadManager.getInstance().startDownload(data);
+                        break;

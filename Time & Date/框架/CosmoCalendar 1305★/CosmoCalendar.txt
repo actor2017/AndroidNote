@@ -1,0 +1,4 @@
+﻿https://github.com/ApplikeySolutions/CosmoCalendar
+https://applikeysolutions.com
+
+📅 CosmoCalendar is a fully customizable calendar with a wide variety of features and displaying modes. 

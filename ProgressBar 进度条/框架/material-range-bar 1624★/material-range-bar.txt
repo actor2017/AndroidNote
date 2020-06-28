@@ -1,0 +1,3 @@
+https://github.com/oli107/material-range-bar
+
+Android widget for selecting a range of values.

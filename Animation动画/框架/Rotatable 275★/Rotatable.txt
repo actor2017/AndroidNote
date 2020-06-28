@@ -1,0 +1,4 @@
+https://github.com/yayaa/Rotatable
+
+Helper class to make any view rotatable
+Helper类，使任何视图都可旋转

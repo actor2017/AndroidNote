@@ -1,0 +1,3 @@
+https://github.com/nekocode/MusicVisualization
+Some music visualization demos on Android.
+Android上的一些音乐可视化演示。

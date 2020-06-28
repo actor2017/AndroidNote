@@ -1,0 +1,10 @@
+https://github.com/D-clock/AndroidDaemonService 1185★
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0418/4158.html(泡在网上的日子)
+http://www.jianshu.com/p/63aafe3c12af(原文)
+http://mp.weixin.qq.com/s?__biz=MzA5NTYzMTkxMQ==&mid=2650914055&idx=1&sn=1a6424ac54c1babcd0199237f475a2ad&chksm=8b49724fbc3efb59a8f08f3f30fcd1b5edba08ac6136ca5b969d0b90d59063dfd4093c1b5f7f&mpshare=1&scene=1&srcid=0615d5BmIvvG3JNLN80YKYCC#rd(环信的微信公众号)
+
+Android进程保活的一般套路 - CSDN博客
+http://blog.csdn.net/u013263323/article/details/56285475
+
+微信Android客户端后台保活经验分享
+http://www.sohu.com/a/68299349_355140

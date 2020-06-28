@@ -1,0 +1,12 @@
+https://github.com/bingoogolapple/BGABadgeView-Android
+
+Android 徽章控件
+
+demo中演示了:
+
+微博底部tab显示最新微博条数
+微博列表用户头像显示显示右下角vip徽章
+微信消息界面用户新消息
+微信消息界面订阅号新消息
+使用v4包中的RoundedBitmapDrawable制作圆角头像
+拖拽删除徽章

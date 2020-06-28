@@ -1,0 +1,32 @@
+https://github.com/CarGuo/GSYRickText
+
+类似微博的emoji表情、@人、话题等的EdiText，优化了编辑框中的光标点击和删除处理。TextView支持emoji表情、话题、链接、电话和@某人特殊显示的文本。
+
+支持类似微博的文本效果，表情、@某人、话题、url链接等。DEMO同时演示了MVVM模式的使用。
+状态	功能
+支持	表情
+支持	#话题
+支持	@某人
+支持	url与数字（可配置）
+支持	点击效果
+支持	自定义span效果
+支持	表情、#话题与@某人编辑时整块删除
+支持	表情、#话题与@某人编辑时选择复制限制整块选择。
+支持	表情大小设置、居中显示
+支持	MVVM（DataBing）。
+支持	kotlin(demo与lib)
+
+llprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+在module下的build.gradle添加
+dependencies {
+    compile 'com.github.CarGuo.RickText:textUtilsLib:v2.1.5'
+}
+kotlin版本的依赖
+dependencies {
+    compile 'com.github.CarGuo.RickText:textUtilsLib-kotlin:v2.1.5'
+}

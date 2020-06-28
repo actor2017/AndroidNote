@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.itcast.mobilesafe12.activity.AppManagerActivity">
+
+    <TextView
+        style="@style/TitleStyle"
+        android:text="应用管理"/>
+
+    <cn.itcast.mobilesafe12.view.ProgressView
+        android:id="@+id/pv_rom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <cn.itcast.mobilesafe12.view.ProgressView
+        android:id="@+id/pv_sdcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--帧布局,注意这种写法-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+        <include layout="@layout/layout_loading"/>
+
+        <TextView
+            android:id="@+id/tv_show_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#9e9e9e"
+            android:padding="5dp"
+            android:text="标题"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

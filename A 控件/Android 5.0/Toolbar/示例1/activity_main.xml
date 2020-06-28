@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kuchuanyun.test.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:elevation="30dp"
+        android:minHeight="?android:attr/actionBarSize"//最好写上
+		//app:contentInsetStart="0dp"//如果下面的textview需要绝对居中的话
+        app:contentInsetStartWithNavigation="@dimen/activity_horizontal_margin"
+        app:logo="@mipmap/ic_launcher"
+        app:navigationIcon="@drawable/iv_back"
+        app:subtitle="SubTitle"
+        app:subtitleTextAppearance="@null"
+        app:subtitleTextColor="@color/colorPrimaryDark"
+		app:theme="@style/ToolBarTheme"//设置toolBar的popup的背景色,字体颜色,字体大小等
+        app:title="Title"
+        app:titleMarginStart="40dp"
+        app:titleTextAppearance="@style/ToolBarTitleStyle">
+
+        <!--layout_gravity居中,可行-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="测试"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="asdf"/>
+</LinearLayout>

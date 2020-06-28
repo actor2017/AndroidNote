@@ -1,0 +1,3 @@
+https://github.com/frogermcs/AndroidDevMetrics
+Performance metrics library for Android development (includes dagger2metrics)
+Android开发的性能指标库(包括dagger2metrics)

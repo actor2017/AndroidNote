@@ -1,0 +1,210 @@
+1.添加依赖:compile 'com.android.support:design:25.2.0'
+	TabLayout主要可以和ViewPager共同使用才发挥它的优势，
+	它就可以完成TabPageIndicator的效果，而且还是官方的，最好的是它可以兼容到2.2以上版本，包括2.2。
+
+	注意:还有一些属性没找出来
+<android.support.design.widget.TabLayout
+	android:id="@+id/tab_layout"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/red"		//如果设置了tabBackground,这个属性无效
+	//app:tabBackground="color|drawable|selector"//改变TabItem的颜色or背景or selector(viewpagerIndicator效果!!). 如果是颜色,不能直接写RGB，需要@color/xx??
+	//app:tabIndicatorHeight="4dp"		//指示器高度,高度为0，相当于没有下标
+	app:tabIndicatorFullWidth="false"	//宽度是否和 TabItem 该有宽度一致
+	app:tabIndicator="color|style?|drawable|layout?"	//可自定义圆角等(颜色好像不行, 如果不行就用 tabIndicatorColor)
+	app:tabIndicatorColor="@color/colorAccent"//下方指示器颜色
+	android:scrollIndicators="left"	//?
+	app:tabIndicatorGravity="bottom"	//指示器位置, 默认在内容下方(top,center(居中),stretch(填充))
+	app:tabGravity="fill|center"		//TabItem 在 TabLayout 中: center居中(wrap_content)，如果是fill(TabItem的宽度)，则是充满
+	app:tabMode="fixed | scrollable"	//fixed:平分控件的宽度.
+										//scrollable:能滑动,不平分控件宽度,如果tab少,可能有空白
+	//app:paddingEnd="xxdp"			//设置整个TabLayout的Padding
+	//app:paddingStart="xxdp"		//设置整个TabLayout的Padding
+	app:tabTextColor="@android:color/white"
+	app:tabSelectedTextColor="@color/colorAccent"
+	//app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"//设置文字的外貌,大小
+	app:tabTextAppearance="@style/TabLayoutText"//直接设置字体的大小方法
+
+	//app:tabContentStart="100dp"		//TabLayout开始位置的偏移量
+	//app:tabPaddingg="xxdp"		//TabItem指示器内边距
+	//app:tabPaddingStart="xxdp"		//TabItem的PaddingStart
+	//app:tabPaddingEnd="xxdp"		//TabItem的PaddingEnd
+	//app:tabPaddingTop="xxdp"
+	//app:tabPaddingBottom="xxdp"
+
+	//app:tabMaxWidth="xxdp"		//设置最大的tab宽度
+	//app:tabMinWidth="xxdp"		//设置最小的tab宽度
+	app:tabRippleColor="@null"/>		//取消点击效果
+
+<!--注意: 1.如果联合ViewPager使用, 在xml文件中设置icon/text/layout 后运行会出现空白, 需要在代码中设置
+          2.如果不联合ViewPager使用, 那在xml中的效果可以完美运行-->
+<android.support.design.widget.TabItem
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:icon="@drawable/"	//图标
+	android:layout="@layout/"	//自定义布局,设置这个后text&icon设置无效(如果在xml中直接和ViewPager互动有效果, 如果在代码中tabLayout.setupWithViewPager(viewPager)会没效果)
+	android:text="我的"/>//在布局中设置text貌似无效,要viewpager重写getPageTitle方法...
+
+<!--设置tabLayout字体大小-->
+<style name="TabLayoutText">
+	<item name="android:textSize">14sp</item>
+</style>
+
+
+
+	当做indicator使用时, 如何设置TabItem间的间距:
+	app:tabBackground="drawable(shape|selector)"
+	<!--通过设置trans间接设置TabItem间的间距-->
+<stroke android:width="3dp" android:color="@color/trans"/>
+
+
+3.和ViewPager一起使用
+<android.support.v4.view.ViewPager
+android:id="@+id/view_pager"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<android.support.design.widget.TabLayout	//写在ViewPager里面,不需要 tablayout.setupWithViewPager(viewpage);(自定义 TabItem 还是要写)
+											//如果有 title, 还是要在代码里设置 title, xml 中设置 TabItem 没用(运行起来后, TabLayout 不会实际显示标题).
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_gravity="top">
+</android.support.v4.view.ViewPager>
+
+	在ViewPager设置Adapter之后，tablayout.setupWithViewPager(viewpage);(★★如果在布局文件中像上面这样写,不需要写这句★★)
+	然后重写PagerAdapter的getPageTitle方法.
+
+
+4.单独使用
+	在代码中设置item:
+	tabLayout= (TabLayout) findViewById(R.id.tabLayout);
+	tabLayout.addTab(tabLayout.newTab().setText("Tab 1"),true);//默认选中(直接设置true好像图标状态不对)
+	tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+	tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+	tabLayout.addTab(tabLayout.newTab().setText("Tab 1").setIcon(R.mipmap.ic_launcher));
+	//添加图标(在文字上面,设置selector无效)
+	删除Tab:
+	tabLayout.removeTab(tab);
+	tabLayout.removeTabAt(int position);
+	tabLayout.removeAllTabs();
+	tabLayout.
+
+
+	获取Tab:
+	tablayout.getTabAt(position).select(); //默认选中某项
+	tablayout.getTabAt（position）的方法获取TabLayout的每一个Tab，并赋值为自定义布局视图★★★★★
+
+
+	添加View:
+	tablayout.addView();
+
+
+	自定义Item的View:
+	tablayout.setCustomView (view or resId);
+
+	//-----------------------------------------------------------
+选中了某个tab的监听事件
+tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {//改变字体大小
+	@Override
+	public void onTabSelected(TabLayout.Tab tab) {
+	View view = tab.getCustomView();
+	if (view == null) tab.setCustomView(R.layout.custom_tab_layout_text);
+	TextView textView = tab.getCustomView().findViewById(android.R.id.text1);
+	textView.setTextColor(getResources().getColor(R.color.black));
+	textView.setTextSize(20);//ConvertUtils.sp2px()
+	textView.setTypeface(Typeface.DEFAULT_BOLD);//加粗
+}
+
+	@Override
+	public void onTabUnselected(TabLayout.Tab tab) {
+	View view = tab.getCustomView();
+	if (view == null) tab.setCustomView(R.layout.custom_tab_layout_text);
+	TextView textView = tab.getCustomView().findViewById(android.R.id.text1);
+	textView.setTextColor(getResources().getColor(R.color.black));
+	textView.setTextSize(17);
+	}
+
+	@Override
+	public void onTabReselected(TabLayout.Tab tab) {
+
+	}
+	});
+
+//custom_tab_layout_text.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@android:id/text1"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="center"
+/>
+
+
+tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {//切换Fragment
+
+	@Override
+	public void onTabSelected(TabLayout.Tab tab) {
+	//选中了tab的逻辑
+	//改变Tab 状态
+	for(int i=0;i< tab_Layout.getTabCount();i++){
+	if(i == tab.getPosition()){
+	tab_Layout.getTabAt(i).setIcon(getResources().getDrawable(pressedIcons[i]));
+	}else{
+	tab_Layout.getTabAt(i).setIcon(getResources().getDrawable(normalIcons[i]));
+	}
+	}
+	//切换到这个Fragment
+	switchToPosition(tab.getPosition());
+	}
+
+	@Override
+	public voidonTabUnselected(TabLayout.Tab tab) {
+	//未选中tab的逻辑
+	}
+
+	@Override
+	public voidonTabReselected(TabLayout.Tab tab) {
+	//再次选中tab的逻辑
+	}
+	});
+
+
+	//★★设置分割线★★
+	LinearLayout linearLayout = (LinearLayout) tabLayout.getChildAt(0);
+	linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+	linearLayout.setDividerDrawable(ContextCompat.getDrawable(this, R.drawable.shape_divider)); //设置分割线的样式
+	linearLayout.setDividerPadding(10); //设置分割线间隔
+
+	shape_divider:
+	<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<solid android:color="#80c0c0c0" />
+<size android:width="1dp" />
+</shape>
+
+	//------------------------------------------------------------------------------------
+	下面这种是没有和ViewPager嵌套时的切换(不推荐这样用, 推荐和ViewPager互动).
+	/**
+	* 切换到某一个fragment,为了避免Fragment的onCreateView重复执行的方法
+	* 1、将每一个Fragment的view对象变成成员变量  在onCreateView中进行非空的判断
+	* 2、不使用replace  而是用add 和hide来操作Fragment
+	*/
+	public void switchToPosition(int position) {
+	FragmentManager supportFragmentManager = getSupportFragmentManager();
+	FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+	for (int i = 0; i < fragments.size(); i++) {
+	if (i == position) {
+	fragmentTransaction.show(fragments.get(i));
+	} else {
+	fragmentTransaction.hide(fragments.get(i));
+	}
+	}
+	fragmentTransaction.commit();
+	}
+
+
+	设置显示的内容
+
+	可以调用tabLayout的addTab方法添加
+	也可以重写ViewPager适配器的getPagerTitle方法返回显示的内容

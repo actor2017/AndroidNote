@@ -1,0 +1,3 @@
+https://github.com/PangHaHa12138/DouyinDemo
+https://github.com/PangHaHa12138/DouyinDemo/blob/master/app-debug.apk
+仿抖音上下滑动播放视频demo+爱心点赞特效

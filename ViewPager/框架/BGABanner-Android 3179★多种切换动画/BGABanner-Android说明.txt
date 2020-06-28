@@ -1,0 +1,29 @@
+https://github.com/bingoogolapple/BGABanner-Android
+引导界面滑动导航 + 大于等于1页时无限轮播 + 各种切换动画轮播效果
+
+功能介绍
+引导界面导航效果
+ 支持根据服务端返回的数据动态设置广告条的总页数
+ 支持大于等于1页时的无限循环自动轮播、手指按下暂停轮播、抬起手指开始轮播
+ 支持自定义指示器位置和广告文案位置
+ 支持图片指示器和数字指示器
+ 支持 ViewPager 各种切换动画
+ 支持选中特定页面
+ 支持监听 item 点击事件
+ 加载网络数据时支持占位图设置，避免出现整个广告条空白的情况
+ 多个 ViewPager 跟随滚动
+
+banner.setData(urls, titles);
+banner.setAdapter(new BGABanner.Adapter<ImageView, String>() {
+    @Override
+    public void fillBannerItem(BGABanner banner, ImageView itemView, String model, int position) {
+        Tools.loadImage(activity, model,itemView);
+    }
+});
+banner.setDelegate(new BGABanner.Delegate() {
+    @Override
+    public void onBannerItemClick(BGABanner banner, View itemView, @Nullable Object model, int position) {
+        startActivity(new Intent(activity, WebAct.class)
+                .putExtra("id", String.valueOf(data.get(position).id)));
+    }
+});

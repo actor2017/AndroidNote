@@ -1,0 +1,5 @@
+https://github.com/trello/RxLifecycle
+
+Lifecycle handling APIs for Android apps using RxJava
+
+implementation 'com.rxjava.rxlife:rxlife:1.1.0'

@@ -1,0 +1,20 @@
+注意事项 
+1. 此种效果只在5.0以上系统中有效 
+2. mainfest中需要添加<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> 
+3. 可能还需要在设置开启横幅通知权限（在设置通知管理中） 
+4. 在部分改版rom上可能会直接弹出应用而不是显示横幅
+
+NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("横幅通知");
+        builder.setContentText("请在设置通知管理中开启消息横幅提醒权限");
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
+        Intent intent = new Intent(this,ImageActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,0);
+        builder.setContentIntent(pIntent);
+        //这句是重点
+        builder.setFullScreenIntent(pIntent,true);
+        builder.setAutoCancel(true);
+        Notification notification = builder.build();
+        manger.notify(TYPE_Hangup,notification);

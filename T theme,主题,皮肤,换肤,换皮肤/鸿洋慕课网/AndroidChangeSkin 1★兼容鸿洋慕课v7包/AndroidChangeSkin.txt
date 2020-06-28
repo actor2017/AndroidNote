@@ -1,0 +1,4 @@
+https://github.com/stevenwsg/AndroidChangeSkin
+一种完全无侵入的换肤方式，支持插件式和应用内，无需重启Activity.
+
+https://www.imooc.com/qa/782/t/0 :这是老师兼容v7包的源码

@@ -1,0 +1,214 @@
+学习资料:http://liangjingkanji.coding.me/2017/02/11/PopupWindow/
+
+宽高可以设置wrap_content:
+popup = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT, true);//400, 236
+
+
+显示PopupWindow可以分为两种方式:
+1.附着某个控件showAsDropDown,默认是PopupWindow的左上角对其控件的左下角
+或者设置Gravity.RIGHT, PopupWindow的右上角对齐控件的右下角
+
+void showAsDropDown (View anchor) // 弹窗显示在anchor控件左下方
+void showAsDropDown (View anchor,int xoff,int yoff)// 以控件左下角为原点的偏移坐标
+void showAsDropDown (View anchor,int xoff,int yoff,int gravity)// 弹窗显示在控件的左下方还是右下方, 参数Gravity.RIGHT/Gravity.LEFT. 默认是左下方
+
+
+
+2.设置屏幕坐标showAtLocation,当前窗口的任意位置(不包括状态栏)
+void showAtLocation (View parent, // 该属性只要是屏幕上任意控件对象,官方文档介绍该对象参数主要是为了得到该对象的getWindowToken()方法.
+                int gravity, // 屏幕位置
+                int x,  // 偏移坐标
+                int y)
+
+需要注意的是多次调用show方法, 只会执行第一句
+mPopupWindow.showAtLocation(popupwindow, Gravity.TOP, 100, 0); // 只有该行生效
+mPopupWindow.showAtLocation(popupwindow, Gravity.LEFT, 100, 0);
+mPopupWindow.showAtLocation(popupwindow, Gravity.RIGHT, 100, 0);
+mPopupWindow.showAtLocation(popupwindow, Gravity.BOTTOM, 100, 0);
+
+隐藏PopupWindow
+该方法只能在show后才能执行否则crash
+void dismiss ()
+
+
+可被点击
+boolean isTouchable () // 判断是否可被点击
+void setTouchable (boolean touchable) // 设置是否可被点击
+
+
+多点触控
+void setSplitTouchEnabled (boolean enabled)
+boolean isSplitTouchEnabled ()
+
+
+忽略CheekPress事件
+当物体触摸在屏幕上的尺寸超过手指尺寸范围, 将被判定为CheekPress事件(脸颊点击).
+void setIgnoreCheekPress () // 默认为false, 即不忽略
+
+
+弹窗外部被点击
+如果为true点击PopupWindow外部区域可以取消PopupWindow
+void setOutsideTouchable (boolean touchable) // 设置外部是否可被点击
+boolean isOutsideTouchable ()
+
+
+解决NavigationBar重叠
+这是Android5.0(API22)后添加的方法, 默认为true. 为true时将不会与导航栏重叠.
+void setAttachedInDecor (boolean enabled)
+
+
+可获取焦点
+一般控件都不需要焦点. 但是输入框EditText需要先获取焦点才能输入. 最重要的是当PopupWindow可获取焦点时按下手机返回键将不会销毁当前Activity而是关闭当前PopupWindow. 所以我们一般还是设置为true. 更加符合用户操作逻辑. 该方法为true时同时拥有setOutsideTouchable(true)的作用.
+void setFocusable (boolean focusable)
+boolean isFocusable ()
+
+
+设置背景
+void setBackgroundDrawable (Drawable background)
+Drawable getBackground ()
+
+
+阴影
+该方法我测试无效
+void setElevation (float elevation)
+float getElevation ()
+
+
+
+附着View位置
+该方法只在showAsDropDown()方法执行后才有效. 可以判断PopupWindow和附着View anchor谁的Y轴坐标小.
+boolean isAboveAnchor ()
+
+
+
+遮盖附着View(把View遮盖,见图片示例),对齐方式从View anchor的左下角变成了左上角了.
+void setOverlapAnchor (boolean overlapAnchor)
+boolean getOverlapAnchor ()
+
+
+设置PopupWindow宽高
+该方法在API23后被废弃, 由setWidth(int) 和 setHeight(int)替代
+void setWindowLayoutMode (int widthSpec, int heightSpec)
+
+
+窗口裁剪(见图片示例)
+PopupWindow默认是不会超出屏幕边界的. 但是如果该方法为false时会采用精准位置, 能超出屏幕范围.
+void setClippingEnabled (boolean enabled)
+boolean isClippingEnabled ()
+
+
+
+动画效果
+设置动画
+可以设置popupWindow的显示和隐藏动画
+void setAnimationStyle (int animationStyle)
+int getAnimationStyle ()
+可以看到方法是传入一个Style的样式id
+
+示例:
+<style name="popupwindow_anim_style">
+  <item name="android:windowEnterAnimation">@anim/dialog_bottom_enter</item>
+  <item name="android:windowExitAnimation">@anim/dialog_bottom_exit</item>
+</style>
+分别由两个属性组成. 两个属性各代表一个anim动画文件.
+
+
+
+进入和退出动画
+这是在Android6.0(API 23)后加入的方法. 配合Material Design的转场动画使用.
+
+进入动画
+void setEnterTransition (Transition enterTransition)
+Transition getEnterTransition ()
+退出动画
+void setExitTransition (Transition exitTransition)
+Transition getExitTransition ()
+
+
+
+获取
+获取最大高度
+这是相当于传入的View对象可显示的最大高度. 即PopupWindow使用showAsDropDown()能够显示的最大高度
+int getMaxAvailableHeight (View anchor)
+int getMaxAvailableHeight (View anchor, int yOffset) // 控件Y轴偏移后可显示的最大高度
+int getMaxAvailableHeight (View anchor,int yOffset,boolean ignoreBottomDecorations)// api24增加的方法, 由于我手上没有7.0设备就不说了.
+
+
+
+输入模式
+我使用该方法的三种模式我感觉并没有什么卵用
+void setInputMethodMode (int mode)
+int getInputMethodMode ()
+支持三种模式
+INPUT_METHOD_FROM_FOCUSABLE 根据可否获取焦点判断是否可输入. 感觉鸡肋
+INPUT_METHOD_NEEDED 允许输入
+INPUT_METHOD_NOT_NEEDED 不允许输入
+
+
+
+软键盘模式
+void setSoftInputMode (int mode) // mode为WindowManager.LayoutParams的softInputMode常量
+int getSoftInputMode ()
+softInputMode
+
+包含九种取值, 可组合使用,分为两类:
+
+显示状态模式
+SOFT_INPUT_STATE_UNSPECIFIED 默认模式
+SOFT_INPUT_STATE_HIDDEN
+SOFT_INPUT_STATE_ALWAYS_HIDDEN 总是隐藏
+SOFT_INPUT_STATE_UNCHANGED
+SOFT_INPUT_STATE_VISIBLE
+SOFT_INPUT_STATE_ALWAYS_VISIBLE 自动弹出软键盘
+
+调整模式
+SOFT_INPUT_ADJUST_UNSPECIFIED 默认模式
+SOFT_INPUT_ADJUST_RESIZE 软键盘弹出后PopupWindow会自动调整坐标,不被遮挡
+SOFT_INPUT_ADJUST_PAN
+
+
+
+监听事件
+隐藏事件监听
+即PopupWindow执行dismiss()后回调的方法.
+void setOnDismissListener (PopupWindow.OnDismissListener onDismissListener)
+
+触摸事件拦截
+void setTouchInterceptor (View.OnTouchListener l)
+
+
+
+更新
+以下的更新PopupWindow都必须在PopupWindow处于以及被显示的状态下才行. 且PopupWindow的宽高设置都必须大于等于0. 如果想忽略PopupWindow的宽高设置就设为-1.
+
+更新状态
+该方法不能更新PopupWindow的宽高, 只能更新PopupWindow的状态. 例如更新Focusable和OutsideTouchable
+void update ()
+
+更新尺寸
+上面说过update()不能更新PopupWindow的宽高, 但是提供更新宽高的update方法
+void update (int width, int height)// 更新PopupWindow的宽高
+
+更新显示位置(见图片示例)
+该方法是相当于重新showAsDropDown, 所以这是相对于控件的位置更新
+void update (View anchor,int width,int height)// 更新显示控件的位置
+void update (View anchor,int xoff,int yoff,int width,int height)// 相对于控件的偏移值
+
+
+
+相对位置更新(见图片示例)
+是相对于当前的位置进行偏移. 不同的显示位置对于的相对原点也不同.
+showAsDropDown的相对原点是整个屏幕左上角, 包括状态栏. 所以由于包括状态栏所以坐标偏移的时候一定要y轴偏移大于60超出状态栏的高度. 否则因为遮挡状态栏导致PopupWindow无法显示.
+mPopupWindow.update(50, 60, -1,-1); // x轴偏移50
+
+showAtLocation的相对原点是自身位置.
+void update (int x, // 坐标偏移
+                int y, 
+                int width, // PopupWindow宽高
+                int height)
+  
+void update (int x, 
+                int y, 
+                int width, 
+                int height, 
+                boolean force) // 可获取焦点

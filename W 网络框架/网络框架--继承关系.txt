@@ -1,0 +1,13 @@
+
+        /**
+         * 如何去加载网络数据  url-->json-->解析
+         * HttpClient;       用起来很麻烦(apache的jar包,安卓在5.0之前,之后被安卓去掉)
+         * URLConnection;    用起来很麻烦
+         *
+         * 开源网络框架    (对上面2个的封装,让开发者调用起来更加的方便)
+         * 1.XUtils(对HttpClient的封装,5.0之后不能用)
+         * 2.OkHttp(square公司对URLConnection的封装)
+         * 3.OkHttpUtils(鸿洋对OkHttp的封装)
+         *          * OkHttpUtils-->OKHttp-->UrlConnection的封装
+         * 4.Volley
+         */

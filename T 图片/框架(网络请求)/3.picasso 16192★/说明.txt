@@ -1,0 +1,102 @@
+https://github.com/square/picasso
+
+http://square.github.io/picasso/
+
+Picasso不仅实现了图片异步加载的功能，还解决了android中加载图片时需要解决的一些常见问题：
+1.在adapter中需要取消已经不在视野范围的ImageView图片资源的加载，否则会导致图片错位，Picasso已经解决了这个问题。
+2.使用复杂的图片压缩转换来尽可能的减少内存消耗
+3.自带内存和硬盘二级缓存功能
+
+4.picasso还支持加载Resources, assets, files, content providers中的资源文件
+Picasso.with(context).load(R.drawable.landing_screen).into(imageView1);
+Picasso.with(context).load(new File(imagePath)).into(imageView2);
+
+
+1.Download the latest JAR or grab via Gradle:
+compile 'com.squareup.picasso:picasso:2.5.2'
+
+<uses-permission android:name="android.permission.INTERNET"/>
+
+
+2.仅仅只需要一行代码就能完全实现图片的异步加载：
+Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+
+
+3. 在Adapter中的回收不在视野的ImageView和取消已经回收的ImageView下载进程
+@Override 
+public void getView(int position, View convertView, ViewGroup parent) {
+  SquaredImageView view = (SquaredImageView) convertView;
+  if (view == null) {
+    view = new SquaredImageView(context);
+  }
+  String url = getItem(position);
+
+  Picasso.with(context).load(url).into(view);
+}
+
+
+4.
+Picasso.with(context)
+    .load(url)
+    .resize(50, 50)//裁剪图片尺寸
+    .centerCrop()//设置图片圆角
+    .placeholder(R.drawable.user_placeholder)//加载过程中的图片显示
+    //加载失败中的图片显示
+    //如果重试3次（下载源代码可以根据需要修改）还是无法成功加载图片，则用错误占位符图片显示。
+    .error(R.drawable.user_placeholder_error)
+    .transform(new RoundTransform(20))//圆角显示图片
+.into(imageView);
+
+/**
+ * 圆角显示图片-Picasso
+ */
+class RoundTransform implements Transformation {//Picasso里提供了Transformation这个接口
+    private int radius;//圆角值
+
+    public RoundTransform(int radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public Bitmap transform(Bitmap source) {
+        int width = source.getWidth();
+        int height = source.getHeight();
+        //画板
+        Bitmap bitmap = Bitmap.createBitmap(width, height, source.getConfig());
+        Paint paint = new Paint();
+        Canvas canvas = new Canvas(bitmap);//创建同尺寸的画布
+        paint.setAntiAlias(true);//画笔抗锯齿
+        paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+        //画圆角背景
+        RectF rectF = new RectF(new Rect(0, 0, width, height));//赋值
+        canvas.drawRoundRect(rectF, radius, radius, paint);//画圆角矩形
+        //
+        paint.setFilterBitmap(true);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(source, 0, 0, paint);
+        source.recycle();//释放
+
+        return bitmap;
+    }
+
+    @Override
+    public String key() {
+        return "round : radius = " + radius;//注意一点：key重写方法，不能返回null！
+    }
+}
+
+
+5. “无”本地缓存
+无”本地缓存，不是说没有本地缓存，而是 Picasso 自己没有实现，
+交给了 Square 的另外一个网络库 okhttp 去实现，这样的好处是可以通过请求 Response Header 中的 Cache-Control 及 Expired 控制图片的过期时间。
+
+
+6.优点
+由于同样是出品自Square的，Square 公司的其他开源库如 Retrofit 或者 OkHttp和Picasso搭配使用兼容性会更好些，
+占用体积也会少些
+
+
+7.缺点
+功能较为简单-图片加载；
+性能（加载速度等等）较其他图片加载库（Glide、Fresco）较差
+自身无实现“本地缓存”

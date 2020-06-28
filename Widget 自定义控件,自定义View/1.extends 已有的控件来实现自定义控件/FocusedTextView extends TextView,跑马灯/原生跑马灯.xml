@@ -1,0 +1,20 @@
+
+        <!--android:singleLine="true" 单行-->
+        <!--android:maxLines="1",写了不滚动-->
+        <!--android:lines="1",写了也不滚动-->
+        <TextView
+            android:ellipsize="marquee"					//跑马灯
+            android:focusable="true"					//有焦点的
+            android:focusableInTouchMode="true"			//可以触摸
+			//android:marqueeRepeatLimit="marquee_forever"//滚动多少次, int值
+            android:singleLine="true"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/iv_icon"
+            android:layout_below="@+id/abc"
+
+            android:text="演唱巴拉拉小魔仙!!!演唱巴拉拉小魔仙!!!演唱巴拉拉小魔仙!!!演唱巴拉拉小魔仙!!!"
+            android:textSize="14sp"/>

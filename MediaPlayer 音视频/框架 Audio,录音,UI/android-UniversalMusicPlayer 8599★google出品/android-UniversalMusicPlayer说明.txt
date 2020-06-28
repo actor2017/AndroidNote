@@ -1,0 +1,5 @@
+https://github.com/googlesamples/android-UniversalMusicPlayer
+
+This sample shows how to implement an audio media app that works across multiple form factors and provide a consistent user experience on Android phones, tablets, Auto, Wear and Cast devices
+这个示例展示了如何实现一个音频媒体应用，它可以跨越多种形式因素，并在Android手机、平板电脑、汽车、服装和Cast设备上提供一致的用户体验。
+

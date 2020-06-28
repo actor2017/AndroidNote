@@ -1,0 +1,12 @@
+https://github.com/yuweiguocn/GreenDaoUpgradeHelper
+
+To solve database upgrade of greenDao and just need one line code
+GreenDaoUpgradeHelper是一个greenDao的数据库升级帮助类。使用它可以很容易解决数据库升级问题，只需一行代码。
+原始代码来自stackoverflow。
+
+maven { url "https://jitpack.io" }
+3.添加依赖（greendao 3.0及以上）
+dependencies {
+        compile 'org.greenrobot:greendao:3.2.0'
+        compile 'io.github.yuweiguocn:GreenDaoUpgradeHelper:v2.2.1'
+}

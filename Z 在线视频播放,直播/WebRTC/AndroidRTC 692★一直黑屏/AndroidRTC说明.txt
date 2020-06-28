@@ -1,0 +1,12 @@
+https://github.com/pchab/AndroidRTC
+http://blog.csdn.net/youmingyu/article/details/53192714
+服务端:
+https://github.com/pchab/ProjectRTC
+Android端:
+https://github.com/pchab/AndroidRTC
+
+Android端修改webrtc-client的Gradle版本2.2.2,不然跑步起来.
+
+
+Android client for ProjectRTC - a WebRTC demo
+

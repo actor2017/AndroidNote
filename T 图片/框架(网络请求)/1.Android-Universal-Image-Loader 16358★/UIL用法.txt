@@ -1,0 +1,220 @@
+https://github.com/nostra13/Android-Universal-Image-Loader
+支持格式:
+"http://site.com/image.png" 			// from Web
+"file:///mnt/sdcard/image.png" 			// from SD card
+"file:///mnt/sdcard/video.mp4" 			// from SD card (video thumbnail)
+"content://media/external/images/media/13"	// from content provider
+"content://media/external/video/media/13"	// from content provider (video thumbnail)
+"assets://image.png" 				// from assets
+"drawable://" + R.drawable.img 			// from drawables (non-9patch images)
+
+
+1.在build.gradle文件dependencies模块:
+compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+  或者直接导入项目,然后再添加项目依赖
+
+
+2.添加该框架需要开启的权限：
+    <!-- 下载图片，使用网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 缓存图片到SD卡，使用外部存储的读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+3.第三步:在Application或者Activity中初始化(例:老师在splash闪屏页面初始化)
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+	//初始化图片加载器
+	initImageLoader(this);
+    }
+
+    //初始化图片加载器
+    public static void initImageLoader(Context context) {
+	//这个配置调优是定制的。您可以调整每一个选项,你可以调整其中的一些,
+        // This configuration tuning is custom. You can tune every option, you may tune some of them,
+	//或者您可以创建默认配置
+        // or you can create default configuration by
+        // ImageLoaderConfiguration.createDefault(this);			//默认配置
+
+	ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)	//自定义配置
+        .memoryCacheExtraOptions(480, 800) // default = device screen dimensions
+        .diskCacheExtraOptions(480, 800, null)
+        .taskExecutor(...)
+        .taskExecutorForCachedImages(...)
+        .threadPoolSize(3)					//线程池数量default=3
+        .threadPriority(Thread.NORM_PRIORITY - 2)		//设置线程的优先级default
+        .tasksProcessingOrder(QueueProcessingType.FIFO)		//任务处理订单(队列处理类型.fifo先进先出)default
+        .denyCacheImageMultipleSizesInMemory()			//是否允许在内存中保存同一张图片不同尺寸的bitmap对象
+        .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
+        .memoryCacheSize(20 * 1024 * 1024)			//设置内存缓存大小,默认2M
+        .memoryCacheSizePercentage(13) // default
+        .diskCache(new UnlimitedDiskCache(cacheDir)) // default
+        .diskCacheSize(50 * 1024 * 1024)			// 50 MiB  磁盘缓存大小
+        .diskCacheFileCount(100)				//缓存文件最大数量
+        .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())//缓存文件的命名策略,new Md5FileNameGenerator():以md5(url)命名
+        .imageDownloader(new BaseImageDownloader(context)) // default,其余配置:BaseImageDownloader(this, 60 * 1000, 60 * 1000)
+        .imageDecoder(new BaseImageDecoder()) // default
+        .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) // default
+        .writeDebugLogs()					// Remove for release app
+        .build();
+
+        // Initialize ImageLoader with configuration.初始化ImageLoader与配置。
+        ImageLoader.getInstance().init(config);
+    }
+}
+
+4.代码样例
+//1.异步加载图片的方式
+1.findViewById找到imageView
+2.获取网址后就写下面的方法(下面有例子):
+
+①.简写ImageLoader.getInstance().displayImage(url,iv_image);
+②.不是简写ImageLoader loader = ImageLoader.getInstance();
+
+                //展示图片的设置
+                DisplayImageOptions options = new DisplayImageOptions.Builder()
+                        .showImageOnLoading(R.mipmap.ic_launcher)//加载中的图片
+        		.showImageForEmptyUri(R.drawable.ic_empty) // resource or drawable
+                        .showImageOnFail(R.mipmap.error)//失败的图片
+        		.resetViewBeforeLoading(false)  // default
+		        .delayBeforeLoading(1000)
+                        .cacheInMemory(true)//开启内存缓存,默认false
+                        .cacheOnDisk(true)//开启磁盘缓存,默认false
+        		//.preProcessor(...)
+        		//.postProcessor(...)
+        		//.extraForDownloader(...)
+        		//.considerExifParams(false) // default
+        		//.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
+                        //.bitmapConfig(Bitmap.Config.ARGB_8888)//图片格式
+        		//.decodingOptions(...)
+        		//.displayer(new SimpleBitmapDisplayer()) // default(必须设置宽高定值)
+                        //.displayer(new FadeInBitmapDisplayer(1000))//淡入(必须设置宽高定值)
+                        //.displayer(new CircleBitmapDisplayer(Color.RED, 10))//圆形图片, 必须在布局文件中设置宽高(必须设置宽高定值)
+                        //.displayer(new RoundedBitmapDisplayer(50))//圆角矩形图片, 必须在布局文件中设置宽高(必须设置宽高定值)
+                        //.displayer(new RoundedVignetteBitmapDisplayer(80, 10))//带蒙版的圆角矩形(必须设置宽高定值)
+        		//.handler(new Handler()) // default
+                        .build();
+
+				 //(imageUri, imageView, options, animateFirstListener(图片加载成功/失败的监听,可不要));
+                loader.displayImage("https://timgsa.baidu" +
+                                ".com/timg?image&quality=80&size=b9999_10000&sec=1491188264&di" +
+                                "=20ca0a8460b60569002a93f59317a6e7&imgtype=jpg&er=1&src=http%3A" +
+                                "%2F%2Fh.hiphotos.baidu" +
+                        ".com%2Fimage%2Fpic%2Fitem%2F91ef76c6a7efce1b620971c3ad51f3deb48f659d.jpg",
+                        ivImage, options);
+
+//--------------------------------------------------
+  如果要animateFirstListener,需声明:private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+				   :并且还要写动画效果,参见示例程序
+
+3.查看源代码可知,如果是加载ViewPager的图片,要在PagerAdapter中的构造方法初始化options
+    class mPagerAdapter extends PagerAdapter {
+
+        private DisplayImageOptions options;			//声明options
+
+        public mPagerAdapter() {				//构造方法
+            options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.ic_stub)	//加载中图片的设置
+                    .showImageForEmptyUri(R.drawable.ic_empty)	//url为null的情况下
+                    .showImageOnFail(R.drawable.ic_error)	//加载图片失败的时候的设置
+                    .cacheInMemory(true)			//是否缓存在内存
+                    .cacheOnDisk(true)				//是否缓存在硬盘
+                    .considerExifParams(true)	//exif:一张图片的附加信息  位置信息、时间信息、角度
+		    //sample中的展示器.displayer(new CircleBitmapDisplayer(Color.WHITE,5))//图片显示在一个大圆圈里(QQ头像)
+                    .displayer(new FadeInBitmapDisplayer(500))	//设置渐变展示器(500ms)
+                    .build();
+        }
+
+    @Override
+    getCount()...
+    @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            //return super.instantiateItem(container, position);
+            String imageUri = GlobalConstants.URL_PREFIX + viewPagerTopnews.get(position).topimage;
+            ImageView imageView = new ImageView(activity);
+            // iv.setBackgroundResource(R.drawable.guide_1);
+            //Center_Crop:可以让ImageView的控件被突破填充满，但是图片会被裁剪不变形
+            //FIT_XY:可以让ImageView的控件被突破填充满，但是图片变形不裁减
+            //Center_CROP：我们宁愿让图片显示不全，也不想变形
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            ImageLoader.getInstance().displayImage(imageUri, imageView, options);	//就是上面2示例写法
+            container.addView(imageView);   //这一步不要忘了
+            return imageView;
+        }
+    ...等其它方法
+
+4.如果是加载ListView的图片,和ViewPager的写法差不多,如下:
+1.重写适配器的构造方法
+2.在获取了网址后,调用方法加载,参加下面.
+class MyListAdapter extends BaseAdapter {
+
+        private DisplayImageOptions options;
+
+        public MyListAdapter() {
+            options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.ic_stub)//加载中图片的设置
+                    .showImageForEmptyUri(R.drawable.ic_empty)//url为null的情况下
+                    .showImageOnFail(R.drawable.ic_error)//加载图片失败的时候的设置
+                    .cacheInMemory(true)//是否缓存在内存
+                    .cacheOnDisk(true)//是否缓存在硬盘
+                    .considerExifParams(true)//exif:一张图片的附加信息  位置信息、时间信息、角度
+                    .displayer(new FadeInBitmapDisplayer(500))//设置展示器
+                    .build();
+        }
+
+        @Override
+        public int getCount() {
+            return news.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return news.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder = null;
+            if(convertView == null) {
+                convertView = View.inflate(activity, R.layout.item_list_news, null);
+                holder = new ViewHolder();
+                holder.ivImage = (ImageView) convertView.findViewById(R.id.imageView);
+                holder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+                holder.tvDate = (TextView) convertView.findViewById(R.id.tvDate);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.tvTitle.setText(news.get(position).title);
+            holder.tvDate.setText(news.get(position).pubdate);
+
+            boolean hasReaded = PrefUtils.getBoolean(activity, news.get(position).id + "", false);
+            if(hasReaded) {
+                holder.tvTitle.setTextColor(Color.GRAY);
+            } else {
+                holder.tvTitle.setTextColor(Color.BLACK);
+
+            }
+
+	    //第2处写法:
+            String url = GlobalConstants.URL_PREFIX + news.get(position).listimage;
+            ImageLoader.getInstance().displayImage(url, holder.ivImage, options);
+            return convertView;
+        }
+    }
+===========================================================================
+//2.同步加载图片的方式
+//获取单例实例
+ImageLoader imageLoader = ImageLoader.getInstance();(可不写)
+Bitmap bmp = imageLoader.loadImageSync(imageUri, targetSize, options);
+
+

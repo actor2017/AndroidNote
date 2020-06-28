@@ -1,0 +1,13 @@
+https://github.com/DingProg/Makeup
+https://mp.weixin.qq.com/s/0HJ3DZYJ05qdQxF8SF_6-w (鸿洋)
+https://juejin.im/post/5d5ff49bf265da03d42fae9c
+让你的“女神”逆袭，代码撸彩妆（画妆）
+
+项目介绍
+本项目是一个Android Project，用Canvas给人脸化妆(画妆)的APP演示项目
+
+主要内容包括：
+
+唇彩，美瞳，粉底，眼影，腮红，眼线，双眼皮，眉毛等，能画的妆，都画了
+利用图形局部变形算法进行 大眼，瘦脸，丰胸，大长腿等
+磨平/美白

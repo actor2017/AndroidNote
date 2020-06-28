@@ -1,0 +1,22 @@
+https://github.com/bingoogolapple/BGAQRCode-Android
+QRCode 扫描二维码、扫描条形码、相册获取图片后识别、生成带 Logo 二维码、支持微博微信 QQ 二维码扫描样式
+
+识别率极低,可只扫描框内, 5分钟停留不会退出.
+
+
+//设置扫描类型(默认的即可)
+BarcodeType.HIGH_FREQUENCY: 默认, 高频率(生活中高频率出现的)格式，包括 QR_CODE、ISBN13、UPC_A、EAN_13、CODE_128
+...
+mZXingView.setType(BarcodeType.ALL, null);//识别全部(二维码&条码), 但是瞎扫描(扫描代码)都可能出现一些数字.
+
+
+ZXing
+
+dependencies {
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:latestVersion'
+}
+ZBar
+
+dependencies {
+    implementation 'cn.bingoogolapple:bga-qrcode-zbar:latestVersion'
+}

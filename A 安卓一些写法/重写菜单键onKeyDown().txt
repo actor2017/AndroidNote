@@ -1,0 +1,27 @@
+    /**
+     * 重写菜单键
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //如果点击了菜单键
+        if (keyCode == KeyEvent.KEYCODE_MENU) {
+            if (isLeve1Show) {
+                YouKuRotateAnimUtils.hide(rlLevel1);
+                isLeve1Show = false;
+                if (isLevel2Show) {
+                    YouKuRotateAnimUtils.hide(rlLevel2,200);
+                    isLevel2Show = false;
+                    if (isLevel3Show) {
+                        YouKuRotateAnimUtils.hide(rlLevel3,400);
+                        isLevel3Show = false;
+                    }
+                }
+            }else {
+                YouKuRotateAnimUtils.show(rlLevel1);
+                isLeve1Show = true;
+            }
+            return true;//表示消费掉了菜单按键, 不需要执行系统其他默认操作了
+        }
+        //注意:下面这句必须写,否则返回键失灵,因为有可能是其它按键,其余如音量键好像没事
+        return super.onKeyDown(keyCode, event);
+    }

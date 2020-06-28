@@ -1,0 +1,41 @@
+1.打开build.gradle文件,把minifyEnabled 设置为 true，就开启了混淆打包
+
+            zipAlignEnabled false
+
+// 是否进行dex优化
+            minifyEnabled false// 是否进行混淆
+            shrinkResources false
+//支持删除一些没有用的资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆文件位置
+
+
+在proguard-rules.pro文件中添加混淆规则
+
+2.大部分jar包发布时就已经做了混淆处理，所以再次混淆必然会报错,
+自定义配置忽略第三方jar包,示例:
+-keep class com.squareup.okio.**{*;}
+-keep class com.squareup.okhttp3.**{*;}
+-keep class com.google.code.gson.**{*;}
+-keep class com.squareup.okio.**{*;}
+-keep class com.stericson.RootTools.**{*;}
+
+
+3.混淆示例:
+#okhttputils
+-dontwarn com.zhy.http.**
+-keep class com.zhy.http.**{*;}
+
+
+#okhttp
+-dontwarn okhttp3.**
+-keep class okhttp3.**{*;}
+
+
+#okio
+-dontwarn okio.**
+-keep class okio.**{*;}
+
+
+遇到的坑:
+##如果不添加下面这句,会报很多行Warning,导致打包失败,示例:rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef: can't find referenced class sun.misc.Unsafe
+-dontwarn rx.internal.util.unsafe.*

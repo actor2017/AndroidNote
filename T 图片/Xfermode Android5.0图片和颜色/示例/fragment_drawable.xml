@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/demo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="1.下面几个TextView的background=&quot;@drawable/ring&quot;"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/ring"
+                    android:gravity="center"
+                    android:text="原背景效果"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/tint_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="tint选择器"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="下面6个TextView背景和上面一样,且\nbackgroundTint=&quot;#5677fc&quot;,即蓝色:"
+                    android:textColor="@color/action_red"
+                    android:textSize="16sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        android:background="#5677fc"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="add"
+                    android:gravity="center"
+                    android:text="backgroundTintMode=add"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="multiply"
+                    android:gravity="top"
+                    android:text="backgroundTintMode=multiply"
+                    android:textColor="@color/black_text"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="screen"
+                    android:gravity="center"
+                    android:text="backgroundTintMode=screen"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="src_atop"
+                    android:gravity="center"
+                    android:text="backgroundTintMode=src_atop"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="src_in"
+                    android:gravity="center"
+                    android:text="backgroundTintMode=src_in"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/ring"
+                    android:backgroundTint="#5677fc"
+                    android:backgroundTintMode="src_over"
+                    android:gravity="center"
+                    android:text="backgroundTintMode=src_over"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

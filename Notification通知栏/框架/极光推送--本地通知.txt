@@ -1,0 +1,1 @@
+http://docs.jiguang.cn/jpush/client/Android/android_api/#api_10

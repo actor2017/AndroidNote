@@ -1,0 +1,27 @@
+底层数组实现,有序
+import android.util.xxx;
+
+//1.int, Object
+SparseArray<String> array = new SparseArray();
+array.put(1, "value");
+public void append(int key, E value);
+这种append方式跟put有啥区别呢，append官方是这样说的: 
+Puts a key/value pair into the array,optimizing for the case where the key is greater than all existing keys in the array. 
+啥意思呢，其实append就是个优化。因为插入时使用的是二分查找。用append就是如果key比以前所有的key都大（其实只比较最后一个），直接放后面，就不用二分查找了。
+
+
+//2.int, boolean
+SparseBooleanArray booleanArray = new SparseBooleanArray();
+booleanArray.put(1, true);
+
+//3.int, int
+SparseIntArray intArray = new SparseIntArray();
+intArray.put(1, 1);
+
+//4.int, long    (SDK >= 18)
+SparseLongArray longArray = new SparseLongArray();
+longArray.put(1, 1L);
+
+//5.long, Object    (SDK >= 16)
+LongSparseArray<String> longSparseArray = new LongSparseArray<>();
+longSparseArray.put(1L, "value");

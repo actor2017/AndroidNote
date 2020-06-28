@@ -1,0 +1,2 @@
+http://www.jianshu.com/p/33c01c964007
+rvContent.setNestedScrollingEnabled(false);

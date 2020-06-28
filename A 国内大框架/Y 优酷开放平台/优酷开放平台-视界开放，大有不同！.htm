@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>优酷开放平台-视界开放，大有不同！</title>
+    <!--浏览器ico-->
+    <link rel="shortcut icon" type="image/x-icon"
+          href="http://open.youku.com/img/07836d5bc82beea4360451c2754789f2.ico" media="screen"/>
+    <!--字体图标css-->
+    <link rel="stylesheet" type="text/css" href="http://open.youku.com/css/8beca43b56aaa2f6372b5a9a779fa2af.css">
+    <!--公共样式-->
+    <link rel="stylesheet" type="text/css" href="http://open.youku.com/css/0f1b18b0b01c2e32f6624db08bbfe9fb.css">
+    <!--header-css-->
+    <link rel="stylesheet" type="text/css" href="http://open.youku.com/css/0f7ca991632e02ede23ed080ad3d3f06.css">
+    <!--body-css-->
+    <link rel="stylesheet" type="text/css" href="http://open.youku.com/css/e6a608e05ec9e4487c1c2eda0010bfb8.css">
+    <!--footer-css-->
+    <link rel="stylesheet" type="text/css" href="http://open.youku.com/css/7e8271074d49ec3c192ac10b0c4902e2.css">
+    <script src="https://s4.cnzz.com/z_stat.php?id=1259743133&web_id=1259743133" language="JavaScript"></script>
+    <!--jQuery-->
+    <script type="text/javascript" src="http://open.youku.com/js/107fbe9555bfc88ec5cab524c790fe34.js"></script>
+    <!--body-js-->
+    <script type="text/javascript" src="http://open.youku.com/js/d25592f73d5ad06ffa2e389d993da93d.js"></script>
+    <!--footer-js-->
+    <script type="text/javascript" src="http://open.youku.com/js/2b866f9665e2da4da378e90834c48cfc.js"></script>
+    <!--newpassport-js-->
+    <script src="https://account.youku.com/static-resources/js/loadFrame.js" type="text/javascript"></script>
+    <script src="http://open.youku.com/js/ffd2e81d3116276547adf3e5bdeb8825.js" type="text/javascript"></script>
+    <style>
+    .YT-loginFrame-popbox .icon-wechat:before {
+        content: "";
+    }
+    .head .icon-logo:after{
+        background:none;
+    }
+    </style>
+</head><body style="min-width:1260px">
+<!--Edit 修改了DOM结构-->
+<!--Edit 2016-06-20-->
+<div class='head clearfix'>
+    <div class="w-1180">
+        <a href="http://open.youku.com" class="head_left icon-logo">
+            <span class="logo-text">优酷开放平台</span>
+        </a>
+        <ul class="head_main clearfix">
+            <li><a href="">首页</a></li>
+            <li class="js-drop" id="open_map">
+                <a href="#">开放版图</a>
+                <div class="head-drop clearfix" id="open_map_drop">
+                    <!--<dl>-->
+                        <!--<dt><i class="icon-vedio-cloud"></i>视频云</dt>-->
+                        <!--<dd class="mr-20">-->
+                            <!--<a href="http://open.youku.com/product/vod.html">云点播</a>-->
+                            <!--<a href="http://open.youku.com/product/live.html">云直播</a>-->
+                        <!--</dd>-->
+                    <!--</dl>-->
+                    <dl>
+                        <dt><i class="icon-vedio-tech"></i>视频技术</dt>
+                        <dd class="mr-20">
+                            <a href="http://open.youku.com/tech/screen.html">游戏录屏</a>
+                            <a href="http://open.youku.com/tech/videoedit.html">视频编辑</a>
+                            <a href="http://open.youku.com/tech/ykplayer.html">定制播放器</a>
+                            <a href="http://open.youku.com/tech/interative.html">视频互动</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><i class="icon-vedio-data"></i>视频数据</dt>
+                        <dd class="mr-20">
+                            <a href="http://open.youku.com/data/content.html">内容输出</a>
+                            <a href="http://open.youku.com/data/recommand.html">智能推荐</a>
+                            <a href="http://open.youku.com/data/search.html">视频搜索</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><i class="icon-user-com"></i>用户社区</dt>
+                        <dd class="mr-20">
+                            <a href="http://open.youku.com/user/autho.html">用户登录</a>
+                            <a href="http://open.youku.com/user/userinfo.html">用户信息</a>
+                            <a href="http://open.youku.com/user/interact.html">用户互动</a>
+                            <a href="http://open.youku.com/user/videoshare.html">视频分享</a>
+                        <dd>
+                    </dl>
+                </div>
+            </li>
+            <!--<li class="js-drop" id="resove_question">-->
+                <!--<a href="#">解决方案</a>-->
+                <!--<div class="head-drop clearfix head-solution" id="resove_question_drop"-->
+                     <!--style="margin-left: 0; height:170px;">-->
+                    <!--<dl>-->
+                        <!--<dd class="mr-20 select-drop">-->
+                            <!--<a href="http://open.youku.com/solve/game.html">游戏</a>-->
+                            <!--<a class="head-gray">电商</a>-->
+                            <!--<a class="head-gray">内容运营者</a>-->
+                            <!--<a href="http://open.youku.com/solve/playSolution.html">创业者云视频播放</a>-->
+                        <!--</dd>-->
+                    <!--</dl>-->
+                <!--</div>-->
+            <!--</li>-->
+            <li><a href="http://doc.open.youku.com">文档中心</a></li>
+            <li><a href="#" id="app_manager">管理中心</a></li>
+        </ul>
+        <ul class="head_right clearfix">
+            <li><a href="http://notice.open.youku.com/" class="cer-top-act icon-Message" style="padding:0px;"></a></li>
+            <li id="link_login" style="display:none;"><a href="" id="yk_login" style="padding:0px;"
+                                   class="cer-top-act">登录</a></li>
+            <li id="accountinfo_op" class="account_action" style="display:none;">
+                <a id="accountinfo" class="pointer arrow-border" style="padding:0px;"><i></i></a>
+                <div id="account_dropdown" class="drop-down">
+                    <a href="http://app.open.youku.com/customerinfo/info" id="gotoci" class="pointer">客户中心</a>
+                    <a id="loginout" style="cursor:pointer" class="pointer">登出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--Edit 2016-06-20-->
+<div class="index-banner-bg">
+    <div class="slide-wrap">
+        <div class="img-box">
+            <!--<a href="http://open.youku.com/activity/recruit_activity.html" class="img_four">
+            </a>-->
+            <a href="http://open.youku.com/tech/interative.html" class="img_three">
+                <div class="img-box-a-info">
+                    <!--视频互动 用声音连接世界-->
+                    <div class="img-box-h1 font-46">视频互动 用声音连接世界</div>
+                    <div class="img-box-h2 font-20">玩转视频，打开影音互动新世界</div>
+                    <span class="img-box-more font-20">查看详情</span>
+                </div>
+            </a>
+            <!--<a href="http://open.youku.com/solve/playSolution.html" class="img_one">-->
+                <!--<div class="img-box-a-info">-->
+                    <!--&lt;!&ndash;视频互动 用声音连接世界&ndash;&gt;-->
+                    <!--<div class="img-box-h1 font-46">创业者云视频播放解决方案</div>-->
+                    <!--<div class="img-box-h2 font-20">让视频创业者云通过视频获取价值，实现创业梦想</div>-->
+                    <!--<span class="img-box-more font-20">查看详情</span>-->
+                <!--</div>-->
+            <!--</a>-->
+            <!-- <a href="http://open.youku.com/act/vodact.html" class="img_two"></a>   -->
+            <a href="http://doc.open.youku.com/?docid=470" class="img_five">
+                <div class="img-box-a-info">
+                    <!--视频互动 用声音连接世界-->
+                    <div class="img-box-h1 font-46">IOS播放器SDK上线啦</div>
+                    <div class="img-box-h2 font-20">享受优质视频资源，让播放更简单</div>
+                    <span class="img-box-more font-20">查看详情</span>
+                </div>
+            </a>
+        </div>
+        <div class="icon-box">
+            <a href="javascript:;" class="active" rel="1"></a> 
+            <a href="javascript:;" rel="2"></a>  
+            <!--<a href="javascript:;" rel="3"></a>-->
+            <!--<a href="javascript:;" rel="4"></a>-->
+            <!--<a href="javascript:;" rel="5"></a>-->
+        </div>
+    </div>
+    <div class="announce">
+        <div class="announce-bc"></div>
+        <ul class="w-1180 clearfix" style="width:1350px;padding-left: 41px;">
+            <!--<li class="more-href"><a href="http://notice.open.youku.com/">更多 ></a></li>-->
+            <li><i></i>
+                <a>【重要通知】因本网站升级改造,将于2017年3月28日10：00开始暂停开发者认证申请和开发者应用创建，具体开放时间请关注官网公告和官方群公告信息。
+                    不影响已有应用使用和维护。给您带来的不便还请谅解。</a>
+                <em class="flag-red icon-newlight"></em></li>
+            <!--<li><i></i><a href="http://notice.open.youku.com/?docid=472">【产品发布】创业者云视频播放解决方案上线 2016-04-28</a></li>-->
+            <!--<li><i></i><a href="http://notice.open.youku.com/?docid=462">【活动报名】优酷云点播服务公测资格可在线申请 2016-01-28</a></li>-->
+        </ul>
+    </div>
+</div>
+
+<div class="section action-list">
+    <!--<div class="inline-box action-item">-->
+        <!--<div class="a-i-img icon-VideoCloud">-->
+        <!--</div>-->
+        <!--<div class="a-i-info">-->
+            <!--<h2>云点播</h2>-->
+            <!--<p>垂直整合视频流程的技术服务，</p>-->
+            <!--<p>提供一站式视频解决方案</p>-->
+            <!--<a href="http://open.youku.com/product/vod.html" class="a-more a-i-more">了解更多</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="inline-box action-item">
+        <div class="a-i-img icon-Interactive">
+        </div>
+        <div class="a-i-info">
+            <h2>视频互动</h2>
+            <p>以声码技术为基石，提供声音为</p>
+            <p>媒介的全新互联网入口</p>
+            <a href="http://open.youku.com/tech/interative.html" class="a-more a-i-more">了解更多</a>
+        </div>
+    </div>
+    <div class="inline-box action-item">
+        <div class="a-i-img icon-Vrecorde">
+        </div>
+        <div class="a-i-info">
+            <h2>游戏录屏</h2>
+            <p>视频+ 游戏打造游戏二次元生态，</p>
+            <p>让玩游戏更快乐</p>
+            <a href="http://open.youku.com/tech/screen.html" class="a-more a-i-more">了解更多</a>
+        </div>
+    </div>
+    <div class="inline-box action-item">
+        <div class="a-i-img icon-Export">
+        </div>
+        <div class="a-i-info">
+            <h2>内容输出</h2>
+            <p>上亿电影、电视剧、综艺、动漫，</p>
+            <p>更有海量的用户视频内容</p>
+            <a href="http://open.youku.com/data/content.html" class="a-more a-i-more">了解更多</a>
+        </div>
+    </div>
+</div>
+
+<!--Edit 修改了DOM结构-->
+<div class="section info-list">
+    <h1>获取我们的开放能力</h1>
+    <div class="subhead">优酷开放平台的服务简单易取，提交开发者信息后即可获取</div>
+    <!--<div class="section-2">-->
+        <!--<div class="inline-box text-left info-item">-->
+            <!--<h3 class="font-30 title-color">视频云</h3>-->
+            <!--<span class="font-14 content-color">视频云提供完美的视频上传，分发，托管等能力，帮助开发者在任何场景下管理自己的视频。</span>-->
+            <!--<ul class="cloud-ul">-->
+                <!--<li class="cloud-li">-->
+                    <!--<a href="http://open.youku.com/product/vod.html" class="cloud-li-a">-->
+                        <!--<span class="ul-img icon-Cloud"></span>-->
+                        <!--<div class="ul-right">-->
+                            <!--<div class="right-content">-->
+                                <!--<h2 class="font-18">云点播</h2>-->
+                                <!--<p class="font-14">视频云为开发者提供多种视频上传方式，满足开发者的多种视频上传场景需求。</p>-->
+                                <!--<span class="a-more">了解更多</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="cloud-li">-->
+                    <!--<a href="http://doc.open.youku.com/?docid=468" class="cloud-li-a">-->
+                        <!--<span class="ul-img icon-SDKupload"></span>-->
+                        <!--<div class="ul-right">-->
+                            <!--<div class="right-content">-->
+                                <!--<h2 class="font-18">上传SDK/API</h2>-->
+                                <!--<p class="font-14">云点播具备极速转码，智能上传，CDN与P2P双重网络边缘加速的卓越能。</p>-->
+                                <!--<span class="a-more">了解更多</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="cloud-li">-->
+                    <!--<a href="http://doc.open.youku.com/?docid=470" class="cloud-li-a">-->
+                        <!--<span class="ul-img icon-CloudSDK"></span>-->
+                        <!--<div class="ul-right">-->
+                            <!--<div class="right-content">-->
+                                <!--<h2 class="font-18">云点播播放SDK</h2>-->
+                                <!--<p class="font-14">云点播为开发者提供Android和IOS播放器SDK，随时支持用户播放视频内容</p>-->
+                                <!--<span class="a-more">了解更多</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="inline-box info-item">-->
+            <!--<img src="http://open.youku.com/img/947b70dc48511404bf1bd5fcf1b78e79.jpg" alt="">-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="section-2">
+        <div class="inline-box info-item">
+            <img src="http://open.youku.com/img/f0b3b4422eedd777df1dc32667536a33.jpg" alt="">
+        </div>
+        <div class="inline-box text-left info-item">
+            <h3 class="font-30 title-color">视频技术</h3>
+            <span class="font-14 content-color">优酷开放云为开发者提供完备的各类视频技术能力，为各行从业者提供更好的技术支持。</span>
+            <ul class="cloud-ul">
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/tech/screen.html" class="cloud-li-a">
+                        <span class="ul-img icon-Grecorde"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">游戏录屏</h2>
+                                <p class="font-14">录屏功能与优酷视频平台一键打通，为每个录屏用户提供独立的存储单元。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/tech/interative.html" class="cloud-li-a">
+                        <span class="ul-img icon-Video"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">视频互动</h2>
+                                <p class="font-14">视频互动为开发者提供多种使用场景，开发者可以通过各类节目进行互动。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/tech/ykplayer.html" class="cloud-li-a">
+                        <span class="ul-img icon-Player"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">定制播放器</h2>
+                                <p class="font-14">视频开发者可以定制播放器服务享受智能连播，断点续播，播放加速等优质服务。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-2">
+        <div class="inline-box text-left info-item">
+            <h3 class="font-30 title-color">视频数据</h3>
+            <span class="font-14 content-color">优酷开放云提供海量、优质的视频内容数据，数据才是生产力，开放云视频数据为您的业务助航。</span>
+            <ul class="cloud-ul">
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/data/content.html" class="cloud-li-a">
+                        <span class="ul-img icon-Cexport"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">内容输出</h2>
+                                <p class="font-14">输出海量高质的版权节目、U\PGC视频，涵盖电影、电视剧、综艺等多种类型。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/data/recommand.html" class="cloud-li-a">
+                        <span class="ul-img icon-iteSDK"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">智能推荐</h2>
+                                <p class="font-14">基于优酷庞大的节目库与视频库进行计算，创建有效推荐，提升VV转化。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/data/search.html" class="cloud-li-a">
+                        <span class="ul-img icon-Search"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">视频搜索</h2>
+                                <p class="font-14">专业的影视综艺搜索引擎，畅游所有视频网站，搜索您想要的视频内容。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="inline-box info-item">
+            <img src="http://open.youku.com/img/31ff96bc67e3fd1d5dc0606f6e37a65a.jpg" alt="">
+        </div>
+    </div>
+    <div class="section-2">
+        <div class="inline-box info-item">
+            <img src="http://open.youku.com/img/62f4f2d7cd5d62d5d2bcd73fe528e8ba.jpg" alt="">
+        </div>
+        <div class="inline-box text-left info-item">
+            <h3 class="font-30 title-color">用户社区</h3>
+            <span class="font-14 content-color">优酷开放云为开发者提供理想用户社区能力。基于优酷海量的用户群体，创造良好的用户生态环境。</span>
+            <ul class="cloud-ul">
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/user/autho.html" class="cloud-li-a">
+                        <span class="ul-img icon-login"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">用户登录</h2>
+                                <p class="font-14">嵌入优酷登录页，提供一致性登录体验，满足各种应用需求和场景。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/user/userinfo.html" class="cloud-li-a">
+                        <span class="ul-img icon-UserMes"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">用户信息</h2>
+                                <p class="font-14">获取用户基本信息和行为信息的同时，保护用户隐私。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cloud-li">
+                    <a href="http://open.youku.com/user/interact.html" class="cloud-li-a">
+                        <span class="ul-img icon-UserInter"></span>
+                        <div class="ul-right">
+                            <div class="right-content">
+                                <h2 class="font-18">用户互动</h2>
+                                <p class="font-14">实现与优酷平台的深度结合，包括视频管理，评论管理等。</p>
+                                <span class="a-more">了解更多</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="fill-advantage">
+    <div class="section advantage">
+        <div class="inline-box adv-item">
+            <div class="adv-img icon-CDN"></div>
+            <div class="adv-info">
+                <h3>稳定的CDN</h3>
+                <p>国内 500+ 节点，海外30+ 节点</p>
+            </div>
+        </div>
+        <div class="inline-box adv-item">
+            <div class="adv-img icon-OSS"></div>
+            <div class="adv-info">
+                <h3>专业视频能力</h3>
+                <p>新应用、新生活、新渠道，三网合一</p>
+            </div>
+        </div>
+        <div class="inline-box adv-item">
+            <div class="adv-img icon-youku"></div>
+            <div class="adv-info">
+                <h3>海量视频资源</h3>
+                <p>3亿+优酷视频资源深度整合</p>
+            </div>
+        </div>
+        <div class="inline-box adv-item">
+            <div class="adv-img icon-8VideoType"></div>
+            <div class="adv-info">
+                <h3>开放合作</h3>
+                <p>合作共赢，收益共享</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit 修改了DOM结构-->
+<div class="section solution">
+    <h1>获取我们的解决方案</h1>
+    <div class="subhead">优酷云提供完善的解决方案，为更多的开发者创造卓越价值</div>
+    <div class="inline-box solution-item">
+        <div class="solution-bg s-game"></div>
+        <span class="s-h2">面向游戏开发者的解决方案</span>
+        <span class="text-left s-content">快捷录屏制作攻略视频，并一键分享至优酷站内，让优酷亿级海量用户第一时间了解游戏的精彩内容</span>
+        <a href="http://open.youku.com/solve/game.html" class="btn-detail">查看详情</a>
+    </div>
+    <div class="inline-box solution-item">
+        <div class="solution-bg s-video"></div>
+        <span class="s-h2">面向视频创业者的解决方案</span>
+        <span class="text-left s-content">创业者希望通过自己拥有的视频获取更多的价值，我们助力您的梦想，为视频创造价值</span>
+        <a href="http://open.youku.com/solve/playSolution.html" class="btn-detail">查看详情</a>
+    </div>
+</div>
+
+<div class="fill-partner"></div><div class="footer">
+	<div class="w-1180 clearfix">
+		<div class="f-right tencent-box">
+			<div class="tencent-img" id="js-code-img">
+				<img src="http://open.youku.com/img/4c4960151b6d1b24ab2ac73def18279f.png" width="105" height="105" alt="">
+				<div class="img-desc" id="js-img-desc">
+					优酷开放平台微信
+				</div>
+			</div>
+			<dl class="tencent-type js-tencent-type">
+				<dd src="http://open.youku.com/img/4c4960151b6d1b24ab2ac73def18279f.png" info="优酷开放云微信">
+					<span class="icon-wechat"></span>优酷开放平台微信
+				</dd>
+				<dd src="http://open.youku.com/img/cb332ff70c6c4c6ba04bea7f348d2ea4.png" info="官方QQ群1">
+					<span class="icon-QQ"></span>官方QQ群1
+				</dd>
+				<dd src="http://open.youku.com/img/e06a61c0df62e77ec435eb601508a7c9.png" info="官方QQ群2">
+					<span class="icon-QQ"></span>官方QQ群2
+				</dd>
+			</dl>
+		</div>
+		<div class="f-left clearfix footer-info">
+			<dl>
+				<dt>快速入口</dt>
+				<dd><a href="http://doc.open.youku.com/?docid=308">开发入门</a></dd>
+				<dd><a href="http://doc.open.youku.com/?docid=312">政策规范</a></dd>
+				<dd><a href="http://app.open.youku.com" id="manager_center_click">管理中心</a></dd>
+				<dd><a href="http://notice.open.youku.com">通知公告</a></dd>
+			</dl>
+			<dl>
+				<dt>客户服务</dt>
+				<dd>
+					<span class="icon-OnlineService"></span>
+					<a href="http://os2.cs.tudou.com/new/client.php?arg=yktd&style=12&charset=utf-8" target="_blank"
+					   class="online-service-btn">在线客服</a>
+				</dd>
+				<dd>
+					<span class="icon-Phone"></span>400-810-3568 转 4
+				</dd>
+				<dd>
+					<span class="icon-QQ"></span>303221837 (群1)
+				</dd>
+				<dd>
+					<span class="icon-QQ"></span>143539918 (群2)
+				</dd>
+				<dd>
+					<span class="icon-Email"></span> yk-cloud#service.alibaba.com
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（请用@代替#后发信）</span>
+				</dd>
+			</dl>
+			<dl>
+				<dt>相关链接</dt>
+				<dd><a href="http://www.youku.com">优酷</a></dd>
+				<dd><a href="http://www.tudou.com">土豆</a></dd>
+			</dl>
+		</div>
+	</div>
+	<div class="f-bottom">© 2016 open.youku.com 优酷开放平台 版权所有</div>
+</div>
+</body>
+</html>

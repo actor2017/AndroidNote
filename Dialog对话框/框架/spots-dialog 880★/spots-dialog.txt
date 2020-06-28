@@ -1,0 +1,4 @@
+https://github.com/d-max/spots-dialog
+
+Android AlertDialog with moving dots progress indicator
+Android AlertDialog带有移动圆点进度指示器

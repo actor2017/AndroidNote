@@ -1,0 +1,9 @@
+https://github.com/bluejamesbond/TextJustify-Android
+
+TextJustify-Android
+TextJustify是对安卓TextView控件的格式优化，TextView在显示文字的时候往往在一行的中间部分就跳到了下一行，看起来很杂乱，尤其是在显示英文的时候，TextJustify解决了这个问题。
+
+作者： IT程序狮 
+链接：http://www.imooc.com/article/2448
+来源：慕课网
+

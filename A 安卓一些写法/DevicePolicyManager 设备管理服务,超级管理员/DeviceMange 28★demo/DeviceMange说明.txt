@@ -1,0 +1,13 @@
+http://www.jianshu.com/p/8934d47aed3b
+https://github.com/Javen205/DeviceMange
+
+使用DevicePolicyManager进行以下操作：
+- 激活设备管理器
+- 取消激活设备管理器
+- 修改密码
+- 取消密码
+- 锁屏
+- 设置锁屏时间
+- 取消设置锁屏时间
+- 恢复出厂设置
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/home"
+            style="@style/footer"
+            android:drawableTop="@drawable/footer_home_ico"//调用切换图片的
+            android:textColor="@drawable/footer_textcolor"//调用切换文字颜色的
+            android:text="首页" />
+        <RadioButton
+            android:id="@+id/service"
+            style="@style/footer"
+            android:drawableTop="@drawable/footer_service_ico"
+            android:textColor="@drawable/footer_textcolor"
+            android:text="服务" />
+        <RadioButton
+            android:id="@+id/make"
+            style="@style/footer"
+            android:drawableTop="@drawable/footer_yuyue_ico"
+            android:background="@color/toolbar_bg"
+            android:textColor="@color/toolbar_title"
+            android:text="预约" />
+        <RadioButton
+            android:id="@+id/activity"
+            style="@style/footer"
+            android:drawableTop="@drawable/footer_activity_ico"
+            android:textColor="@drawable/footer_textcolor"
+            android:text="活动" />
+        <RadioButton
+            android:id="@+id/member"
+            style="@style/footer"
+            android:drawableTop="@drawable/footer_member_ico"
+            android:textColor="@drawable/footer_textcolor"
+            android:text="我的" />
+    </RadioGroup>
+</LinearLayout>

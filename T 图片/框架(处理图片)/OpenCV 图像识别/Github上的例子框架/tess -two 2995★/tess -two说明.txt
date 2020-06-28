@@ -1,0 +1,2 @@
+https://github.com/rmtheis/tess-two
+Fork of Tesseract Tools for Android

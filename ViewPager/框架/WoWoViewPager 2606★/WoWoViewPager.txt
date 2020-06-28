@@ -1,0 +1,4 @@
+https://github.com/Nightonke/WoWoViewPager
+
+Combine ViewPager and Animations to provide a simple way to create applications' guide pages.
+结合ViewPager和动画，提供一种创建应用程序指南页的简单方法。

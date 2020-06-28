@@ -1,0 +1,8 @@
+﻿官方网站：
+http://www.wiztools.org/index.html
+
+GitHub：
+https://github.com/wiztools/rest-client
+
+工具下载列表：
+https://github.com/wiztools/rest-client/releases

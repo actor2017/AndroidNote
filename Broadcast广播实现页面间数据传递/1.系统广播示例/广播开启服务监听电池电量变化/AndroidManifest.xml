@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.kuchuan.wisdompolice">
+
+    <!--开机自启权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    
+
+        <!--接收开机启动的广播-->
+        <receiver
+            android:name=".BroadcastReceiver.MyBootReceiver"
+            android:enabled="true"//好像可以不写
+            android:exported="true">//好像可以不写
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+		<!--监听电池变化的服务-->
+        <service
+            android:name="org.androidpn.client.BatteryService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+</manifest>

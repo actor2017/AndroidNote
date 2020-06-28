@@ -1,0 +1,6 @@
+https://github.com/vinc3m1/RoundedImageView
+
+compile 'com.makeramen:roundedimageview:2.3.0'
+
+A fast ImageView that supports rounded corners, ovals, and circles.
+支持圆角、椭圆和圆形的快速图像视图。

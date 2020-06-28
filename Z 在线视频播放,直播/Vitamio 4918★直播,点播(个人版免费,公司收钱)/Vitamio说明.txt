@@ -1,0 +1,284 @@
+https://github.com/yixia/VitamioBundle
+https://www.vitamio.org/
+授权介绍(非个人移动应用均需购买Vitamio使用授权，例如：政府单位、教育机构、协会团体、企业等): https://www.vitamio.org/License/
+
+1.测试视频网址,默认没有:自定义手势调节亮度、音量的加减
+http://112.253.22.157/17/z/z/y/u/zzyuasjwufnqerzvyxgkuigrkcatxr/hc.yinyuetai.com/D046015255134077DDB3ACA0D7E68D45.flv
+1.5官方api:https://www.vitamio.org/docs/API/2013/0508/9.html
+
+
+3.导入Vitamio的Lib库
+4.在已创建的App中导入该库文件
+
+4.5清单文件
+        <!-- Don't forgot InitActivity -->
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+4.6权限
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+5.在布局文件中来引用Vitamio，如下：
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/vitamio"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"/>
+
+6.Vitamio在使用之前必须对其进行初始化操作，
+	    @Override
+            protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this))
+                return;
+                setContentView(R.layout.activity_play);
+            mVideoView = (VideoView) findViewById(R.id.surface_view);
+            mVideoView.setVideoPath(path1);//设置播放地址
+            mMediaController = new MediaController(this);//实例化控制器
+            mMediaController.show(5000);//控制器显示5s后自动隐藏
+            mVideoView.setMediaController(mMediaController);//绑定控制器
+            mVideoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//设置播放画质 高画质
+            mVideoView.requestFocus();//取得焦点
+        }
+
+
+7.监听缓冲百分比
+videoView.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+                @Override
+                public void onBufferingUpdate(MediaPlayer mp, int percent) {
+                    percentTv.setText("已缓冲：" + percent + "%");
+                }
+            });
+
+8.缓冲监听(可获取缓冲速度)
+            videoView.setOnInfoListener(new MediaPlayer.OnInfoListener() {
+                @Override
+                public boolean onInfo(MediaPlayer mp, int what, int extra) {
+                    switch (what) {
+                        //开始缓冲
+                        case MediaPlayer.MEDIA_INFO_BUFFERING_START:
+                            percentTv.setVisibility(View.VISIBLE);
+                            netSpeedTv.setVisibility(View.VISIBLE);
+                            mp.pause();
+                            break;
+                        //缓冲结束
+                        case MediaPlayer.MEDIA_INFO_BUFFERING_END:
+                            percentTv.setVisibility(View.GONE);
+                            netSpeedTv.setVisibility(View.GONE);
+                            mp.start();
+                            break;
+                        //正在缓冲
+                        case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
+                            netSpeedTv.setText("当前网速:" + extra + "kb/s");
+                            break;
+                    }
+                    return true;
+                }
+            });
+
+//-------------------------------------------------------------------------------
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lenve.vitamio.MainActivity">
+
+    <io.vov.vitamio.widget.VideoView			//注意导包是vitamio里的
+        android:id="@+id/vitamio"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/buffer_percent"		//进度
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/vitamio"
+        android:layout_marginLeft="12dp"
+        android:textColor="#e6ff01"/>
+
+    <TextView
+        android:id="@+id/net_speed"			//缓冲速度
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/vitamio"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/buffer_percent"
+        android:textColor="#04fa00"/>
+
+</RelativeLayout>
+
+//-----------------------------------------------------------------------------------
+官方文档方法:
+公共方法 
+
+public void setVideoLayout(int layout, float aspectRatio)
+获取扫描视频的Uri。
+参数
+layout 缩放参数
+aspectRation 宽高比，为0将自动检测。
+
+public boolean isValid()
+Surface是否有效。 参见Surface的isValid方法。
+
+public void setVideoPath(String path)
+设置视频路径。
+
+public void setVideoURI(Uri uri)
+设置视频URI。（可以是网络视频地址）
+
+public void stopPlayback()
+停止视频播放，并释放资源。
+
+public void setMediaController(MediaController controller)
+设置媒体控制器。
+参数
+controller 媒体控制器，注意是io.vov.vitamio.widget.MediaController。
+
+public void setOnPreparedListener(OnPreparedListener l)
+注册一个回调函数，在视频预处理完成后调用。在视频预处理完成后被调用。此时视频的宽度、高度、宽高比信息已经获取到，此时可调用seekTo让视频从指定位置开始播放。
+
+public void setOnCompletionListener(OnCompletionListener l)
+注册一个回调函数，视频播放完成后调用。
+
+public void setOnErrorListener(OnErrorListener l)
+注册一个回调函数，在异步操作调用过程中发生错误时调用。例如视频打开失败。
+
+public void setOnBufferingUpdateListener(OnBufferingUpdateListener l)
+注册一个回调函数，在网络视频流缓冲变化时调用。
+
+public void setOnSeekCompleteListener(OnSeekCompleteListener l)
+注册一个回调函数，在seek操作完成后调用。
+
+public void setOnSubtitleUpdateListener(OnSubtitleUpdateListener l)
+注册一个回调函数，在字幕需要显示时调用。
+
+public void setOnInfoListener(OnInfoListener l)
+注册一个回调函数，在有警告或错误信息时调用。例如：开始缓冲、缓冲结束、下载速度变化。
+
+public boolean onTouchEvent(MotionEvent ev)
+处理显示/隐藏MediaController。
+
+public void start()
+开始播放。
+
+public void pause()
+暂停播放。
+
+public void suspend()
+挂起（暂时没有实现功能）
+
+public void resume()
+恢复播放。
+
+public long getDuration()
+获取视频播放时长。
+
+public long getCurrentPosition()
+获取当前播放位置。
+
+public void seekTo(long msec)
+设置播放位置。
+参数
+msec 位置
+
+public boolean isPlaying()
+是否正在播放。
+
+public int getBufferPercentage()
+获取缓冲百分比。
+
+public void setVolume(float leftVolume, float rightVolume)
+设置音量。
+参数
+leftVolume 左声道
+rightVolume 右声道
+
+public int getVideoWidth()
+获取视频宽度。
+
+public int getVideoHeight()
+获取视频高度。
+
+public float getVideoAspectRatio()
+设置视频宽高比例。没有视频或者宽高不正确返回0。
+
+public void setVideoQuality(int quality)
+设置视频质量。
+参数
+quality 参见MediaPlayer的常量：VIDEOQUALITY_LOW（流畅）、VIDEOQUALITY_MEDIUM（普通）、VIDEOQUALITY_HIGH（高质）。
+
+public void setBufferSize(int bufSize)
+设置视频缓冲大小（默认1024KB）单位Byte。
+
+public boolean isBuffering()
+检测是否缓冲完毕。
+
+public void setMetaEncoding(String encoding)
+设置元数据编码。例如：UTF-8
+
+public String getMetaEncoding()
+获取元数据编码。
+
+public HashMap getAudioTrackMap(String encoding)
+获取视频中嵌入的音轨。例如：English
+
+public int getAudioTrack()
+设置播放音轨编号。
+
+public void setAudioTrack(int audioIndex)
+设置音轨编号，必须使用getAudioTrackMap的返回值。
+
+public void setSubShown(boolean shown)
+设置是否显示字幕。
+参数
+shown true表示显示字幕
+
+public void setSubEncoding(String encoding)
+设置字幕编码。
+参数
+encoding 字幕编码。如果为null将自动检测。
+
+public int getSubLocation()
+获取字幕位置类型。0为内嵌字幕，1为外挂字幕。
+
+public void setSubPath(String subPath)
+设置外挂字幕路径。必须是本地文件路径。
+
+public String getSubPath()
+获取外挂字幕路径。
+
+public void setSubTrack(int trackId)
+设置字幕编号。必须是getSubTrackMap的返回值。
+
+public int getSubTrack()
+获取字幕编号。
+
+public HashMap getSubTrackMap(String encoding)
+获取视频内嵌字幕集合。
+参数
+encoding 格式化字符串编码。如果为null将自动检测。
+返回值
+返回字幕名称和字幕编号组成的Map。
+
+public boolean canPause()
+是否可暂停。（暂时没有实现功能）
+
+public boolean canSeekBackward()
+（暂时没有实现功能）
+
+public boolean canSeekForward()
+（暂时没有实现功能）
+
+受保护方法 
+
+protected boolean isInPlaybackState()
+是否处于正在播放的状态。

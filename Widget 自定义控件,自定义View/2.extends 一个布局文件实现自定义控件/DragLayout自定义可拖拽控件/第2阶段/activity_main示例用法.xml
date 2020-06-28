@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DragLayout里面2个孩子-->
+<com.heima.android50.widght.DragLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.heima.android50.MainActivity">
+
+    <FrameLayout
+        android:background="#f00"
+        android:id="@+id/fl_sec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <FrameLayout
+        android:background="#0f0"
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</com.heima.android50.widght.DragLayout>

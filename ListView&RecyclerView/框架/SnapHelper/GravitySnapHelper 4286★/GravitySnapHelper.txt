@@ -1,0 +1,3 @@
+https://github.com/rubensousa/GravitySnapHelper
+A SnapHelper that snaps a RecyclerView to an edge.
+一个SnapHelper，它将recycling视图快照到边缘。

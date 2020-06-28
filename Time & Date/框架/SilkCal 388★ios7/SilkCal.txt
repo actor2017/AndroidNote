@@ -1,0 +1,4 @@
+https://github.com/NLMartian/SilkCal
+
+Android calendar view inspired by Sunrise calendar and iOS7 stock calendar
+Android日历视图的灵感来自日出日历和iOS7股票日历

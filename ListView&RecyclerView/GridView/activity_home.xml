@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.heima.mobilesafe_work.activity.HomeActivity">
+
+    <RelativeLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_bkg">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heima"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_icon"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_Home_Title"
+                android:text="黑马程序员安全卫士"
+                android:textSize="22sp"/>
+
+            <!--android:ellipsize="marquee"第一句的意思:跑马灯-->
+            <!--android:focusable="true"第二句的意思:有焦点的-->
+            <!--android:focusableInTouchMode="true"第三句的意思:可以触摸-->
+            <!--android:singleLine="true"第四句的意思:android:singleLine="true"-->
+            <!--android:maxLines="1",写了不滚动-->
+            <!--android:lines="1",写了也不滚动-->
+            <com.heima.mobilesafe_work.view.FocusedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_Home_Splash1"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/red"
+                android:text="黑马程序员安全卫士, 时刻保卫您的手机安全,www.itheima.com"
+                android:textSize="18sp"/>
+
+            <com.heima.mobilesafe_work.view.FocusedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/red"
+                android:text="黑马程序员安全卫士, 时刻保卫您的手机安全,www.itheima.com"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!--右上角的设置-->
+        <ImageView
+            android:id="@+id/home_to_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting"
+            android:background="@drawable/setting_selector"
+            android:scaleType="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:clickable="true"/>
+    </RelativeLayout>
+
+    <!--然后下面写GridView-->
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gridView"
+        android:horizontalSpacing="5dp"<!--grid元素之间的水平间隔 -->
+        android:verticalSpacing="5dp"<!-- grid元素之间的竖直间隔 -->
+        android:numColumns="2"><!--表示有多少列，如果设置为auto_fit，将根据columnWidth和Spacing来自动计算 -->
+    </GridView>
+</LinearLayout>

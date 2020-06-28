@@ -1,0 +1,9 @@
+
+	
+	<!--PopupWindow动画-->
+    <style name="PopupAnim">
+        <!--进入动画-->
+        <item name="android:windowEnterAnimation">@anim/pop_enter</item>
+        <!--退出动画-->
+        <item name="android:windowExitAnimation">@anim/pop_exit</item>
+    </style>

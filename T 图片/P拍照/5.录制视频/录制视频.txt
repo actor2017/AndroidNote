@@ -1,0 +1,21 @@
+http://blog.csdn.net/woshizisezise/article/details/51878566
+
+
+Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//设置视频录制的最长时间
+intent.putExtra (MediaStore.EXTRA_DURATION_LIMIT,30);
+//设置视频录制的画质
+intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+startActivityForResult (intent, VIDEO_WITH_CAMERA);
+
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+  try{
+      if (resultCode == Activity.RESULT_OK && requestCode == VIDEO_WITH_CAMERA){
+         Uri uri = data.getData();
+         Log.e(TAG, "onActivityResult: " + uri.toString());
+      }
+  }catch (Exception e){
+     e.printStackTrace();
+  }
+}

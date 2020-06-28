@@ -1,0 +1,3 @@
+AbsoluteLayout的LayoutParams的属性:
+layout_x	子类左上角x的绝对位置
+layout_y

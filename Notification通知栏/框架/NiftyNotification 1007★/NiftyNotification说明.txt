@@ -1,0 +1,59 @@
+https://github.com/sd6352051/NiftyNotification
+
+Usage
+
+  NiftyNotificationView.build(this,msg, effect,R.id.mLyout)
+      .setIcon(R.drawable.lion)    //You must call this method if you use ThumbSlider effect
+      show();
+<!-- ViewGroup-->
+<RelativeLayout
+      android:id="@+id/mLyout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+</RelativeLayout>
+Configuration
+
+Configuration cfg=new Configuration.Builder()
+      .setAnimDuration(700)
+      .setDispalyDuration(1500)
+      .setBackgroundColor("#FFBDC3C7")
+      .setTextColor("#FF444444")
+      .setIconBackgroundColor("#FFFFFFFF")
+      .setTextPadding(5)                      //dp
+      .setViewHeight(48)                      //dp
+      .setTextLines(2)                        //You had better use setViewHeight and setTextLines together
+      .setTextGravity(Gravity.CENTER)         //only text def  Gravity.CENTER,contain icon Gravity.CENTER_VERTICAL
+      .build();
+
+NiftyNotificationView.build(this,msg, effect,R.id.mLyout,cfg)
+      .setIcon(R.drawable.lion)               //remove this line ,only text
+      .setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+      //add your code
+      }
+      })
+      .show();                               //  show(boolean) allow duplicates   or showSticky() sticky notification,you can call removeSticky() method close it
+Install
+
+You can install using Gradle from JitPack. Add this to your build.gradle file:
+
+	repositories {
+	    maven { url "https://jitpack.io" }
+	}
+	
+	dependencies {
+	    compile 'com.github.sd6352051:NiftyNotification:1.2'
+	}
+Or copy this into your libs directory.
+
+NineOldAndroid-2.4.0
+
+NiftyNotification-1.2
+
+Effects
+
+Flip, Jelly, Scale, SlideIn, SlideOnTop, Standard, ThumbSlider
+

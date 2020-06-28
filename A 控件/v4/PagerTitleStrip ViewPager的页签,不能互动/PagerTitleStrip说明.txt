@@ -1,0 +1,9 @@
+PagerTitleStrip将其作为ViewPager的子控件直接嵌入其中；这是第一步；当然android:layout_gravity=""的值要设置为top或bottom。将标题栏显示在顶部或底部
+
+如果需要不具交互性的指示器，查看PagerTitleStrip
+
+2、重写适配器的getPageTitle（）函数
+
+
+
+

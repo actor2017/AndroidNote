@@ -1,0 +1,11 @@
+https://github.com/Trinea/android-common
+
+compile 'cn.trinea.android.common:trinea-android-common:4.2.15'
+
+
+Android common lib, include ImageCache, HttpCache, DropDownListView, DownloadManager, Utils and so on http://p.codekk.com/
+Android通用库，包括ImageCache、HttpCache、DropDownListView、DownloadManager、Utils等http://p.codekk.com/
+
+主要包括：缓存(图片缓存、预取缓存、网络缓存)、公共View(下拉及底部加载更多ListView、底部加载更多ScrollView、滑动一页Gallery)及Android常用工具类(网络、下载、Android资源操作、shell、文件、Json、随机数、Collection等等)。
+示例源码：TrineaAndroidDemo。
+

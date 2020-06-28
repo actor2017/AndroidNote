@@ -1,0 +1,63 @@
+https://github.com/JustKiddingBaby/VercodeEditText
+中文版:https://github.com/JustKiddingBaby/VercodeEditText/blob/master/README-CN.md
+An Android vercode EditText.（一个安卓验证码输入控件.仿[探探验证码输入控件]）
+
+特性
+
+ 继承EditText，可以当作EditText使用
+ 防止输入溢出
+ 自定义验证码位数
+ 提供输入内容的监听器
+ 高度自适配
+ 属性自定义配置
+
+
+JCenter
+第一步，添加至工程的build.gradle文件中
+repositories {
+    jcenter()
+}
+
+第二步，添加至module的build.gradle文件中
+compile 'com.justkiddingbaby:vercodeedittext:最新版本'//例:1.0.3
+
+
+属性说明
+
+	属性		    介绍		   取值
+figures			验证码位数		integer
+verCodeMargin		每个验证码的间隔	dimension
+bottomLineSelectedColor	底线选择状态下的颜色	reference
+bottomLineNormalColor	底线未选中状态下的颜色	reference
+bottomLineHeight	底线高度		dimension
+selectedBackgroundColor	选中的背景颜色		reference
+
+
+方法说明
+
+返回值		方法									    说明
+void	setFigures(int figures)								设置验证码位数
+void	setVerCodeMargin(int margin)							设置验证码之间的间隔
+void	setBottomSelectedColor(int bottomSelectedColor)					设置底线选中状态的颜色
+void	setBottomNormalColor(int bottomNormalColor)					设置底线未选中状态的颜色
+void	setSelectedBackgroundColor(int selectedBackground)				设置验证码选中的背景颜色
+void	setBottomLineHeight(int bottomLineHeight)					设置验证码底线的高度
+void	setOnVerificationCodeChangedListener(OnVerificationCodeChangedListener listener)设置验证码变化的监听器
+
+
+在布局中使用
+
+  <com.jkb.vcedittext.VerificationCodeEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="123"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp"
+        app:bottomLineHeight="2dp"
+        app:bottomLineNormalColor="@color/gravy_light"
+        app:bottomLineSelectedColor="@color/colorAccent"
+        app:figures="4"
+        app:selectedBackgroundColor="@color/colorPrimary_alpha33"
+        app:verCodeMargin="10dp" />
+

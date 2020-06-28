@@ -1,0 +1,9 @@
+https://github.com/fashare2015/ActivityTracker
+A FloatingView to show current topActivity in the activity stack.
+在活动堆栈中显示当前topActivity的浮动视图。
+
+接手陌生模块时，如何快速了解每个页面对应的类，以及它们之间的跳转逻辑。总不能在代码里一个一个地找startActivity()吧？
+
+有时候，又想查看别人的 app 的页面组织（像淘宝、微信啊），总不能一个一个反编译吧？
+
+总想着有没有工具查看当前的Activity，于是自己弄了一个，这下就方便了。 

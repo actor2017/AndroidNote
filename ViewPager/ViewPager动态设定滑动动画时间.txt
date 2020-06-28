@@ -1,0 +1,21 @@
+http://www.jianshu.com/p/d7c4a97178c7
+
+上周使用 ViewPager+MediaPlayer开发了一个图片视频轮播的小程序，在客户端反馈：图片切换过程中动画的滑动速度可以自定义设置，切换速度可快可慢。
+基于以上需求，我在stackoverflow上面找到了一个不错的解决方案，在此和大家分享下。原文
+原理是自定义ViewPager里面的Scroller，因为在ViewPager通过默认的Scroller来控制滑动速度的，通过继承ViewPager.Scroller.java，并且覆写startScroll方法实现。
+
+
+        　　startX 水平方向滚动的偏移值，以像素为单位。正值表明滚动将向左滚动
+
+　　startY 垂直方向滚动的偏移值，以像素为单位。正值表明滚动将向上滚动
+
+　　dx 水平方向滑动的距离，正值会使滚动向左滚动
+
+　　dy 垂直方向滑动的距离，正值会使滚动向上滚动
+
+　　　　　　　　duration    滚动持续时间，以毫秒计。
+
+   @Override
+    public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+        super.startScroll(startX, startY, dx, dy, (int) (duration * mScrollFactor));
+    }

@@ -1,0 +1,7 @@
+https://github.com/seven456/MultiChannelPackageTool
+
+原理：每次修改 APK注释字段,https://www.cnblogs.com/zhchoutai/p/8643725.html
+
+优点：速度快，不需要源代码和签名文件，使用简单
+
+缺点：没有使用Android的productFlavors，无法利用flavors条件编译的功能

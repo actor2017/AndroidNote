@@ -1,0 +1,3 @@
+https://github.com/ozodrukh/CircularReveal
+
+Lollipop ViewAnimationUtils.createCircularReveal for everyone 4.0+

@@ -1,0 +1,16 @@
+一个简单触摸监听，在点击和抬起的时候分别设置translationZ的值，效果如下图所示：
+
+int action = motionEvent.getActionMasked();  
+                    /* Raise view on ACTION_DOWN and lower it on ACTION_UP. */  
+                    switch (action) {  
+                        case MotionEvent.ACTION_DOWN:  
+                            Log.d(TAG, "ACTION_DOWN on view.");  
+                            view.setTranslationZ(120);  
+                            break;  
+                        case MotionEvent.ACTION_UP:  
+                            Log.d(TAG, "ACTION_UP on view.");  
+                            view.setTranslationZ(0);  
+                            break;  
+                        default:  
+                            return false;  
+                    }  

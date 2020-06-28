@@ -1,0 +1,5 @@
+https://github.com/burhanrashid52/PhotoEditor
+
+A Photo Editor library with simple, easy support for image editing using paints,text,filters,emoji and Sticker like stories.
+一个图片编辑器库，简单，易于支持图像编辑使用油漆，文本，过滤器，表情符号和贴纸一样的故事。
+

@@ -1,0 +1,156 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>
+touch事件流程图
+</title>
+<script type="text/javascript" language="javascript">
+function UpdateTooltip(){};
+function OnShapeClick(){};
+</script>
+
+<script src="gif_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+	if(parent.isUpLevel)
+	{
+		location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+	}
+</script>
+
+
+
+<script type="text/jscript" language="jscript">
+
+var pageID = 4;
+
+var isUpLevel = parent.isUpLevel;
+var OnShapeClick = null;
+if (!parent.isMac)
+{
+	OnShapeClick = parent.OnShapeClick;
+}
+
+var OnShapeKey = parent.OnShapeKey;
+var UpdateTooltip = parent.UpdateTooltip;
+var clickMenu = parent.clickMenu;
+var toggleMenuDiv = parent.toggleMenuDiv;
+var toggleMenuLink = parent.toggleMenuLink;
+var GoToPage = parent.GoToPage;
+
+
+if (parent.isUpLevel)
+{
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			var fileEntry = parent.g_FileList[parent.g_CurPageIndex];
+			var fileToLoad = fileToLoad = fileEntry.PriImage;
+			if (fileEntry.SecImage.length > 0)
+			{
+				fileToLoad = fileEntry.SecImage;
+			}
+
+			location.replace(fileToLoad);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+
+	var viewMgr = new parent.CViewMgr();
+	parent.viewMgr = viewMgr;
+
+	viewMgr.SupportsDetails = true;
+	viewMgr.SupportsSearch = true;
+
+	viewMgr.put_Location = ViewMgrSetRasterLocation;
+	viewMgr.visBBoxLeft = 1.254843;
+	viewMgr.visBBoxRight = 15.039370;
+	viewMgr.visBBoxBottom = 0.782402;
+	viewMgr.visBBoxTop = 10.856299;
+	viewMgr.highlightDiv = null;
+}
+
+function load ()
+{
+	if(isUpLevel)
+	{
+		arrowdiv.innerHTML = '<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>';
+
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.CurPageUpdate (pageIndex);
+	}
+}
+
+function unload()
+{
+	if(isUpLevel)
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+}
+
+window.onload = load;
+window.onunload = unload;
+document.onclick = clickMenu;
+
+</script>
+</head>
+
+<body class="pageView" bgcolor="#FFFFFF">
+
+<div id=arrowdiv style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+<DIV id=RasterDiv>
+
+
+<center>
+  <IMG id="ConvertedImage" SRC="gif_2.gif" ALT="页-2" name=RasterImage BORDER="0" USEMAP="#visImageMap">
+</center>
+
+<MAP NAME="visImageMap">
+  <AREA shape="POLYGON" tabindex="1" ALT="Author:leo  Date:2014-2-25" origTitle="Author:leo  Date:2014-2-25" TITLE="Author:leo  Date:2014-2-25"  target="_top" COORDS=" 553,26 801,26 801,0 553,0 553,26" onmouseover="UpdateTooltip(this,4,41)" onfocus="UpdateTooltip(this,4,41)" onclick="return OnShapeClick(4,41);" onkeyup="OnShapeKey(4,41);">
+  <AREA shape="POLYGON" tabindex="1" ALT="Touch 事件传递机制流程图" origTitle="Touch 事件传递机制流程图" TITLE="Touch 事件传递机制流程图"  target="_top" COORDS=" 287,1 233,1 233,3 212,3 212,24 453,24 453,3 433,3 433,1 287,1" onmouseover="UpdateTooltip(this,4,40)" onfocus="UpdateTooltip(this,4,40)" onclick="return OnShapeClick(4,40);" onkeyup="OnShapeKey(4,40);">
+  <AREA shape="POLYGON" tabindex="1" ALT="Touch 事件发生" origTitle="Touch 事件发生" TITLE="Touch 事件发生"  target="_top" COORDS=" 110,74 197,74 197,53 110,53 110,74" onmouseover="UpdateTooltip(this,4,39)" onfocus="UpdateTooltip(this,4,39)" onclick="return OnShapeClick(4,39);" onkeyup="OnShapeKey(4,39);">
+  <AREA shape="POLYGON" tabindex="1" ALT="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递" TITLE="Flase  不处理事件，向上传递"  target="_top" COORDS=" 419,501 586,501 586,481 419,481 419,501" onmouseover="UpdateTooltip(this,4,37)" onfocus="UpdateTooltip(this,4,37)" onclick="return OnShapeClick(4,37);" onkeyup="OnShapeKey(4,37);">
+  <AREA shape="POLYGON" tabindex="1" ALT="True  消耗此事件" origTitle="True  消耗此事件" TITLE="True  消耗此事件"  target="_top" COORDS=" 473,540 575,540 575,519 473,519 473,540" onmouseover="UpdateTooltip(this,4,35)" onfocus="UpdateTooltip(this,4,35)" onclick="return OnShapeClick(4,35);" onkeyup="OnShapeKey(4,35);">
+  <AREA shape="POLYGON" tabindex="1" ALT="onTouchEvent" origTitle="onTouchEvent" TITLE="onTouchEvent"  target="_top" COORDS=" 444,532 414,521 384,532 373,532 373,536 362,540 373,545 373,547 380,547 414,560 448,547 455,547 455,545 466,540 455,536 455,532 444,532" onmouseover="UpdateTooltip(this,4,33)" onfocus="UpdateTooltip(this,4,33)" onclick="return OnShapeClick(4,33);" onkeyup="OnShapeKey(4,33);">
+  <AREA shape="POLYGON" tabindex="1" ALT="处理事件" origTitle="处理事件" TITLE="处理事件"  target="_top" COORDS=" 613,558 665,558 665,558 666,558 666,558 667,558 667,558 668,558 668,557 669,557 669,557 670,557 670,557 670,557 671,557 671,556 672,556 672,556 673,556 673,556 674,555 674,555 674,555 675,555 675,554 676,554 676,554 676,553 677,553 677,553 677,552 678,552 678,552 678,551 679,551 679,550 679,550 679,550 680,549 680,549 680,548 680,548 681,547 681,547 681,546 681,546 681,546 681,545 682,545 682,544 682,544 682,543 682,543 682,542 682,542 682,541 682,541 682,540 682,540 682,539 682,539 682,538 682,538 682,537 682,537 682,536 681,536 681,535 681,535 681,534 681,534 681,534 680,533 680,533 680,532 680,532 679,531 679,531 679,531 679,530 678,530 678,529 678,529 677,529 677,528 677,528 676,528 676,527 676,527 675,527 675,526 674,526 674,526 674,526 673,525 673,525 672,525 672,525 671,524 671,524 670,524 670,524 670,524 669,524 669,524 668,523 668,523 667,523 667,523 666,523 666,523 665,523 665,523 613,523 612,523 612,523 611,523 611,523 610,523 610,523 609,523 609,524 608,524 608,524 607,524 607,524 606,524 606,524 605,525 605,525 605,525 604,525 604,526 603,526 603,526 602,526 602,527 602,527 601,527 601,528 601,528 600,528 600,529 600,529 599,529 599,530 599,530 598,531 598,531 598,531 598,532 597,532 597,533 597,533 597,534 597,534 596,534 596,535 596,535 596,536 596,536 596,537 596,537 595,538 595,538 595,539 595,539 595,540 595,540 595,541 595,541 595,542 595,542 595,543 595,543 596,544 596,544 596,545 596,545 596,546 596,546 596,546 597,547 597,547 597,548 597,548 597,549 598,549 598,550 598,550 598,550 599,551 599,551 599,552 600,552 600,552 600,553 601,553 601,553 601,554 602,554 602,554 602,555 603,555 603,555 604,555 604,556 605,556 605,556 605,556 606,556 606,557 607,557 607,557 608,557 608,557 609,557 609,557 610,558 610,558 611,558 611,558 612,558 612,558 613,558" onmouseover="UpdateTooltip(this,4,32)" onfocus="UpdateTooltip(this,4,32)" onclick="return OnShapeClick(4,32);" onkeyup="OnShapeKey(4,32);">
+  <AREA shape="POLYGON" tabindex="1" ALT="False  不中断，事件向子view传递" origTitle="False  不中断，事件向子view传递" TITLE="False  不中断，事件向子view传递"  target="_top" COORDS=" 250,416 316,416 316,395 314,395 314,390 288,390 243,390 231,390 198,390 162,390 162,395 160,395 160,416 227,416 227,419 250,419 250,416" onmouseover="UpdateTooltip(this,4,30)" onfocus="UpdateTooltip(this,4,30)" onclick="return OnShapeClick(4,30);" onkeyup="OnShapeKey(4,30);">
+  <AREA shape="POLYGON" tabindex="1" ALT="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递" TITLE="Flase  不处理事件，向上传递"  target="_top" COORDS=" 421,316 581,316 581,295 421,295 421,316" onmouseover="UpdateTooltip(this,4,29)" onfocus="UpdateTooltip(this,4,29)" onclick="return OnShapeClick(4,29);" onkeyup="OnShapeKey(4,29);">
+  <AREA shape="POLYGON" tabindex="1" ALT="True  消耗此事件" origTitle="True  消耗此事件" TITLE="True  消耗此事件"  target="_top" COORDS=" 467,367 574,367 574,346 467,346 467,367" onmouseover="UpdateTooltip(this,4,27)" onfocus="UpdateTooltip(this,4,27)" onclick="return OnShapeClick(4,27);" onkeyup="OnShapeKey(4,27);">
+  <AREA shape="POLYGON" tabindex="1" ALT="onTouchEvent" origTitle="onTouchEvent" TITLE="onTouchEvent"  target="_top" COORDS=" 444,359 414,347 384,359 373,359 373,363 362,367 373,372 373,374 380,374 414,387 448,374 455,374 455,372 466,367 455,363 455,359 444,359" onmouseover="UpdateTooltip(this,4,25)" onfocus="UpdateTooltip(this,4,25)" onclick="return OnShapeClick(4,25);" onkeyup="OnShapeKey(4,25);">
+  <AREA shape="POLYGON" tabindex="1" ALT="处理事件" origTitle="处理事件" TITLE="处理事件"  target="_top" COORDS=" 613,385 665,385 665,385 666,385 666,385 667,385 667,385 668,385 668,384 669,384 669,384 670,384 670,384 670,384 671,384 671,383 672,383 672,383 673,383 673,383 674,382 674,382 674,382 675,382 675,381 676,381 676,381 676,380 677,380 677,380 677,379 678,379 678,379 678,378 679,378 679,377 679,377 679,377 680,376 680,376 680,375 680,375 681,374 681,374 681,373 681,373 681,373 681,372 682,372 682,371 682,371 682,370 682,370 682,369 682,369 682,368 682,368 682,367 682,367 682,366 682,366 682,365 682,365 682,364 682,364 682,363 681,363 681,362 681,362 681,361 681,361 681,361 680,360 680,360 680,359 680,359 679,358 679,358 679,358 679,357 678,357 678,356 678,356 677,356 677,355 677,355 676,355 676,354 676,354 675,354 675,353 674,353 674,353 674,353 673,352 673,352 672,352 672,352 671,351 671,351 670,351 670,351 670,351 669,351 669,351 668,350 668,350 667,350 667,350 666,350 666,350 665,350 665,350 613,350 612,350 612,350 611,350 611,350 610,350 610,350 609,350 609,351 608,351 608,351 607,351 607,351 606,351 606,351 605,352 605,352 605,352 604,352 604,353 603,353 603,353 602,353 602,354 602,354 601,354 601,355 601,355 600,355 600,356 600,356 599,356 599,357 599,357 598,358 598,358 598,358 598,359 597,359 597,360 597,360 597,361 597,361 596,361 596,362 596,362 596,363 596,363 596,364 596,364 595,365 595,365 595,366 595,366 595,367 595,367 595,368 595,368 595,369 595,369 595,370 595,370 596,371 596,371 596,372 596,372 596,373 596,373 596,373 597,374 597,374 597,375 597,375 597,376 598,376 598,377 598,377 598,377 599,378 599,378 599,379 600,379 600,379 600,380 601,380 601,380 601,381 602,381 602,381 602,382 603,382 603,382 604,382 604,383 605,383 605,383 605,383 606,383 606,384 607,384 607,384 608,384 608,384 609,384 609,384 610,385 610,385 611,385 611,385 612,385 612,385 613,385" onmouseover="UpdateTooltip(this,4,24)" onfocus="UpdateTooltip(this,4,24)" onclick="return OnShapeClick(4,24);" onkeyup="OnShapeKey(4,24);">
+  <AREA shape="POLYGON" tabindex="1" ALT="True  中断此事件" origTitle="True  中断此事件" TITLE="True  中断此事件"  target="_top" COORDS=" 251,365 349,365 349,344 251,344 251,365" onmouseover="UpdateTooltip(this,4,23)" onfocus="UpdateTooltip(this,4,23)" onclick="return OnShapeClick(4,23);" onkeyup="OnShapeKey(4,23);">
+  <AREA shape="POLYGON" tabindex="1" ALT="子  view" origTitle="子  view" TITLE="子  view"  target="_top" COORDS=" 110,498 197,498 197,469 110,469 110,498" onmouseover="UpdateTooltip(this,4,22)" onfocus="UpdateTooltip(this,4,22)" onclick="return OnShapeClick(4,22);" onkeyup="OnShapeKey(4,22);">
+  <AREA shape="POLYGON" tabindex="1" ALT="onInterceptTouchEvent" origTitle="onInterceptTouchEvent" TITLE="onInterceptTouchEvent"  target="_top" COORDS=" 204,359 154,347 104,359 87,359 87,363 67,367 87,372 87,374 96,374 154,387 211,374 220,374 220,372 241,367 220,363 220,359 204,359" onmouseover="UpdateTooltip(this,4,20)" onfocus="UpdateTooltip(this,4,20)" onclick="return OnShapeClick(4,20);" onkeyup="OnShapeKey(4,20);">
+  <AREA shape="POLYGON" tabindex="1" ALT="False  不中断，事件向子view传递" origTitle="False  不中断，事件向子view传递" TITLE="False  不中断，事件向子view传递"  target="_top" COORDS=" 251,250 284,250 284,230 278,230 278,225 244,225 233,225 199,225 164,225 164,230 158,230 158,250 191,250 191,254 202,254 229,254 251,254 251,250" onmouseover="UpdateTooltip(this,4,18)" onfocus="UpdateTooltip(this,4,18)" onclick="return OnShapeClick(4,18);" onkeyup="OnShapeKey(4,18);">
+  <AREA shape="POLYGON" tabindex="1" ALT="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递" TITLE="Flase  不处理事件，向上传递"  target="_top" COORDS=" 495,153 538,153 538,133 536,133 536,128 524,128 513,128 456,128 421,128 421,133 419,133 419,153 462,153 462,157 495,157 495,153" onmouseover="UpdateTooltip(this,4,17)" onfocus="UpdateTooltip(this,4,17)" onclick="return OnShapeClick(4,17);" onkeyup="OnShapeKey(4,17);">
+  <AREA shape="POLYGON" tabindex="1" ALT="True  消耗此事件" origTitle="True  消耗此事件" TITLE="True  消耗此事件"  target="_top" COORDS=" 475,202 573,202 573,181 475,181 475,202" onmouseover="UpdateTooltip(this,4,15)" onfocus="UpdateTooltip(this,4,15)" onclick="return OnShapeClick(4,15);" onkeyup="OnShapeKey(4,15);">
+  <AREA shape="POLYGON" tabindex="1" ALT="onTouchEvent" origTitle="onTouchEvent" TITLE="onTouchEvent"  target="_top" COORDS=" 449,194 414,183 380,194 374,194 374,196 355,203 374,209 374,210 375,210 414,223 454,210 455,210 455,209 474,203 455,196 455,194 449,194" onmouseover="UpdateTooltip(this,4,13)" onfocus="UpdateTooltip(this,4,13)" onclick="return OnShapeClick(4,13);" onkeyup="OnShapeKey(4,13);">
+  <AREA shape="POLYGON" tabindex="1" ALT="处理事件" origTitle="处理事件" TITLE="处理事件"  target="_top" COORDS=" 613,220 665,220 665,220 666,220 666,220 667,220 667,220 668,220 668,220 669,220 669,220 670,219 670,219 670,219 671,219 671,219 672,219 672,218 673,218 673,218 674,218 674,217 674,217 675,217 675,217 676,216 676,216 676,216 677,215 677,215 677,215 678,214 678,214 678,213 679,213 679,213 679,212 679,212 680,211 680,211 680,211 680,210 681,210 681,209 681,209 681,208 681,208 681,207 682,207 682,206 682,206 682,205 682,205 682,205 682,204 682,204 682,203 682,203 682,202 682,202 682,201 682,201 682,200 682,200 682,199 682,199 681,198 681,198 681,197 681,197 681,196 681,196 680,195 680,195 680,195 680,194 679,194 679,193 679,193 679,192 678,192 678,192 678,191 677,191 677,191 677,190 676,190 676,190 676,189 675,189 675,189 674,188 674,188 674,188 673,188 673,187 672,187 672,187 671,187 671,187 670,186 670,186 670,186 669,186 669,186 668,186 668,186 667,186 667,186 666,186 666,185 665,185 665,185 613,185 612,185 612,185 611,186 611,186 610,186 610,186 609,186 609,186 608,186 608,186 607,186 607,186 606,187 606,187 605,187 605,187 605,187 604,188 604,188 603,188 603,188 602,189 602,189 602,189 601,190 601,190 601,190 600,191 600,191 600,191 599,192 599,192 599,192 598,193 598,193 598,194 598,194 597,195 597,195 597,195 597,196 597,196 596,197 596,197 596,198 596,198 596,199 596,199 596,200 595,200 595,201 595,201 595,202 595,202 595,203 595,203 595,204 595,204 595,205 595,205 595,205 596,206 596,206 596,207 596,207 596,208 596,208 596,209 597,209 597,210 597,210 597,211 597,211 598,211 598,212 598,212 598,213 599,213 599,213 599,214 600,214 600,215 600,215 601,215 601,216 601,216 602,216 602,217 602,217 603,217 603,217 604,218 604,218 605,218 605,218 605,219 606,219 606,219 607,219 607,219 608,219 608,220 609,220 609,220 610,220 610,220 611,220 611,220 612,220 612,220 613,220" onmouseover="UpdateTooltip(this,4,12)" onfocus="UpdateTooltip(this,4,12)" onclick="return OnShapeClick(4,12);" onkeyup="OnShapeKey(4,12);">
+  <AREA shape="POLYGON" tabindex="1" ALT="父  view" origTitle="父  view" TITLE="父  view"  target="_top" COORDS=" 110,321 197,321 197,292 110,292 110,321" onmouseover="UpdateTooltip(this,4,9)" onfocus="UpdateTooltip(this,4,9)" onclick="return OnShapeClick(4,9);" onkeyup="OnShapeKey(4,9);">
+  <AREA shape="POLYGON" tabindex="1" ALT="onInterceptTouchEvent" origTitle="onInterceptTouchEvent" TITLE="onInterceptTouchEvent"  target="_top" COORDS=" 207,194 154,183 100,194 87,194 87,197 60,203 87,209 87,210 92,210 154,223 215,210 220,210 220,209 247,203 220,197 220,194 207,194" onmouseover="UpdateTooltip(this,4,6)" onfocus="UpdateTooltip(this,4,6)" onclick="return OnShapeClick(4,6);" onkeyup="OnShapeKey(4,6);">
+  <AREA shape="POLYGON" tabindex="1" ALT="顶级父  view" origTitle="顶级父  view" TITLE="顶级父  view"  target="_top" COORDS=" 110,156 197,156 197,127 110,127 110,156" onmouseover="UpdateTooltip(this,4,4)" onfocus="UpdateTooltip(this,4,4)" onclick="return OnShapeClick(4,4);" onkeyup="OnShapeKey(4,4);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 3,255 707,255 707,100 3,100 3,255" onmouseover="UpdateTooltip(this,4,3)" onfocus="UpdateTooltip(this,4,3)" onclick="return OnShapeClick(4,3);" onkeyup="OnShapeKey(4,3);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 0,427 707,427 707,271 0,271 0,427" onmouseover="UpdateTooltip(this,4,2)" onfocus="UpdateTooltip(this,4,2)" onclick="return OnShapeClick(4,2);" onkeyup="OnShapeKey(4,2);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS=" 0,585 707,585 707,449 0,449 0,585" onmouseover="UpdateTooltip(this,4,1)" onfocus="UpdateTooltip(this,4,1)" onclick="return OnShapeClick(4,1);" onkeyup="OnShapeKey(4,1);">
+  <AREA shape="POLYGON" tabindex="1" ALT="True  中断此事件" origTitle="True  中断此事件" TITLE="True  中断此事件"  target="_top" COORDS=" 250,201 346,201 346,180 250,180 250,201" onmouseover="UpdateTooltip(this,4,11)" onfocus="UpdateTooltip(this,4,11)" onclick="return OnShapeClick(4,11);" onkeyup="OnShapeKey(4,11);">
+</MAP>
+
+
+
+</DIV>
+
+</body>
+</html>
+

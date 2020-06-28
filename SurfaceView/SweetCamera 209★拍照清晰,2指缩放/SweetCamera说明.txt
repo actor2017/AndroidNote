@@ -1,0 +1,2 @@
+https://github.com/WellerV/SweetCamera
+SweetCamera主要是为了解决兼容android各种机型的相机自动对焦的问题的项目，这里采用了基于传感器的方案。

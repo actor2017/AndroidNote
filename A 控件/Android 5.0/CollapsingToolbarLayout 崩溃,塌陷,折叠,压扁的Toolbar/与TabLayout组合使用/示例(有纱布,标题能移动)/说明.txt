@@ -1,0 +1,12 @@
+CollapsingToolbarLayout里面 包含ImageView 和ToolBar，ImageView的app:layout_collapseMode="parallax"，表示视差效果，ToolBar的 app:layout_collapseMode="pin"，当这个TooBar到达 CollapsingToolbarLayout的底部的时候，会代替整个CollapsingToolbarLayout显示
+
+接着说明TabLayout的变化
+
+从前面的描述我们已经知道当 没有指定app:layout_scrollFlags的时候，最终TabLayout会静止，不会随着滑动的 时候消失不见
+
+
+
+作者：xujun9411
+链接：http://www.jianshu.com/p/f09723b7e887
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

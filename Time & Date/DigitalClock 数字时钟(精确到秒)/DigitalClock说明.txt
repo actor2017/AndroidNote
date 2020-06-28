@@ -1,0 +1,8 @@
+
+    <DigitalClock
+        android:id="@+id/digitalClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+	android:drawableRight="@mipmap/ic_launcher"//显示在时间右边
+        android:textSize="30sp" />

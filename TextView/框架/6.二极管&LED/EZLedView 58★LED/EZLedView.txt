@@ -1,0 +1,5 @@
+https://github.com/goyourfly/EZLedView
+https://www.jianshu.com/p/adda53b14e51
+
+LEDView Display image and text like LEDBanner
+显示图像和文本，如LEDBanner

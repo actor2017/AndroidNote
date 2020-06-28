@@ -1,0 +1,174 @@
+https://github.com/crazyandcoder/citypicker
+http://crazyandcoder.tech/
+
+(重庆市为何不显示区?)
+
+citypicker城市选择器，支持仿iOS滚轮实现，一级或者三级列表展示方式。
+
+CityPicker 城市选择器
+
+说明
+
+在实际的项目中一般情况下都需要使用到省市区三级联动地址选择的功能，有的公司是提供接口获取，有的公司则不是，需要自己实现。一开始，我也深受其扰，每次都是要复制一遍，就想能不能打个包出来，供大伙使用。所以自己就封装了一个，不需要自己添加数据源，直接引用即可。这就是CityPicker城市选择器的由来！
+
+使用方法
+
+gradle引用
+compile 'liji.library.dev:citypickerview:3.0.1'
+
+代码混淆
+##---------Begin: proguard configuration for citypicker----------
+-keep class com.lljjcoder.**{
+    *;
+}
+
+-dontwarn demo.**
+-keep class demo.**{*;}
+-dontwarn net.sourceforge.pinyin4j.**
+-keep class net.sourceforge.pinyin4j.**{*;}
+-keep class net.sourceforge.pinyin4j.format.**{*;}
+-keep class net.sourceforge.pinyin4j.format.exception.**{*;}
+##---------End: proguard configuration for citypicker------------
+
+
+列表样式使用代码
+
+城市一级列表样式使用方法及demo
+省市区三级列表使用方法及demo
+仿iOS滚轮样式使用代码
+
+首先需要预加载数据，我们可以在自定义的Application中写入以下代码（选择其中一个即可，三个不必都写）：
+
+
+public class MyApp extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        /**
+         * 预先加载仿iOS滚轮实现的全部数据
+         */
+        CityPickerView.getInstance().init(this);
+        
+        /**
+         * 预先加载一级列表所有城市的数据
+         */
+        CityListLoader.getInstance().loadCityData(this);
+        
+        /**
+         * 预先加载三级列表显示省市区的数据
+         */
+        CityListLoader.getInstance().loadProData(this);
+    }
+}
+
+以上三行预加载本地城市数据的代码也可以放入到使用的activity的页面中。然后在使用的当前activity中添加使用代码，如果使用默认的属性的话可以直接使用下面的代码：
+
+
+//添加默认的配置，不需要自己定义
+CityPickerView.getInstance().setConfig(new CityConfig.Builder(this).build();
+
+//监听选择点击事件及返回结果
+CityPickerView.getInstance().setOnCityItemClickListener(new OnCityItemClickListener() {
+            @Override
+            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+                 
+                //省份
+                if (province != null) {
+                    province.id;//这就是省市区代码
+                }
+                
+                //城市
+                if (city != null) {
+                    
+                }
+                
+                //地区
+                if (district != null) {
+                    
+                }
+                
+                mResultTv.setText("" + sb.toString());
+                
+            }
+            
+            @Override
+            public void onCancel() {
+                ToastUtils.showLongToast(CitypickerWheelActivity.this, "已取消");
+            }
+        });
+
+		//显示
+        CityPickerView.getInstance().showCityPicker(this);
+通过以上代码我们就可以显示默认的省市区三级联动的选择器，当然也支持使用自定义的属性。
+
+CityConfig cityConfig = new CityConfig.Builder(CitypickerWheelActivity.this).title("选择城市")//标题
+                .titleTextSize(18)//标题文字大小
+                .titleTextColor("#585858")//标题文字颜色
+                .titleBackgroundColor("#E9E9E9")//标题栏背景色
+                .confirTextColor("#585858")//确认按钮文字颜色
+                .confirmText("ok")//确认按钮文字
+                .confirmTextSize(16)//确认按钮文字大小
+                .cancelTextColor("#585858")//取消按钮文字颜色
+                .cancelText("cancel")//取消按钮文字
+                .cancelTextSize(16)//取消按钮文字大小
+                .setCityWheelType(CityConfig.WheelType.PRO_CITY_DIS)//显示类，只显示省份一级，显示省市两级还是显示省市区三级
+                .showBackground(true)//是否显示半透明背景
+                .visibleItemsCount(7)//显示item的数量
+                .province("浙江省")//默认显示的省份
+                .city("杭州市")//默认显示省份下面的城市
+                .district("滨江区")//默认显示省市下面的区县数据
+                .provinceCyclic(true)//省份滚轮是否可以循环滚动
+                .cityCyclic(true)//城市滚轮是否可以循环滚动
+                .districtCyclic(true)//区县滚轮是否循环滚动
+                .setCustomItemLayout(R.layout.item_city)//自定义item的布局
+                .setCustomItemTextViewId(R.id.item_city_name_tv)//自定义item布局里面的textViewid
+                .build();
+
+//设置自定义的属性配置
+CityPickerView.getInstance().setConfig(cityConfig);
+                
+以上若是使用了自定义的item布局的话，可以自定义item里面的背景、文字大小颜色等属性，下面是展示默认的布局。使用自定义的布局时需要注意的是，里面需要包含一个TextView控件，同时控件id需要一致，否则不显示结果。
+
+//自定义的item_city.xml布局
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_city_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="hello"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+</LinearLayout>
+返回结果的数据接口
+
+ProvinceBean province, CityBean city, DistrictBean district都是一样的数据结构。
+
+id  //城市code
+name //城市名称
+pinYin //城市拼音
+gisGcj02Lat //高德坐标系-纬度
+gisGcj02Lng //高德坐标系-经度
+gisBd09Lat //百度坐标系-纬度
+gisBd09Lng //百度坐标系-经度
+
+
+更新说明
+
+V3.0.1版本更新内容（2017.12.23）
+
+修复重庆后面出现空白的bug
+更新中山市和东莞市的数据源
+V3.0.0版本更新内容（2017.12.17）
+
+增加预先解析本地城市数据功能，提高加载效率
+去掉设置item里面文字等属性，增加自定义item的布局及文字属性
+代码重构、优化，修复已知issue。
+历史更新说明

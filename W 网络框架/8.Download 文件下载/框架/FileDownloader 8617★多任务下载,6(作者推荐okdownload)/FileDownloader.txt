@@ -1,0 +1,235 @@
+https://github.com/lingochamp/FileDownloader
+中文文档:https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md
+
+特点
+
+简单易用
+单任务多线程/多连接/分块下载(并支持通过ConnectionCountAdapter定制)
+高并发
+灵活
+可选择性支持: 独立/非独立进程
+自动断点续传
+
+
+需要注意
+
+当下载的文件大小可能大于1.99GB(2^31-1=2_147_483_647 = 1.99GB)的时候, 请使用FileDownloadLargeFileListener而不是FileDownloadListener(同理使用getLargeFileSofarBytes()与getLargeFileTotalBytes())
+暂停: paused, 恢复: 直接调用start，默认就是断点续传
+引擎默认会打开避免掉帧的处理(使得在有些情况下回调(FileDownloadListener)不至于太频繁导致ui线程被ddos), 如果你希望关闭这个功能（关闭以后，所有回调会与0.1.9之前的版本一样，所有的回调会立马抛一个消息ui线程(Handler)）
+如果没有特殊需要，直接通过配置filedownloader.properties将process.non-separate置为true，可以有效减少每次回调IPC带来的I/O。
+
+
+1.添加依赖
+compile 'com.liulishuo.filedownloader:library:1.5.7'
+
+
+<uses-permission android:name="android.permission.INTERNET" />
+    <!-- When you invoke BaseDownloadTask#setWifiRequired(true), you need declare ACCESS_NETWORK_STATE permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+
+2.全局初始化
+如果你需要注册你的定制组件，你需要在Application#onCreate中调用FileDownloader.setupOnApplicationOnCreate(application):InitCustomMaker, 
+否则你只需要在使用FileDownloader之前的任意时候调用FileDownloader.setup(Context)即可。//仅仅是缓存Application的Context，不耗时
+
+
+3.启动单任务下载
+FileDownloader.getImpl().create(url)
+        .setPath(path)
+        .setListener(new FileDownloadListener() {
+            @Override
+            protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {//等待，已经进入下载队列 
+            }
+
+            @Override
+            protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) {
+            }
+
+            @Override
+            protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) {//下载进度回调
+            }
+
+            @Override
+            protected void blockComplete(BaseDownloadTask task) {
+            }
+
+            @Override
+            protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) {
+            }
+
+            @Override
+            protected void completed(BaseDownloadTask task) {//完成整个下载过程
+            }
+
+            @Override
+            protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) {//暂停下载 
+            }
+
+            @Override
+            protected void error(BaseDownloadTask task, Throwable e) {//下载出现错误
+            }
+
+            @Override
+            protected void warn(BaseDownloadTask task) {//在下载队列中(正在等待/正在下载)已经存在相同下载连接与相同存储路径的任务
+            }
+        }).start();
+
+
+
+4.启动多任务下载
+final FileDownloadListener queueTarget = new FileDownloadListener() {
+    @Override
+    protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {
+    }
+
+    @Override
+    protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) {
+    }
+
+    @Override
+    protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) {
+    }
+
+    @Override
+    protected void blockComplete(BaseDownloadTask task) {
+    }
+
+    @Override
+    protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) {
+    }
+
+    @Override
+    protected void completed(BaseDownloadTask task) {
+    }
+
+    @Override
+    protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) {
+    }
+
+    @Override
+    protected void error(BaseDownloadTask task, Throwable e) {
+    }
+
+    @Override
+    protected void warn(BaseDownloadTask task) {
+    }
+};
+
+
+// 第一种方式 :
+
+//for (String url : URLS) {
+//    FileDownloader.getImpl().create(url)
+//            .setCallbackProgressTimes(0) // 由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, 我们只关系每个任务是否完成, 所以这里这样设置可以很有效的减少ipc.
+//            .setListener(queueTarget)
+//            .asInQueueTask()
+//            .enqueue();
+//}
+
+//if(serial){
+    // 串行执行该队列
+//    FileDownloader.getImpl().start(queueTarget, true);
+// }
+
+// if(parallel){
+    // 并行执行该队列
+//    FileDownloader.getImpl().start(queueTarget, false);
+//}
+
+
+
+// 第二种方式:
+
+final FileDownloadQueueSet queueSet = new FileDownloadQueueSet(downloadListener);
+
+final List<BaseDownloadTask> tasks = new ArrayList<>();
+for (int i = 0; i < count; i++) {
+     tasks.add(FileDownloader.getImpl().create(Constant.URLS[i]).setTag(i + 1));
+}
+
+queueSet.disableCallbackProgressTimes(); // 由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, 我们只关系每个任务是否完成, 所以这里这样设置可以很有效的减少ipc.
+
+// 所有任务在下载失败的时候都自动重试一次
+queueSet.setAutoRetryTimes(1);
+
+if (serial) {
+  // 串行执行该任务队列
+     queueSet.downloadSequentially(tasks);
+     // 如果你的任务不是一个List，可以考虑使用下面的方式，可读性更强
+//      queueSet.downloadSequentially(
+//              FileDownloader.getImpl().create(url).setPath(...),
+//              FileDownloader.getImpl().create(url).addHeader(...,...),
+//              FileDownloader.getImpl().create(url).setPath(...)
+//      );
+}
+
+if (parallel) {
+  // 并行执行该任务队列
+   queueSet.downloadTogether(tasks);
+   // 如果你的任务不是一个List，可以考虑使用下面的方式，可读性更强
+//    queueSet.downloadTogether(
+//            FileDownloader.getImpl().create(url).setPath(...),
+//            FileDownloader.getImpl().create(url).setPath(...),
+//            FileDownloader.getImpl().create(url).setSyncCallback(true)
+//    );
+}
+
+// 串行任务动态管理也可以使用FileDownloadSerialQueue。
+
+
+
+5.全局接口说明(FileDownloader)
+所有的暂停，就是停止，会释放所有资源并且停到所有相关线程，下次启动的时候默认会断点续传
+
+方法名								备注
+setup(Context)			如果不需要注册定制组件，就使用该方法在使用下载引擎前调用，该方法只会缓存Context
+setupOnApplicationOnCreate(application):InitCustomMaker	如果需要注册定制组件，就在Application#onCreate中
+						调用该方法来注册定制组件以及初始化下载引擎，该方法不会启动下载服务
+create(url:String)				创建一个下载任务
+start(listener:FileDownloadListener, isSerial:boolean)	启动是相同监听器的任务，串行/并行启动
+pause(listener:FileDownloadListener)			暂停启动相同监听器的任务
+pauseAll(void)						暂停所有任务
+pause(downloadId)					暂停downloadId的任务
+clear(downloadId, targetFilePath)	强制清理ID为downloadId的任务在filedownloader中的数据
+getSoFar(downloadId)			获得下载Id为downloadId的soFarBytes
+getTotal(downloadId)			获得下载Id为downloadId的totalBytes
+bindService(void)			主动启动下载进程(可事先调用该方法(可以不调用)，保证第一次下载的时候没有启动进程的速度消耗)
+unBindService(void)			主动关停下载进程
+unBindServiceIfIdle(void)		如果目前下载进程没有任务正在执行，则关停下载进程
+isServiceConnected(void)		是否已经启动并且连接上下载进程(可参考任务管理demo中的使用)
+getStatusIgnoreCompleted(downloadId)	获取不包含已完成状态的下载状态(如果任务已经下载完成，将收到INVALID)
+getStatus(id:int, path:String)		获取下载状态
+getStatus(url:String, path:String)	获取下载状态
+setGlobalPost2UIInterval(intervalMillisecond:int)	为了避免掉帧，这里是设置了最多每interval毫秒抛一个消息到ui线程(使用Handler)，
+					防止由于回调的过于频繁导致ui线程被ddos导致掉帧。 默认值: 10ms. 如果设置小于0，将会失效，
+					也就是说每个回调都直接抛一个消息到ui线程
+setGlobalHandleSubPackageSize(packageSize:int)	为了避免掉帧, 如果上面的方法设置的间隔是一个小于0的数，这个packageSize将不会生效。
+					packageSize这个值是为了避免在ui线程中一次处理过多回调，结合上面的间隔，
+					就是每个interval毫秒间隔抛一个消息到ui线程，而每个消息在ui线程中处理packageSize个回调。
+					默认值: 5
+enableAvoidDropFrame(void)		开启 避免掉帧处理。就是将抛消息到ui线程的间隔设为默认值10ms, 
+					很明显会影响的是回调不会立马通知到监听器(FileDownloadListener)中，
+					默认值是: 最多10ms处理5个回调到监听器中
+disableAvoidDropFrame(void)		关闭 避免掉帧处理。就是将抛消息到ui线程的间隔设置-1(无效值)，
+					这个就是让每个回调都会抛一个消息ui线程中，可能引起掉帧
+isEnabledAvoidDropFrame(void)		是否开启了 避免掉帧处理。默认是开启的
+startForeground(id:int, notification:Notification)	设置FileDownloadService为前台模式，
+							保证用户从最近应用列表移除应用以后下载服务不会被杀
+stopForeground(removeNotification:boolean)		取消FileDownloadService的前台模式
+setTaskCompleted(url:String, path:String, totalBytes:long)	用于告诉FileDownloader引擎，
+							以指定Url与Path的任务已经通过其他方式(非FileDownloader)下载完成
+setTaskCompleted(taskAtomList:List)	用于告诉FileDownloader引擎，指定的一系列的任务都已经通过其他方式(非FileDownloader)下载完成
+setMaxNetworkThreadCount(int)		设置最大并行下载的数目(网络下载线程数), [1,12]
+clearAllTaskData()			清空filedownloader数据库中的所有数据
+
+
+
+6.定制化组件接口说明(InitCustomMaker)
+看官网
+

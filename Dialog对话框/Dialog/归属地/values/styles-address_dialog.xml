@@ -1,0 +1,24 @@
+<resources>
+    <!--归属地弹窗样式-->
+    <style name="AddressDialogStyle" parent="Base.Theme.AppCompat.Light.Dialog">
+        <!--去掉标题栏-->
+        <item name="windowNoTitle">true</item>
+        <!--去掉弹窗背景(原生背景带有外边距), 改为纯白色,如果不改,Dialog有一个默认padding-->
+        <item name="android:windowBackground">@color/white</item>
+        <!--设置弹窗动画样式-->
+        <item name="android:windowAnimationStyle">@style/AddressDialogAnim</item>
+    </style>
+
+    <!--归属地弹窗的动画样式-->
+    <!--模仿系统键盘动画 系统styles.xml中查找,默认是-->
+    <!--<style name="Animation.InputMethod">-->
+    <!--<item name="windowEnterAnimation">@anim/input_method_enter</item>-->
+    <!--<item name="windowExitAnimation">@anim/input_method_exit</item>-->
+    <!--</style>-->
+    <style name="AddressDialogAnim">
+        <!--进入动画-->
+        <item name="android:windowEnterAnimation">@anim/address_dialog_enter</item>
+        <!--退出动画-->
+        <item name="android:windowExitAnimation">@anim/address_dialog_exit</item>
+    </style>
+</resources>

@@ -1,0 +1,17 @@
+#Android系统通讯录应用
+-----
+### 9 通讯录数据库的表结构
+* raw_contacts
+	* contact_id	：联系人id
+
+* data
+	* data1			：联系人的信息 姓名、邮箱、手机号码
+	* raw_contact_id：联系人的id和raw_contacts里的contact_id一一对应
+	* mimetype_id	：联系人数据类型(代码中用 mimetype)
+
+* mimetypes
+	* mimetype		：联系人的数据类型
+
+
+* URI：   content://com.android.contacts/raw_contacts/
+			content://com.android.contacts/data/

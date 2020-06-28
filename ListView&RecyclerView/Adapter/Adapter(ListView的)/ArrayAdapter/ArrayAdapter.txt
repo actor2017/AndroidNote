@@ -1,0 +1,11 @@
+ArrayAdapter<T> extends BaseAdapter
+
+ListView listView= (ListView) dialogView.findViewById(R.id.listview);
+String[] array=new String[]{"item-1","item-2","item-3","item-4","item-5","item-6","item-7","item-8","item-9"};
+ArrayAdapter adapter=new ArrayAdapter(context, android.R.layout.simple_list_item_1, array);//list_item还有一些布局
+//ArrayAdapter adapter=new ArrayAdapter(context, R.layout.item, R.id.tv, array);//list_item还有一些布局
+listView.setAdapter(adapter);
+
+adapter.add("商铺牌");//ArrayAdapter方法, 每次添加都会notifyDataSetChanged(), 所以最好不要这样这样添加
+
+two_line_list_item: 2行

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+    <!--注意:要设置高度!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要设置成match_parent-->
+
+    <!--本页面是用来设置开关的,第3个页面-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <!--android:background="@drawable/first_normal注意,不要设置背景★★★★★★★★★★-->
+
+        <TextView
+            android:id="@+id/tv_settingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/iv_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/off"/>
+    </RelativeLayout>
+
+</RelativeLayout>

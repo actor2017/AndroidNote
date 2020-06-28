@@ -1,0 +1,5 @@
+https://github.com/gaoleiandroid1201/BiuBike
+http://blog.csdn.net/gaolei1201/article/details/60876811
+
+Android百度地图实例详解之仿摩拜单车APP(包括附近车辆、规划路径、行驶距离、行驶轨迹记录，轨迹回放，导航等)
+

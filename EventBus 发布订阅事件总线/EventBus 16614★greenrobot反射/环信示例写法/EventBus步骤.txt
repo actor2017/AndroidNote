@@ -1,0 +1,48 @@
+1.网址:https://github.com/greenrobot/EventBus
+
+2个activity必须在打开的情况才能传递数据★★★★★★★★★★★★★★★★★★
+
+greenrobot公司出品,还有一个产品:greenDao
+
+2.添加依赖:compile 'org.greenrobot:eventbus:3.0.0'
+
+
+3.在ContactsFragment的onCreate中注册EventBus:
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);//①.所谓的注册，其实就是将当前这个对象放到一个集合中保存起来
+    }
+
+    //声明和注释你的订阅方法,选择指定线程模式(onCreate之后写)
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventBusUpdateContacts(ContactsUpdateBean bean) {	//②.方法名字随便起,随意
+        if(bean.needToUpdate) {
+            getDataFromServer();			//本类方法
+            srl_swiperefreshlayout.setRefreshing(true);	//本例里的的刷新
+        }
+    }
+
+  在ContactsFragment的onDestroy中注销EventBus:
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);//③.所谓的注销，其实就是将当前这个对象从集合中移除
+    }
+
+
+
+4.在环信中EventBus用法,先写一个ContactsFragment的bean类,里面写要ContactsFragment做的事情
+  示例写法:
+  public class ContactsUpdateBean {	//刷新联系人列表
+
+      public boolean needToUpdate;
+
+      public ContactsUpdateBean(boolean needToUpdate) {
+          this.needToUpdate = needToUpdate;
+      }
+  }
+
+
+5.示例通知更新:
+EventBus.getDefault().post(new ContactsUpdateBean(true));

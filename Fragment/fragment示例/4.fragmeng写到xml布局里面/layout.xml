@@ -1,0 +1,19 @@
+<!-- 这种玩法也很简单，在布局中写一个framgent，
+name填我们fragment完整包名就可以了，这种用法我们可以简单粗暴的把fragment理解为一个view：
+-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/fragment_sign_in"//即使不在Activity中findViewById,也必须设置一个id,否则报错
+        android:name="com.yanzhenjie.fragment.SignInFragment"
+		android:name="example.zxing.MainActivity$ScanFragment"//Activity中静态的Fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		tools:layout="@layout/pay_external" />//可以预览,可以在Activity中直接findViewById()fragment中的控件, 也可以在Fragment的onCreateView方法中查找View
+</LinearLayout>

@@ -1,0 +1,145 @@
+https://github.com/astuetz/PagerSlidingTabStrip
+
+1.添加依赖: compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+
+2.布局xml文件.
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/psts_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+3.在Activity的onCreate (or onCreateView for a fragment), 绑定 ViewPager.
+
+//初始化ViewPager并且设置adapter
+ViewPager pager = (ViewPager) findViewById(R.id.pager);
+pager.setAdapter(new TestAdapter(getSupportFragmentManager()));
+
+重写adapter 的 getPageTitle方法,获取标题
+        @Override  
+        public CharSequence getPageTitle(int position) {  
+            return title[position];  
+        }  
+或者重写adapter 的 getPageIconResId(int position),则tabs是图标显示
+private int[] ICONS = { R.drawable.ic_launcher_gplus, R.drawable.ic_launcher_gmail,
+R.drawable.ic_launcher_gmaps, R.drawable.ic_launcher_chrome };
+        @Override  
+        public int getPageIconResId(int position) {  
+            return ICONS[position];  
+        }  
+
+//绑定ViewPager
+PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+
+//tabs.setTextColorStateListResource(R.drawable.tab_text_color_selector);//标签字体颜色状态
+
+tabs.setViewPager(pager);
+
+
+4.如果你想在你的ViewPager用到onPageChangeListener监听方法，你应该如下设置，而不是直接用ViewPager设置
+tabs.setOnPageChangeListener(mPageChangeListener);
+
+
+5.自定义的属性值
+pstsIndicatorColor 滑动条的颜色
+pstsUnderlineColor 滑动条所在的那个全宽线的颜色
+pstsDividerColor 每个标签的分割线的颜色
+pstsIndicatorHeight 滑动条的高度
+pstsUnderlineHeight 滑动条所在的那个全宽线的高度
+pstsDividerPadding 分割线底部和顶部的填充宽度
+pstsTabPaddingLeftRight 每个标签左右填充宽度
+pstsScrollOffset选中tab的滚动偏移量,个人基本没有用到过
+pstsTabBackground 每个标签的背景，应该是一个StateListDrawable  
+pstsShouldExpand 如果设置为true，每个标签是相同的控件，均匀平分整个屏幕，默认是false
+pstsTextAllCaps 如果为true，所有标签都是大写字母，默认为true
+
+所有的属性都有他们自己的getter和setter方法来随时改变他们
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PagerSlidingTabStrip">
+        <!--底部滑动指示器的颜色-->
+        <attr name="pstsIndicatorColor" format="color" />
+        <!--底部用于给指示器滑动的区域的颜色-->
+        <attr name="pstsUnderlineColor" format="color" />
+        <!--分割线的颜色-->
+        <attr name="pstsDividerColor" format="color" />
+        <!--指示器的高度-->
+        <attr name="pstsIndicatorHeight" format="dimension" />
+        <!--底部区域的高度-->
+        <attr name="pstsUnderlineHeight" format="dimension" />
+        <!--分割线与上下的间距-->
+        <attr name="pstsDividerPadding" format="dimension" />
+        <!--每个Tab的左右边距-->
+        <attr name="pstsTabPaddingLeftRight" format="dimension" />
+        <!--选中tab的滚动偏移量,个人基本没有用到过-->
+        <attr name="pstsScrollOffset" format="dimension" />
+        <!--每个Tab的背景图，StateListDrawable-->
+        <attr name="pstsTabBackground" format="reference" />
+        <!--是否根据tab均为位置，true的时候均分，默认为false,一般都是使用默认值-->
+        <attr name="pstsShouldExpand" format="boolean" />
+        <!--标题文本是否大写，默认为true-->
+        <attr name="pstsTextAllCaps" format="boolean" />
+    </declare-styleable>
+</resources>
+
+
+6.文本指示器选中后文本大小和颜色变化 
+来源:http://blog.csdn.net/poorkick/article/details/53868426
+vpContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                updateTextStyle(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        updateTextStyle(vpContent.getCurrentItem());
+    }
+
+    private void updateTextStyle(int position) {
+        LinearLayout tabsContainer = (LinearLayout) pstsIndicator.getChildAt(0);
+        for(int i=0; i< tabsContainer.getChildCount(); i++) {
+            TextView textView = (TextView) tabsContainer.getChildAt(i);
+            if(position == i) {
+                textView.setTextSize(18);
+                textView.setTextColor(getResources().getColor(R.color.colorToolbar));
+            } else {
+                textView.setTextSize(12);
+                textView.setTextColor(getResources().getColor(R.color.colorBlack));
+            }
+        }
+    }
+
+
+7.图标指示器选中图标颜色变化
+关键点在于实现自己的OnPagerListener和继承PagerSlidingTabStrip.IconTabProvider
+
+    private void updateIconStyle(int position) {
+        LinearLayout tabsContainer = (LinearLayout) pstsIndicator.getChildAt(0);
+        for (int i = 0; i < tabsContainer.getChildCount(); i++) {
+            ImageButton imageButton = (ImageButton) tabsContainer.getChildAt(i);
+            imageButton.setImageTintMode(PorterDuff.Mode.SRC_IN);
+            if (i == position) {
+                imageButton.setImageTintList(getResources().getColorStateList(R.color.ib_color_list));
+            } else {
+                imageButton.setImageTintList(getResources().getColorStateList(R.color.ib_color_list_normal));
+            }
+        }
+    }
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--android:style/Theme.Dialog-->
+    <!--Theme.AppCompat.Dialog-->
+    <!--Theme.MaterialComponents.Light.BottomSheetDialog-->
+    <style name="BottomSheet" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--不要显示actionbar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowNoTitle">true</item>设置这个没作用-->
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <!--window透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <!--@style/bottom_sheet_animation-->
+    </style>
+
+    <!--其实没用用下面的动画-->
+    <style name="bottom_sheet_animation">
+        <item name="android:activityOpenEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/no_change_default</item>
+        <item name="android:activityCloseEnterAnimation">@anim/no_change_default</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_bottom_out</item>
+    </style>
+</resources>

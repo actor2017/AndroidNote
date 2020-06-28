@@ -1,0 +1,75 @@
+https://github.com/Carbs0126/GregorianLunarCalendar
+GregorianLunarCalendar提供了农历+公历的日期选择模式，同时支持公历+农历的无缝切换
+
+compile 'cn.carbswang.android:NumberPickerView:1.1.1'//不知道是不是这个依赖,逗比作者没写出来,奇葩
+
+
+<cn.carbs.android.gregorianlunarcalendar.library.view.GregorianLunarCalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:glcv_GregorianThemeColor="@color/colorGregorian"//公历主题颜色
+        app:glcv_LunarThemeColor="@color/colorLunar"//农历主题颜色
+        app:glcv_NormalTextColor="#FF777777"//文字颜色
+        app:glcv_ScrollAnimation="true"/>//是否开启滚动动画效果，默认true
+
+
+
+2.java代码中的使用：
+
+  //找到View
+  GregorianLunarCalendarView mGLCView = (GregorianLunarCalendarView) this.findViewById(R.id.calendar_view)
+  
+  //3种方式进行初始化：
+  //1.默认日期今天，默认模式公历
+  mGLCView.init();
+  //2.指定日期，默认模式公历
+  mGLCView.init(Calendar c);
+  //3.指定日期，指定公历/农历模式。这里的公历模式/农历模式是指显示时采用的显示方式，
+  //  和前面的参数Calendar无关，无论使用Calendar还是ChineseCalendar，GregorianLunarCalendarView需要的只是某一指定的年月日。
+  mGLCView.init(Calendar c, boolean isGregorian);
+  
+  //获取数据：
+  //采用GregorianLunarCalendarView.CalendarData内部类来存储当前日期，使用getCalendarData()函数获取选中date数据
+  GregorianLunarCalendarView.CalendarData calendarData = mGLCView.getCalendarData();
+  //进一步获取日期
+  Calendar calendar = calendarData.getCalendar();//返回的是ChineseCalendar对象
+  //若当前时间是： 公历2016年06月20日 农历二零一六年五月十六，那么获取的返回值如下：
+  int yearG = calendar.get(Calendar.YEAR);//获取公历年 2016
+  int monthG = calendar.get(Calendar.MONTH) + 1;//获取公历月 6
+  int dayG = calendar.get(Calendar.DAY_OF_MONTH);//获取公历日 20
+  int yearL = calendar.get(ChineseCalendar.CHINESE_YEAR);//获取农历年 2016
+  int monthL = calendar.get(ChineseCalendar.CHINESE_MONTH));//获取农历月 5//注意，如果是闰五月则返回-5
+  int dayL = calendar.get(ChineseCalendar.CHINESE_DATE);//获取农历日 20
+  
+  //添加日期改变的回调
+  mGLCView.setOnDateChangedListener(new GregorianLunarCalendarView.OnDateChangedListener(){
+        @Override
+        public void onDateChanged(GregorianLunarCalendarView.CalendarData calendarData) {
+            Calendar calendar = calendarData.getCalendar();
+            String showToast = "Gregorian : " + calendar.get(Calendar.YEAR) + "-"
+                         + (calendar.get(Calendar.MONTH) + 1) + "-"
+                         + calendar.get(Calendar.DAY_OF_MONTH) + "\n"
+                         + "Lunar     : " + calendar.get(ChineseCalendar.CHINESE_YEAR) + "-"
+                         + (calendar.get(ChineseCalendar.CHINESE_MONTH)) + "-"
+                         + calendar.get(ChineseCalendar.CHINESE_DATE);
+            mChangedDate.setText(showToast);
+           }
+        }
+    );
+
+
+
+3.自定义属性说明：
+
+    //自定义属性包括如下几种
+    <declare-styleable name="GregorianLunarCalendarView">
+        <attr name="glcv_ScrollAnimation" format="reference|boolean" />//切换公农历模式时，是否开启动画效果
+        <attr name="glcv_GregorianThemeColor" format="reference|color" />//公历主题颜色
+        <attr name="glcv_LunarThemeColor" format="reference|color" />//农历主题颜色
+        <attr name="glcv_NormalTextColor" format="reference|color" />//普通状态下的文字颜色
+    </declare-styleable>
+
+
+
+##TODO 由于这种选择样式是滚动选择，因此，不支持设置日期选择区间。如果想要控制日期选择的区间，请使用DatePicker或其他第三方控件，当然我现在正打算写一个DatePicker控件。

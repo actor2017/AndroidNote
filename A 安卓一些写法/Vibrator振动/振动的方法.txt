@@ -1,0 +1,19 @@
+
+    //手机振动需添加权限
+    //<uses-permission android:name="android.permission.VIBRATE"/>
+
+    //振动的方法
+    private void vibrate() {
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        vibrator.vibrate(500);//振动0.5秒
+        /**
+         * 按照一定节奏来震动; 如果从1开始数数, 数组的奇数位表示停留时间, 偶数为是震动时间
+         * 参2:表示循环方式, -1表示不循环, 0代表下次循环从第0个位置开始,如果写9:数组索引越界异常
+         */
+        //vibrator.vibrate(new long[]{1000,2000,1000,4000,1000,5000},0);
+        //vibrator.cancel();//停止振动
+
+
+	VibrateUtils.vibrate(200);//utils框架里有方法
+    }
+}

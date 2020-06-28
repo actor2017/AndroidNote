@@ -1,0 +1,4 @@
+https://github.com/AndroidAlliance/EdgeEffectOverride
+
+Override the Holo EdgeEffect colors
+¸²¸ÇHolo±ßÔµÐ§¹ûÑÕÉ«

@@ -1,0 +1,36 @@
+ 随心定义分组头部。
+
+https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/%E6%B7%BB%E5%8A%A0%E5%88%86%E7%BB%84
+
+实体类必须继承SectionEntity
+public class MySection extends SectionEntity<Video> {
+    private boolean isMore;
+    public MySection(boolean isHeader, String header) {
+        super(isHeader, header);
+    }
+
+    public MySection(Video t) {
+        super(t);
+    }
+}
+
+adapter构造需要传入两个布局id，第一个是item的，第二个是head的，在convert方法里面加载item数据，在convertHead方法里面加载head数据
+public class SectionAdapter extends BaseSectionQuickAdapter<MySection> {
+     public SectionAdapter(int layoutResId, int sectionHeadResId, List data) {
+        super(layoutResId, sectionHeadResId, data);
+    }
+    @Override
+    protected void convert(BaseViewHolder helper, MySection item) {
+        helper.setImageUrl(R.id.iv, (String) item.t);
+    }
+    @Override
+    protected void convertHead(BaseViewHolder helper,final MySection item) {
+        helper.setText(R.id.header, item.header);
+       
+        helper.setOnClickListener(R.id.more, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,item.header+"more..",Toast.LENGTH_LONG).show();
+            }
+        });
+    }

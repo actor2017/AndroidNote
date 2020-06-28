@@ -1,0 +1,4 @@
+https://github.com/tangqi92/WaveLoadingView
+
+An Android library providing to realize wave loading effect.
+一个Android库提供了实现wave加载效果。

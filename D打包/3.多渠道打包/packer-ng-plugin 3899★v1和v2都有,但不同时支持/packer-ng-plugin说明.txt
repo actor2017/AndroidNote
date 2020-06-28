@@ -1,0 +1,10 @@
+https://github.com/mcxiaoke/packer-ng-plugin
+
+下一代Android打包工具，100个渠道包只需要10秒钟 https://github.com/mcxiaoke
+极速渠道打包工具
+
+v2.0.1 - 2018.03.23 - 支持Android Plugin 3.x和Gradle 4.x
+v2.0.0 - 2017.06.23 - 全新发布，支持V2签名模式，包含多项优化
+
+特别提示
+V2版只支持APK Signature Scheme v2，要求在 signingConfigs 里 v2SigningEnabled true 启用新版签名模式，如果你需要使用旧版本，看这里 v1.0.9。

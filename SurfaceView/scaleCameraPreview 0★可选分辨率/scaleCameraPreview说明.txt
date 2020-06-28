@@ -1,0 +1,3 @@
+https://github.com/maximPetlyuk/scaleCameraPreview
+You could change camera preview resolution in runtime
+您可以在运行时更改相机预览分辨率

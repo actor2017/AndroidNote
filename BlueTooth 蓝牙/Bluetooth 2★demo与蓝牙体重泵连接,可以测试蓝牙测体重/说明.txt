@@ -1,0 +1,3 @@
+https://github.com/wp521/Bluetooth
+
+与蓝牙体重泵连接,可以测试蓝牙测体重

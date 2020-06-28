@@ -1,0 +1,32 @@
+<TimePicker
+        android:timePickerMode = "spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        //android:headerBackground="@drawable/one_search_normal"//timePickerMode=clock时,修改顶部绿色部分背景颜色/图片
+        //android:numbersTextColor="@color/red"//timePickerMode=clock时,时间字体颜色
+        //android:numbersInnerTextColor="@color/red"//不知道什么属性,没试出来(解释:24小时mode的小时颜色)
+        //android:numbersBackgroundColor="@color/red"//timePickerMode=clock时,时间圆盘背景色
+        //android:numbersSelectorColor="@color/red"//timePickerMode=clock时,时针分针颜色
+        //android:headerAmPmTextAppearance="@style/..."timePickerMode=clock时,
+        //android:headerTimeTextAppearance="@style/..."timePickerMode=clock时,
+        //android:amPmTextColor="@color/red"
+        //android:amPmBackgroundColor="@color/red"
+        android:timePickerMode = "clock|spinner"/>//2种模式,默认clock
+
+
+代码:
+timePick1.setIs24HourView(true);
+int h=timePick1.getCurrentHour();  
+int m=timePick1.getCurrentMinute(); 
+
+//时间变化的监听(可不设置监听,直接用上面的方法获取)
+        tpTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            /** 
+             * view 当前选中TimePicker控件
+             */
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                println(hourOfDay + ":" + minute);
+            }
+        });
+

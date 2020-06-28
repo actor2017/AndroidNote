@@ -1,0 +1,16 @@
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+                       android:accessibilityEventTypes="typeWindowStateChanged"
+                       android:accessibilityFeedbackType="feedbackGeneric"
+                       android:accessibilityFlags="flagDefault"
+                       android:description="@string/accessibility_service_description"
+    />
+<!--<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"//窗口发生变化,默认值:typeAllMask:响应所有类型的事件了。当然还有单击、长按、滑动等
+    android:accessibilityFeedbackType="feedbackGeneric"	//通用的反馈方式,默认值:feedbackSpoken
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="true"	//能否获取到窗口的内容,不需要可删掉
+    android:description="@string/accessibility_service_description"//alt+回车:手机卫士程序锁,保护您应用的隐私
+    android:notificationTimeout="100"	//通知的时间超时,老师说不管,删掉
+    android:packageNames="com.example.android.apis"//监听哪个应用,不配(删除)的话,监听所有应用,删除
+    android:settingsActivity="com.example.android.accessibility.ServiceSettingsActivity"//设置页面,这儿不需要设置页面,老师说删掉
+/>-->

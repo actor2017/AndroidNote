@@ -1,0 +1,4 @@
+https://github.com/skyfishjy/android-ripple-background
+
+A beautiful ripple animation for your app
+一个美丽的涟漪动画为您的应用程序

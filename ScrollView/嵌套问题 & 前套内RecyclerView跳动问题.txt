@@ -1,0 +1,12 @@
+NestedScrollView嵌套Recyclerview时，我们点击Recyclerview的条目之后，发现Recyclerview会被顶上去，后来发现是因为Recyclerview抢占焦点导致的
+解决办法：
+在xml布局中的NestedScrollView节点上添加 android:focusableInTouchMode=“true”(三化融合项目中不加也可以)
+
+
+在Recyclerview直属父布局上加android:descendantFocusability="blocksDescendants"
+
+//descendantFocusability: 后代 焦点能力(ViewGroup属性)
+	afterDescendants: viewgroup只有当其子类控件不需要获取焦点时才获取焦点
+	beforeDescendants: viewgroup会优先其子类控件而获取到焦点
+	blocksDescendants: viewgroup会覆盖子类控件而直接获得焦点
+

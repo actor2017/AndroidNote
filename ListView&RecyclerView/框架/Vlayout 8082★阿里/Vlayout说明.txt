@@ -1,0 +1,9 @@
+https://github.com/alibaba/vlayout
+http://tangram.pingguohe.net/
+
+Project vlayout is a powerfull LayoutManager extension for RecyclerView, it provides a group of layouts for RecyclerView. Make it able to handle a complicate situation when grid, list and other layouts in the same recyclerview.
+
+VirtualLayout是一个针对RecyclerView的LayoutManager扩展, 主要提供一整套布局方案和布局间的组件复用的问题。
+
+
+强烈建议大家使用 Tangram-Android 来间接使用 vlayout

@@ -1,0 +1,2 @@
+https://github.com/CJT2325/CameraView
+仿微信拍照Android控件（轻触拍照，长按摄像）

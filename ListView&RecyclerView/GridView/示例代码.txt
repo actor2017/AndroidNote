@@ -1,0 +1,135 @@
+GridView extends AbsListView extends AdapterView<ListAdapter>  extends ViewGroup
+
+    <GridView
+        android:id="@+id/gv_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_999"//用于充当分割线
+        android:gravity="center"	//Item居中
+        android:horizontalSpacing="1dp"	//水平间隙
+        android:numColumns="3|auto_fit"	//3列, auto_fit:没有设置列宽↓，默认两列。有设置列宽，则根据GridView的宽度除列宽计算列数
+        android:columnWidth="32dp"	//设置列宽,Item的宽度
+
+                                        //只有在指定了columnWidth的时候才会有作用
+        android:stretchMode="spacingWidth//剩余的空间用来填空间隙（最边上没有间隙）
+                             spacingWidthUniform//剩余的空间用来填空间隙（所有的item居中显示,最边上有间隙）
+                             columnWith//剩余的间隙用item的宽度去填充，就是item的宽度自动缩放(有可能会变长/短)
+                             none"	//colunm不缩放
+        android:verticalSpacing="1dp"	//垂直间隙
+        tools:listitem="@layout/item_mainactivity_gridview">
+    </GridView>
+
+
+//在onCreate里调用本方法,初始化GridView
+    ArrayList<HomeItemInfo> listView_itemInfo = new ArrayList<>();
+    private void initGridView() {
+    //创建一个ListView集合,把所有的"主页条目"装进集合
+    //图片数组
+    int[] arr = {R.drawable.sjfd, R.drawable.rjgj, R.drawable.lltj, R.drawable.hcql, R.drawable
+            .txws, R.drawable.jcgl, R.drawable.sjsd, R.drawable.gjgj};
+
+    //标题title数组
+    String[] titles = {"手机防盗", "软件管家", "流量统计", "缓存清理", "通讯卫士", "进程管理",
+            "手机杀毒", "高级工具"};
+
+    //描述Des数组
+    String[] des = {"远程定位手机", "管理您的软件", "流量一目了然", "系统慢如火箭", "全面拦截骚扰",
+            "管理运行进程", "病毒无处藏身", "工具大全"};
+        /**
+         * 下面方法填充GridView
+         * 1.给GridView设置适配器
+         * 2.for循环,把所有GridView的元素装进ListView里面
+         * 3.给GridView设置适配器
+         */
+        //1.给GridView设置适配器
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+
+        //2.for循环,把所有GridView的元素装进ListVie
+        for (int i = 0; i < arr.length; i++) {
+            HomeItemInfo info = new HomeItemInfo();
+            info.picture = arr[i];
+            info.title = titles[i];
+            info.describe = des[i];
+            listView_itemInfo.add(info);
+        }
+
+        //3.给GridView设置适配器(注意:是BaseAdapter)
+        gridView.setAdapter(new HomeAdapter());
+
+        //4.给每一个元素设置监听
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        ShowItem0Dialog();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        });
+    }
+
+
+//===========================================================================================
+//适配器
+    private class HomeAdapter extends BaseAdapter {
+        //返回条目个数
+        @Override
+        public int getCount() {
+            //return 0;
+            return listView_itemInfo.size();
+        }
+
+     //返回条目对象Object,老师改成了:HomeItemInfo.注意:如果不手动调用方法,如果自己不用,可以直接返回null,实际没什么用
+        @Override
+        public HomeItemInfo getItem(int position) {//Object
+            //return null;
+            return listView_itemInfo.get(position);
+        }
+
+        //返回条目id
+        @Override
+        public long getItemId(int position) {
+            //return 0;
+            return position;
+        }
+
+        //返回条目布局
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            //return null;
+            //如果还没有创建条目
+            if (convertView == null) {
+                /**
+                 * 初始化布局★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+                 */              //写成了:activity_home,造成初始化控件的时候,一直报空指针
+                //inflate(Context context, @LayoutRes int resource, ViewGroup root)
+                convertView = View.inflate(HomeActivity.this, R.layout.item_home, null);
+            }
+
+            /**
+             * 初始化控件★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+             */
+            ImageView iv_itemIcon = (ImageView) convertView.findViewById(R.id.iv_itemIcon);
+            TextView tv_itemTitle = (TextView) convertView.findViewById(R.id.tv_itemTitle);
+            TextView tv_itemDescribe = (TextView) convertView.findViewById(R.id.tv_itemDescribe);
+
+            //根据数据更新控件
+            //HomeItemInfo info = listView_itemInfo.get(position);
+
+            //这种写法也可以(如果上面不改,这儿就会提醒强转)
+            //HomeItemInfo info = (HomeItemInfo) getItem(position);
+
+            //老师的第二种写法,不知道为何不报错(因为他把上面的方法返回值类型修改成了:HomeItemInfo)
+            HomeItemInfo info = getItem(position);
+            iv_itemIcon.setImageResource(info.picture);
+            tv_itemTitle.setText(info.title);
+            tv_itemDescribe.setText(info.describe);
+
+            //返回布局对象
+            return convertView;
+        }
+    }

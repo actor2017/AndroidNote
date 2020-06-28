@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    android:orientation="vertical"
+    tools:context="com.kuchuanyun.wisdomcitymanagement.activity.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_head"
+        android:elevation="5dp"
+        app:theme="@style/ToolBarTheme"
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="龙里智慧城管系统"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <GridView
+        android:id="@+id/gv_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:padding="10dp"
+        android:verticalSpacing="5dp"
+        tools:listitem="@layout/item_mainactivity_gridview">
+    </GridView>
+</LinearLayout>

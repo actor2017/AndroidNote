@@ -1,0 +1,2 @@
+使用这个Behavior，
+我们可以很容易的使用CoordinatorLayout实现滑动删除功能:

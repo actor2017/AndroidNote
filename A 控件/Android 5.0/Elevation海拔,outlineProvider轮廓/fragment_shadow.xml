@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:id="@+id/demo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eaeaea"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1.下面4个TextView的elevation 不同"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <!-- elevation=2dp -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!-- elevation=4dp -->
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ffffff"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:text="2dp"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:text="4dp"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!-- elevation=8dp -->
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ffffff"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:text="8dp"
+                    android:textColor="#88000000"/>
+
+                <!-- elevation=16dp -->
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ffffff"
+                    android:elevation="16dp"
+                    android:gravity="center"
+                    android:text="16dp"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#55000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2.下面2个子控件的height和父控件height\n关系影响elevation显示效果"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <!--父控件和子控件高度-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fafafa"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:background="#ffffff"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:text="10dp\n高度比父View小"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#ffffff"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:text="10dp\n高度和父View一样高"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#55000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="3.代码中动态setElevation(int value);"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <!--Z轴-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <!--红色背景-->
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="140dp"
+                    android:background="#e91e63"
+                    android:gravity="center"/>
+
+                <!--蓝色背景-->
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="40dp"
+                    android:background="#03a9f4"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="320dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et1"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:hint="请输入左边值"
+                        android:inputType="number"
+                        android:textColor="#88000000"
+                        android:textColorHint="#88000000"/>
+
+                    <Button
+                        android:id="@+id/bt"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="设置Z属性"/>
+
+                    <EditText
+                        android:id="@+id/et2"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:hint="请输入右边值"
+                        android:inputType="number"
+                        android:textColor="#88000000"
+                        android:textColorHint="#88000000"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#55000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="4.背景是shape, elevation=10,\noutlineProvider的值不同"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_shape"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="none"
+                    android:text="outlineProvider=none"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_shape"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="background"
+                    android:text="outlineProvider=background"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_shape"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:padding="5dp"
+                    android:text="padding=5,\noutlineProvider=bounds"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_shape"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:padding="5dp"
+                    android:text="padding=5,\noutlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#55000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="5.背景是图片, elevation=10,\n
+outlineProvider的值不同,但都可以设置轮廓\n
+阴影轮廓需要代码设置:圆形，矩形，圆角矩形，Path"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="none"
+                    android:text="outlineProvider=none"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="background"
+                    android:text="outlineProvider=background"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_circle_1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="none"
+                    android:text="outlineProvider=none,\n
+                    代码设置'圆形'轮廓"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/tv_circle_2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="background"
+                    android:text="outlineProvider=background,\n
+                    代码设置'圆形'轮廓"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:text="outlineProvider=bounds"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="outlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_circle_3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:text="outlineProvider=bounds,\n
+                    代码设置'矩形'轮廓"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/tv_circle_4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="outlineProvider=paddedBounds,\n
+                    代码设置'圆角矩形'轮廓"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_circle_5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:text="outlineProvider=bounds,\n代码设置'三角形'轮廓"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/tv_circle_6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="outlineProvider=paddedBounds,\n代码设置'三角形'轮廓"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+            
+            <ImageView
+                android:id="@+id/iv_circle_7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:outlineProvider="paddedBounds"
+                android:src="@drawable/circle"
+                android:text="outlineProvider=paddedBounds,\n代码设置'三角形'轮廓"
+                android:textColor="#88000000"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#55000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="6.背景是颜色, elevation=10,\n
+outlineProvider的值不同,但都可以设置轮廓\n
+下面示例设置Path的方式:\nview.setOutlineProvider((view, outline) -> {outline.setConvexPath(path)})"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_text"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/cut1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:text="原始矩形,outlineProvider=bounds"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/cut2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="矩形剪裁成三角形,outlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/cut3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="矩形剪裁成圆形,outlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_text"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/cut4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="bounds"
+                    android:text="矩形剪裁成菱形,outlineProvider=bounds"
+                    android:textColor="#88000000"/>
+
+
+                <TextView
+                    android:id="@+id/cut5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="扩大矩形的轮廓后剪裁,outlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+
+                <TextView
+                    android:id="@+id/cut6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#ff5722"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:outlineProvider="paddedBounds"
+                    android:text="减小矩形的轮廓后剪裁,outlineProvider=paddedBounds"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

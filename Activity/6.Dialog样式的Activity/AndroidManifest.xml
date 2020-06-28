@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.kuchuanyun.cpptest">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity"
+		android:theme="@style/Theme.ActivityDialogStyle"><!-- 设置自定义主题 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+		
+		<activity android:name=".MainActivity"
+		android:theme="@style/Theme.AppCompat.Dialog"><!-- 设置系统Theme也行,或者@android:style/Theme.Dialog(有可能报错) -->
+        </activity>
+    </application>
+
+</manifest>

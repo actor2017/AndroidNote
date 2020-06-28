@@ -1,0 +1,4 @@
+https://github.com/Manabu-GT/EtsyBlur
+
+EtsyBlur is an Android library that allows developers to easily add a glass-like blur effect implemented in the Etsy app.
+EtsyBlur是一个Android库，开发者可以很容易地在Etsy应用程序中添加类似玻璃的模糊效果。

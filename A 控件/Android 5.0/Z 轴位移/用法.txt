@@ -1,0 +1,24 @@
+API21 安卓5.0以上(没验证)
+
+首先，创建一个 TranslationZ的变换动画放在 /res/anim，自己取一个名（如 touch_raise.xml），加入以下内容：
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:state_enabled="true" android:state_pressed="true">
+    <objectAnimator
+    android:duration="@android:integer/config_shortAnimTime"
+    android:propertyName="translationZ"
+    android:valueTo="@dimen/touch_raise"
+    android:valueType="floatType" />
+  </item>
+  <item>
+    <objectAnimator
+    android:duration="@android:integer/config_shortAnimTime"
+    android:propertyName="translationZ"
+    android:valueTo="0dp"
+    android:valueType="floatType" />
+  </item>
+</selector>
+
+
+然后为你需要添加效果的 CardView（其他 View 同理）所在的 Layout XML 复制多一份到 /res/layout-v21，然后在新的那份 XML 的 CardView 中加入属性android:stateListAnimator=”@anim/touch_raise”。
+这样，你的卡片按住时就会有浮起（阴影加深）的效果了。

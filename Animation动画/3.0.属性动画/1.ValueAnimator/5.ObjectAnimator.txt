@@ -1,0 +1,49 @@
+
+        /**
+         * 1.ObjectAnimator导包:com.nineoldandroids.animation
+         * 2.ObjectAnimator.ofFloat(Object target, String propertyName, float... values)
+
+         * 参一:(Object)target:控件等
+
+         * 参二:propertyName,ObjectAnimator在产生中间值的时候，它会不断的调用target.setPropertyName(中间值)
+         * propertyName示例命名:alpha
+         *                translationX,translationY,translationZ
+         *                rotation,rotationX,rotationY
+         *                scaleX,scaleY
+         *
+         * 自定义重写方法,例haha,那么target.setHaha()(这个方法需自己重写)
+         *
+         * 参三:float... values:变化的值
+         */
+    private void open() {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(ll_footer,"height",getMinHeight(),getMaxHeight());
+        objectAnimator.setDuration(2000);
+        objectAnimator.start();
+    }
+
+    private void close() {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(ll_footer,"height",getMaxHeight(),getMinHeight());
+        objectAnimator.setDuration(2000);
+        objectAnimator.start();
+
+
+    //通过名称来得到需要调用的方法setXxx★★★★★★★★★★★★★★★★★★★★★★★★
+    //通过参数匹配的方式得到最终中间值产生时候需要调用的方法
+    public void setHeight(float temp) {
+        ViewGroup.LayoutParams layoutParams = ll_footer.getLayoutParams();
+        layoutParams.height = temp;
+        ll_footer.setLayoutParams(layoutParams);
+    }
+
+    private int getMinHeight() {
+        return 0;
+    }
+
+    private int getMaxHeight() {
+        //我们可以对ll_footer进行手动测量
+        int size = UiUtils.getScreenWidth() - UiUtils.dp2px(5);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        ll_footer.measure(widthMeasureSpec, 0);
+        return ll_footer.getMeasuredHeight();
+        //return ll_footer.getHeight();
+    }

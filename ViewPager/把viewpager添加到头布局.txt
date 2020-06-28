@@ -1,0 +1,38 @@
+下面是来自智慧西安
+1.RefreshListViewItem继承ListView,里面已经添加了一个刷新的item作为头布局
+2.在return view;之前,再把新闻头条的ViewPager添加给RefeshListView做头布局(第二个头布局,如下)
+3.会在下方给RefreshListView设置Adapter,构成之后的ListView 的 Item(没复制过来)
+    @Override
+    public View initView() {
+        //刷新的头布局(只是一个item0,没有其它布局,会在下面的代码中添加头布局[注意不要写成viewpager]和设置listview适配器)
+        View view = View.inflate(activity, R.layout.pager_tab_detail, null);
+        refreshListViewItem = (RefreshListViewItem) view.findViewById(R.id.lvListNews);//刷新的条目
+
+        //这个是头条(加载图片那个,是一个viewpager,tv_title,indicator)
+        headerView = View.inflate(activity, R.layout.layout_topnews_header, null);
+        vp_viewpager = (ViewPager) headerView.findViewById(R.id.viewPager);//头条新闻显示图片的viewpager
+        tv_title = (TextView) headerView.findViewById(R.id.tvTitle);//viewpager中左下角显示的图片信息
+        cpi_indicator = (CirclePageIndicator) headerView.findViewById(R.id.indicator);//头条新闻右下角的指示器(几个小圆点)
+
+        //监听页面的变化而改变tv_title的值(第一页的值在parseJson()的时候手动赋值)
+        vp_viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+            @Override
+            public void onPageSelected(int position) {
+                tv_title.setText(viewPagerTopnews.get(position).title);
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        //头布局加入的时机要在初始化结束的时候就做的一件事情?
+        //在初始化ListView的时候就将头布局添加上去
+        //把头条新闻当作头布局加入给ListView,增加头布局的时候，必须得保证在ListView设置adapter之前★★★★★★★
+        refreshListViewItem.addHeaderView(headerView);
+        return view;
+    }

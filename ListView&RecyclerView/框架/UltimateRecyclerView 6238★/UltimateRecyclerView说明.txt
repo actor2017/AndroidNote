@@ -1,0 +1,27 @@
+https://github.com/cymcsg/UltimateRecyclerView
+
+一个多功能的RecyclerView，包括了下拉刷新、加载更多，滑动删除，拖拽排序、多种动画、视差拖动、Toolbar渐变、Toolbar和FAB随着滚动出现消失等等效果，都可以放在同一个RecyclerVIew中并自由配置。
+
+1.Using Gradle:
+
+repositories {
+    jcenter()
+    }
+dependencies {
+    ...
+    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.3'
+}
+or grab via Maven
+
+<dependency>
+  <groupId>com.marshalchen.ultimaterecyclerview</groupId>
+  <artifactId>library</artifactId>
+  <version>0.7.2</version>
+</dependency>
+2.Usage:
+
+<com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ultimate_recycler_view"
+/>

@@ -1,0 +1,66 @@
+https://github.com/pinguo-zhouwei/CustomPopwindow
+对PopupWindow常用API的简单封装，几行代码就搞定PopupWindow弹窗，使用Builder模式，链式调用，像使用AlertDialog 一样
+
+Usage
+
+由于 1.0.0 版本 是托管到 Jcenter的，添加如下依赖：
+Add the dependency to your build.gradle.
+dependencies {
+    compile 'com.example.zhouwei.library:library:1.0.0'
+}
+
+2.x 版本 代码托管到Jitpack, 需要如下依赖：
+Add it in your root build.gradle ：
+allprojects {
+    epositories {
+        ...
+        maven {
+            url 'https://jitpack.io'
+        }
+}
+Add the dependency
+dependencies {
+	compile 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
+}
+
+更新日志
+v2.0.0：
+
+1,添加弹出PopupWindow同时背景变暗的配置，添加配置动画
+v2.1.0：
+
+1, 兼容Android 6.0 、Android 7.0 点击PopupWindow 之外的区域可以控制 显示/关闭popupWindow
+2, 可以获取到PopupWindow实例
+
+
+更新1:背景变暗配置示例：
+   //创建并显示popWindow
+ mCustomPopWindow= new CustomPopWindow.PopupWindowBuilder(this)
+                .setView(contentView)
+                .enableBackgroundDark(true) //弹出popWindow时，背景是否变暗
+                .setBgDarkAlpha(0.7f) // 控制亮度
+                .create()
+                .showAsDropDown(mButton5,0,20);
+
+
+更新2:显示消失动画配置：
+ CustomPopWindow popWindow = new CustomPopWindow.PopupWindowBuilder(this)
+                .setView(R.layout.pop_layout1)
+                .setFocusable(true)
+                .setOutsideTouchable(true)
+                .setAnimationStyle(R.style.CustomPopWindowStyle) // 添加自定义显示和消失动画
+                .create()
+                .showAsDropDown(mButton1,0,10);
+
+
+
+更新3:点击PopupWindow以外区域不让关闭(默认DisMiss)：
+
+ mPopWindow = new CustomPopWindow.PopupWindowBuilder(this)
+                .setView(view)
+                .enableOutsideTouchableDissmiss(false)// 设置点击PopupWindow之外的地方，popWindow不关闭，如果不设置这个属性或者为true，则关闭
+                .create();
+
+        mPopWindow.showAsDropDown(mButton7,0,10);
+
+

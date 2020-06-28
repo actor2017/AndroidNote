@@ -1,0 +1,2 @@
+https://github.com/florent37/MaterialViewPager
+A Material Design ViewPager easy to use library https://www.fiches-plateau-moto.fr

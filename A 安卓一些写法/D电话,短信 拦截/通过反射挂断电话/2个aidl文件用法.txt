@@ -1,0 +1,14 @@
+
+1.在aidl文件夹下创建com.android.internal.telephony文件夹,把ITelephony.aidl放到这个文件夹下.
+
+
+2.在aidl文件夹下创建android.telephony文件夹,把NeighboringCellInfo.aidl放到这个文件夹下.
+
+
+
+3.或者外面有一个aidl文件夹已经装好了,直接把它复制到main文件夹下,复制后看路径,千万别错了,这次调试了很久!!!
+
+路径:
+main/aidl/android/telephony/NeighboringCellInfo.aidl
+
+main/aidl/com/android/internal/telephony/ITelephony.aidl

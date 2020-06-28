@@ -1,0 +1,27 @@
+
+android:rotation="180"//按照z轴顺时针旋转180°
+
+
+(2).tools:showIn="@layout/activity_dis_close_new"
+该属性设置于一个被其他布局<include>的布局的根元素上。这让您可以指向包含此布局的其中一个布局，在设计时这个被包含的布局会带着周围的外部布局被渲染。这将允许您“在上下文中”查看和编辑这个布局。需要 Studio 0.5.8 或更高版本。
+
+(3).tools:ignore="contentDescription"//提示缺少android:contentDescription属性.我们可以使用tools:ignore来忽略这个警告
+
+(5).tools:menu="menu_main,menu_edit"
+告诉IDE 在预览窗口中使用哪个菜单，这个菜单将显示在layout的根节点上（actionbar的位置）。
+当主题为Theme.AppCompat时，这个属性不起作用。
+
+
+(6).
+tools:listheader="@layout/list_header"
+tools:listitem="@layout/list_item"
+tools:listfooter="@layout/list_footer"
+在ListView ExpandableListView RecyclerView等的预览效果中添加头部 尾部 以及子item的预览布局。
+
+
+(7).tools:layout="@android:layout/list_content"//告诉ide，<Fragment在程序预览的时候该显示成什么样
+
+(8).tools:actionBarNavMode="tabs"
+这个属性告诉ide  app bar（Material中对actionbar的称呼）的显示模式，其值可以是standard,tabs,list
+同样的，当主题是Theme.AppCompat (r21+, at least) 或者Theme.Material,或者使用了布局包含Toolbar的方式.
+该属性也不起作用，只有holo主题才有效。

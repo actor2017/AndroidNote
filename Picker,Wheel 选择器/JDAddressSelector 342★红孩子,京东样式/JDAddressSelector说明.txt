@@ -1,0 +1,111 @@
+https://github.com/chihane/JDAddressSelector
+
+
+1.在module.gradle中添加依赖:
+compile 'com.github.chihane:JDAddressSelector:1.1.4'
+
+2.在project.gradle中添加:
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io"}
+        ...
+    }
+}
+
+
+//------------------------------------------------------------------
+说明:
+有2种显示方式,第一种:自定义大小显示出来,第二种:Dialog形式在下半部分显示出来
+
+
+//------------------------------------------------------------------
+第一种:自定义大小显示出来
+1.示例:在布局文件中写一个FrameLayout.
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentBottom="true" />
+
+2.代码中
+AddressSelector selector = new AddressSelector(this);
+ selector.setOnAddressSelectedListener(this);
+frameLayout.addView(selector.getView());
+    @Override
+    public void onAddressSelected(Province province, City city, County county, Street street) {
+        String s =
+                (province == null ? "" : province.name) +
+                (city == null ? "" : "\n" + city.name) +
+                (county == null ? "" : "\n" + county.name) +
+                (street == null ? "" : "\n" + street.name);
+    }
+
+
+//------------------------------------------------------------------
+第二种:Dialog形式在下半部分显示出来:
+private BottomDialog bottomDialog;//定义级联地址选择器
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        bottomDialog = new BottomDialog(this);//onCreate中初始化
+        bottomDialog.setOnAddressSelectedListener(new OnAddressSelectedListener() {
+            @Override
+            public void onAddressSelected(Province province, City city, County county, Street
+                    street) {
+                String s = (province == null ? "" : province.name)
+                        + (city == null ? "" : city.name)
+                        + (county == null ? "" : county.name)
+                        + (street == null ? "" : street.name);
+                bottomDialog.dismiss();
+                tvSsdq.setText(s);//所属地区
+            }
+        });
+
+
+        //点击事件中显示出来
+	btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomDialog.show();
+            }
+        });
+    }
+
+
+3.使用自定义数据源
+
+selector.setAddressProvider(new AddressProvider() {
+    @Override
+    public void provideProvinces(AddressReceiver<Province> addressReceiver) {
+        List<Province> provinces = addressApi.provincesFromDatabase();
+        addressReceiver.send(provinces);    
+    }
+
+    @Override
+    public void provideCitiesWith(int provinceId, AddressReceiver<City> addressReceiver) {
+        new Thread(() -> {
+            List<City> cities = addressApi.citiesSync(provinceId);
+            addressReceiver.send(cities);
+        }).start();
+    }
+
+    @Override
+    public void provideCountiesWith(int cityId, AddressReceiver<County> addressReceiver) {
+        addressApi.counties(cityId)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    counties -> addressReceiver.send(counties),
+                    throwable -> addressReceiver.send(null)
+                );
+    }
+
+    @Override
+    public void provideStreetsWith(int countyId, AddressReceiver<Street> addressReceiver) {
+        // blahblahblah 
+    }
+});
+
+//=============================注意事项==============
+如果添加依赖之后,清单文件报错,检查是否是下面问题:
+android:allowBackup="false"
+

@@ -1,0 +1,3 @@
+https://github.com/liujingxing/okhttp-RxHttp
+https://juejin.im/post/5ded221a518825125d14a1d4
+OkHttp+RxJava 30秒上手，新一代Http请求神器，史上最优雅的实现文件上传/下载/进度监听、动态/多域名、缓存；支持第三方数据解析工具、自定义请求、自动关闭请求等等

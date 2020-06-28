@@ -1,0 +1,4 @@
+https://github.com/Narfss/ParallaxEverywhere
+
+Parallax everywhere is a library with alternative android widgets with parallax effects.
+“视差无处不在”是一个带有视差效果的android小部件库。

@@ -1,0 +1,46 @@
+Bitmap - 称作位图，一般位图的文件格式后缀为bmp，当然编码器也有很多如RGB565、RGB888。作为一种逐像素的显示对象执行效率高，但是缺点也很明显存储效率低。我们理解为一种存储对象比较好。
+ Drawable - 作为Android平下通用的图形对象，它可以装载常用格式的图像，比如GIF、PNG、JPG，当然也支持BMP，当然还提供一些高级的可视化对象，比如渐变、图形等。
+
+Bitmap bitmap = Bitmap.createScaledBitmap(srcBitmap, newWidth, newHeight, true);
+
+BitmapFactory.decodeByteArray(byte[] data, int offset, int length);//二进制
+
+Bitmap BitmapFactory.decodeFile(String filePath);//文件路径
+
+BitmapFactory.decodeFileDescriptor(FileDescriptor fd);
+
+BitmapFactory.decodeResource(Resources res, int id);//资源文件 getResources(),R.drawable.header
+
+BitmapFactory.decodeStream(InputStream is);//输入流
+
+Drawable da =  new BitmapDrawable(bitmap);//bitmap转drawable
+
+Bitmap bm= bitmapDrawable..getBitmap();//drawable转bitmap
+
+bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(savedFile));//压缩保存
+
+    /**
+     * 获取指定宽高的bitmap
+     * @param newWidth
+     * @param newHeight
+     * @return
+     */
+    private Bitmap getMakerBitmap(int newWidth, int newHeight) {
+        Bitmap bitmap = ImageUtils.getBitmap(drawableRes);
+        return ImageUtils.scale(bitmap, newWidth, newHeight, true);//utilcode里方法
+
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.baidumap_location_icon);
+        if (newWidth <=0 && newHeight <= 0) return bm;
+        //获得图片的宽高
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        //计算缩放比例
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        //取得想要缩放的matrix参数
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        //得到新的图片
+        return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+    }
+

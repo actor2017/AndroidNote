@@ -1,0 +1,5 @@
+1.SwipeRefreshLayout 嵌套在 NestedScrollView 外面.
+
+2.
+如果 NestedScrollView 中嵌套 ViewPager 嵌套 Fragment, 而ViewPager高度不显示:
+    在 NestedScrollView 中添加属性: android:fillViewport="true"

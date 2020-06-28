@@ -1,0 +1,4 @@
+https://github.com/AlanCheen/PeriscopeLayout
+https://www.jianshu.com/p/03fdcfd3ae9c
+
+一个类似Periscope点赞效果的Layout,效果如下:

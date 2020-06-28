@@ -1,0 +1,4 @@
+https://github.com/castorflex/VerticalViewPager
+Copy pasted version of the support ViewPager, but vertical!
+复制粘贴版本的支持ViewPager，但垂直!
+

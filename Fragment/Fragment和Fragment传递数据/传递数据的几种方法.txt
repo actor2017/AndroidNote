@@ -1,0 +1,5 @@
+1.Activity中写方法获取Fragment对象,然后调方法传数据
+
+2.回调
+
+3.EventBus..

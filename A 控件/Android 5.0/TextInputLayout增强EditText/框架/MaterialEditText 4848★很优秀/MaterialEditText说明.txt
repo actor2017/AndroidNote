@@ -1,0 +1,28 @@
+https://github.com/rengwuxian/MaterialEditText
+
+Sample
+
+MaterialEditText-2.1.4-sample.apk
+
+Download
+
+Eclipse: MaterialEditText-2.1.4.aar
+
+gradle:
+
+compile 'com.rengwuxian.materialedittext:library:2.1.4'
+Maven:
+
+<dependency>
+  <groupId>com.rengwuxian.materialedittext</groupId>
+  <artifactId>library</artifactId>
+  <version>2.1.4</version>
+  <type>aar</type>
+</dependency>
+Usage
+
+See on Wiki Page(https://github.com/rengwuxian/MaterialEditText/wiki) or 中文看这里
+
+Thanks to
+
+NineOldAndroids

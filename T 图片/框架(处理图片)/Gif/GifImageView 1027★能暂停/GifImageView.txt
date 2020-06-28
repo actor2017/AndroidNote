@@ -1,0 +1,4 @@
+https://github.com/felipecsl/GifImageView
+
+Android ImageView that handles animated GIF images
+处理GIF动画的Android ImageView

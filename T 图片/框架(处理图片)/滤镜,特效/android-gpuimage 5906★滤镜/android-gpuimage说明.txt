@@ -1,0 +1,2 @@
+https://github.com/cats-oss/android-gpuimage
+Android filters based on OpenGL (idea from GPUImage for iOS)

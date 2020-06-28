@@ -1,0 +1,20 @@
+https://www.jianshu.com/p/cba6663435c7
+
+
+比如 android10 https://github.com/android10/Android-CleanArchitecture
+比如 googlesample https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/
+比如 dmilicic https://github.com/dmilicic/Android-Clean-Boilerplate
+
+关于探讨CleanArchitecture架构方面的文章也很多，但是，究其源头，无非都是出自uncle-bob 叔叔的这篇 https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html
+
+
+
+至于大家为什么倾向于cleanArchitecture，那一定是有他的道理的。就好比，对比传统开发的MVC开发方式，你会得到以下好处。
+
+代码复用性更高
+更易于测试
+耦合度更小
+下面这幅图，是googlesample下面的了。
+
+https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html）和vimeo上的视频（https://vimeo.com/43612849）来详细了解Clean的概念。
+

@@ -1,0 +1,95 @@
+Normal Permissions
+
+此类权限都是正常保护的权限，只需要在AndroidManifest.xml中简单声明这些权限即可，安装即授权，不需要每次使用时都检查权限，而且用户不能取消以上授权，除非用户卸载App。
+
+        ACCESS_LOCATION_EXTRA_COMMANDS
+        ACCESS_NETWORK_STATE
+        ACCESS_NOTIFICATION_POLICY
+        ACCESS_WIFI_STATE
+        BLUETOOTH
+        BLUETOOTH_ADMIN
+        BROADCAST_STICKY
+        CHANGE_NETWORK_STATE
+        CHANGE_WIFI_MULTICAST_STATE
+        CHANGE_WIFI_STATE
+        DISABLE_KEYGUARD
+        EXPAND_STATUS_BAR
+        GET_PACKAGE_SIZE
+        INSTALL_SHORTCUT
+        INTERNET
+        KILL_BACKGROUND_PROCESSES
+        MODIFY_AUDIO_SETTINGS
+        NFC
+        READ_SYNC_SETTINGS
+        READ_SYNC_STATS
+        RECEIVE_BOOT_COMPLETED
+        REORDER_TASKS
+        REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+        REQUEST_INSTALL_PACKAGES
+        SET_ALARM
+        SET_TIME_ZONE
+        SET_WALLPAPER
+        SET_WALLPAPER_HINTS
+        TRANSMIT_IR
+        UNINSTALL_SHORTCUT
+        USE_FINGERPRINT
+        VIBRATE
+        WAKE_LOCK
+        WRITE_SYNC_SETTINGS
+
+
+Dangerous Permissions
+
+        CALENDAR（日历）
+            READ_CALENDAR
+            WRITE_CALENDAR
+        CAMERA（相机）
+            CAMERA
+        CONTACTS（联系人）
+            READ_CONTACTS
+            WRITE_CONTACTS
+            GET_ACCOUNTS
+        LOCATION（位置）
+            ACCESS_FINE_LOCATION
+            ACCESS_COARSE_LOCATION
+        MICROPHONE（麦克风）
+            RECORD_AUDIO
+        PHONE（手机）
+            READ_PHONE_STATE
+            CALL_PHONE
+            READ_CALL_LOG
+            WRITE_CALL_LOG
+            ADD_VOICEMAIL
+            USE_SIP
+            PROCESS_OUTGOING_CALLS
+        SENSORS（传感器）
+            BODY_SENSORS
+        SMS（短信）
+            SEND_SMS
+            RECEIVE_SMS
+            READ_SMS
+            RECEIVE_WAP_PUSH
+            RECEIVE_MMS
+        STORAGE（存储卡）
+            READ_EXTERNAL_STORAGE
+            WRITE_EXTERNAL_STORAGE
+
+
+所有危险的Android系统权限属于权限组，如果APP运行在Android 6.0 (API level 23)或者更高级别的设备中，而且targetSdkVersion>=23时，系统将会自动采用动态权限管理策略，如果你在涉及到特殊权限操作时没有做动态权限的申请将会导致App崩溃，因此你需要注意：
+1.此类权限也必须在Manifest中申明，否则申请时不提示用户，直接回调开发者权限被拒绝。
+2.同一个权限组的任何一个权限被授权了，这个权限组的其他权限也自动被授权。例如，一旦WRITE_CONTACTS被授权了，App也有READ_CONTACTS和GET_ACCOUNTS了。
+3.申请某一个权限的时候系统弹出的Dialog是对整个权限组的说明，而不是单个权限。例如我申请READ_EXTERNAL_STORAGE，系统会提示"允许xxx访问设备上的照片、媒体内容和文件吗？"
+4.    使用兼容库support-v4中的方法
+ContextCompat.checkSelfPermission()
+ActivityCompat.requestPermissions()
+ActivityCompat.shouldShowRequestPermissionRationale()
+
+几个重要的方法与常量解释
+    PackageManager.PERMISSION_DENIED：该权限是被拒绝的。
+    PackageManager.PERMISSION_GRANTED：该权限是被授权的。
+
+Activity中或者Fragment都会有以下几个方法：
+int checkSelfPermission(String)
+void requestPermissions(int, String...)
+boolean shouldShowRequestPermissionRationale(String)
+void onRequestPermissionsResult()

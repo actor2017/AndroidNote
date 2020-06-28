@@ -1,0 +1,156 @@
+https://github.com/byteam/SuperAdapter
+http://www.jianshu.com/p/d6a76fd3ea5b
+最近看到不少封装Adapter的库，但是都感觉不够方便。今天给大家介绍一个真正的“万能”Adapter(源码地址)，精髓就在于一个Adapter同时适用于
+
+RecyclerView、ListView、GridView、Spinner等。
+
+主要特性
+
+支持header和footer。
+支持RecyclerView的item点击事件。
+隐藏ViewHolder相关的所有代码。
+一个SuperAdapter同时支持BaseAdapter和RecyclerView.Adapter。
+封装Adapter数据源变动操作。
+item加载动画。
+
+
+
+1.添加依赖	Star 553
+compile 'com.android.support:recyclerview-v7:......'
+compile 'org.byteam.superadapter:superadapter:x.y.z'
+
+2.在Activity(or Fragment)中调用:
+mSingleAdapter = new RecyclerSingleAdapter(context, list, R.layout.your_item);  
+recyclerView.setAdapter(mSingleAdapter);
+
+//适配器
+public class SingleAdapter extends SuperAdapter<MockModel> {
+    public SingleAdapter(Context context, List<MockModel> list, int layoutResId) {
+        super(context, list, layoutResId);
+    }
+
+    @Override
+    public void onBind(SuperViewHolder holder, int viewType, int position, MockModel item) {
+        holder.setText(R.id.tv_name, item);
+        ImageView img = holder.getView(R.id.iv_portrait);//使用getView(int viewId)来确定一个item的view
+        img.setImageResource(resId);
+    }
+}
+
+其中SuperViewHolder为通用的holder封装类，提供了一系列的便捷方法(ChainSetter)，
+而且可以链式调用,如："ChainSetter部分方法.jpg"
+
+开启加载动画:
+adapter.openLoadAnimation();
+
+你也可以指定动画时常和类型:
+adapter.openLoadAnimation(long duration, new SlideInBottomAnimation());
+
+默认的加载动画只执行一次，如果你想每次显示item的时候都执行，可以设置
+adapter.setOnlyOnce(false);
+
+当然实现自定义的动画也很简单，可以通过实现BaseAnimation接口来创建你心仪的动画。
+
+至于header和footer的使用，就更简单啦！adapter.addHederView(view)就可以添加一个Header了，
+你可以使用的全部api如下："Header和Footer相关的api.jpg"
+//========================================================================================================
+当然也支持多item布局，需要提供一个IMulItemViewType<T>接口：
+public class MultipleAdapter extends SuperAdapter<MockModel> {
+    public MultipleAdapter(Context context, List<MockModel> list, IMulItemViewType<MockModel> multiItemViewType) {
+        super(context, list, multiItemViewType);
+    }
+
+    @Override
+    public void onBind(SuperViewHolder holder, int viewType, int position, MockModel item) {
+        switch (viewType) {
+            case 0:
+                holder.setText(R.id.tv_name, item.getName());
+                break;
+            case 1:
+                holder.setText(R.id.tv_name, item.getName());
+                holder.setImageResource(R.id.iv_portrait, R.mipmap.ic_launcher);
+                holder.setText(R.id.tv_age, String.valueOf(item.getAge()));
+                break;
+        }
+    }
+}
+然后调用（注意构造方法的参数与单布局的区别）:
+multiAdapter = new MultipleAdapter(getContext(), list, new IMulItemViewType<MockModel>() {
+                @Override
+                public int getItemViewType(int position, MockModel mockModel) {
+                    if (position % 2 == 0) {
+                        return 0;
+                    }
+                    return 1;
+                }
+
+                @Override
+                public int getLayoutId(int viewType) {
+                    if (viewType == 0) {
+                        return R.layout.item_type1;
+                    }
+                    return R.layout.item_type2;
+                }
+
+                @Override
+                public int getViewTypeCount() {
+                    return 2;
+                }
+            });
+recyclerView.setAdapter(mMultiAdapter);
+
+//---------------------------------------------------
+如果使用的是RecyclerView，在使用多布局时，还可以使用SimpleMulItemViewType类（继承自IMulItemViewType），
+因为getViewTypeCount()方法仅在使用ListView、GridView等控件时是必须提供的:
+mAdapter = new MultipleAdapter(getContext(), models, new SimpleMulItemViewType<MockModel>() {
+    @Override
+    public int getItemViewType(int position, MockModel mockModel) {
+        if (position % 2 == 0) {
+            return 0;
+        }
+        return 1;
+    }
+
+    @Override
+    public int getLayoutId(int viewType) {
+        if (viewType == 0) {
+            return R.layout.item_type1;
+        }
+        return R.layout.item_type2;
+    }
+});
+recyclerView.setAdapter(mAdapter);
+
+//-------------------------------------------------------------
+如果不想在创建Adapter时提供IMulItemViewType接口，也可以在Adapter中重写offerMultiItemViewType()方法：
+
+@Override
+protected IMulItemViewType<MockModel> offerMultiItemViewType() {
+    return new IMulItemViewType<MockModel>() {
+        @Override
+        public int getViewTypeCount() {
+                return 2;
+        }
+
+        @Override
+        public int getItemViewType(int position, MockModel mockModel) {
+            if (position % 2 == 0) {
+                return 0;
+            }
+            return 1;
+        }
+
+        @Override
+        public int getLayoutId(int viewType) {
+            if (viewType == 0) {
+                return R.layout.item_type1;
+            }
+            return R.layout.item_type2;
+        }
+    };
+}
+
+然后在创建Adapter时提供null：
+multiAdapter = new MultipleAdapter(context, list, null);
+
+//================================================================

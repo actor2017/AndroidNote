@@ -1,0 +1,33 @@
+
+//动态查询电话号码
+etNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                System.out.println("文本变化之前");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                System.out.println("文本变化中");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                System.out.println("文本变化之后");
+
+		/**
+                 * 居然可以不做非空判断判断!!!!!!!!!!!!!!!!!!!!!!
+                 */
+                //if (TextUtils.isEmpty(etPhoneNum.getTex.toString())) {
+                //if (TextUtils.isEmpty(s.toString())) {
+                //return;//什么都不做,晃动让btn去做
+                //}
+                //把结果显示出来etPhoneNum.getText().toString(),可改成:s
+
+//                String number = etNumber.getText().toString().trim();
+                String number = s.toString().trim();
+                String address = AddressDao.getAddress(getApplicationContext(), number);
+                tvResult.setText(address);
+            }
+
+

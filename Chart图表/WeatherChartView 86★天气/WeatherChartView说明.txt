@@ -1,0 +1,39 @@
+https://github.com/kaku2015/WeatherChartView
+https://blog.csdn.net/kaku2013/article/details/50091387
+
+WeatherChartView
+
+A simple line chart view of weather for android.
+
+image
+
+Usage
+
+In the layout file, just introduce the custom View.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wcv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <com.kaku.wcv.WeatherChartView
+        android:id="@+id/line_char"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        wcv:dayColor="@color/colorAccent"
+        wcv:nightColor="@color/colorPrimary"
+        wcv:textColor="@android:color/white"
+        wcv:textSize="14sp"/>
+</RelativeLayout>
+Dynamic set values of day and night temperature in Activity.
+
+WeatherChartView mCharView = (WeatherChartView) findViewById(R.id.line_char);
+// set day
+mCharView.setTempDay(new int[]{14, 15, 16, 17, 9, 9});
+// set night
+mCharView.setTempNight(new int[]{7, 5, 9, 10, 3, 2});
+mCharView.invalidate();

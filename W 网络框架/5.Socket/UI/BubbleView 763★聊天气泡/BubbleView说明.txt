@@ -1,0 +1,31 @@
+https://github.com/lguipeng/BubbleView
+
+Gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    compile 'com.github.lguipeng:BubbleView:1.0.1'
+}
+Or
+Copy BubbleDrawable.java BubbleImageView.java BubbleTextView.java BubbleLinearLayout.java into your project.
+
+
+Usage
+<com.github.library.bubbleview.BubbleTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello BubbleTextVew"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        app:arrowWidth="8dp"
+        app:angle="8dp"
+        app:arrowHeight="10dp"
+        app:arrowPosition="14dp"
+        app:arrowLocation="right"
+        app:arrowCenter="true"
+        app:bubbleColor="#7EC0EE"/>

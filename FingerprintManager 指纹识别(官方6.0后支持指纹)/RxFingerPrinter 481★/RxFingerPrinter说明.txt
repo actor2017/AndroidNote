@@ -1,0 +1,3 @@
+https://github.com/Zweihui/RxFingerPrinter
+用rxjava简单封装了指纹识别，顺便撸了一个指纹控件
+

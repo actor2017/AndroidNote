@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>兼容性</title>
+
+</head>
+<body>
+<h2>兼容性</h2>
+
+<p>虽然Material Design新增了许多新特性，但是并不是所有新内容对对下保持了兼容。</p>
+
+<h3>使用v7包</h3>
+
+<p>v7 support libraries r21 及更高版本包含了以下Material Design特性：</p>
+
+<ol>
+<li>使用Theme.AppCompat主题包含调色板主体属性，可以对应用的主题做统一的配色，但是不包括状态栏和底部操作栏</li>
+<li>RecyclerView和CardView被独立出来，只要引入jar包，即可适配7以上的所有版本。</li>
+<li>Palette类用于从图片提取主色调</li>
+</ol>
+
+
+<h3>系统组件</h3>
+
+<p>Theme.AppCompat主题中提供了这些组件的Material Design style：</p>
+
+<ol>
+<li>EditText</li>
+<li>Spinner</li>
+<li>CheckBox</li>
+<li>RadioButton</li>
+<li>SwitchCompat</li>
+<li>CheckedTextView</li>
+<li>Color Palette</li>
+</ol>
+
+
+<h3>创建多个value和layout</h3>
+
+<p>针对Android L我们可以创建value-v21指定Material Design主题，而在其他value中指定Theme.AppCompat。layout布局也可以采用该方式，在Android L中使用系统控件，在低版本中使用我们自定义的控件活着第三方包来达到该效果。</p>
+
+<h3>注意版本检查</h3>
+
+<p>以下特性只在Android 5.0 (API level 21) 及以上版本中可用：</p>
+
+<ol>
+<li>转场动画</li>
+<li>触摸反馈</li>
+<li>圆形展示动画</li>
+<li>路径动画</li>
+<li>矢量图</li>
+<li>tint染色</li>
+</ol>
+
+
+<p>所以在代码中遇上使用这些api的地方需要进行版本判断：</p>
+
+<pre><code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+    // 使用新特性
+} else {
+    // 用其他替代方式
+}
+</code></pre>
+
+<h3>第三方支持库</h3>
+
+<h5>RippleDrawable</h5>
+
+<p>提供触摸反馈特效，即5.0的button按压下的水波纹效果。</p>
+
+<ol>
+<li><a href="https://github.com/03uk/RippleDrawable">https://github.com/03uk/RippleDrawable</a></li>
+<li><a href="https://github.com/siriscac/RippleView">https://github.com/siriscac/RippleView</a></li>
+<li><a href="https://github.com/balysv/material-ripple">https://github.com/balysv/material-ripple</a></li>
+</ol>
+
+
+<h5>状态动画</h5>
+
+<p><a href="https://github.com/NghiaTranUIT/Responsive-Interaction-Control">https://github.com/NghiaTranUIT/Responsive-Interaction-Control</a></p>
+
+<h5>Material Design风格的对话框</h5>
+
+<p><a href="https://github.com/lewisjdeane/L-Dialogs">https://github.com/lewisjdeane/L-Dialogs</a></p>
+
+<h5>Material Design风格兼容包</h5>
+
+<p>提供了不少控件特效
+<a href="https://github.com/navasmdc/MaterialDesignLibrary">https://github.com/navasmdc/MaterialDesignLibrary</a></p>
+
+<h5>SystemBarTint</h5>
+
+<p>支持修改状态栏和底部操作栏
+https://github.com/jgilfelt/SystemBarTint</p>
+</body>
+</html>

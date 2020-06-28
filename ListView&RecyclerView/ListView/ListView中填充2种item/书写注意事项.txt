@@ -1,0 +1,25 @@
+/**
+ * 注意:本例中的ListView有2中item条目布局,所以{必须}在适配器中重写一下两种方法
+ * 下面2行是全局变量
+ * private static final int TYPE_TITLE = 0;//返回布局类型,注意:必须从0开始
+ * private static final int TYPE_NORMAL = 1;
+ *
+ *
+ * //返回当前ListView布局类型的个数,这是重写的第一个布局................①
+ * @Override
+ * public int getViewTypeCount() {
+ *      return super.getViewTypeCount()+1;  //也可以写成return 2;
+ * }
+ *
+ * //返回某个位置的布局类型...........................................②
+ * //注意: 类型必须从0开始,0 ,1
+ * @Override
+ * public int getItemViewType(int position) {
+ *      //return super.getItemViewType(position);
+ *      if (info.get(position).isTitle) {
+ *          return TYPE_TITLE;
+ *      }else {
+ *          return TYPE_NORMAL;
+ *      }
+ * }
+ */

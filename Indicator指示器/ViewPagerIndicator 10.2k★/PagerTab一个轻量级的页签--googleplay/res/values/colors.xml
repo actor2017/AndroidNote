@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="bg_window">#ffe5e5e5</color>
+    <color name="bg_page">#ffebebeb</color>
+    <color name="bg_tab_pressed">#6633b5e5</color><!-- 蓝色 -->
+    <color name="bg_tab_normal">#00000000</color>
+    <!-- <color name="bg_tab_pressed2">#ff3898ff</color>  -->
+    
+    <color name="tab_text_color_selected">#ff0084ff</color> <!-- 选中文字颜色 -->
+    <color name="tab_text_color_normal">#ff737373</color> <!-- 未选中文字颜色 -->
+    
+    
+
+    <color name="txt_title">#ff333333</color>
+    <color name="txt_small">#ff7a7a7a</color>
+    <color name="txt_big">#ff717171</color>
+    <color name="item_divider">#ffd7d7d7</color>
+    <color name="detail_screen_bg">#adadad</color>
+    <color name="progress">#0294f0</color>
+    <color name="menu_bg_normal">#f0f1f3</color>
+    <color name="menu_bg_press">#cecece</color>
+    
+
+</resources>

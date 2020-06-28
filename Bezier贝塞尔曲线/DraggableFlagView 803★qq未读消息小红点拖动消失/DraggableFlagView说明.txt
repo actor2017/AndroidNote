@@ -1,0 +1,3 @@
+https://github.com/wangjiegulu/DraggableFlagView
+
+可拖拽的红点，（仿新版QQ，tab下面拖拽标记为已读的效果），拖拽一定的距离可以消失回调。

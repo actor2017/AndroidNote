@@ -1,0 +1,4 @@
+https://github.com/txusballesteros/snake
+
+Snake View is a simple and animated linear chart for Android.
+Snake View是一个简单的、动态的Android线性图表。

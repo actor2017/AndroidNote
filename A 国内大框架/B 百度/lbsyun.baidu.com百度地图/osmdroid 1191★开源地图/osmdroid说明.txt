@@ -1,0 +1,3 @@
+https://github.com/osmdroid/osmdroid
+如果缩小后文字不显示,查看activity的setMinZoomLevel和setMaxZoomLevel,是否超过了setMinZoomShowLabels(int value)的范围,默认11.
+

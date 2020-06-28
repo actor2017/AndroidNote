@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 一个item可以认为是一个规则-->
+    <!-- 当我们点击RadioButton的时候，系统会给RadioButton设置一种长期保持的状态checked的状态-->
+    <!-- state_pressed只是在手指按下的时候会拥有的一种状态，当手指松开的时候，就不会有这个状态了-->
+    <item android:state_selected="true" android:drawable="@drawable/menu_arr_select"/>
+    <item android:drawable="@drawable/menu_arr_normal"/>
+</selector>

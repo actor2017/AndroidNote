@@ -1,0 +1,4 @@
+https://github.com/flavioarfaria/KenBurnsView
+
+Android ImageViews animated by Ken Burns Effect
+Android ImageViews由Ken Burns特效动画

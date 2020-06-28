@@ -1,0 +1,17 @@
+https://github.com/gjiazhe/WaveSideBar
+An Index Side Bar With Wave Effect
+波效应的索引边条
+
+compile 'com.gjiazhe:wavesidebar:1.3'
+
+<com.gjiazhe.wavesidebar.WaveSideBar
+        android:id="@+id/side_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="8dp"
+        app:sidebar_position="right"
+        app:sidebar_max_offset="80dp"
+        app:sidebar_lazy_respond="false"
+        app:sidebar_text_color="#8D6E63"
+        app:sidebar_text_size="14sp"
+        app:sidebar_text_alignment="center"/>

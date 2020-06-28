@@ -1,0 +1,377 @@
+//========================================================3.IP拨号,外拨电话=================
+//本例：在拨打电话时加拨17951
+public class IpCallReceiver extends BroadcastReceiver {
+	/**
+	 * 1.接受外拨电话的广播
+	   2.获取用户拨打的手机号码
+	   3.在手机号码前加17951
+	 */
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if ("android.intent.action.NEW_OUTGOING_CALL".equals(intent.getAction())) {
+			//获取用户拨打的手机号码
+			String phonNum = getResultData();
+			System.out.println("用户拨打的手机号码："+phonNum);
+			String newNum = phonNum;
+			if (!phonNum.startsWith("17951")) {
+				//在手机号码前加17951
+				newNum = "17951"+phonNum;
+			}
+			//把修改后的手机号码设置到广播中
+			if (new Random().nextInt(2) == 1) {//如果等于1,就能拨打出去,否则拨打不粗去
+				setResultData(newNum);
+			}else {
+				setResultData(null);		//否则就打不出去
+			}
+			//终止广播,但是失败了,因为手机拨号器是最终的广播接收者
+			abortBroadcast();
+		}
+	}
+}
+
+//清单文件
+	<!-- 注意,监听打出去的电话要加权限: -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+
+		<!-- 买电池 -->
+        <receiver android:name="com.itheima.ip_call.IpCallReceiver" >
+            <!-- 3.调频道,意图过滤器,过滤广播 -->
+            <!-- 即使把优先级调到最大1000也不能阻拦电话的播出,因为手机自带的拨号器是最终的广播接受者 -->
+            <intent-filter android:priority="1000"><!-- 有序广播,能调优先级 -->
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+//=======================================================5.开机启动,俄罗斯病毒,透明界面=========
+//MainActivity写法
+public class MainActivity extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+	}
+	/**
+	 * 屏蔽返回键
+	 */
+	@Override
+	public void onBackPressed() {
+	//	super.onBackPressed();
+	}
+}
+
+//监听开机广播
+public class BootReceiver extends BroadcastReceiver {
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
+			System.out.println("哥哥，手机开机楼！");
+			//开启MainActivity(显示意图)
+			Intent intent2 = new Intent(context, MainActivity.class);
+			//下面一句,把MainActivity放到任务栈中(否则会报错:刚启动,没有activity)
+			intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(intent2);
+		}
+	}
+}
+
+//activity_main.xml写法
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="想要玩手机吗？给我5元钱..."
+        android:textColor="#f00" />
+</LinearLayout>
+
+//清单文件
+		<!-- 开机启动权限,开机自启权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+       		<!-- 			  主题 .   透明    .没有标题条.全屏(不能从上往下拉菜单)-->
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.itheima.boot.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+			<!-- 2.买电池 -->
+        <receiver android:name="com.itheima.boot.BootReceiver" >
+            <!-- 3.调频道,过滤广播:开机广播 -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+//===========================================================6.锁屏解锁=========
+一般在Activity可交互时onResume()内注册BroadcastReceiver
+//MainActivity写法
+public class MainActivity extends Activity {
+	private LockScreenReceiver	lockScreenReceiver;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		//代码中注册
+		//只有应用程序启动后才能接受广播，节约系统开销
+		IntentFilter filter = new IntentFilter();
+		filter.addAction("android.intent.action.SCREEN_OFF");
+		filter.addAction("android.intent.action.SCREEN_ON");
+		//创建	锁屏广播
+		lockScreenReceiver = new LockScreenReceiver();
+		//注册广播
+		registerReceiver(lockScreenReceiver, filter);
+		//反注册
+		//unregisterReceiver(receiver);
+	}
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		//在activity销毁前注销广播接收者,否则eclipse会报错
+		unregisterReceiver(lockScreenReceiver);
+	}
+}
+
+//写一个类继承广播接收者
+public class LockScreenReceiver extends BroadcastReceiver {
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		String action = intent.getAction();
+		if ("android.intent.action.SCREEN_OFF".equals(action)) {
+			System.out.println("手机屏幕锁屏了");
+		}else if("android.intent.action.SCREEN_ON".equals(action)){
+			System.out.println("屏幕解锁了");
+		}
+	}
+}
+
+//在请单文件中注册无效,因为每天锁屏和解锁次数太多,浪费系统开销
+        <receiver android:name="com.itheima.lock_screen.LockScreenReceiver" >
+            <!-- 在请单文件中注册无效,因为每天锁屏和解锁次数太多,浪费系统开销  -->
+       <!--      <intent-filter >
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+            </intent-filter> -->
+        </receiver>
+
+//===============================不能静态注册(在清单文件中注册)的广播=========
+不能静态注册的广播:
+
+　　android.intent.action.SCREEN_ON	//屏幕开关
+
+　　android.intent.action.SCREEN_OFF
+
+　　android.intent.action.BATTERY_CHANGED	//电池变化
+
+　　android.intent.action.CONFIGURATION_CHANGED	//?
+
+　　android.intent.action.TIME_TICK		//?
+
+//===========================================================广播大全=========
+1) 待机：
+
+广播消息：android.intent.action.SCREEN_OFF (代码)
+
+2) 唤醒：
+
+广播消息：android.intent.action.SCREEN_ON (代码)
+
+3) 关机：
+
+广播消息：android.intent.action.ACTION_SHUTDOWN (XML或代码)
+
+4) 网络状态变化：
+
+广播消息：android.net.conn.CONNECTIVITY_CHANGE (XML或代码)
+
+然后调用下面的isNetworkAvailable获取当前网络状态。
+
+String ADD_SHORTCUT_ACTION 动作：在系统中添加一个快捷方式。
+
+String ALL_APPS_ACTION 动作：列举所有可用的应用。输入：无。
+
+String ALTERNATIVE_CATEGORY 类别：说明 activity 是用户正在浏览的数据的一个可选操作。
+
+String ANSWER_ACTION 动作：处理拨入的电话。
+
+String BATTERY_CHANGED_ACTION 广播：充电状态，或者电池的电量发生变化。
+
+String BOOT_COMPLETED_ACTION 广播：在系统启动后，这个动作被广播一次（只有一次）。开机广播"android.intent.action.BOOT_COMPLETED",开机启动,自启
+
+String BROWSABLE_CATEGORY 类别：能够被浏览器安全使用的 activities 必须支持这个类别。
+
+String BUG_REPORT_ACTION 动作：显示 activity 报告错误。
+
+String CALL_ACTION 动作：打电话,拨打电话，被呼叫的联系人在数据中指定。intent.setAction(Intent.ACTION_CALL);
+
+String CALL_FORWARDING_STATE_CHANGED_ACTION 广播：语音电话的呼叫转移状态已经改变。
+
+String CLEAR_CREDENTIALS_ACTION 动作：清除登陆凭证 (credential)。
+
+String CONFIGURATION_CHANGED_ACTION 广播：设备的配置信息已经改变，参见 Resources.Configuration.
+
+Creator CREATOR 无 无
+
+String DATA_ACTIVITY_STATE_CHANGED_ACTION 广播：电话的数据活动(data activity)状态（即收发数据的状态）已经改变。
+
+String DATA_CONNECTION_STATE_CHANGED_ACTION 广播：电话的数据连接状态已经改变。
+
+String DATE_CHANGED_ACTION 广播：日期被改变。
+
+String DEFAULT_ACTION 动作：和 VIEW_ACTION 相同，是在数据上执行的标准动作。
+
+String DEFAULT_CATEGORY 类别：如果 activity 是对数据执行确省动作（点击, center press）的一个选项，需要设置这个类别。
+
+String DELETE_ACTION 动作：从容器中删除给定的数据。
+
+String DEVELOPMENT_PREFERENCE_CATEGORY 类别：说明 activity 是一个设置面板 (development preference panel).
+
+String DIAL_ACTION 动作：拨打数据中指定的电话号码。
+
+String EDIT_ACTION 动作：为制定的数据显示可编辑界面。
+
+String EMBED_CATEGORY 类别：能够在上级（父）activity 中运行。
+
+String EMERGENCY_DIAL_ACTION 动作：拨打紧急电话号码。
+
+int FORWARD_RESULT_LAUNCH 启动标记：如果这个标记被设置，而且被一个已经存在的 activity 用来启动新的 activity，已有 activity 的回复目标 (reply target) 会被转移给新的 activity。
+
+String FOTA_CANCEL_ACTION 广播：取消所有被挂起的 (pending) 更新下载。
+
+String FOTA_INSTALL_ACTION 广播：更新已经被确认，马上就要开始安装。
+
+String FOTA_READY_ACTION 广播：更新已经被下载，可以开始安装。
+
+String FOTA_RESTART_ACTION 广播：恢复已经停止的更新下载。
+
+String FOTA_UPDATE_ACTION 广播：通过 OTA 下载并安装操作系统更新。
+
+String FRAMEWORK_INSTRUMENTATION_TEST_CATEGORY 类别：To be used as code under test for framework instrumentation tests.
+
+String GADGET_CATEGORY 类别：这个 activity 可以被嵌入宿主 activity (activity that is hosting gadgets)。
+
+String GET_CONTENT_ACTION 动作：让用户选择数据并返回。
+
+String HOME_CATEGORY 类别：主屏幕 (activity)，设备启动后显示的第一个 activity。
+
+String INSERT_ACTION 动作：在容器中插入一个空项 (item)。
+
+String INTENT_EXTRA 附加数据：和 PICK_ACTIVITY_ACTION 一起使用时，说明用户选择的用来显示的 activity；和 ADD_SHORTCUT_ACTION 一起使用的时候，描述要添加的快捷方式。
+
+String LABEL_EXTRA 附加数据：大写字母开头的字符标签，和 ADD_SHORTCUT_ACTION 一起使用。
+
+String LAUNCHER_CATEGORY 类别：Activity 应该被显示在顶级的 launcher 中。
+
+String LOGIN_ACTION 动作：获取登录凭证。
+
+String MAIN_ACTION 动作：作为主入口点启动，不需要数据。
+
+String MEDIABUTTON_ACTION 广播：用户按下了“Media Button”。
+
+String MEDIA_BAD_REMOVAL_ACTION 广播：扩展介质（扩展卡）已经从 SD 卡插槽拔出，但是挂载点 (mount point) 还没解除 (unmount)。
+
+String MEDIA_EJECT_ACTION 广播：用户想要移除扩展介质（拔掉扩展卡）。
+
+String MEDIA_MOUNTED_ACTION 广播：SD卡,扩展介质被插入，而且已经被挂载。
+
+String MEDIA_REMOVED_ACTION 广播：SD卡,扩展介质被移除。
+
+String MEDIA_SCANNER_FINISHED_ACTION 广播：已经扫描完介质的一个目录。
+
+String MEDIA_SCANNER_STARTED_ACTION 广播：开始扫描介质的一个目录。
+
+String MEDIA_SHARED_ACTION 广播：SD卡,扩展介质的挂载被解除 (unmount)，因为它已经作为 USB 大容量存储被共享。
+
+String MEDIA_UNMOUNTED_ACTION 广播：SD卡,扩展介质存在，但是还没有被挂载 (mount)。
+
+String MESSAGE_WAITING_STATE_CHANGED_ACTION 广播：电话的消息等待（语音邮件）状态已经改变。
+
+int MULTIPLE_TASK_LAUNCH 启动标记：和 NEW_TASK_LAUNCH 联合使用，禁止将已有的任务改变为前景任务 (foreground)。
+
+String NETWORK_TICKLE_RECEIVED_ACTION 广播：设备收到了新的网络 “tickle” 通知。
+
+String android.intent.action.NEW_OUTGOING_CALL	拨打电话,拨出电话,拨打出去的广播,String phonNum = getResultData();可以获得手机号码
+						注:如果要监听拨打出去的电话,要加"权限":android.permission.PROCESS_OUTGOING_CALLS
+
+int NEW_TASK_LAUNCH 启动标记：设置以后，activity 将成为历史堆栈中的第一个新任务（栈顶）。
+
+int NO_HISTORY_LAUNCH 启动标记：设置以后，新的 activity 不会被保存在历史堆栈中。
+
+String PACKAGE_ADDED_ACTION 广播：安装程序,设备上新安装了一个应用程序包。
+
+String PACKAGE_REMOVED_ACTION 广播：卸载程序,设备上删除了一个应用程序包。
+
+String PHONE_STATE_CHANGED_ACTION 广播：电话状态已经改变。
+
+String PICK_ACTION 动作：从数据中选择一个项目 (item)，将被选中的项目返回。
+
+String PICK_ACTIVITY_ACTION 动作：选择一个 activity，返回被选择的 activity 的类（名）。
+
+String PREFERENCE_CATEGORY 类别：activity是一个设置面板 (preference panel)。
+
+String PROVIDER_CHANGED_ACTION 广播：更新将要（真正）被安装。
+
+android.provider.Telephony.SMS_RECEIVED	接收短信,接收到短信后广播,(发短信,发送短信好像没有广播)
+
+String PROVISIONING_CHECK_ACTION 广播：要求 polling of provisioning service 下载最新的设置。
+
+String RUN_ACTION 动作：运行数据（指定的应用），无论它（应用）是什么。
+
+String SAMPLE_CODE_CATEGORY 类别：To be used as an sample code example (not part of the normal user experience).
+
+String SCREEN_OFF_ACTION 广播：屏幕被关闭。
+
+String SCREEN_ON_ACTION 广播：屏幕已经被打开。
+
+String SELECTED_ALTERNATIVE_CATEGORY 类别：对于被用户选中的数据，activity 是它的一个可选操作。
+
+String SENDTO_ACTION 动作：向 data 指定的接收者发送一个消息。
+
+String SERVICE_STATE_CHANGED_ACTION 广播：电话服务的状态已经改变。
+
+String SETTINGS_ACTION 动作：显示系统设置。输入：无。
+
+String SIGNAL_STRENGTH_CHANGED_ACTION 广播：电话的信号强度已经改变。
+
+int SINGLE_TOP_LAUNCH 启动标记：设置以后，如果 activity 已经启动，而且位于历史堆栈的顶端，将不再启动（不重新启动） activity。
+
+String STATISTICS_REPORT_ACTION 广播：要求 receivers 报告自己的统计信息。
+
+String STATISTICS_STATE_CHANGED_ACTION 广播：统计信息服务的状态已经改变。
+
+String SYNC_ACTION 动作：执行数据同步。
+
+String TAB_CATEGORY 类别：这个 activity 应该在 TabActivity 中作为一个 tab 使用。
+
+String TEMPLATE_EXTRA 附加数据：新记录的初始化模板。
+
+String TEST_CATEGORY 类别：作为测试目的使用，不是正常的用户体验的一部分。
+
+String TIMEZONE_CHANGED_ACTION 广播：时区已经改变。
+
+String TIME_CHANGED_ACTION 广播：时间已经改变（重新设置）。
+
+String TIME_TICK_ACTION 广播：当前时间已经变化（正常的时间流逝）。
+
+String UMS_CONNECTED_ACTION 广播：设备进入 USB 大容量存储模式。
+
+String UMS_DISCONNECTED_ACTION 广播：设备从 USB 大容量存储模式退出。
+
+String UNIT_TEST_CATEGORY 类别：应该被用作单元测试（通过 test harness 运行）。
+
+String VIEW_ACTION 动作：向用户显示数据。
+
+String WALLPAPER_CATEGORY 类别：这个 activity 能过为设备设置墙纸。
+
+String WALLPAPER_CHANGED_ACTION 广播：系统的墙纸已经改变。
+
+String WALLPAPER_SETTINGS_ACTION 动作：显示选择墙纸的设置界面。输入：无。
+
+String WEB_SEARCH_ACTION 动作：执行 web 搜索。
+
+String XMPP_CONNECTED_ACTION 广播：XMPP 连接已经被建立。
+
+String XMPP_DISCONNECTED_ACTION 广播：XMPP 连接已经被断开。 

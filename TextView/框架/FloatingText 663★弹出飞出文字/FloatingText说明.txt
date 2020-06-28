@@ -1,0 +1,46 @@
+https://github.com/UFreedom/FloatingText
+
+FloatingText 是一个能够在任何控件之上执行漂浮效果动画的控件，
+
+目前已有的漂浮效果有 '位移漂浮' ，'缩放漂浮'，'曲线路径漂浮',更重要的是 FloatingText 能够自定义漂浮效果.
+
+需要在 Android 3.0 以上
+
+使用:
+
+使用 FloatingText.FloatingTextBuilder 去创建一个FloatingText，通过FloatingTextBuilder可以配置下面几个属性：
+
+ FloatingText   floatingText = new FloatingText.FloatingTextBuilder(Activity)
+                               .textColor(Color.RED) // 漂浮字体的颜色
+                               .textSize(100)   // 浮字体的大小
+                               .textContent("+1000") // 浮字体的内容
+                               .offsetX(100) // FloatingText 相对其所贴附View的水平位移偏移量
+                               .offsetY(100) // FloatingText 相对其所贴附View的垂直位移偏移量
+                               .floatingAnimatorEffect(FloatingAnimator) // 漂浮动画
+                               .floatingPathEffect(FloatingPathEffect) // 漂浮的路径
+                               .build();
+
+floatingText.attach2Window(); //将FloatingText贴附在Window上
+
+
+2.启动漂浮效果
+
+             floatingText.startFloating(View); // 传入一个View，FloatingText 就会相对于这个View执行漂浮效果
+
+
+自定义：
+
+1.坐标系
+
+FloatingText的坐标依赖于你所贴附的View 即：startFloating(View)中的View.
+
+
+2.自定义漂浮动画
+
+通过实现 FloatingAnimator 接口可以实现自定义漂浮动画：
+
+public interface FloatingAnimator {
+
+     public void applyFloatingAnimation(FloatingTextView view);
+
+ }

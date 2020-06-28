@@ -1,0 +1,2 @@
+HorizontalScrollView hsc = new HorizontalScrollView(UiUtils.getContext());
+        hsc.addView(view);

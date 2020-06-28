@@ -1,0 +1,29 @@
+https://github.com/arcadefire/nice-spinner
+
+缺陷:
+1.不能在java中获取数据
+2.重复选中同一条item没有回调.
+...
+
+NiceSpinner是对默认Android spinner的重新实现，有一个漂亮的箭头动画和不同的显示内容的方式。
+它遵循了material design的指导方针，它从Api 14兼容。
+
+NiceSpinner niceSpinner = (NiceSpinner) findViewById(R.id.nice_spinner);
+ List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+ niceSpinner.attachDataSource(dataset);
+
+
+您可以添加属性来定制视图。可用的属性:
+名称		     		类型		说明
+arrowTint			color		设置drop-down箭头的颜色
+hideArrow			boolean		是否显示箭头
+arrowDrawable			reference	自定义箭头
+textTint			color		设置字体颜色
+dropDownListPaddingBottom	dimension	set the bottom padding of the drop-down list
+backgroundSelector		integer		为下拉列表行设置背景selector
+
+
+1.添加依赖
+compile 'com.github.arcadefire:nice-spinner:1.2'
+
+2.

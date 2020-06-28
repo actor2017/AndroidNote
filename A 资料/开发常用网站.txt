@@ -1,0 +1,29 @@
+﻿http://androiddoc.qiniudn.com/#			Android Developers
+https://developer.android.google.cn/index.html	Android Developers中文版
+
+https://github.com		全球最大开源网站
+
+http://www.cnblogs.com/tianjian/archive/2012/02/14/2351148.html
+从零开始--系统深入学习android(已完成部分的目录--带链接) - jy02432443 - 博客园
+
+http://www.cnblogs.com/over140/tag/Android%20%E4%B8%AD%E6%96%87%20API/
+Android 中文 API - 标签 - 农民伯伯 - 博客园
+
+https://github.com/inferjay/AndroidDevTools
+GitHub - inferjay/AndroidDevTools: 收集整理Android开发所需的Android SDK、开发中用到的工具、Android开发教程、Android设计规范，免费的设计素材等。
+
+https://github.com/android-cn/android-dev-cn
+一些国内 Android 开发者信息，欢迎提交修改
+
+https://github.com/DuGuQiuBai	独孤求败
+
+百度网盘资料分享：http://pan.baidu.com/share/home?uk=1294301128&view=share#category/type=0
+
+https://github.com/Freelander/Android_Data	Android 学习资料收集,Android提高
+
+APK反编译工具:微信公众号：codekk http://p.codekk.com/
+https://github.com/Trinea/android-open-project
+
+
+codeKK 开源项目源码分析
+http://codekk.com/open-source-project-analysis

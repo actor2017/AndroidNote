@@ -1,0 +1,2 @@
+https://github.com/sqlcipher/android-database-sqlcipher
+https://www.jianshu.com/p/4e6d72e7f57a

@@ -1,0 +1,69 @@
+
+    //0~300
+    //10,20,30......300
+    //中间值
+    private void open(View view) {
+        //关键点:获取0~300的中间值
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for ( int i = getMinHeight(); i < getMaxHeight(view); i++) {
+                    final int temp = i;
+                    UiUtils.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                            layoutParams.height = temp;
+                            view.setLayoutParams(layoutParams);
+                        }
+                    });
+                    try {
+                        Thread.sleep(20);		//间隔20ms
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    //300~0
+    private void close(View view) {
+        //关键点:获取0~300的中间值
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for ( int i = getMaxHeight(view); i > getMinHeight(); i++) {
+                    final int temp = i;
+                    UiUtils.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                            layoutParams.height = temp;
+                            view.setLayoutParams(layoutParams);
+                        }
+                    });
+                    try {
+                        Thread.sleep(20);		//间隔20ms
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }).start();
+    }
+
+    private int getMinHeight(View view) {
+        return 0;
+    }
+
+    private int getMaxHeight(View view) {
+        //我们可以对view进行手动测量
+        int size = UiUtils.getScreenWidth() - UiUtils.dp2px(5);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        view.measure(widthMeasureSpec, 0);
+        return view.getMeasuredHeight();
+        //return view.getHeight();
+    }

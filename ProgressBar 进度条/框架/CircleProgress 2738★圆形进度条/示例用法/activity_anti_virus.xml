@@ -1,0 +1,47 @@
+
+
+<!--要再添加一个命名空间-->
+xmlns:custom="http://schemas.android.com/apk/res-auto"
+
+    <!--帧布局-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+		<!--进度布局-->
+        <LinearLayout
+            android:id="@+id/ll_progress"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/blue"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_progress"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                custom:arc_bottom_text="扫描中"
+                custom:arc_bottom_text_size="18sp"
+                custom:arc_progress="0"
+                custom:arc_stroke_width="10dp"
+                custom:arc_suffix_text_size="22sp"
+                custom:arc_text_color="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_package"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:maxLines="1"
+                android:text="包名"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+		<!--扫描结果布局-->
+
+		<!--开门动画布局-->
+
+    </FrameLayout>

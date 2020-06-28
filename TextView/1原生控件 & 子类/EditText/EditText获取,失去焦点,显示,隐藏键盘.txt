@@ -1,0 +1,120 @@
+http://www.cnblogs.com/zyw-205520/archive/2013/02/15/2912865.html
+属性大全?
+
+EditText.setImeOptions( )方法 or Android:imeOptions="actionSearch"//输入法右下角是搜索
+normal，actionUnspecified(未指定)，actionNone(没有动作)，actionGo(去往)
+actionSearch(搜索)，actionSend(发送)，actionNext(下一步)，actionDone(完成)
+
+android:singleLine="true?" 或者 android:inputType="?"才能使imeOptions生效★★★★★★
+
+
+2、事件捕捉处理：
+可以通过setOnEditorActionListener设置事件处理。
+
+final EditText input = new EditText(this);   
+input.setSingleLine(true); //android:singleLine=”true”  
+   input.setImeOptions(EditorInfo.IME_ACTION_SEND);  
+   input.setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_PASSWORD);  
+   input.setOnEditorActionListener(new TextView.OnEditorActionListener() {  
+       public boolean onEditorAction(TextView v, int actionId,    
+               KeyEvent event)  {    
+        Log.d(TAG, ""+actionId+","+event);  
+           if (actionId==EditorInfo.IME_ACTION_SEND  
+                ||(event!=null&&event.getKeyCode()== KeyEvent.KEYCODE_ENTER)) {    
+            //do something;  
+            return true;  
+           }    
+           return false;    
+       }    
+   }); 
+
+
+//==============================================================================
+5、设置EditText始终不弹出软件键盘 
+例：EditText edit=(EditText)findViewById(R.id.edit); 
+       edit.setInputType(InputType.TYPE_NULL);
+
+
+6.已用过的方法
+
+    /**
+     * 显示/隐藏软键盘
+     * @param editText 必须是edittext,否则不起作用
+     * @param isShow 是否显示软键盘
+     */
+    protected void showOrHideSoftInput(EditText editText, boolean isShow) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        editText.requestFocus();//必须设置,否则如果焦点不在这个view的话,输入法弹不出来
+        if (isShow) {
+            imm.showSoftInput(editText, 0);//InputMethodManager.SHOW_FORCED=2也可以
+//            imm.showSoftInputFromInputMethod(editText.getWindowToken(), 0);//这种方法弹不出来
+        } else {
+            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+//            imm.hideSoftInputFromInputMethod(editText.getWindowToken(), 0);//这种方法不能隐藏
+        }
+    }
+
+    /**
+     * 切换输入法显示/隐藏,这儿其实可以不强制是EditText
+     * @param editText
+     */
+    protected void toggleSoftInput(EditText editText) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);//这种方法也可以
+        if (editText != null) {
+            editText.requestFocus();//可不要
+            imm.toggleSoftInputFromWindow(editText.getWindowToken(), 0, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+//==============================================================================
+//焦点改变的监听
+    private InputMethodManager imm;//虚拟键盘(输入法)
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);//虚拟键盘(输入法)
+
+        etText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (llproIsOpen) {
+                        llproIsOpen = !llproIsOpen;
+                        ivSendpro.setImageResource(R.drawable.send_pro);
+                        llSendpro.setVisibility(View.GONE);
+                    }
+                } else {
+                    //隐藏虚拟键盘
+                    if (imm.isActive()) {
+                        imm.hideSoftInputFromWindow(etText.getApplicationWindowToken(), 0);
+                    }
+                }
+            }
+        });
+
+//==============================================================================
+1、方法一(如果输入法在窗口上已经显示，则隐藏，反之则显示)
+InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+2、方法二（view为接受软键盘输入的视图，SHOW_FORCED表示强制显示）
+InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
+imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //强制隐藏键盘
+
+3、调用隐藏系统默认的输入法
+((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(WidgetSearchActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+4、获取输入法打开的状态
+InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+boolean isOpen=imm.isActive();//isOpen若返回true，则表示输入法打开
+
+5, 推荐
+InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.hideSoftInputFromWindow(et_edit.getWindowToken(), 0);//隐藏软键盘
+imm.showSoftInputFromInputMethod(tv.getWindowToken(), 0);//显示软键盘
+imm.toggleSoftInputFromWindow(tv.getWindowToken(), 0, InputMethodManager.HIDE_NOT_ALWAYS);//切换软键盘的显示与隐藏
+
+
+6.在BaseActivity里已经有了2个方法:
+showOrHideSoftInput(EditText editText, boolean isShow)
+toggleSoftInput(EditText editText)
+

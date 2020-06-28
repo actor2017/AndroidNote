@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Material Design</title>
+
+</head>
+<body>
+<h2>Material Design</h2>
+
+<h3>Material Design简介</h3>
+
+<p>Material Design是谷歌新的设计语言，谷歌希望寄由此来统一各种平台上的用户体验，Material Design的特点是干净的排版和简单的布局，以此来突出内容。</p>
+
+<p>Material Design对排版、材质、配色、光效、间距、文字大小、交互方式、动画轨迹都做出了建议，以帮助设计者设计出符合Material Design风格的应用。</p>
+
+<p>Material Design设计语言鼓励大家使用充满活力的鲜艳色彩，并在同一界面建议使用三种色调，并保障有一个强色调，强色一般处于处于视图最底层，例如状态栏或者actionbar。通过强色调形成鲜明的对比，更容易突出内容的重要性。对于文字色彩的取值，Material Design建议在浅色背景上采用黑色，在深色背景上采用白色。重要信息和标题采用87%透明度，次要文字采用54%透明度，而更次要的说明文字可以采用26%的透明度。对于想特别突出或者可点击的文字，建议使用强色调。不同层级的视图，可以通过阴影来凸显。对于带有操作且内容突出的区域，可以使用cardview进行隔离，对于内容不太重要或者操作比较单一的区域，可以使用分割线进行隔离。</p>
+
+<p>更多详情请见Material Design文档：</p>
+
+<p>中文版网站 <a href="http://design.1sters.com/">http://design.1sters.com/</a></p>
+
+<p>英文版 <a href="http://www.google.com/design/spec/material-design/introduction.html">http://www.google.com/design/spec/material-design/introduction.html</a></p>
+
+<h3>Material Design使用</h3>
+
+<p>作为我们开发者，最关心的还是如何在项目中使用Material Design风格：</p>
+
+<ol>
+<li>设置应用的 <code>targetSdkVersion</code> 和 <code>targetSdkVersion</code> 为21</li>
+<li>在values目录下的style资源文件中创建一个style，让其继承自 <code>android:Theme.Material</code></li>
+<li>在AndroidManifest中指定应用的主题或者Activity的主题为我们设定的样式</li>
+</ol>
+
+
+<p>谷歌官方我们提供了三种配色风格的Material Design样式：</p>
+
+<ol>
+<li>黑色主题 <code>Theme.Material</code></li>
+<li>明亮主题 <code>Theme.Material.Light</code></li>
+<li>明亮主题黑色ActionBar <code>Theme.Material.Light.DarkActionBar</code></li>
+</ol>
+
+
+<p>我们也可以继承系统提供的Material Design样式，进行配色修改：</p>
+
+<p><img src="ThemeColors.png" alt="Mou icon" /></p>
+
+<ol>
+<li><code>android:colorPrimaryDark</code> 应用的主要暗色调，statusBarColor默认使用该颜色</li>
+<li><code>android:statusBarColor</code> 状态栏颜色，默认使用colorPrimaryDark</li>
+<li><code>android:colorPrimary</code> 应用的主要色调，actionBar默认使用该颜色</li>
+<li><code>android:windowBackground</code> 窗口背景颜色</li>
+<li><code>android:navigationBarColor</code> 底部栏颜色</li>
+<li><code>android:colorForeground</code> 应用的前景色，ListView的分割线，switch滑动区默认使用该颜色</li>
+<li><code>android:colorBackground</code> 应用的背景色，popMenu的背景默认使用该颜色</li>
+<li><code>android:colorAccent</code> 一般控件的选种效果默认采用该颜色</li>
+<li><code>android:colorControlNormal</code> 控件的默认色调　</li>
+<li><code>android:colorControlHighlight</code> 控件按压时的色调</li>
+<li><code>android:colorControlActivated</code> 控件选中时的颜色，默认使用colorAccent</li>
+<li><code>android:colorButtonNormal</code> 默认按钮的背景颜色</li>
+<li><code>android:textColor</code> Button，textView的文字颜色</li>
+<li><code>android:textColorPrimaryDisableOnly</code> RadioButton checkbox等控件的文字</li>
+<li><code>android:textColorPrimary</code> 应用的主要文字颜色，actionBar的标题文字默认使用该颜色</li>
+</ol>
+
+
+<p>主题不仅可以对<code>Application</code>和<code>Activity</code>使用，也可以对某一个控件单使用，或者是在xml布局中给一个根节点控件设置android:theme属性，来修改它和它所有子控件的主题。
+如果我们要对特定控件实例做自定义修改，更建议大家可以通过控件自身的API进行设置修改。</p>
+
+<h3>Material Design兼容性</h3>
+
+<p>Material Design主题只有在API级别为21以上才可使用，在v7支持库中提供了部分控件的Material Design主题样式，如果想使应用在android的所有版本上都能统一风格，我们可以对控件效果做自定义或者使用一些第三方的兼容包。目前最有效的做法是针对21版本创建value－21资源目录，使用Material Design风格主题，在其他版本使用v7的Theme.AppCompat.Light风格主题。</p>
+</body>
+</html>

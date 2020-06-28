@@ -1,0 +1,57 @@
+        <!-- The TimePicker style. -->
+        <attr name="timePickerStyle" format="reference" />
+
+	<declare-styleable name="TimePicker">
+        <!-- @hide The layout of the legacy time picker. -->
+        <attr name="legacyLayout" format="reference" />
+        <!-- @hide The layout of the time picker. -->
+        <attr name="internalLayout" />
+
+        <!-- The text color for the selected time header text, ex. "12" or
+             "PM". This should be a color state list where the activated state
+             will be used when the minute picker or hour picker is active.-->
+        <attr name="headerTextColor" />
+        <!-- The background for the header containing the currently selected time. -->
+        <attr name="headerBackground" />
+
+        <!-- The color for the hours/minutes numbers. This should be a color
+             state list where the activated state will be used when the number
+             is active.-->
+        <attr name="numbersTextColor" format="color" />
+        <!-- The color for the inner hours numbers used in 24-hour mode. This
+             should be a color state list where the activated state will be
+             used when the number is active.-->
+        <attr name="numbersInnerTextColor" format="color" />
+        <!-- The background color for the hours/minutes numbers. -->
+        <attr name="numbersBackgroundColor" format="color" />
+        <!-- The color for the hours/minutes selector. -->
+        <attr name="numbersSelectorColor" format="color" />
+
+        <!-- Defines the look of the widget. Prior to the L release, the only choice was
+             spinner. As of L, with the Material theme selected, the default layout is clock,
+             but this attribute can be used to force spinner to be used instead. -->
+        <attr name="timePickerMode">
+            <!-- Time picker with spinner controls to select the time. -->
+            <enum name="spinner" value="1" />
+            <!-- Time picker with clock face to select the time. -->
+            <enum name="clock" value="2" />
+        </attr>
+
+        <!-- The text appearance for the AM/PM header.
+             @deprecated Use headerTextColor instead. -->
+        <attr name="headerAmPmTextAppearance" format="reference" />
+        <!-- The text appearance for the time header.
+             @deprecated Use headerTextColor instead. -->
+        <attr name="headerTimeTextAppearance" format="reference" />
+        <!-- The color for the AM/PM selectors.
+             {@deprecated Use headerTextColor instead.}-->
+        <attr name="amPmTextColor" format="color" />
+        <!-- The background color state list for the AM/PM selectors.
+             {@deprecated Use headerBackground instead.}-->
+        <attr name="amPmBackgroundColor" format="color" />
+
+        <!-- @hide Whether this time picker is being displayed within a dialog,
+             in which case it may ignore the requested time picker mode due to
+             space considerations. -->
+        <attr name="dialogMode" />
+    </declare-styleable>

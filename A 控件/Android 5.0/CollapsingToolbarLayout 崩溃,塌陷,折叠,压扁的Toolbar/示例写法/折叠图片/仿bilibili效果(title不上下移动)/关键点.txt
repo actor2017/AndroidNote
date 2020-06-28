@@ -1,0 +1,26 @@
+1.在布局文件中,CollapsingToolbarLayout:
+app:titleEnabled="false"
+在Toolbar中设置title,这样就能实现标题不上下移动.
+
+2.appBar.setExpanded(true, false);//如果设置true(有展开动画),图片显示/隐藏无效,不知道为什么???????
+
+3.
+    /**
+     * 切换CollapsingToolbarLayout的滑动状态
+     * @param collapsingToolbarLayout
+     */
+    int scrollFlags = -1;
+    AppBarLayout.LayoutParams layoutParams;
+    private void switchCollapsingToolbarLayoutScrollable(CollapsingToolbarLayout collapsingToolbarLayout){
+        if (layoutParams == null) {
+            layoutParams = (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
+        }
+        if (scrollFlags == -1) {//初始化
+            scrollFlags = layoutParams.getScrollFlags();
+        }
+        if (layoutParams.getScrollFlags() != scrollFlags) {//恢复滑动状态
+            layoutParams.setScrollFlags(scrollFlags);
+        } else {
+            layoutParams.setScrollFlags(0);//清空滑动状态
+        }
+    }

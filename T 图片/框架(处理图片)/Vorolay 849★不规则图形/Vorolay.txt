@@ -1,0 +1,4 @@
+https://github.com/Quatja/Vorolay
+
+VoronoiView is a view (ViewGroup) that allows you to add and display views inside Voronoi diagram regions. [Voronoi diagram] 
+VoronoiView是一个视图(ViewGroup)，允许您在Voronoi关系图区域中添加和显示视图。(泰森多边形法图)

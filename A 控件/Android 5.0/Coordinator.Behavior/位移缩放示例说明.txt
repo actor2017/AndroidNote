@@ -1,0 +1,36 @@
+Custom Behaviors
+创建自定义Behaviors，并没有想象的那么难，首先我们得搞清楚两个核心元素 child 和 dependency.
+
+
+Childs and dependencies
+
+child 是指需要应用behavior的View ，dependency 担任触发behavior的角色，并与child进行互动。
+在这个例子中， child 是ImageView， dependency 是Toolbar，如果Toolbar发生移动，ImageView也会做相应的移动。
+
+
+现在我们已经知道概念了，接着我们看看怎么实现，
+第一步我们需要继承CoordinatorLayout.Behavior，T是指某一个View，
+在我们的例子中是ImageView， 继承后，我们必须实现以下2个方法:
+
+layoutDependsOn
+onDependentViewChanged
+layoutDependsOn方法在每次layout发生变化时都会调用，我们需要在dependency控件发生变化时返回True，在我们的例子中是用户在屏幕上滑动时（因为Toolbar发生了移动），然后我们需要让child做出相应的反应。
+@Override
+  public boolean layoutDependsOn(CoordinatorLayout parent, CircleImageView, child, View dependency) {
+     return dependency instanceof Toolbar;
+ }
+
+
+一旦layoutDependsOn返回了True，第二个方法onDependentViewChanged就会被调用，
+在这个方法里我们需要实现动画，转场等效果。
+
+public boolean onDependentViewChanged(CoordinatorLayout parent, CircleImageView avatar, View dependency) {
+      modifyAvatarDependingDependencyState(avatar, dependency);
+   }
+
+   private void modifyAvatarDependingDependencyState(CircleImageView avatar, View dependency) {
+        //  avatar.setY(dependency.getY());
+        //  avatar.setBlahBlat(dependency.blah / blah);
+    }
+
+

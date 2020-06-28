@@ -1,0 +1,4 @@
+<action : 	Intent intent = new Intent(Intent.ACTION_VIEW);
+<category : 	map/music/home/BROWSABLEä¯ÀÀÆ÷?
+<data android:scheme="callPhone"/>	intent.setData(Uri.parse("callPhone://110"));
+<data android:mimeType="video/mp4"/>	intent.setDataAndType(Uri.parse("http://xxx.mp4"), "video/mp4");

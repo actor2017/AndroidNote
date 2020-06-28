@@ -1,0 +1,12 @@
+
+    private void jumo2QQ(String qqNumber) {
+        try {
+            toast("跳转客服QQ");
+            //第二种方式：可以跳转到添加好友，如果qq号是好友了，直接聊天
+            String url = "mqqwpa://im/chat?chat_type=wpa&uin=" + qqNumber;//uin是发送过去的qq号码
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            toast("请检查是否安装QQ");
+        }
+    }

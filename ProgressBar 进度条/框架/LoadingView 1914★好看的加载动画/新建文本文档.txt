@@ -1,0 +1,4 @@
+https://github.com/ldoublem/LoadingView
+
+compile 'com.ldoublem.loadingview:loadingviewlib:1.0'
+

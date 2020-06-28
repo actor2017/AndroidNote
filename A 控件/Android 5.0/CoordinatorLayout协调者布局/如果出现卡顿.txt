@@ -1,0 +1,17 @@
+遗留问题
+
+"AppBarLayout + RecyclerView"的组合使用会出现一些体验上的卡顿问题，目前已知的有两个：
+
+AppBarLayout视图处于显示状态的时候，ScrollingView的Fling事件容易出现卡顿，参考stackoverflow：Flinging with RecyclerView + AppBarLayout；
+
+当AppBarLayout处于完全隐藏状态时，向下触发Fling事件，ScrollingView向上滚动直至顶部全部展示，而不是继续滚动使AppBarLayout的内容得以展示。
+
+替代解决方案，开源项目：Android-ObservableScrollView
+
+
+https://github.com/ksoichiro/Android-ObservableScrollView
+
+作者：亦枫
+链接：http://www.jianshu.com/p/360fd368936d
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

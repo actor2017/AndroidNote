@@ -1,0 +1,1 @@
+能够将@Test 中 JSONObject中大写的key自动转换成bean中小写的key.

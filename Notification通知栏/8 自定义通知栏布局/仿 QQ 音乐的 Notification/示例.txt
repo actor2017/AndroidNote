@@ -1,0 +1,24 @@
+有人想要仿 QQ 音乐的样式，其实代码很简单和自定义的差不多。
+
+
+if(Build.VERSION.SDK_INT>=16){
+        Notification notification = new Notification();
+        notification.icon = R.mipmap.ic_launcher;
+        notification.tickerText = "BigContent";
+        notification.contentView = new RemoteViews(getPackageName(), R.layout.notification_template_customer);
+        RemoteViews expandedView = new RemoteViews(getPackageName(), R.layout.notification_big_content);
+        //contentView和expandedView的 pendingIntent 我就不写了 和自定义的一样的
+        notification.bigContentView = expandedView;
+        manger.notify(10,notification);
+    }else{
+        Toast.makeText(MainActivity.this, "系统版本过低，不支持此种样式！", Toast.LENGTH_SHORT).show();
+    }
+
+R.layout.notification_big_content的布局文件也很简单就不上代码了 
+需要注意的是 
+bigContentView是 api16以上才支持的，所以4.1以下还是没有效果的 
+另外bigContentView布局的高度需要是100dp。
+
+
+Demo下载地址 :http://download.csdn.net/detail/w804518214/9500651
+demo里有两首歌和打包后的apk，所以比较大，如果网不好下载请耐心！由于 qq 音乐那个是后来加上去的所以 Demo 里并没有，请自行测试

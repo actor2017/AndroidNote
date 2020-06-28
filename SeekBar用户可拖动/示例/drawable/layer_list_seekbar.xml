@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--查看源码:res/values/styles.xml中点击↓
+    <style name="AppTheme" parent="Theme.AppCompat.Light.(点这儿)NoActionBar",
+    进到values.xml后搜索:ProgressBar,
+    找到这一行:<style name="Widget.AppCompat.ProgressBar.Horizontal" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+    点进去,得到下面结果,在点进去:
+    <style name="Base.Widget.AppCompat.ProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
+    再点进去,得到系统progressBar的style:
+
+    <style name="Widget.ProgressBar.Horizontal">
+        <item name="indeterminateOnly">false</item>
+        <item name="progressDrawable">@drawable/progress_horizontal</item>
+        <item name="indeterminateDrawable">@drawable/progress_indeterminate_horizontal</item>
+        <item name="minHeight">20dip</item>
+        <item name="maxHeight">20dip</item>
+        <item name="mirrorForRtl">true</item>
+    </style>
+
+    再点击progressDrawable这一行,得到本xml文件源码
+    -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--定义seekbar滑动条的底色-->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="3dp"/>
+
+            <!--写在<gradient上面没用,写在下面才有用-->
+            <!--<solid android:color="#2B2B2B"/>-->
+
+            <!--梯度；坡度；倾斜度-->
+            <!--android:centerY 颜色中心偏移,默认0.5-->
+            <gradient
+                android:angle="270"
+                android:centerColor="#0f0"
+                android:centerY="0.5"
+                android:endColor="#f00"
+                android:startColor="#00f"/>
+        </shape>
+    </item>
+
+    <!--缓冲进度-->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="3dp"/>
+
+                <!--写在<gradient上面没用,写在下面才有用-->
+                <!--<solid android:color="#ff51495e" />-->
+
+                <gradient
+                    android:startColor="#80ffd300"
+                    android:centerColor="#80ffb600"
+                    android:centerY="0.75"
+                    android:endColor="#a0ffcb00"
+                    android:angle="270"/>
+            </shape>
+        </clip>
+    </item>
+
+    <!--定义seekbar已滑动进度条颜色-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="3dp"/>
+
+                <!--写在<gradient上面没用,写在下面才有用-->
+                <!--<solid android:color="#2496F6"/>-->
+
+                <!--梯度；坡度；倾斜度-->
+                <gradient
+                    android:angle="270"
+                    android:centerColor="#0f0"
+                    android:centerY="0.75"
+                    android:endColor="#00f"
+                    android:startColor="#f00"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

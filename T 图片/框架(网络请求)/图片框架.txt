@@ -1,0 +1,22 @@
+//------------------------------------网络图片框架---------------------
+1.universal image loader	UIL	不支持.9图,不支持GIF
+option可不写(设置默认的),也可以后来添加option,方法重构
+初始化:splash或者
+
+2.Fresco	facebook
+1.添加依赖
+2.不能写wrap_content	返回永远是-1
+3.支持GIF
+
+3.Picasso	毕加索	图片RGB888	高质量,支持本地图片,不支持gif
+
+
+4.Glide		有生命周期,可以传context和fragment,当context销毁后,不会再加载图片等图片:RGB565
+		(源码,面试可能会问)
+
+
+快速加载图片,推荐:Glide
+对图片质量要求较高:Picasso	(不支持gif)
+加载的图片很多,推荐:Fresco>Glide>Picasso
+在布局文件中配置属性:Fresco
+

@@ -1,0 +1,214 @@
+{
+    "picture": [
+        "image/home01.jpg",
+        "image/home02.jpg",
+        "image/home03.jpg",
+        "image/home04.jpg",
+        "image/home05.jpg",
+        "image/home06.jpg",
+        "image/home07.jpg",
+        "image/home08.jpg"
+    ],
+    "list": [
+        {
+            "id": 1525490,
+            "name": "有缘网",
+            "packageName": "com.youyuan.yyhl",
+            "iconUrl": "app/com.youyuan.yyhl/icon.jpg",
+            "stars": 4,
+            "size": 3876203,
+            "downloadUrl": "app/com.youyuan.yyhl/com.youyuan.yyhl.apk",
+            "des": "产品介绍：有缘是时下最受大众单身男女亲睐的婚恋交友软件。有缘网专注于通过轻松、"
+        },
+        {
+            "id": 1599700,
+            "name": "酷狗音乐",
+            "packageName": "com.kugou.android",
+            "iconUrl": "app/com.kugou.android/icon.jpg",
+            "stars": 4,
+            "size": 8790060,
+            "downloadUrl": "app/com.kugou.android/com.kugou.android.apk",
+            "des": "全新改版震撼发布！让您赏心悦目、随心所欲、乐在其中、知音识趣......还有多项"
+        },
+        {
+            "id": 1633797,
+            "name": "唯品会",
+            "packageName": "com.achievo.vipshop",
+            "iconUrl": "app/com.achievo.vipshop/icon.jpg",
+            "stars": 4,
+            "size": 5142608,
+            "downloadUrl": "app/com.achievo.vipshop/com.achievo.vipshop.apk",
+            "des": "【网购神器】唯品会，一家专门做特卖的网站，专业买手把脉潮流热点，轻松打造女神范"
+        },
+        {
+            "id": 1631363,
+            "name": "男性私人医生",
+            "packageName": "com.medapp.man",
+            "iconUrl": "app/com.medapp.man/icon.jpg",
+            "stars": 4,
+            "size": 1979701,
+            "downloadUrl": "app/com.medapp.man/com.medapp.man.apk",
+            "des": "男性私人医生是一款专门针对男性生理健康以及其他相关专科病症提供免费在线咨询的医疗"
+        },
+        {
+            "id": 1637000,
+            "name": "笑霸来了(世界杯版)",
+            "packageName": "com.zuobao.xiaobao",
+            "iconUrl": "app/com.zuobao.xiaobao/icon.jpg",
+            "stars": 4.5,
+            "size": 4365674,
+            "downloadUrl": "app/com.zuobao.xiaobao/com.zuobao.xiaobao.apk",
+            "des": "就算生活再苦逼，我们仍需小快乐！笑霸来了，给你不一样的快乐。独乐乐，不如众乐乐。"
+        },
+        {
+            "id": 1521945,
+            "name": "欧朋浏览器",
+            "packageName": "com.oupeng.mini.android",
+            "iconUrl": "app/com.oupeng.mini.android/icon.jpg",
+            "stars": 3.5,
+            "size": 2376917,
+            "downloadUrl": "app/com.oupeng.mini.android/com.oupeng.mini.android.apk",
+            "des": "欧朋浏览器7.8.8——最快的手机浏览器，没有之一，欢迎挑战。纤小的身体蕴藏着"
+        },
+        {
+            "id": 1521914,
+            "name": "蘑菇街",
+            "packageName": "com.mogujie",
+            "iconUrl": "app/com.mogujie/icon.jpg",
+            "stars": 3.5,
+            "size": 6746678,
+            "downloadUrl": "app/com.mogujie/com.mogujie.apk",
+            "des": "蘑菇街是国内最受年轻女性喜爱的购物平台，每天由专业时尚编辑为你搜罗最新最时尚的热"
+        },
+        {
+            "id": 1631309,
+            "name": "今日头条",
+            "packageName": "com.ss.android.article.news",
+            "iconUrl": "app/com.ss.android.article.news/icon.jpg",
+            "stars": 4.5,
+            "size": 5599469,
+            "downloadUrl": "app/com.ss.android.article.news/com.ss.android.article.news.apk",
+            "des": "★用户量过亿的新闻阅读客户端★占领AppStore新闻类榜首15个月★每天用"
+        },
+        {
+            "id": 1615630,
+            "name": "书旗小说",
+            "packageName": "com.shuqi.controller",
+            "iconUrl": "app/com.shuqi.controller/icon.jpg",
+            "stars": 3.5,
+            "size": 5383460,
+            "downloadUrl": "app/com.shuqi.controller/com.shuqi.controller.apk",
+            "des": "书虫必备小说阅读神器，功能体验全面升级，全网小说任你搜。轻松离线，让你随时随地自"
+        },
+        {
+            "id": 1621882,
+            "name": " 美团 ",
+            "packageName": "com.sankuai.meituan",
+            "iconUrl": "app/com.sankuai.meituan/icon.jpg",
+            "stars": 4.5,
+            "size": 6243161,
+            "downloadUrl": "app/com.sankuai.meituan/com.sankuai.meituan.apk",
+            "des": "美团团购，口碑最好、国内最火的团购必备软件，为您提供各城市美食、酒店、娱乐、电影"
+        },
+        {
+            "id": 1631260,
+            "name": "金山电池医生",
+            "packageName": "com.ijinshan.kbatterydoctor",
+            "iconUrl": "app/com.ijinshan.kbatterydoctor/icon.jpg",
+            "stars": 4.5,
+            "size": 4652996,
+            "downloadUrl": "app/com.ijinshan.kbatterydoctor/com.ijinshan.kbatterydoctor.apk",
+            "des": "金山电池医生,可延长手机1倍待机时间.专业充电,智能省电,精准预测可用时间,超过"
+        },
+        {
+            "id": 1640629,
+            "name": "安卓壁纸",
+            "packageName": "com.androidesk",
+            "iconUrl": "app/com.androidesk/icon.jpg",
+            "stars": 4,
+            "size": 2989473,
+            "downloadUrl": "app/com.androidesk/com.androidesk.apk",
+            "des": "百万高清壁纸、高品质动态壁纸、海量炫酷铃声，最in美图、最强适配、最神吐槽，尽在"
+        },
+        {
+            "id": 1565716,
+            "name": "陌陌",
+            "packageName": "com.immomo.momo",
+            "iconUrl": "app/com.immomo.momo/icon.jpg",
+            "stars": 2.5,
+            "size": 11388135,
+            "downloadUrl": "app/com.immomo.momo/com.immomo.momo.apk",
+            "des": "全球150多个国家超过1亿人使用的社交产品。陌陌是国内领先的移动社交产品。你可"
+        },
+        {
+            "id": 1644521,
+            "name": "天天动听",
+            "packageName": "com.sds.android.ttpod",
+            "iconUrl": "app/com.sds.android.ttpod/icon.jpg",
+            "stars": 3.5,
+            "size": 9514161,
+            "downloadUrl": "app/com.sds.android.ttpod/com.sds.android.ttpod.apk",
+            "des": "【激情世界杯，天天好音质】世界杯期间在天天动听#用户评价#里5星好评并带上个人"
+        },
+        {
+            "id": 1523395,
+            "name": "安智市场(通用版)",
+            "packageName": "cn.goapk.market",
+            "iconUrl": "app/cn.goapk.market/icon.jpg",
+            "stars": 4,
+            "size": 2403320,
+            "downloadUrl": "app/cn.goapk.market/cn.goapk.market.apk",
+            "des": "安智市场是目前中国最知名的Android系统手机应用软件免费下载平台。其人性化的"
+        },
+        {
+            "id": 1608378,
+            "name": "亚马逊购物",
+            "packageName": "cn.amazon.mShop.android",
+            "iconUrl": "app/cn.amazon.mShop.android/icon.jpg",
+            "stars": 3.5,
+            "size": 7351495,
+            "downloadUrl": "app/cn.amazon.mShop.android/cn.amazon.mShop.android.apk",
+            "des": "亚马逊为Android系统设计的亚马逊手机客户端不仅可以让用户通过一个渐变"
+        },
+        {
+            "id": 1624704,
+            "name": "暴风影音",
+            "packageName": "com.storm.smart",
+            "iconUrl": "app/com.storm.smart/icon.jpg",
+            "stars": 2.5,
+            "size": 10205276,
+            "downloadUrl": "app/com.storm.smart/com.storm.smart.apk",
+            "des": "1、视频聚合——暴风拥有丰富的720P高清视频,视频内容涵盖了电影、电视剧、动漫"
+        },
+        {
+            "id": 1540513,
+            "name": "支付宝钱包",
+            "packageName": "com.eg.android.AlipayGphone",
+            "iconUrl": "app/com.eg.android.AlipayGphone/icon.jpg",
+            "stars": 3,
+            "size": 19137654,
+            "downloadUrl": "app/com.eg.android.AlipayGphone/com.eg.android.AlipayGphone.apk",
+            "des": "一分钱领五元红包！即日起至6月30日，支付宝未绑定银行卡且未快捷支付过的用户登录"
+        },
+        {
+            "id": 1643701,
+            "name": "ES文件浏览器",
+            "packageName": "com.estrongs.android.pop",
+            "iconUrl": "app/com.estrongs.android.pop/icon.jpg",
+            "stars": 3.5,
+            "size": 4391508,
+            "downloadUrl": "app/com.estrongs.android.pop/com.estrongs.android.pop.apk",
+            "des": "ES，全球主动下载超过2亿次，安卓文件管理第一品牌。想更好地管理你的手机、平板"
+        },
+        {
+            "id": 1604213,
+            "name": "百度贴吧",
+            "packageName": "com.baidu.tieba",
+            "iconUrl": "app/com.baidu.tieba/icon.jpg",
+            "stars": 3,
+            "size": 24574809,
+            "downloadUrl": "app/com.baidu.tieba/com.baidu.tieba.apk",
+            "des": "百度贴吧手机客户端---为兴趣而生!百度贴吧是以兴趣主题聚合志同道合者的互"
+        }
+    ]
+}

@@ -1,0 +1,2 @@
+https://github.com/googlesamples/android-EmojiCompat
+https://www.jianshu.com/p/2a26502db899	//Android πŸ∑ΩºÊ»›ø‚ EmojiCompat Support Library - ºÚ È.html

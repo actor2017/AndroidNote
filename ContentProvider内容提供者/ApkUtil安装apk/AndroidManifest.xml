@@ -1,0 +1,22 @@
+
+        <!--
+            用于安装apk:
+            name:是固定写法。
+            authorities:可自定义,组件标识，都以包名开头,避免和其它应用发生冲突,是用来标识该provider的唯一标识,建议结合包名来保证authority的唯一性。
+            exported:必须为false.否则运行时会报错java.lang.SecurityException: Provider must not be exported 。
+            grantUriPermissions:true.用来控制共享文件的访问权限,表示授予 URI 临时访问权限。
+            ${applicationId}:包名
+-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!--
+            resource:指定了共享文件的路径.此处的file_paths即是该Provider对外提供文件的目录的配置文件,存放在res/xml/下.
+            -->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+    </application>

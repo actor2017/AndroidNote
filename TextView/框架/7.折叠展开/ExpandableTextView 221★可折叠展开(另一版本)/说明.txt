@@ -1,0 +1,21 @@
+https://github.com/Carbs0126/ExpandableTextView
+http://blog.csdn.net/yeah0126/article/details/52060210
+
+可应用在ListView/RecyclerView中并可以动态更新内容
+
+compile 'cn.carbs.android:ExpandableTextView:1.0.3'
+
+使用方法： 有两种方法设置文字： (1)在java中更新文字
+//普通视图中的更新
+etv.setText(text);
+//在ListView/RecyclerView中的应用
+etv.updateForRecyclerView(text, etvWidth, state);//etvWidth为控件的真实宽度，state是控件所处的状态，“收缩”/“伸展”
+状态
+
+(2)在xml中直接设置文字
+<cn.carbs.android.expandabletextview.library.ExpandableTextView
+                android:id="@+id/etv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/long_poem" />
+

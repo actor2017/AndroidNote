@@ -1,0 +1,30 @@
+Android中main方法在ActivityThread.java中
+
+main() {
+  Test test = new Test();
+  test.t();
+}
+
+进程:
+方法区(加载字节码class,加载后压栈.Test test指针),
+堆(开辟new Test()的空间),
+栈(执行main方法,执行.t()方法),
+...
+
+
+写一个注解:
+public @interface Replace {
+    String class;
+    String method;
+}
+写一个同样的Class,同样的方法名(可不一样),
+
+打包dex:
+dx --dex --output C:\Users\baby\Desktop\dex\out.dex C:\Users\baby\Desktop\dex\(再后面是com)
+
+下载dex
+
+PatchManager.getInstance().loadPatch(dexFile, context) {
+    DexFile dexFile = DexFile.loadDex(filePath,...,Context.MODE_PRIVATE)
+}
+

@@ -1,0 +1,5 @@
+ImageView img = new ImageView(self);
+img.setImageResource(R.drawable.icon);
+
+new AlertDialog.Builder(self).setTitle("Í¼Æ¬¿ò")
+    .setView(img).setPositiveButton("È·¶¨", null).show();

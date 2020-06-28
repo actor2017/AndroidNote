@@ -1,0 +1,18 @@
+https://github.com/ZhaoKaiQiang/KLog
+
+这是一个Android专用的LogCat工具，主要功能为打印行号、函数调用、Json解析、XML解析、点击跳转、Log信息保存等功能
+
+Android LogCat 工具类，目前功能：
+
+支持显示行号
+支持显示Log所在函数名称
+支持无Tag快捷打印
+支持在Android Studio开发IDE中，点击函数名称，跳转至Log所在位置
+支持JSON字符串解析打印
+支持XML字符串解析打印
+支持Log信息存储到文件
+依赖库非常小，只有不到10K
+支持无限长字符串打印，无Logcat4000字符限制
+支持变长参数，任意个数打印参数
+支持设置全局Tag
+

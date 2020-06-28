@@ -1,0 +1,9 @@
+https://github.com/zhihu/Matisse
+
+一个设计良好的Android本地图像和视频选择器,你能:
+1.Use it in Activity or Fragment
+2.选择图片，包括JPEG,PNG,GIF和视频，包括MPEG,MP4
+3.应用不同的主题，包括两个内置主题和自定义主题
+4.不同的图像加载器
+5.定义自定义过滤规则
+6.更多的你自己了解

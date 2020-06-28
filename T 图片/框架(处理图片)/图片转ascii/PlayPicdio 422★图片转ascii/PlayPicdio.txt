@@ -1,0 +1,4 @@
+https://github.com/GodFengShen/PlayPicdio
+https://www.jianshu.com/p/a14f1ac558e1
+
+Android picture or video convert to ascii pic or video 安卓平台下，图片或视频转化为ascii，图片转化成低多边形风格图形，emoji表情填充图片，合并视频用到ffmpeg库。后期会加入带色彩的ascii码图片或视频

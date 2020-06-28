@@ -1,0 +1,45 @@
+setMinValue(int minVal)：设置该组件支持的最小值。
+setMaxValue(int maxVal)：设置该组件支持的最大值。
+setValue(int value)：设置该组件的当前值。
+
+<NumberPicker android:id="@+id/np2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+
+//------------------------------------
+np1.setOnValueChangedListener(new OnValueChangeListener(){//设置值改变监听
+
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            }
+}
+
+//------------------------------------
+NumberPicker.OnScrollListener//滑动监听:SCROLL_STATE_FLING,SCROLL_STATE_IDLE,SCROLL_STATE_TOUCH_SCROLL
+    public void onScrollStateChange(NumberPicker view, int scrollState) {  
+        switch (scrollState) {  
+        case OnScrollListener.SCROLL_STATE_FLING:  
+            Toast.makeText(this, "scroll state fling", Toast.LENGTH_LONG)  
+                    .show();  
+            break;  
+        case OnScrollListener.SCROLL_STATE_IDLE:  
+            Toast.makeText(this, "scroll state idle", Toast.LENGTH_LONG).show();  
+            break;  
+        case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:  
+            Toast.makeText(this, "scroll state touch scroll", Toast.LENGTH_LONG)  
+                    .show();  
+            break;  
+        }  
+  
+    } 
+
+
+//------------------------------------
+NumberPicker.Formatter//格式化显示数字，例如0—23格式化为00 — 23 。具体的格式在format函数中规定，如下代码：
+public String format(int value) {  
+        String tmpStr = String.valueOf(value);  
+        if (value < 10) {  
+            tmpStr = "0" + tmpStr;  
+        }  
+        return tmpStr;  
+    }  

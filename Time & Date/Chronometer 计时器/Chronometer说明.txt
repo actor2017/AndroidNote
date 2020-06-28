@@ -1,0 +1,45 @@
+只能以1秒的时间间隔进行计时?
+7.0前只能正计时,不能倒计时!!
+
+    <Chronometer		//extends TextView
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:countDown="true"			//倒计时(需要api24,7.0才生效)
+        android:format="倒计时:%s"			//只有这么一个属性
+        android:gravity="center"
+        android:textColor="@color/font_color_35"//文字颜色
+        android:textSize="@dimen/font_size_38px" />//文字大小
+
+
+Chronometer timer = (Chronometer) findViewById(R.id.timer);
+//chronometer.setFormat("%s");//如果指定，计时器将根据这个字符串来显示,替换字符串中第一个“%s”为当前"MM:SS"或 "H:MM:SS"格式的时间显示
+//chronometer.setFormat("计时：%s");
+chronometer.getBase();//获取计时器开始时的时时间
+chronometer.setBase(SystemClock.elapsedRealtime());//系统当前时间(用于计时器清零)
+chronometer.start();
+chronometer.stop();
+
+chronometer.setCountDown(true);//api24(7.0),设置是否倒计时
+mChronometer.isCountDown();//api24(7.0),判断是否是倒计时
+
+
+假设计时器每过10S重置：
+chronometer.setOnChronometerTickListener(new OnChronometerTickListener() {
+
+    @Override
+
+    public void onChronometerTick(Chronometer chronometer) {
+
+        if (SystemClock.elapsedRealtime() - chronometer.getBase() > 10*1000 ){
+
+            chronometer.setBase(SystemClock.elapsedRealtime());
+
+        }
+
+    }
+
+});
+
+
+

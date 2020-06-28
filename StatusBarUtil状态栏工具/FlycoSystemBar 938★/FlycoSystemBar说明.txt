@@ -1,0 +1,8 @@
+https://github.com/H07000223/FlycoSystemBar
+
+A Helper for SystemBar include StatusBar and NavigationBar. 
+
+ependencies{
+    compile 'com.android.support:support-v4:23.4.0'
+    compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
+}

@@ -1,0 +1,438 @@
+查找好友:环信不支持,只能在例:Bmob服务器里面查找,环信只存储用户名和密码.和负责通信(文字,图片,视频...)
+环信已经集成了主流的谷歌、小米和华为推送
+
+1.网址:http://www.easemob.com/
+
+2.注册:
+账号:qq@qq.com
+密码:huanxin2017
+
+3.下载SDK:http://www.easemob.com/download/im
+
+4.查看文档:http://docs.easemob.com/im/200androidclientintegration/10androidsdkimport
+SDK_Core 为核心的消息同步协议实现，完成与服务器之间的信息交换。
+SDK 是基于核心协议实现的完整的 IM 功能，实现了不同类型消息的收发、会话管理、群组、好友、聊天室等功能。
+EaseUI 是一组 IM 相关的 UI 控件，旨在帮助开发者快速集成环信 SDK。
+
+EMClient这个类,分为4个类:
+EMClient: SDK 的入口，主要完成登录、退出、连接管理等功能。也是获取其他模块的入口。
+
+1.EMChatManager: 管理消息的收发，完成会话管理等功能。
+2.EMContactManager: 负责好友的添加删除，黑名单的管理。
+3.EMGroupManager: 负责群组的管理，创建、删除群组，管理群组成员等功能。
+4.EMChatroomManager: 负责聊天室的管理。
+
+
+Android_SDK集成：http://www.imgeek.org/video/44
+
+1.解压SDK,
+一个是 libs 下带实时语音功能和实时视频功能的 jar 包和 so 文件。
+如果你不需要实时语音、实时视频功能，那就直接用 libs.without.audio 文件夹下的 jar 包及 so 文件。
+
+2.通过gradle远程链接导入	或者 手动libs.without.audio(因为这个lib小)中的所有东西复制到工程lib文件夹下(初学建议这种)
+在你的module的build.gradle里加入以下代码(如果不手动):
+android {
+    //use legacy for android 6.0
+    useLibrary 'org.apache.http.legacy'
+}
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    //Optional compile for GCM (Google Cloud Messaging).
+    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
+}
+
+如果想使用不包含音视频通话的sdk，用compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'; SDK版本号参考Release Note
+
+3.注意:lib文件夹一般只能识别.jar包,不能识别.so库,所以有2种解决方法:
+	1.把so库放到main/jniLibs里面
+	2.做一个映射:在build.gradle的"android{"里写:	(可百度studio so库)
+    sourceSets {
+        main {
+	    //jni.srcDirs = []	//不需要jni,这儿删掉
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+4.配置权限:
+<uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>  
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+android.permission.ACCESS_MOCK_LOCATION报错:模拟位置信息的权限,删掉
+
+5.关于 EASEMOB_APPKEY 对应的 value 获取，在创建应用后，申请 AppKey 并进行相关配置。（环信 Demo 中 AppKey 为 easemob-demo#chatdemoui）
+	<!-- 设置环信应用的AppKey,自己的:1190170319178172#huanxin -->
+    	<meta-data android:name="EASEMOB_APPKEY"  android:value="Your AppKey" />
+    	<!-- 声明SDK所需的service SDK核心功能-->
+    	<service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
+        <service android:name="com.hyphenate.chat.EMJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+6.APP 打包混淆
+
+在 Proguard-rules.pro 文件中加入以下 keep。
+
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+
+打包之前要在build.gradle的buildTypes中的minifyEnabled false改成true才会混淆打包
+
+
+下一页：Android SDK 基础功能
+
+7.初始化Application
+1.在包下创建global/HuanXinApplication extends Application{}
+2.在清单文件中<application添加name属性="HuanXinApplication"
+
+初始化 SDK
+在 application 的oncreate方法中做初始化，初始化的时候需要传入设置好的 options:
+//------------------------------------------------------------------------------------------------------
+    private void initHuanXin() {		//onCreate中调用这个方法
+
+        //appContext = this;        //去掉
+        //获取当前应用的进程id
+        int pid = android.os.Process.myPid();
+        //获取当前应用的进程名/包名
+        String processAppName = getAppName(pid);
+        // 如果APP启用了远程的service，此application:onCreate会被调用2次
+        // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
+        // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
+
+        if (processAppName == null || !processAppName.equalsIgnoreCase(getApplicationContext()
+                .getPackageName())) {//appContext改成getApplicationContext()
+            Log.e(TAG, "enter the service process!");
+
+            // 则此application::onCreate 是被service 调用的，直接返回
+            return;
+        }
+
+        EMOptions options = new EMOptions();
+        // 默认添加好友时，是不需要验证的，false:改成需要验证
+        options.setAcceptInvitationAlways(false);
+        //是否自动登录
+        options.setAutoLogin(false);
+        //初始化
+        EMClient.getInstance().init(getApplicationContext(), options);
+        //applicationContext改成getApplicationContext()
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
+    }
+
+    //注：如果你的 APP 中有第三方的服务启动，请在初始化 SDK（EMClient.getInstance().init(applicationContext, options)）
+    // 方法的前面添加以下相关代码（相应代码也可参考 Demo 的application），使用 EaseUI 库的就不用理会这个。
+    //如何获取processAppName请参考以下方法
+    private String getAppName(int pID) {
+        String processName = null;
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List l = am.getRunningAppProcesses();
+        Iterator i = l.iterator();
+        PackageManager pm = this.getPackageManager();
+        while (i.hasNext()) {
+            ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo)
+                    (i.next());
+            try {
+                if (info.pid == pID) {
+                    processName = info.processName;
+                    return processName;
+                }
+            } catch (Exception e) {
+                // Log.d("Process", "Error>> :"+ e.toString());
+            }
+        }
+        return processName;
+    }
+
+//###########################################################################################
+一些API和网络调用,有什么问题可以看EMClient的源码,里面有大部分方法的源码:
+//--------------------------------------------------判断是否已经登录(不写在子线程)-----------
+判断是否已经登录:
+boolean loggedInBefore = EMClient.getInstance().isLoggedInBefore();
+
+//--------判断是否连接(不知道是指的什么鬼连接,没文档没注释,固定写法)(不写在子线程)-----------
+判断是否连接:
+boolean connected = EMClient.getInstance().isConnected();
+
+//--------------------------------------------------本例闪屏写法(不写在子线程)---------------
+if (loggedInBefore && connected) {//如果登录过且连接(可能是固定写法,不知道connected什么鬼)
+                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                } else {
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                }
+                finish();
+
+//------------------------------------------------注册(子线程,否则注册无法成功)---------------
+注册
+
+注册模式分两种，开放注册和授权注册。只有开放注册时，才可以客户端注册。
+
+开放注册是为了测试使用，正式环境中不推荐使用该方式注册环信账号；
+授权注册的流程应该是您服务器通过环信提供的 REST API 注册，之后保存到您的服务器或返回给客户端。
+注册用户名会自动转为小写字母，所以建议用户名均以小写注册。（强烈建议开发者通过后台调用 REST 接口去注册环信 ID，客户端注册方法不提倡使用。）
+
+//注册失败会抛出HyphenateException
+EMClient.getInstance().createAccount(username, pwd);//同步方法,注册(子线程,否则注册无法成功)
+
+
+//---------------------------------------------------------登录(主线程)-----------------------
+登录(写在主线程)
+
+EMClient.getInstance().login(id, pwd, new EMCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        ThreadUtils.runOnUiThread(new Runnable() {//主线程
+                    		@Override
+                    		public void run() {
+                        	//登录成功、跳转界面
+                        	loginView.loginResult(true,null);
+                    		}
+                	});
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+			ThreadUtils.runOnUiThread(new Runnable() {
+                    		@Override
+                    		public void run() {
+                        	//登录失败  提示用户
+                        	loginView.loginResult(false,errMsg);
+                    		}
+                	});
+                    }
+
+                    @Override
+                    public void onProgress(int i, String s) {
+
+                    }
+                });
+
+注意： 登录成功后需要调用:
+EMClient.getInstance().chatManager().loadAllConversations();和
+EMClient.getInstance().groupManager().loadAllGroups();
+
+以上两个方法是为了保证进入主页面后本地会话和群组都 load 完毕。
+
+另外如果登录过，APP 长期在后台再进的时候也可能会导致加载到内存的群组和会话为空，
+可以在主页面的 oncreate 里也加上这两句代码，当然，更好的办法应该是放在程序的开屏页，可参考 Demo 的 SplashActivity。
+
+EMClient.getInstance().login(userName,password,new EMCallBack() {//回调
+    @Override
+    public void onSuccess() {
+        EMClient.getInstance().groupManager().loadAllGroups();
+        EMClient.getInstance().chatManager().loadAllConversations();
+            Log.d("main", "登录聊天服务器成功！");		
+    }
+
+    @Override
+    public void onProgress(int progress, String status) {
+
+    }
+
+    @Override
+    public void onError(int code, String message) {
+        Log.d("main", "登录聊天服务器失败！");
+    }
+});
+
+//----------------------------------------------------------------自动登录-------------------
+即首次登录成功后，不需要再次调用登录方法，在下次 APP 启动时，SDK 会自动为您登录。
+并且如果您自动登录失败，也可以读取到之前的会话信息（以上情况是在未调用登出的情况下实现的）。
+
+SDK 中自动登录属性默认是 true 打开的，如果不需要自动登录，在初始化 SDK 初始化的时候，
+调用options.setAutoLogin(false);设置为 false 关闭。(上面初始化SDK的时候已经设置)
+
+自动登录在以下几种情况下会被取消：
+
+用户调用了 SDK 的登出动作；
+用户在别的设备上更改了密码，导致此设备上自动登录失败；
+用户的账号被从服务器端删除；
+用户从另一个设备登录，把当前设备上登录的用户踢出。
+
+//----------------------------------------------------------------获取现在的用户名------------
+String currentUsername = EMClient.getInstance().getCurrentUser();
+
+//----------------------------------------------------------------退出登录-------------------
+同步方法:			//这个方法要手动写在子线程
+EMClient.getInstance().logout(true);
+
+异步方法:(callback是在子线程的方法)
+EMClient.getInstance().logout(true, new EMCallBack() {
+            
+    @Override
+    public void onSuccess() {			//本方法在子线程
+        // TODO Auto-generated method stub
+        
+    }
+    
+    @Override
+    public void onProgress(int progress, String status) {//本方法在子线程
+        // TODO Auto-generated method stub
+        
+    }
+    
+    @Override
+    public void onError(int code, String message) {//本方法在子线程
+        // TODO Auto-generated method stub
+        
+    }
+});
+
+如果集成了GCM等第三方推送，方法里第一个参数需要设为true，这样退出的时候会解绑设备token，
+否则可能会出现退出了，还能收到消息的现象。
+有时候可能会碰到网络问题而解绑失败，app处理时可以弹出提示框让用户选择，
+是否继续退出(弹出框提示继续退出能收到消息的风险)，如果用户选择继续退出，
+传false再调用logout方法退出成功；
+当然也可以失败后还是返回退出成功，然后在后台起个线程不断调用logout方法直到成功，
+这样有个风险是：用户kill了app，然后网络恢复，用户还是会继续收到消息。
+
+还有一个需要注意的是：如果调用异步退出方法，在收到onsucess的回调后才去调用IM相关的方法，比如login
+
+
+//-----------------------------------------------------------从服务器获取好友-------------
+List<String> allContactsFromServer = EMClient.getInstance().contactManager().getAllContactsFromServer();	//写在子线程
+
+
+//------------------------------------------------------------注册"连接状态"监听---------------
+
+当掉线时，Android SDK 会自动重连，无需进行任何操作，通过注册连接监听来知道连接状态。
+
+在聊天过程中难免会遇到网络问题，在此 SDK 为您提供了网络监听接口，实时监听
+可以根据 disconnect 返回的 error 判断原因。若服务器返回的参数值为EMError.USER_LOGIN_ANOTHER_DEVICE，
+则认为是有同一个账号异地登录；若服务器返回的参数值为EMError.USER_REMOVED，则是账号在后台被删除。
+
+//注册一个监听连接状态的listener
+EMClient.getInstance().addConnectionListener(new MyConnectionListener());
+
+//实现ConnectionListener接口
+private class MyConnectionListener implements EMConnectionListener {
+    @Override
+    public void onConnected() {
+    }
+    @Override
+    public void onDisconnected(final int error) {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if(error == EMError.USER_REMOVED){
+                    // 显示帐号已经被移除
+                }else if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
+                    // 显示帐号在其他设备登录
+                } else {
+                if (NetUtils.hasNetwork(MainActivity.this))
+                    //连接不到聊天服务器
+                else
+                    //当前网络不可用，请检查网络设置
+                }
+            }
+        });
+    }
+}
+
+//------------------------------------------------------------联系人改变----------------------
+
+    //联系人改变的方法,写在MainActivity,没有写在Fragment里面
+    private void addContactsChangedListener() {
+        EMClient.getInstance().contactManager().setContactListener(new EMContactListener() {
+
+            @Override
+            public void onFriendRequestAccepted(String username) {
+                //好友请求被同意
+                ToastUtils.show(MainActivity.this,username+"同意了你的好友请求");
+                EventBus.getDefault().post(new ContactsNeedToUpdate(true));
+            }
+
+            @Override
+            public void onFriendRequestDeclined(String username) {
+                //好友请求被拒绝
+                ToastUtils.show(MainActivity.this,username+"拒绝了你的好友请求");
+                EventBus.getDefault().post(new ContactsNeedToUpdate(false));
+            }
+
+
+            @Override
+            public void onContactInvited(final String username, final String reason) {
+                System.out.println("currentThreadId:" + Thread.currentThread().getId());
+                //收到好友邀请
+                ToastUtils.show(MainActivity.this,"收到了:" + username + "的好友邀请,验证信息为:" + reason);
+                ThreadUtils.RunOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        showAccpetDialog(username,reason);
+                    }
+                });
+                EventBus.getDefault().post(new ContactsNeedToUpdate(false));
+            }
+
+
+            @Override
+            public void onContactDeleted(String username) {
+                //被删除时回调此方法
+                ToastUtils.show(MainActivity.this,"被" + username + "移除了好友");
+                EventBus.getDefault().post(new ContactsNeedToUpdate(true));
+                //刷新好友的列表
+                //ContactsFragment
+                //如何通知ContactsFragment刷新好友的列表呢?
+                //通知谁，做一件什么事情   调用这个对象中一个方法
+                /*ContactsFragment fragment = (ContactsFragment) FragmentFactory.getFragment(1);
+                fragment.update*/
+                //组件与组件之间  控件与控件之间的方法调用
+                //1、对象调用方法
+                //2、观察者设计模式   回调
+                //3、广播    杀鸡用牛刀   广播干嘛的？跨进程的通信
+                //4、EventBus 更加通用，更加方便
+            }
+
+
+            @Override
+            public void onContactAdded(String username) {
+                //添加好友后回调此方法
+                ToastUtils.show(MainActivity.this,"添加了好友:" + username);
+                EventBus.getDefault().post(new ContactsNeedToUpdate(true));
+            }
+        });
+    }
+
+//----------------------------------------------接受好友邀请-----------------------
+EMClient.getInstance().contactManager().acceptInvitation(username);	//老师好像写在主线程
+
+//-------------------------------------------------拒绝好友邀请------------------
+EMClient.getInstance().contactManager().declineInvitation(username);	//老师好像写在主线程
+
+//----------------------------------------------删除好友-------------------------
+EMClient.getInstance().contactManager().deleteContact(username);	//老师好像写在主线程
+
+混淆
+##----------End: proguard configuration for 环信----------
+#3.x的版本:https://www.easemob.com/question/12863?utm_source=edm&utm_ccampaign=102&email=497551298@qq.com
+-keep class com.superrtc.** {*;}
+-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+##----------End: proguard configuration for 环信----------

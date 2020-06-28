@@ -1,0 +1,14 @@
+https://github.com/TooTallNate/Java-WebSocket
+
+1.添加依赖或者添加jar包.
+compile "org.java-websocket:Java-WebSocket:1.4.0"
+implementation 'org.slf4j:slf4j-api:1.7.25'//Java-WebSocket依赖这个
+
+
+不需要添加混淆,城管端混淆错误是LogUtils导致的,不是这个的问题,以下只是示例写法.
+##--------------Begin: proguard configuration for WebSocket------
+-dontwarn org.java_websocket.**                                         #dontwarn
+-keep class org.java_websocket.**{*;}                                   #class
+-keep interface org.java_websocket.**{*;}                               #interface
+-keep public class * extends org.java_websocket.client.WebSocketClient  #extends
+##--------------End: proguard configuration for WebSocket--------

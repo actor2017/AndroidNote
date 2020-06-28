@@ -1,0 +1,6 @@
+Android 6.0
+1.动态权限,查看Permission文件夹
+
+2.系统增加指纹识别(Fingerprint Support)功能.
+
+3.移除Apache的HttpClient.

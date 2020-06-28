@@ -1,0 +1,349 @@
+https://github.com/huxq17/XRefreshView
+一个万能的android下拉上拉刷新的框架,完美支持
+listview
+GridView
+scrollview
+webview
+自定义View
+笑脸刷新
+Recyclerview
+带Banner的Recyclerview		//Banner:横幅
+LinearLayout样式的Recyclerview
+GridLayout样式的Recyclerview
+Staggered样式的Recyclerview	//Staggered:错列的,交错
+
+
+2.添加依赖
+dependencies {
+   compile 'com.huxq17.xrefreshview:xrefreshview:3.6.5'
+   //依赖下面的库
+   compile 'com.android.support:recyclerview-v7:25.0.1'//25可改成23,24(根据自己的版本)
+   compile 'com.android.support:support-v4:23.0.1'//25可改成23,24(根据自己的版本)
+}
+
+3.作者博客:http://blog.csdn.net/footballclub/article/details/46982115
+
+//######################################常用方法######################
+xRefreshView.setMoveForHorizontal(true);如果需要在手指横向移动的时候，让XRefreshView不拦截事件
+xRefreshView.setAutoLoadMore(false);滑动到底部自动加载更多,目前只做了Abslistview和Recylerview的?
+	传入false的话，如果是listview，需要上拉才能加载更多，如果是Recylerview，则会需要点击才能加载更多
+	点击加载更多涉及到自定义footerview，到后面再说，这里先放着
+
+xRefreshView.setPinnedContent(true);刷新时，不让里面的列表上下滑动
+xRefreshView.startRefresh();支持按钮点击开始刷新
+
+如果你有设置Abslistview和Recylerview滚动监听事件的需要的话，就不能直接使用Abslistview和Recylerview的setOnScrollListener方法了，因为为了实现自动加载更多的功能，监听已经被XRefreshView使用了，所以这时候需要使用XRefreshView提供的设置滚动监听的方法
+/**
+     * 设置Abslistview的滚动监听事件
+     * 
+     * @param listener
+     */
+    public void setOnAbsListViewScrollListener(OnScrollListener scrollListener) {
+        mContentView.setOnAbsListViewScrollListener(scrollListener);
+    }
+
+    /**
+     * 设置Recylerview的滚动监听事件
+     */
+    public void setOnRecyclerViewScrollListener(
+            RecyclerView.OnScrollListener scrollListener) {
+        mContentView.setOnRecyclerViewScrollListener(scrollListener);
+    }
+
+如果希望在加载更多数据的时候，能在没有新数据的时候，隐藏footerview的话，
+作者示例写法:
+new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        //模拟数据加载完成
+                        if (mLoadCount >= 3) {
+                            xRefreshView.setLoadComplete(true);
+                        }
+                        adapter.insert(new Person("More ", "21"),
+                                adapter.getAdapterItemCount());
+                        adapter.insert(new Person("More ", "21"),
+                                adapter.getAdapterItemCount());
+                        adapter.insert(new Person("More ", "21"),
+                                adapter.getAdapterItemCount());
+                        mLoadCount++;
+                        //刷新完成必须调用此方法停止加载
+                        xRefreshView.stopLoadMore();
+                    }
+                }, 1000);
+当调用xRefreshView.setLoadComplete(true)以后，就会隐藏footerview；如果过段时间又有新的数据了，可以调用xRefreshView.setLoadComplete(false)，这样就又可以正常加载更多了。
+
+其他一些属性的设置
+/**
+     * 设置headerview回滚的时间，默认400毫秒
+     * 
+     * @param during
+     */
+    public void setScrollDuring(int during) {
+        SCROLL_DURATION = during;
+    }
+
+    /**
+     * 设置阻尼系数，建议使用默认的
+     * 
+     * @param ratio
+     *            默认 1.8
+     */
+    public void setDampingRatio(float ratio) {
+        OFFSET_RADIO = ratio;
+    }
+
+    /**
+     * 设置当下拉刷新完成以后，headerview和footerview被固定的时间
+     * 注:考虑到ui效果，只有时间大于1s的时候，footerview被固定的效果才会生效
+     * 
+     * @param pinnedTime
+     */
+    public void setPinnedTime(int pinnedTime) {
+        mPinnedTime = pinnedTime;
+        mContentView.setPinnedTime(pinnedTime);
+    }
+
+8.XRefreshView提供的监听
+public interface XRefreshViewListener {
+        /**
+         * 下拉刷新的回调
+         */
+        public void onRefresh();
+        /**
+         * 上拉加载更多的回调
+         */
+        public void onLoadMore();
+
+
+        /**
+         * 用户手指释放的监听回调
+         * 
+         * @param direction
+         *            >0: 下拉释放，<0:上拉释放 注：暂时没有使用这个方法
+         */
+        public void onRelease(float direction);
+
+        /**
+         * 获取headerview显示的高度与headerview高度的比例
+         * 
+         * @param offset
+         *            移动距离和headerview高度的比例，范围是0~1，0：headerview完全没显示
+         *            1：headerview完全显示
+         * @param offsetY
+         *            headerview移动的距离
+         */
+        public void onHeaderMove(double offset, int offsetY);
+    }
+
+9.自定义header和footer
+9.1.自定义header
+
+实现IHeaderCallBack接口，并继承View就可以自定义headerview了
+然后需要调用下面这个方法来设置自定义headerview
+refreshView.setCustomHeaderView(new CustomHeader(this));
+
+/**
+ * 提供自定义headerview的接口
+ * 
+ * @author huxq17@163.com
+ * 
+ */
+public interface IHeaderCallBack {
+    /**
+     * 正常状态
+     */
+    public void onStateNormal();
+
+    /**
+     * 准备刷新
+     */
+    public void onStateReady();
+
+    /**
+     * 正在刷新
+     */
+    public void onStateRefreshing();
+
+    /**
+     * 刷新结束
+     */
+    public void onStateEnd();
+
+    /**
+     * 获取headerview显示的高度与headerview高度的比例
+     * 
+     * @param offset
+     *            移动距离和headerview高度的比例，范围是0~1，0：headerview完全没显示 1：headerview完全显示
+     * @param offsetY
+     *            headerview移动的距离
+     */
+    public void onHeaderMove(double offset, int offsetY);
+
+    /**
+     * 设置显示上一次刷新的时间
+     * 
+     * @param lastRefreshTime
+     *            上一次刷新的时间
+     */
+    public void setRefreshTime(long lastRefreshTime);
+
+    /**
+     * 隐藏footerview
+     */
+    public void hide();
+
+    /**
+     * 显示footerview
+     */
+    public void show();
+
+    /**
+     * 获得headerview的高度,如果不想headerview全部被隐藏，就可以只返回一部分的高度
+     * 
+     * @return
+     */
+    public int getHeaderHeight();
+}
+XRefreshView提供了不同状态的回调，方便开发者根据状态来改变headerview的显示，同时为了提供更加强大的支持，XRefreshView提供了onHeaderMove(double offset, int offsetY)回调来返回当前headerview移动的信息，这样能够更加自由的定制headerview。在继承了View并实现了IHeaderCallBack接口以后，需要调用下面这个方法来设置自定义headerview
+refreshView.setCustomHeaderView(new CustomHeader(this));
+
+//------------------------------------------------------------------
+9.2.自定义footer
+
+自定义footer和自定义header类似，都同样要实现接口，自定义footer要实现 IFooterCallBack接口
+public interface IFooterCallBack {
+    /**
+     * 当不是到达底部自动加载更多的时候，需要自己写点击事件
+     * @param xRefreshViewListener
+     */
+    public void callWhenNotAutoLoadMore(XRefreshViewListener xRefreshViewListener);
+    /**
+     * 正常状态，例如需要点击footerview才能加载更多，主要是到达底部不自动加载更多时会被调用
+     */
+    public void onStateReady();
+    /**
+     * 正在刷新
+     */
+    public void onStateRefreshing();
+    /**
+     * 刷新结束
+     */
+    public void onStateFinish();
+    /**
+     * 已无更多数据
+     */
+    public void onStateComplete();
+    /**
+     * 隐藏footerview
+     */
+    public void hide();
+    /**
+     * 显示footerview
+     */
+    public void show();
+    /**
+     * 获得footerview的高度
+     * @return
+     */
+    public int getFooterHeight();
+}
+footerview的状态流程分成两种 
+1.当到达底部自动加载更多： 
+1.1.还有更多数据 
+refreshing–>finish–>refreshing 
+1.2.已无更多数据 
+refreshing–>finish–>complete
+
+2.当到达底部不自动加载更多： 
+2.1.还有更多数据 
+ready–>refreshing–>finish–>refreshing 
+2.2.已无更多数据 
+ready–>refreshing–>finish–>complete
+
+其中，当不是到达底部自动加载更多的时候，需要自己写点击事件，就像这样：
+@Override
+    public void callWhenNotAutoLoadMore(final XRefreshViewListener listener) {
+        mClickView.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(listener!=null){
+                    listener.onLoadMore();
+                    onStateRefreshing();
+                }
+            }
+        });
+    }
+给footer设置点击事件，在点击事件中直接回调onLoadMore，并且进入刷新状态。
+
+还有就是footer的show和hide方法不能向header那样：
+
+header
+/**
+     * hide footer when disable pull load more
+     */
+    public void hide() {
+        setVisibility(View.GONE);
+    }
+
+    public void show() {
+        setVisibility(View.VISIBLE);
+    }
+
+直接gone会给列表底部留下空白，所以应该这样
+
+public void hide() {
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
+                .getLayoutParams();
+        lp.height = 0;
+        mContentView.setLayoutParams(lp);
+    }
+
+    public void show() {
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
+                .getLayoutParams();
+        lp.height = LayoutParams.WRAP_CONTENT;
+        mContentView.setLayoutParams(lp);
+    }
+
+最后也需要通过下面这个方法来设置自定义footerview
+
+refreshView.setCustomFooterView(new CustomFooterView(this));
+
+
+10.Recylerview的Adapter
+
+Recylerview的adapter必须继承自UltimateViewAdapter，具体用法可以参照demo中的SimpleAdapter，此外，给Recylerview设置自定义footerview和设置自定义headerview是不一样的，设置自定义headerview是通过XRefreshView来设置的，但是设置自定义footerview确是通过UltimateViewAdapter来设置的，具体如下：
+
+UltimateViewAdapter
+/**
+     * Using a custom LoadMoreView
+     * 
+     * @param customview
+     *            the inflated view
+     */
+    public void setCustomLoadMoreView(View footerView) {
+        if (footerView instanceof IFooterCallBack) {
+            customLoadMoreView = footerView;
+        } else {
+            throw new RuntimeException(
+                    "footerView must be implementes IFooterCallBack!");
+        }
+    }
+
+
+
+......
+
+    adapter.setCustomLoadMoreView(footerView);
+
+
+最后
+
+XRefreshView托管于github，点此前往下载，欢迎start or fork。
+
+参考的项目
+
+在开发过程中有参考一些很不错的开源项目，分别是
+
+UltimateRecyclerView
+android-Ultra-Pull-To-Refresh

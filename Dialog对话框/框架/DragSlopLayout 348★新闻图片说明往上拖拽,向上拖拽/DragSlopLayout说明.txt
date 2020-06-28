@@ -1,0 +1,4 @@
+https://github.com/Rukey7/DragSlopLayout
+http://blog.csdn.net/github_35180164/article/details/52606923
+一个辅助开发的UI库，适用于某些特殊场景，如固定范围拖拽、动画、模糊效果等。
+

@@ -1,0 +1,11 @@
+1.在闪屏页面名splash判断打电话的归属地显示设置是否开启,如果开启,就启动归属地显示的服务
+AddressService.java
+
+2.在AddressService.java服务中,监听电话状态的改变,如果响铃或者去电,就把归属地传进自定义Toast里的自定义  方法,用于显示
+ 如果电话结束,就取消显示
+注意添加权限:<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+
+3.在自定义Toast中,模仿系统的Toast,
+注意添加权限:
+    <!--来电显示自定义Toast的权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorAccent">  <!--按下状态,粉红色-->
+
+    <!--<item-->  <!--不这样应用shape-->
+        <!--android:id="@android:id/mask"-->  
+        <!--android:drawable="@drawable/custom_shape"/>--> 
+		
+    <item>  <!--直接在item中定义shape-->
+        <shape android:shape="rectangle">  
+            <corners android:radius="10dp"/>  
+            <solid android:color="@color/colorPrimary"/>  <!--普通状态,蓝色-->
+        </shape>  
+    </item>  
+</ripple>  

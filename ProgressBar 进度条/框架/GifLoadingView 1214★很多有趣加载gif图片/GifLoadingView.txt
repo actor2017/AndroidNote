@@ -1,0 +1,3 @@
+https://github.com/Rogero0o/GifLoadingView
+
+Some loading GIF .

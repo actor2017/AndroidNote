@@ -1,0 +1,2 @@
+https://github.com/andkulikov/Transitions-Everywhere
+Set of extra Transitions on top of Jetpack Transitions Library

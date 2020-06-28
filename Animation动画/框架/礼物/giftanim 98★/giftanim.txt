@@ -1,0 +1,2 @@
+https://github.com/qssq/giftanim
+直播礼物动画 送赞送礼物动画 仿映客礼物动画侧栏弹出送花人和礼物以及x1 x2 x3效果，支持队列 排序

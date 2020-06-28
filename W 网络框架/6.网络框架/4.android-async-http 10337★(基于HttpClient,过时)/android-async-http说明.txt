@@ -1,0 +1,4 @@
+https://github.com/loopj/android-async-http
+android-async-http。与volley一样是异步网络库，但volley是封装的httpUrlConnection，它是封装的httpClient，而android平台不推荐用HttpClient了，所以这个库已经不适合android平台了。
+
+异步get/post/多文件上传文件/保存cookie到SharedPreferences

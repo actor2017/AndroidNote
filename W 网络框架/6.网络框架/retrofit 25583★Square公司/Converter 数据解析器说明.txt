@@ -1,0 +1,18 @@
+converters: https://github.com/square/retrofit/tree/master/retrofit-converters
+gson版本号: https://github.com/square/retrofit/tree/master/retrofit-converters/gson
+官网: https://square.github.io/retrofit/
+数据解析器	Gradle依赖
+Gson		implementation 'com.squareup.retrofit2:converter-gson:2.0.2'	//GsonConverterFactory.create()
+Jackson		implementation 'com.squareup.retrofit2:converter-jackson:2.0.2'
+Simple XML	implementation 'com.squareup.retrofit2:converter-simplexml:2.0.2'
+Protobuf	implementation 'com.squareup.retrofit2:converter-protobuf:2.0.2'
+Moshi		implementation 'com.squareup.retrofit2:converter-moshi:2.0.2'
+Wire		implementation 'com.squareup.retrofit2:converter-wire:2.0.2'
+Scalars (primitives, boxed, and String)	com.squareup.retrofit2:converter-scalars:2.0.2'
+
+						//★★★版本与retrofit一致★★★
+
+如果不添加转换器,默认返回:Call<ResponseBody>
+
+
+FastJson	new Retrofit2ConverterFactory();//fastjson里有这个类

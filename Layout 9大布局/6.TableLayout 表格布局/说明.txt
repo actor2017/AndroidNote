@@ -1,0 +1,48 @@
+TableLayout是一种可以制作表格的布局，它和GridLayout的区别:
+GridLayout只能制定每一列宽度一样的表格布局，	(共3个属性)
+而TableLayout能够制定各列宽度不一样的表格布局。	(共2个属性)
+
+1.TableLayout的孩子不能layout_width属性。宽度总是MATCH_PARENT .
+2.如果你跳过列号,它将被视为一个空细胞这一行.
+3.虽然TableLayout典型的孩子TableRow,但你可以使用任何View作为TableLayout的孩子。View的width=match_parent.
+4.某一列的宽度=这一列的最大宽度.
+5.TableLayout extends LinearLayout,可以作为XML的根部局.
+  TableRow extends Linearlayout.
+6.行数是由开发员指定的，列数是根据TableRow中最大元素个数确定的.
+7.如果遇到宽度冲突,可以考虑用<Space/>调试
+
+
+<!--TableLayout extends LinearLayout继承线性布局-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        //android:collapseColumns="0,1"★★★//隐藏第0列和第1列(坍塌),只对TableRow有效,对外面的view无效.
+        //android:stretchColumns="0,1,(or*)"★★★//第0列和第1列可以横向方向扩展,如果是*代表所有列可以横向扩展.
+        //android:shrinkColumns="0,1">★★★第0列和第1列可以纵向扩展,控件没布满TableLayout时不起作用
+
+        <TableRow
+            //android:layout_width="match_parent"//宽度可以不写,反正是match_parent
+            //android:layout_height="wrap_content">//高度可以不写,被固定为一个默认值
+
+            <TextView
+                //android:layout_width="match_parent"//宽度设置没用
+                android:layout_height="wrap_content"//高度可不设置
+                android:background="@color/colorWhite"
+                //android:layout_column="1"★★★//该控件"显示在"第1列
+                //android:layout_span="2"★★★//该控件"占据"2列
+                android:layout_marginRight="1dp"
+                android:text="normal0"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ★android:layout_weight="1"★★★//如果不写,只占1列的宽度,即使width=match_parent也是只占1列
+                android:hint="请输入姓名"/>
+            </TableRow>
+
+        <TableRow>
+            <!--这一行是空的,实际范围:wrap_content-->
+            <TextView/>
+        </TableRow>
+

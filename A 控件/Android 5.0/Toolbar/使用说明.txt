@@ -1,0 +1,105 @@
+大牛文章:http://www.jianshu.com/p/e2ae6aaff696
+
+1.添加依赖:compile 'com.android.support:appcompat-v7:24.1.1'//v7包
+
+2.其次,我们还需要隐藏默认的ActionBar,否则会报如下错误:
+
+Caused by: java.lang.IllegalStateException: This Activity already has an action bar 
+supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and set 
+windowActionBar to false in your theme to use a Toolbar instead.
+
+3.当ToolBar被设置为App Bar，可通过getSupportActionBar()方法获取到一个的ActionBar对象，通过该对象引用可对ToolBar做更多操作；
+
+4.Toolbar与ActionBar的区别：
+
+    ToolBar就是一个View，跟其它View一样包含在布局中。
+    像常规View一样，Toolbar很容易来放置、实现动画以及控制。
+    一个Activity中可以有多个Toolbar。
+ActionBar是固定在顶部，并不能移动，而ToolBar可以让我们随便摆放
+
+
+Toolbar可以包含以下元素：
+
+    导航按钮/左边返回键	Navigation Icon
+    应用的Logo		Logo
+    标题和子标题	Title/Sub Title
+    若干个自定义View	TextView/Button/ImageView/Share
+    动作菜单		Menu Items(最右的选项,例,可弹出pop)
+
+
+5.在activity的布局中添加Toolbar。
+最后将Toobar作为“ActionBar”来用:
+ Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_toc_white_24dp);
+        toolbar.setLogo(R.drawable.icon); 
+        toolbar.setTitle("这里是Title");
+        toolbar.setSubtitle("这里是子标题");
+        toolBar.inflateMenu(R.menu.menu_main);//加载Menu布局
+        setSupportActionBar(toolbar);
+
+        //设置返回键,在theme中可以设置颜色,一定要在setSupportActionBar(toolbar)之后调用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);//不显示title(如果不设置,默认显示app名称)
+
+
+如果tbToolBar.setTitle("xxx");不起作用,那应该用了setSupportActionBar方法,这时要使用getSupportActionBar().setTitle(title);
+
+
+也可以在布局文件中设置:
+<!-- ?attr/actionBarSize:表示根据屏幕的分辨率采用系统默认的高度
+    如果低版本也要使用的话,则需要使用v7包的,否则只有api21上才能有效 -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"//?attr/actionBarSize//?android:attr/actionBarSize//260dp
+        android:background="@color/colorAccent"//?attr/colorPrimary
+        //android:elevation="30dp"
+        android:minHeight="?android:attr/actionBarSize"
+        android:gravity="bottom | top"//title等在toolbar中的顶/底部,好像只有这2种情况.
+        android:layout_marginBottom="25dp"
+//如果设置了gravity=bottom,title会在底部,这样会增大Toolbar高度
+        android:paddingBottom="10dp"//如果设置了gravity=bottom,title会在底部,这样不会增大Toolbar高度
+        //app:contentInsetStart="0dp"//toolbar里的textview居中(但是设置返回键后还是不居中)
+        //app:contentInsetStartWithNavigation="@dimen/activity_horizontal_margin"//logo的marginleft,16dp
+        app:logo="@mipmap/ic_launcher"
+        app:navigationIcon="@drawable/iv_back"
+        //app:popupTheme="@style/ThemeOverlay.AppCompat.Light"//设置了没有用,google的bug
+        app:subtitle="SubTitle"
+        //app:subtitleTextAppearance="@null"//subtitle的文字样式
+        app:subtitleTextColor="@color/colorPrimaryDark"//子标题颜色,title小写
+        //app:theme="@style/ActionMenuTheme"//自定义菜单的图标,如果你不想要3个点的图标
+        app:title="Title"
+        //app:titleMarginStart="40dp"//title & subtitle的marginleft
+        //app:titleTextAppearance="@null"//title的文字样式
+        app:titleTextColor="@color/colorPrimary">//title的颜色
+    </android.support.v7.widget.Toolbar>
+
+或者代码可以设置字体样式:setTitleTextAppearance、setSubTitleTextAppearance设置
+
+
+至于Menu Item，依然支持在res/menu/menu_main.xml去声明，
+然后(Activity中?)复写onCreateOptionsMenu和onOptionsItemSelected即可。
+
+也可以通过toolbar.setOnMenuItemClickListener实现点击MenuItem的回调。
+
+  toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {//item.getItemId()
+                if(id == R.id.action_settings){
+                    Toast.makeText(MainActivity.this,"action_settings Clicked",Toast.LENGTH_LONG).show();
+                    return  true;
+                }
+                return false;
+            }
+        });
+
+
+//Navigation的点击事件
+mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"Navigation Clicked",Toast.LENGTH_LONG).show();
+            }
+        });
+
+

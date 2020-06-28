@@ -1,0 +1,3 @@
+https://github.com/seiginonakama/BlockCanaryEx
+make performance bottleneck detection easily when app blocked
+当app被阻塞时，容易检测到性能瓶颈

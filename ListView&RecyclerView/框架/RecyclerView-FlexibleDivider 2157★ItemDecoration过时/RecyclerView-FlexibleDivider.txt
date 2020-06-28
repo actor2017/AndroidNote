@@ -1,0 +1,52 @@
+https://github.com/yqritc/RecyclerView-FlexibleDivider
+
+Android library providing simple way to control divider items (ItemDecoration) of RecyclerView
+Android库提供了简单的方法来控制clerview的分隔项(ItemDecoration)
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+}
+
+Usage:
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
+
+HorizontalDividerItemDecoration		For layout manager having vertical orientation to draw horizontal divider
+VerticalDividerItemDecoration		For layout manager having horizontal orientation to draw vertical divider
+
+Paint paint = new Paint();
+paint.setStrokeWidth(5);
+paint.setColor(Color.BLUE);
+paint.setAntiAlias(true);
+paint.setPathEffect(new DashPathEffect(new float[]{25.0f, 25.0f}, 0));
+new HorizontalDividerItemDecoration.Builder(this)
+    .color(Color.RED)
+    .paint(paint)
+    .drawable(R.drawable.sample)
+    .sizeResId(R.dimen.divider)
+    .marginResId(R.dimen.leftmargin, R.dimen.rightmargin)
+    .build();
+
+自定义，请实现以下接口:
+ColorProvider为分隔符提供颜色
+
+PaintProvider为要绘制的分隔线提供绘制对象。
+
+DrawableDivider为分隔线提供可绘制对象
+
+SizeProvider为水平分隔线提供高度，为垂直分隔线提供宽度。
+
+VisibilityProvider 
+使您可以控制分隔线的可见性。
+
+MarginProvider用于水平分隔线（垂直列表）
+使您可以指定分隔线的左右边距。
+
+垂直分隔线的MarginProvider（水平列表）
+使您可以指定分隔线的上下边距。
+
+具体见github

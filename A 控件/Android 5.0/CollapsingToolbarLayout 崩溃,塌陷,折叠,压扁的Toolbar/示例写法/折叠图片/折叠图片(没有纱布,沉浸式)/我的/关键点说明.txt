@@ -1,0 +1,5 @@
+1.在onCreate中:StatusBarUtil.setTranslucent(this,0);
+
+2.xml中把2个纱布设置成透明!!!
+app:contentScrim="@android:color/transparent"
+app:statusBarScrim="@android:color/transparent"

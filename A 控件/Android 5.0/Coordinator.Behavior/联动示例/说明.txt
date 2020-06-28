@@ -1,0 +1,6 @@
+http://blog.csdn.net/huachao1001/article/details/51554608
+
+CoordinatorLayout的使用核心是Behavior，Behavior就是执行你定制的动作。在讲Behavior之前必须先理解两个概念：Child和Dependency，什么意思呢？Child当然是子View的意思了，是谁的子View呢，当然是CoordinatorLayout的子View；其实Child是指要执行动作的CoordinatorLayout的子View。而Dependency是指Child依赖的View。比如上面的gif图中，蓝色的View就是Dependency，黄色的View就是Child，因为黄色的View的动作是依赖于蓝色的View。简而言之，就是如过Dependency这个View发生了变化，那么Child这个View就要相应发生变化。发生变化是具体发生什么变化呢？这里就要引入Behavior，Child发生变化的具体执行的代码都是放在Behavior这个类里面。
+
+怎么使用Behavior呢，首先，我们定义一个类，继承CoordinatorLayout.Behavior<T>,其中，泛型参数T是我们要执行动作的View类，也就是Child。然后就是去实现Behavior的两个方法：
+

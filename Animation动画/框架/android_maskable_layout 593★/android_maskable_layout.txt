@@ -1,0 +1,4 @@
+https://github.com/christophesmet/android_maskable_layout
+
+A library that easily allows you to mask layouts/viewgroups
+一个库，可以方便地屏蔽布局/视图组

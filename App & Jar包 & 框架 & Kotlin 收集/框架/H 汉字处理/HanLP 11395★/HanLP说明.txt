@@ -1,0 +1,2 @@
+https://github.com/hankcs/HanLP
+hankcs/HanLP: 自然语言处理 中文分词 词性标注 命名实体识别 依存句法分析 关键词提取 自动摘要 短语提取 拼音 简繁转换

@@ -1,0 +1,66 @@
+﻿//-----------------------------------数据库框架---------------------------
+基本:sql,	openHelper
+
+//==================================================================================
+1.OrmLite
+ormlite.com(原来给PC做的,后来安卓出来后给安卓做了,比较别扭,比较占内存)
+jar包 地址：http://ormlite.com/releases/
+
+简述:
+优点： 1.轻量级；2.使用简单，易上手；3.封装完善；4.文档全面。
+缺点：1.基于反射，效率较低
+
+1.写一个bean(例:学生的bean),并写注解
+2.写一个数据库帮助类
+3.忘了吧(javaWeb转过来,写数据库就很有可能用OrmLite)
+4.学习资料:http://blog.csdn.net/da_caoyuan/article/details/60876336
+
+//==================================================================================
+2.greenDAO
+给android量身打造greenrobot.org/...(推荐)
+地址:https://github.com/greenrobot/greenDAO
+优点:1.存取速度快; 2.支持数据库加密; 3.轻量级; 4.激活实体; 5.支持缓存; 6.代码自动生成
+7.插入和更新的速度是sqlite的2倍; 8.加载实体的速度是ormlite的4.5倍;
+1.添加依赖	(联网可能20min)
+2.删除.改,没返回值
+3.效率比OrmLite高得多
+用于学习的相关博客：
+GreenDao3.2.0项目的接入和简单的使用http://www.jianshu.com/p/dac3bd9bad72
+GreenDao3.2的使用，爱不释手http://www.open-open.com/lib/view/open1484706351512.html
+鸿洋微信推荐 Android实战——GreenDao3.2的使用，爱不释手
+https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&mid=2650821932&idx=1&sn=d26c09af7cbbfb1b0a95517bd78cc784&chksm=80b781b2b7c008a4a8dab45756e4d433b1c56e1c61762f98ee3b8a2b89a00756f82d6bb4d6b6&scene=0#rd
+
+
+//==================================================================================
+3.LitePal
+(作者里面好像有郭霖?)
+https://github.com/LitePalFramework/LitePal
+小型框架
+
+用于学习的相关博客：
+http://blog.csdn.net/da_caoyuan/article/details/61200571
+郭霖的专栏:http://blog.csdn.net/sinyu890807/article/category/2522725
+
+//==================================================================================
+4.Realm
+简述: 
+1.易用：Ream 不是在SQLite基础上的ORM，它有自己的数据查询引擎。并且十分容易使用。 
+2.快速：由于它是完全重新开始开发的数据库实现，所以它比任何的ORM速度都快很多，甚至比SLite速度都要快。 
+3.跨平台：Realm 支持 iOS & OS X (Objective‑C & Swift) & Android。我们可以在这些平台上共享Realm数据库文件，并且上层逻辑可以不用任何改动的情况下实现移植。 
+4.高级：Ream支持加密，格式化查询，易于移植，支持JSON，流式api，数据变更通知等高级特性 
+5.可视化
+
+git 地址：https://github.com/realm/realm-java
+
+官网地址：https://realm.io/docs/java/latest/#getting-started
+
+集成方法：官网中或相关博客中已做详细说明
+
+用于学习的相关博客：
+
+【Android】Realm详解http://www.jianshu.com/p/37af717761cc
+Realm For Android详细教程http://www.cnblogs.com/RaphetS/p/5996265.html
+郭霖微信推荐 地址https://mp.weixin.qq.com/s?__biz=MzA5MzI3NjE2MA==&mid=2650238381&idx=1&sn=a0fc72220763166ca2e34519ff2055b3&chksm=88639cc2bf1415d40d466e76945338bc88efae957d63e3ea026c801f05883b485d185ffe0b73&scene=0#rd
+
+总结：目前git上一直在做更新维护，start数量也为7000多。数据库Realm，是用来替代sqlite的一种解决方案，它有一套自己的数据库存储引擎，比sqlite更轻量级，拥有更快的速度，并且具有很多现代数据库的特性，比如支持JSON，流式api，数据变更通知，自动数据同步,简单身份验证，访问控制，事件处理，最重要的是跨平台，目前已有Java，Objective C，Swift，React-Native，Xamarin这五种实现。和 SQLite 不同，它允许你在持久层直接和数据对象工作。在它之上是一个函数式风格的查询api，众多的努力让它比传统的SQLite 操作更快 。
+

@@ -1,0 +1,5 @@
+这种用法可以做到项目只有一个Activity，然后多个Fragment做为切换的页面。比较省内存，页面之间的跳转速度比较快，由于使用replace()方法它的缺点是：
+
+所以无法保存fragment的状态。
+Back Stack错乱，没有Activity的Back Stack的好用。
+没有startFragmetnForResult()用法。

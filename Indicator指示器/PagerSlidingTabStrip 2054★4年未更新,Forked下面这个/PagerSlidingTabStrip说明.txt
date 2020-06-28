@@ -1,0 +1,52 @@
+https://github.com/jpardogo/PagerSlidingTabStrip
+
+compile 'com.jpardogo.materialtabstrip:library:1.1.1'
+
+<com.astuetz.PagerSlidingTabStrip
+    android:id="@+id/tabs"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary" />
+
+
+配合ViewPager
+ViewPager pager = (ViewPager) findViewById(R.id.pager);
+pager.setAdapter(new TestAdapter(getSupportFragmentManager()));
+
+// Bind the tabs to the ViewPager
+PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+tabs.setViewPager(pager);
+
+如果adapter implements CustomTabProvider,就能设置自定义view.
+1.自定义view中R.id.psts_tab_title是一个TextView,用来设置标题,并且设置view的状态(pressed/selected/default).
+2.如果你不想library管理你的tab的title,不要在自定义View中用R.id.psts_tab_title.
+3.这个接口中还有选中/未选中tabs的回调.
+4.如果你的adapter 没有 implements CustomTabProvider,就回用默认的tab,就是一个id为R.id.psts_tab_title的TextView.
+
+
+页面改变的监听
+tabs.setOnPageChangeListener(mPageChangeListener);
+
+
+自定义属性:
+android:textColorPrimary 文字颜色
+android:paddingLeft 如果用这个属性,还应该用上这个: android:paddingRight
+pstsIndicatorColor 滑动指示器颜色
+pstsIndicatorHeight 滑动指示器高度
+pstsUnderlineColor 视图的底部的全宽线的颜色
+pstsUnderlineHeight 视图的底部的全宽线的高度
+pstsDividerColor 选项卡之间的分隔线的颜色
+pstsDividerWidth 选项卡之间的分隔线的宽度
+pstsDividerPadding 选项卡之间的分隔线的Pading填充
+pstsShouldExpand 如果设置为true，每个选项卡都是相同的weight，即LinearLayout的权重一样，默认为false
+pstsScrollOffset 滑动Tab的偏移量
+pstsPaddingMiddle 如果true,视图的标签会以居中显示的方式呈现。
+pstsTabPaddingLeftRight 每个标签左右填充宽度
+pstsTabBackground 每个标签的背景，应该是一个selector，checked=”true/false”对应不同的背景
+pstsTabTextSize Tab标签的文字大小
+pstsTabTextColor Tab标签的文字颜色
+pstsTabTextStyle
+pstsTabTextAllCaps 如果为true，所有标签都是大写字母，默认为true
+pstsTabTextAlpha 设置文本alpha透明度不选中的选项卡。0 . . 255之间，150是默认值。
+pstsTabTextFontFamily Tab标签文字的字体
+setTypeface(Typeface typeface, int style) 设置字体，把字体放入assets里通过该方法调用

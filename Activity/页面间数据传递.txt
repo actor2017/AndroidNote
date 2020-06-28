@@ -1,0 +1,51 @@
+1.用intent传递数据
+//发送
+Intent intent = new Intent(SettlementCenterActivity.this,SubmitOrderSuccess.class);
+	intent.putExtra("orderId",orderId);                        //订单编号
+	intent.putExtra("totalPrice",totalPrice);                  //应支付金额
+	intent.putExtra("payWay",tv_PayWay.getText().toString());  //支付方式
+	intent.putExtra("name",settlementCenterInfo.cart.get(0).productName);//商品名称
+	intent.putExtra("des","商品描述:"+settlementCenterInfo.cart.get(0).productName);//商品描述
+	startActivity(intent);
+
+//接收
+String orderId = getIntent().getStringExtra("orderId");
+float totalPrice = getIntent().getFloatExtra("totalPrice", -1);
+String payWay = getIntent().getStringExtra("payWay");
+String name = getIntent().getStringExtra("name");
+String des = getIntent().getStringExtra("des");
+
+#################################################################################################
+
+2.startActivityForResult
+//发送的activity写法
+1.
+startActivityForResult(new Intent(this,AddressManagementActivity.class),0);
+
+2.
+    //接收返回来的数据
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1) {//这儿只是为了演示,写请求码/结果码都行,最好写成结果码,因为确保了有结果码返回才回调这个方法,否则可能空指针
+            String name = data.getStringExtra("name");
+            String number = data.getStringExtra("number");
+            String address = data.getStringExtra("address");
+            tv_Name.setText(name);
+            tv_Phonenum.setText(number);
+            tv_Address.setText(address);
+            tv_Name.setVisibility(View.VISIBLE);
+            tv_Phonenum.setVisibility(View.VISIBLE);
+            tv_Address.setVisibility(View.VISIBLE);
+        }
+    }
+
+//-------------------------------------------------------------------------------------
+
+//接收的Activity返回数据写法
+Intent intent = new Intent();
+intent.putExtra("name",address.get(position).name);
+intent.putExtra("number",address.get(position).telphone);
+intent.putExtra("address",address.get(position).address);
+setResult(1,intent);
+finish();

@@ -1,0 +1,36 @@
+https://github.com/armcha/Space-Navigation-View
+
+The current minSDK version is API level 14 Android 4.0
+
+Gradle:
+
+compile 'com.github.armcha:SpaceNavigationView:1.6.0'
+Maven:
+
+<dependency>
+  <groupId>com.github.armcha</groupId>
+  <artifactId>SpaceNavigationView</artifactId>
+  <version>1.6.0</version>
+  <type>pom</type>
+</dependency>
+Setup and usage
+
+Add the Space Navigation view to your layout
+
+ <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+     
+      <...View
+             ....
+             android:layout_marginBottom="@dimen/view_bottom_margin" />
+             
+      <com.luseen.spacenavigation.SpaceNavigationView
+             android:id="@+id/space"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_gravity="bottom"/>
+             
+ </FrameLayout>

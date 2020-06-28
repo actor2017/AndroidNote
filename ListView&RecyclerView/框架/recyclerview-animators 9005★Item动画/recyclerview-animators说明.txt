@@ -1,0 +1,2 @@
+https://github.com/wasabeef/recyclerview-animators
+An Android Animation library which easily add itemanimator to RecyclerView items.

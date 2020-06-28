@@ -1,0 +1,60 @@
+https://www.jianshu.com/p/05c17f761a19
+
+android:clipChildren="false"
+的意思是孩子的宽高不必受父亲的约束，即可大过父布局，父亲以及父亲的父亲都必须申明才可以，
+中间Imageview的android:layout_gravity="bottom"表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context="com.yus.dialogdemo.MainActivity">
+
+    <LinearLayout
+        android:clipChildren="false"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@android:drawable/btn_star_big_on"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@android:drawable/btn_star_big_on"
+
+
+            />
+        <ImageView
+            android:scaleType="centerCrop"
+            android:layout_gravity="bottom"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/btn_star_big_on">
+
+        </ImageView>
+
+        <ImageView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@android:drawable/btn_star_big_on"></ImageView>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@android:drawable/btn_star_big_on"></ImageView>
+
+    </LinearLayout>
+</RelativeLayout>

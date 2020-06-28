@@ -1,0 +1,33 @@
+mvp的全称为Model-View-Presenter		Activity只做V相关的东西，而不做C相关的逻辑
+Model()	  :模型层，数据的产生(例:model.db/ContactDao.class)
+View	  :视图层 Activity,负责显示(java.class),实现接口(implements ISplashView),
+	   拥有一个P层的实例对象(new SplashPresenter(this)),调用P层的业务逻辑
+
+Presenter :处理业务逻辑		拥有一个V层的实例对象(接口)(this.splashView = splashView;),通知V层做UI跳转
+
+//--------------------------------------------------------------------------------------
+mvc的全称为Model-View-Controller	Activity在MVC的设计模式中承担了V和C的角色
+Model	  :模型层，数据的产生(指业务模型)
+View	  :视图层 Activity,负责显示(java.class)
+Controller:逻辑控制层  Activity(负责逻辑的处理)
+
+
+MVP书写步骤:
+以Splash闪屏界面示例:
+1.在报下创建view/impl/activity
+2.在view/impl/activity写闪屏界面,继承BaseActivity(show/hideprogressDialog),★实现public interface ISplashView(view/impl)★
+  初始化:SplashPresenter splashPresenter;  onCreate中赋值:splashPresenter = new SplashPresenter(this);
+  找到控件,渐变动画,监听动画完成,调用p层跳转到哪一个页面的方法
+
+3.view/impl中写接口:ISplashView,里面写:跳到MainActivity & 跳到LoginActivity的抽象方法(presenter通知view层做事情)
+  
+4.在包下创建presenter,重写有参构造,接收从view层传过来的,例:
+    private ISplashView splashView;
+
+    public SplashPresenter(ISplashView splashView) {
+        this.splashView = splashView;
+    }
+
+写逻辑,判断要跳到哪一个页面,用splashView回调view层方法(跳到某个页面)
+
+本例闪屏页面没有Model层.如果有,在:包/model.db(示例,不确定)

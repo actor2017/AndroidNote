@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.top5_2.MainActivity" >
+
+     <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:background="#FFA500"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_launcher"
+        android:text="多匹配自动补全演示" />
+   <MultiAutoCompleteTextView
+      android:id="@+id/ed"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      style="@android:attr/textViewStyle"
+      android:hint="请输入单词"
+      android:layout_marginTop="10dp"
+      android:completionThreshold="2"
+      />
+</LinearLayout>

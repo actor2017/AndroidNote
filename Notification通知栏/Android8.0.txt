@@ -1,0 +1,28 @@
+http://docs.jiguang.cn/jpush/client/Android/android_api/#api_10
+NotificationChannel配置
+支持的版本
+开始支持的版本：3.3.4
+
+功能说明：
+Android8.0以后通知都走NotificationChannel了。开发者可以自行定义NotificationChannel，然后在API推送的时候可以指定channelId推送； 在Android8.0及以上的机型，通知会先查找对应channelId的channel，通知的重要等级、声音、震动、呼吸灯由channel决定； 如果没有找到channelId，或者处于静默时间内，则走默认的极光channel。
+
+自定义NotificationChannel示例
+
+    private void initChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (nm != null){
+                NotificationChannelGroup notificationChannelGroup = new NotificationChannelGroup("MyGroupId", "自定义通知组");
+                nm.createNotificationChannelGroup(notificationChannelGroup);
+
+                NotificationChannel notificationChannel = new NotificationChannel("MyChannelId", "自定义通知", NotificationManager.IMPORTANCE_HIGH);
+                notificationChannel.setGroup("MyGroupId");
+                notificationChannel.enableLights(true);
+                notificationChannel.enableVibration(true);
+                notificationChannel.setSound("android.resource://包名/raw/铃声文件", null);    //设置自定义铃声
+
+                nm.createNotificationChannel(notificationChannel);
+            }
+        }
+    }
+

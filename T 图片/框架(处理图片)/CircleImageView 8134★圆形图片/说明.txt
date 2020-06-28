@@ -1,0 +1,33 @@
+https://github.com/hdodenhof/CircleImageView
+
+It uses a BitmapShader
+限制
+ScaleType始终是CENTER_CROP，如果您尝试更改它，您将获得异常。这是（目前）设计，因为它对于个人资料图像非常好。
+adjustViewBounds不支持启用，因为这需要不受支持的ScaleType
+如果您使用像Picasso或Glide这样的图像加载库，则需要禁用其淡入淡出动画以避免混淆图像。毕加索使用该noFade()选项，适用于Glide dontAnimate()。如果要保留fadeIn动画，则必须将图像提取到a Target并在接收时自行应用自定义动画Bitmap。
+使用TransitionDrawablewith CircleImageView无法正常工作并导致图像混乱。
+
+
+常问问题
+我该怎么VectorDrawable用CircleImageView？//How can I use a VectorDrawable with CircleImageView
+简短的回答：你不应该。使用VectorDrawablewith CircleImageView是非常低效的。您应该将矢量修改为圆形，并将其与常规ImageView一起使用。
+
+为什么不CircleImageView extend AppCompatImageView？
+扩展AppCompatImageView需要为支持库添加运行时依赖性，而没有任何实际好处。
+
+如何添加绑定到圆圈的选择器（例如涟漪效果）？
+目前没有直接支持圆圈绑定选择器，但您可以按照这些步骤自行实现它。
+
+如何在图像和边框之间添加间隙？
+增加差距也不是直接支持，但有一个解决方法。
+
+
+implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/profile_image"
+    android:layout_width="96dp"
+    android:layout_height="96dp"
+    android:src="@drawable/profile"
+    app:civ_border_width="2dp"
+    app:civ_border_color="#FF000000"/>

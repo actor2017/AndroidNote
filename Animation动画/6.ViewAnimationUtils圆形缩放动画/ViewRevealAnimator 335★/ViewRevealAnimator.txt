@@ -1,0 +1,4 @@
+https://github.com/sephiroth74/ViewRevealAnimator
+
+ViewAnimator view with a lollipop style reveal effect
+ViewAnimator视图具有棒棒糖风格的显示效果

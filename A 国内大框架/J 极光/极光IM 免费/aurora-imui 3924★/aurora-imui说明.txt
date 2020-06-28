@@ -1,0 +1,4 @@
+https://github.com/jpush/aurora-imui
+https://docs.jiguang.cn
+
+General IM UI components. Android/iOS/RectNative ready. 通用 IM 聊天 UI 组件，已经同时支持 Android/iOS/RN。

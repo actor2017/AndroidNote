@@ -1,0 +1,157 @@
+<resources>
+    <!-- Base application theme. -->
+	<!--NoActionBar: 没有标题栏, 默认: Theme.AppCompat.Light.DarkActionBar-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item><!--主要的,初级的,基本的,列表:ScrollView滑到边界颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item><!--StatusBar状态栏颜色-->
+        <item name="colorAccent">@color/colorAccent</item><!--口音；重音；强调；特点；重音符号:EditText下划线&CheckBox颜色-->
+		        
+        <item name="textAllCaps">false</item><!--避免按钮上的text自动大写-->
+    </style>
+
+    <!--全屏界面, 没有状态栏, 可在清单文件中直接设置:
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+		或者直接在代码设置:
+			//去除标题栏（ActionBar=TitleBar）注:写在setContentView之前,否则报错
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			-->
+    <style name="FullScreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+	
+	<!--第一个界面的主题,让启动的时候不要先显示白板-->
+    <style name="FirstActivityTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item><!--第一种,设置透明-->
+		<item name="android:windowBackground">@drawable/bg_tab</item><!--第二种,设置背景 颜色/图片-->
+    </style>
+	
+	
+
+    <!--TitleStyle标题样式,从activity_setting.xml复制过来的-->
+    <!--android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/qinglv"
+    android:gravity="center"
+    android:textColor="@color/white"
+    android:textSize="25sp"-->
+
+    <!--标题样式,字体居中-->
+    <style name="TitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/qinglv</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <!--防盗页面的标题样式,字体左边,没背景颜色-->
+    <style name="TitleLostFindStyle" parent="TitleStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <!--防盗页面字体,左面inputTyle没有图片-->
+    <style name="TextLostFindStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--TextView,drawableLeft左边有一张小图片-->
+    <style name="TextViewSrcTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:drawableLeft">@drawable/dialog_title_default_icon</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--下一页按钮的Style-->
+    <style name="Button_Next">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@color/colorBlueYes</item>
+        <item name="android:drawableRight">@drawable/next</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:text">下一页</item>
+    </style>
+
+    <!--上一页按钮的Style-->
+    <style name="Button_Pre">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@color/colorBlueYes</item>
+        <item name="android:drawableLeft">@drawable/pre</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:text">上一页</item>
+    </style>
+
+    <!--蓝色按钮-->
+    <style name="blue_btn_selector">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/btn_home_item0_positive_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--白色按钮-->
+    <style name="white_btn_selector">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/btn_home_item0_negative_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--归属地弹窗样式-->
+    <style name="AddressDialogStyle" parent="Base.Theme.AppCompat.Light.Dialog">
+        <!--去掉标题栏-->
+        <item name="windowNoTitle">true</item>
+        <!--去掉弹窗背景(原生背景带有外边距), 改为纯白色,如果不改,Dialog有一个默认padding-->
+        <item name="android:windowBackground">@color/white</item>
+        <!--设置弹窗动画样式-->
+        <item name="android:windowAnimationStyle">@style/AddressDialogAnim</item>
+    </style>
+
+    <!--归属地弹窗的动画样式-->
+    <!--模仿系统键盘动画 系统styles.xml中查找,默认是-->
+    <!--<style name="Animation.InputMethod">-->
+    <!--<item name="windowEnterAnimation">@anim/input_method_enter</item>-->
+    <!--<item name="windowExitAnimation">@anim/input_method_exit</item>-->
+    <!--</style>-->
+    <style name="AddressDialogAnim">
+        <!--进入动画-->
+        <item name="android:windowEnterAnimation">@anim/address_dialog_enter</item>
+        <!--退出动画-->
+        <item name="android:windowExitAnimation">@anim/address_dialog_exit</item>
+    </style>
+
+    <style name="FullScreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="FullScreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <!--PopupWindow动画-->
+    <style name="PopupAnim">
+        <!--进入动画-->
+        <item name="android:windowEnterAnimation">@anim/pop_enter</item>
+        <!--退出动画-->
+        <item name="android:windowExitAnimation">@anim/pop_exit</item>
+    </style>
+
+</resources>

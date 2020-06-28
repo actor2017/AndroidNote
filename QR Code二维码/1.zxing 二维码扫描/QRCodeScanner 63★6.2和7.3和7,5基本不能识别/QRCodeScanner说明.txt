@@ -1,0 +1,44 @@
+https://github.com/blikoon/QRCodeScanner
+注意: 手机本地二维码貌似不能扫描!!!
+
+5分钟自动退出原因:
+InactivityTimer 的 INACTIVITY_DELAY_SECONDS = 5 * 60;
+
+
+ allprojects {
+     repositories {
+	...
+	maven { url 'https://jitpack.io' }
+	}
+   }
+
+dependencies {
+    compile 'com.github.blikoon:QRCodeScanner:0.1.2'
+   }
+
+
+//必须添加权限, 否则报错
+<uses-permission android:name="android.permission.VIBRATE"/>
+
+//Activity中
+private static final int REQUEST_CODE_QR_SCAN = 101;
+
+Intent i = new Intent(activity, QrCodeActivity.class);
+startActivityForResult( i,REQUEST_CODE_QR_SCAN);
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data != null) {
+            if(resultCode != Activity.RESULT_OK) {
+                //解析图片
+                String result = data.getStringExtra("com.blikoon.qrcodescanner.error_decoding_image");
+                tvResult.setText(result);
+            } else {
+                //扫描二维码
+                String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
+                tvResult.setText(result);
+            }
+        }
+    }
+

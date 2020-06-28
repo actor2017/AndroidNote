@@ -1,0 +1,3 @@
+SlidingPaneLayout 用于水平滚动两个view， 第一个view是左侧边，第二个view是content view
+
+SlidingPaneLayout 是一个水平的多层的布局控件，左侧或者第一个子视图是它的导航视图，其他的是内容视图。其实，这就是一个左滑菜单的官方实现。

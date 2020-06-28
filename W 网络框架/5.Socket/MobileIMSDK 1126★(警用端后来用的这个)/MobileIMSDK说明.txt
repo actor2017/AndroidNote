@@ -1,0 +1,17 @@
+https://github.com/JackJiang2011/MobileIMSDK
+https://gitee.com/jackjiang/MobileIMSDK
+
+http://www.jianshu.com/p/88c0d2e915c3
+
+http://www.52im.net/
+http://www.52im.net/forum-89-1.html
+
+http://www.52im.net/thread-61-1-1.html★★★详细使用说明★★★
+
+一个专为移动端开发的原创即时通讯框架，超轻量级、高度提炼，完全基于UDP协议，支持iOS、Android、标准Java平台。
+
+
+添加混淆:
+##---------Begin: proguard configuration for MobileIMSDK---------
+-keep class net.openmob.mobileimsdk.** {*;}
+##---------End: proguard configuration for MobileIMSDK-----------

@@ -1,0 +1,52 @@
+
+Palette从图像中提取突出的颜色，这样可以把色值赋给ActionBar、或者其他，可以让界面整个色调统一，效果见上图（Palette）。
+
+    Palette这个类中提取以下突出的颜色：
+
+    Vibrant  （有活力）
+
+    Vibrant dark（有活力 暗色）
+
+    Vibrant light（有活力 亮色）
+
+    Muted  （柔和）
+
+    Muted dark（柔和 暗色）
+
+    Muted light（柔和 亮色）
+
+
+    提取色值代码如下：
+    Bitmap bm = BitmapFactory.decodeResource(getResources(), item.image);  
+              Palette palette = Palette.generate(bm);  
+              if (palette.getLightVibrantColor() != null) {  
+                  name.setBackgroundColor(palette.getLightVibrantColor().getRgb());  
+                  getSupportActionBar().setBackgroundDrawable(new ColorDrawable(palette.getLightVibrantColor().getRgb()));  
+                  // getSupportActionBar().  
+      
+              }  
+
+
+通过Palette对象获取到六个样本swatch
+Palette.Swatch s = p.getDominantSwatcher();    //独特的一种,返回调色板中占主导地位的样本
+Palette.Swatch s = p.getVibrantSwatch();       //获取到充满活力的这种色调
+Palette.Swatch s = p.getDarkVibrantSwatch();    //获取充满活力的黑
+Palette.Swatch s = p.getLightVibrantSwatch();   //获取充满活力的亮
+Palette.Swatch s = p.getMutedSwatch();           //获取柔和的色调
+Palette.Swatch s = p.getDarkMutedSwatch();      //获取柔和的黑
+Palette.Swatch s = p.getLightMutedSwatch();    //获取柔和的亮
+
+
+通过Palette对象获取颜色
+Palette.Swatch s = p.getVibrantColor(defColor);
+...
+
+
+swatch对象对应的颜色方法
+getPopulation(): 像素的数量
+getRgb(): RGB颜色
+getHsl(): HSL颜色
+getBodyTextColor(): 用于内容文本的颜色
+getTitleTextColor(): 标题文本的颜色
+
+

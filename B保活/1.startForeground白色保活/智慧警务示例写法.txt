@@ -1,0 +1,17 @@
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setSmallIcon(R.drawable.icon_smile);
+        builder.setContentTitle("智慧警务");
+        builder.setContentText("正在运行中");
+        //builder.setContentInfo("Content Info");
+        builder.setWhen(System.currentTimeMillis());
+        //Intent activityIntent = new Intent(this, MainActivity.class);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, activityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //builder.setContentIntent(pendingIntent);
+        Notification notification = builder.build();
+        //在onStartCommand里面调用 startForeground
+        startForeground(9527, notification);//id 唯一的通知标识
+        return Service.START_STICKY;
+    }

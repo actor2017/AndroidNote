@@ -1,0 +1,8 @@
+https://github.com/cleveryang/DownLoadManager
+DownloadManager
+Android下载管理器
+1、可实现下载、暂停、取消、完成、失败、队列等待等状态的监听
+2、可断点续传
+3、基于okhttp的下载管理器，可实现单个页面的进度回调，也可实现所有下载进度的监听.
+4、可获取下载队列里和已完成下载的所有任务
+5、可设置最大同时下载线程数

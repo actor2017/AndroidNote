@@ -1,0 +1,17 @@
+https://github.com/Justson/AgentWebX5
+AgentWebX5 是基于腾讯X5 的一个Web库
+
+AgentWebX5 功能
+支持进度条以及自定义进度条
+支持文件下载
+支持文件下载断点续传
+支持下载通知形式提示进度
+简化 Javascript 通信
+支持 Android 4.4 Kitkat 以及其他版本文件上传
+支持注入 Cookies
+支持全屏播放视频
+支持调起微信支付
+支持调起支付宝
+默认支持定位
+支持传入IWebLayout(下拉回弹效果)
+

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.kuchuanyun.test.GridLayoutActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <GridLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:columnCount="4"
+            android:rowCount="3">
+
+            <ImageView
+                android:id="@+id/author_avatar"
+                android:layout_width="26.0dip"
+                android:layout_height="26.0dip"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/add_white"/>
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="8.0dip"
+                android:ellipsize="end"
+                android:maxWidth="200.0dip"
+                android:paddingBottom="10dp"
+                android:singleLine="true"
+                android:text="milter"
+                android:textColor="#ff4093c6"
+                android:textSize="12.0sp"/>
+
+            <TextView
+                android:id="@+id/last_compiled_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="8.0dp"
+                android:paddingBottom="10dp"
+                android:singleLine="true"
+                android:text="2小时前"
+                android:textSize="10.0sp"/>
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="1"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2.0dip"
+                android:maxLines="2"
+                android:text="为什么要用GridLayout以及怎样用GridLayout,为什么要用GridLayout以及怎样用GridLayout"
+                android:textColor="@android:color/holo_purple"
+                android:textSize="16.0sp"/>
+
+            <LinearLayout
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="2">
+
+                <TextView
+                    android:id="@+id/collection_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_rec"
+                    android:gravity="center"
+                    android:maxLength="10"
+                    android:maxWidth="72dip"
+                    android:minWidth="36.0dip"
+                    android:text="程序员"
+                    android:textColor="@color/color_red"
+                    android:textSize="10.0sp"/>
+
+                <TextView
+                    android:id="@+id/extra_info"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5.0dip"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2.0dip"
+                    android:maxLines="1"
+                    android:text="100次阅 • 10评论 • 100喜欢 • 100打赏"
+                    android:textSize="10.0sp"/>
+            </LinearLayout>
+        </GridLayout>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5.0dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"/>
+    </TableRow>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.39999998dip"
+        android:background="@android:color/holo_purple"
+        android:paddingBottom="2dp"/>
+</TableLayout>

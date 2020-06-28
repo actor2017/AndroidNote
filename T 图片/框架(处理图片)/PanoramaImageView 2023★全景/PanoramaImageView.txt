@@ -1,0 +1,4 @@
+https://github.com/gjiazhe/PanoramaImageView
+
+An imageView can auto scroll with device rotating.
+imageView可以在设备旋转时自动滚动。

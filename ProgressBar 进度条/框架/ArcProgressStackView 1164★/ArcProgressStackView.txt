@@ -1,0 +1,5 @@
+https://github.com/Devlight/ArcProgressStackView
+
+
+Present your progress bars in arc mode with information and total control.
+在arc模式下显示进度条，显示信息和完全控制。

@@ -1,0 +1,8 @@
+jdk里的头文件地址:
+C:\Program Files\Java\jdk1.8.0_45\include\jni.h
+
+AndroidStudio里的头文件地址:
+D:\Program Files (x86)\android_studio\jre\include\jni.h
+
+NDK(Native Development Kit)里的头文件地址:(Android开发用这个)
+D:\AndroidStudioSDK\ndk-bundle\sysroot\usr\include\jni.h

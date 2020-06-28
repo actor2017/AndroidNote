@@ -1,0 +1,47 @@
+https://github.com/mcxtzhang/ZLayoutManager
+http://blog.csdn.net/zxt0601/article/details/53730908
+Some custom LayoutManager .Such as SwipeCard、FLowLayout。一些自定义的LayoutManager，仿探探、人人影视 炫动滑动 卡片层叠 和流式布局等。
+
+LayoutManagerDemo
+
+
+
+利用自定义LayoutManager 的一些实战实例。
+
+相关博文：
+
+流式布局
+
+仿探探、人人影视 卡片层叠 炫动滑动布局
+
+想经济上支持我 or 想通过视频看我是怎么实现的:
+
+http://edu.csdn.net/course/detail/3956
+
+If you like, point a star .Thank you very much!
+
+喜欢随手点个star 多谢
+
+在哪里找到我：
+
+我的github：
+
+https://github.com/mcxtzhang
+
+我的CSDN博客：
+
+http://blog.csdn.net/zxt0601
+
+我的稀土掘金：
+
+http://gold.xitu.io/user/56de210b816dfa0052e66495
+
+我的简书：
+
+http://www.jianshu.com/users/8e91ff99b072/timeline
+
+效果一览：
+
+仿探探、人人影视 卡片层叠 炫动滑动布局
+
+探探皇帝翻牌子即视感

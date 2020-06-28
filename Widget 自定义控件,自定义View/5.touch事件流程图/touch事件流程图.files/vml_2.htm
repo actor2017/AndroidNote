@@ -1,0 +1,227 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" 
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>touch事件流程图</title>
+<style type="text/css">
+	 v\:* { behavior: url(#default#VML); }
+</style>
+
+<script src="vml_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+
+	var pageID = 4;
+	var viewMgr = null;
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+	function getPNZ()
+	{
+		var rawHTML = VMLDiv.innerHTML;
+		var strReturn = ""
+		
+		strReturn = rawHTML.slice( rawHTML.indexOf( '<v:group' ), rawHTML.indexOf( "</v:shape>" ) );
+		strReturn += "</v:shape></v:group>\n";
+				
+		return strReturn;
+	}
+	
+	function load()
+	{
+		viewMgr = new parent.CViewMgr("ConvertedImage", "arrowDiv");
+
+		viewMgr.put_Location = ViewMgrSetVMLLocation;
+
+
+		viewMgr.visBBoxLeft = 1.254843;
+		viewMgr.visBBoxRight = 15.039370;
+		viewMgr.visBBoxBottom = 0.782402;
+		viewMgr.visBBoxTop = 10.856299;
+
+		viewMgr.Zoom = VMLZoomChange;
+		viewMgr.setView= VMLSetView;
+
+		viewMgr.SupportsDetails = true;
+		viewMgr.SupportsSearch = true;
+
+		parent.viewMgr = viewMgr;
+
+		fit();
+	}
+
+	function unload()
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+
+	function fit()
+	{
+		if(parent.frmToolbar)
+		{
+			if (parent.g_WidgetsLoaded)
+			{
+				var zoom100 = parent.frmToolbar.document.all('a100');
+				if (zoom100)
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					zoom100.click();
+				}
+				else
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					viewMgr.Zoom(100);
+				}
+			}
+			else
+			{
+				window.setTimeout("fit()", 500);
+			}
+		}	
+		else
+		{
+			parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+			viewMgr.Zoom(100);
+		}
+	}
+
+	function PostZoomProcessing (newZoomLevel)
+	{
+		parent.viewMgr.PostZoomProcessing = null;
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.viewMgr.getPNZ = getPNZ;
+		parent.CurPageUpdate (pageIndex);
+	}
+
+
+	
+	var isUpLevel = parent.isUpLevel;
+	var OnShapeClick = parent.OnShapeClick;
+	var OnShapeKey = parent.OnShapeKey;
+	var UpdateTooltip = parent.UpdateTooltip;
+	var clickMenu = parent.clickMenu;
+	var toggleMenuDiv = parent.toggleMenuDiv;
+	var toggleMenuLink = parent.toggleMenuLink;
+	var GoToPage = parent.GoToPage;
+
+	window.onload = load;
+	window.onunload = unload;
+	document.onclick = clickMenu;
+
+
+
+
+</script>
+
+</head>
+
+<body style="MARGIN:10px" onresize="VMLOnResize();" onscroll="VMLOnScroll();">
+
+<div id="arrowdiv" style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+
+
+
+<div id="VMLDiv" >
+
+
+<v:group  id="ConvertedImage" style="width:5.473364in;height:4.000000in;position:absolute;visibility=hidden;" coordSize="2737,2000" coordOrigin="-1000,-1000" >
+
+<v:shapetype 
+  id="VISSHAPE"
+  target="_parent"
+  coordsize="2737,2000"
+  coordorigin="-1000,-1000"
+  stroked="f"
+  strokecolor="red"
+  filled="t"
+>
+<v:fill opacity="0.0"/>
+</v:shapetype>
+
+
+<v:shape style="top:-1000.0;left:-1000.0;width:2736.7;height:2000.0;position:absolute" coordSize="2737,2000" coordOrigin="-1000,-1000" >
+<v:imagedata src="vml_2.emz"/>
+</v:shape>
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="True  中断此事件" origTitle="True  中断此事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -146,-313 l 182,-313 l 182,-384 l -146,-384 l -146,-313xe" onmouseover="UpdateTooltip(this,4,11)" onclick="OnShapeClick(4,11)" onfocus="UpdateTooltip(this,4,11);" onkeyup="OnShapeKey(4,11)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -996,996 l 1414,996 l 1414,535 l -996,535 l -996,996xe" onmouseover="UpdateTooltip(this,4,1)" onclick="OnShapeClick(4,1)" onfocus="UpdateTooltip(this,4,1);" onkeyup="OnShapeKey(4,1)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -996,458 l 1414,458 l 1414,-74 l -996,-74 l -996,458xe" onmouseover="UpdateTooltip(this,4,2)" onclick="OnShapeClick(4,2)" onfocus="UpdateTooltip(this,4,2);" onkeyup="OnShapeKey(4,2)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -988,-126 l 1414,-126 l 1414,-657 l -988,-657 l -988,-126xe" onmouseover="UpdateTooltip(this,4,3)" onclick="OnShapeClick(4,3)" onfocus="UpdateTooltip(this,4,3);" onkeyup="OnShapeKey(4,3)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="顶级父  view" origTitle="顶级父  view"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -622,-464 l -326,-464 l -326,-565 l -622,-565 l -622,-464xe" onmouseover="UpdateTooltip(this,4,4)" onclick="OnShapeClick(4,4)" onfocus="UpdateTooltip(this,4,4);" onkeyup="OnShapeKey(4,4)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="onInterceptTouchEvent" origTitle="onInterceptTouchEvent"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -291,-335 l -473,-374 l -656,-335 l -700,-335 l -700,-325 l -791,-306 l -700,-286 l -700,-283 l -683,-283 l -473,-238 l -264,-283 l -247,-283 l -247,-286 l -156,-306 l -247,-325 l -247,-335 l -291,-335xe" onmouseover="UpdateTooltip(this,4,6)" onclick="OnShapeClick(4,6)" onfocus="UpdateTooltip(this,4,6);" onkeyup="OnShapeKey(4,6)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="父  view" origTitle="父  view"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -621,97 l -325,97 l -325,-3 l -621,-3 l -621,97xe" onmouseover="UpdateTooltip(this,4,9)" onclick="OnShapeClick(4,9)" onfocus="UpdateTooltip(this,4,9);" onkeyup="OnShapeKey(4,9)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="处理事件" origTitle="处理事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 1091,-247 l 1269,-247 l 1271,-247 l 1272,-247 l 1274,-247 l 1276,-247 l 1277,-247 l 1279,-247 l 1281,-248 l 1282,-248 l 1284,-249 l 1285,-249 l 1287,-249 l 1289,-250 l 1290,-251 l 1292,-251 l 1293,-252 l 1295,-253 l 1296,-253 l 1298,-254 l 1299,-255 l 1301,-256 l 1302,-257 l 1303,-258 l 1305,-259 l 1306,-260 l 1307,-261 l 1309,-262 l 1310,-263 l 1311,-264 l 1312,-265 l 1313,-267 l 1314,-268 l 1315,-269 l 1316,-271 l 1317,-272 l 1318,-273 l 1319,-275 l 1320,-276 l 1321,-278 l 1322,-279 l 1322,-281 l 1323,-282 l 1324,-284 l 1324,-285 l 1325,-287 l 1325,-288 l 1326,-290 l 1326,-292 l 1327,-293 l 1327,-295 l 1327,-297 l 1328,-298 l 1328,-300 l 1328,-302 l 1328,-303 l 1328,-305 l 1328,-307 l 1328,-308 l 1328,-310 l 1328,-312 l 1328,-313 l 1327,-315 l 1327,-317 l 1327,-318 l 1326,-320 l 1326,-321 l 1325,-323 l 1325,-325 l 1324,-326 l 1324,-328 l 1323,-329 l 1322,-331 l 1322,-332 l 1321,-334 l 1320,-335 l 1319,-337 l 1318,-338 l 1317,-340 l 1316,-341 l 1315,-342 l 1314,-344 l 1313,-345 l 1312,-346 l 1311,-347 l 1310,-348 l 1309,-350 l 1307,-351 l 1306,-352 l 1305,-353 l 1303,-354 l 1302,-355 l 1301,-356 l 1299,-357 l 1298,-357 l 1296,-358 l 1295,-359 l 1293,-360 l 1292,-360 l 1290,-361 l 1289,-361 l 1287,-362 l 1285,-362 l 1284,-363 l 1282,-363 l 1281,-364 l 1279,-364 l 1277,-364 l 1276,-364 l 1274,-365 l 1272,-365 l 1271,-365 l 1269,-365 l 1091,-365 l 1090,-365 l 1088,-365 l 1086,-365 l 1085,-364 l 1083,-364 l 1081,-364 l 1080,-364 l 1078,-363 l 1077,-363 l 1075,-362 l 1073,-362 l 1072,-361 l 1070,-361 l 1069,-360 l 1067,-360 l 1066,-359 l 1064,-358 l 1063,-357 l 1061,-357 l 1060,-356 l 1058,-355 l 1057,-354 l 1056,-353 l 1054,-352 l 1053,-351 l 1052,-350 l 1050,-348 l 1049,-347 l 1048,-346 l 1047,-345 l 1046,-344 l 1045,-342 l 1044,-341 l 1043,-340 l 1042,-338 l 1041,-337 l 1040,-335 l 1039,-334 l 1039,-332 l 1038,-331 l 1037,-329 l 1037,-328 l 1036,-326 l 1035,-325 l 1035,-323 l 1034,-321 l 1034,-320 l 1034,-318 l 1033,-317 l 1033,-315 l 1033,-313 l 1033,-312 l 1032,-310 l 1032,-308 l 1032,-307 l 1032,-305 l 1032,-303 l 1032,-302 l 1033,-300 l 1033,-298 l 1033,-297 l 1033,-295 l 1034,-293 l 1034,-292 l 1034,-290 l 1035,-288 l 1035,-287 l 1036,-285 l 1037,-284 l 1037,-282 l 1038,-281 l 1039,-279 l 1039,-278 l 1040,-276 l 1041,-275 l 1042,-273 l 1043,-272 l 1044,-271 l 1045,-269 l 1046,-268 l 1047,-267 l 1048,-265 l 1049,-264 l 1050,-263 l 1052,-262 l 1053,-261 l 1054,-260 l 1056,-259 l 1057,-258 l 1058,-257 l 1060,-256 l 1061,-255 l 1063,-254 l 1064,-253 l 1066,-253 l 1067,-252 l 1069,-251 l 1070,-251 l 1072,-250 l 1073,-249 l 1075,-249 l 1077,-249 l 1078,-248 l 1080,-248 l 1081,-247 l 1083,-247 l 1085,-247 l 1086,-247 l 1088,-247 l 1090,-247 l 1091,-247xe" onmouseover="UpdateTooltip(this,4,12)" onclick="OnShapeClick(4,12)" onfocus="UpdateTooltip(this,4,12);" onkeyup="OnShapeKey(4,12)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="onTouchEvent" origTitle="onTouchEvent"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 532,-335 l 416,-374 l 299,-335 l 277,-335 l 277,-327 l 213,-306 l 277,-284 l 277,-283 l 282,-283 l 416,-238 l 550,-283 l 554,-283 l 554,-284 l 618,-306 l 554,-327 l 554,-335 l 532,-335xe" onmouseover="UpdateTooltip(this,4,13)" onclick="OnShapeClick(4,13)" onfocus="UpdateTooltip(this,4,13);" onkeyup="OnShapeKey(4,13)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="True  消耗此事件" origTitle="True  消耗此事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 623,-309 l 957,-309 l 957,-380 l 623,-380 l 623,-309xe" onmouseover="UpdateTooltip(this,4,15)" onclick="OnShapeClick(4,15)" onfocus="UpdateTooltip(this,4,15);" onkeyup="OnShapeKey(4,15)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 692,-474 l 837,-474 l 837,-545 l 829,-545 l 829,-562 l 790,-562 l 752,-562 l 559,-562 l 440,-562 l 440,-545 l 432,-545 l 432,-474 l 576,-474 l 576,-463 l 692,-463 l 692,-474xe" onmouseover="UpdateTooltip(this,4,17)" onclick="OnShapeClick(4,17)" onfocus="UpdateTooltip(this,4,17);" onkeyup="OnShapeKey(4,17)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="False  不中断，事件向子view传递" origTitle="False  不中断，事件向子view传递"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -141,-143 l -28,-143 l -28,-214 l -49,-214 l -49,-231 l -164,-231 l -203,-231 l -318,-231 l -438,-231 l -438,-214 l -458,-214 l -458,-143 l -345,-143 l -345,-132 l -307,-132 l -218,-132 l -141,-132 l -141,-143xe" onmouseover="UpdateTooltip(this,4,18)" onclick="OnShapeClick(4,18)" onfocus="UpdateTooltip(this,4,18);" onkeyup="OnShapeKey(4,18)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="onInterceptTouchEvent" origTitle="onInterceptTouchEvent"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -303,227 l -473,187 l -644,227 l -700,227 l -700,239 l -770,255 l -700,271 l -700,278 l -669,278 l -473,323 l -278,278 l -247,278 l -247,271 l -177,255 l -247,239 l -247,227 l -303,227xe" onmouseover="UpdateTooltip(this,4,20)" onclick="OnShapeClick(4,20)" onfocus="UpdateTooltip(this,4,20);" onkeyup="OnShapeKey(4,20)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="子  view" origTitle="子  view"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -621,700 l -326,700 l -326,600 l -621,600 l -621,700xe" onmouseover="UpdateTooltip(this,4,22)" onclick="OnShapeClick(4,22)" onfocus="UpdateTooltip(this,4,22);" onkeyup="OnShapeKey(4,22)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="True  中断此事件" origTitle="True  中断此事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -142,248 l 193,248 l 193,177 l -142,177 l -142,248xe" onmouseover="UpdateTooltip(this,4,23)" onclick="OnShapeClick(4,23)" onfocus="UpdateTooltip(this,4,23);" onkeyup="OnShapeKey(4,23)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="处理事件" origTitle="处理事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 1091,315 l 1269,315 l 1271,314 l 1272,314 l 1274,314 l 1276,314 l 1277,314 l 1279,314 l 1281,313 l 1282,313 l 1284,313 l 1285,312 l 1287,312 l 1289,311 l 1290,311 l 1292,310 l 1293,309 l 1295,309 l 1296,308 l 1298,307 l 1299,306 l 1301,305 l 1302,304 l 1303,303 l 1305,302 l 1306,301 l 1307,300 l 1309,299 l 1310,298 l 1311,297 l 1312,296 l 1313,294 l 1314,293 l 1315,292 l 1316,291 l 1317,289 l 1318,288 l 1319,286 l 1320,285 l 1321,283 l 1322,282 l 1322,281 l 1323,279 l 1324,277 l 1324,276 l 1325,274 l 1325,273 l 1326,271 l 1326,269 l 1327,268 l 1327,266 l 1327,265 l 1328,263 l 1328,261 l 1328,260 l 1328,258 l 1328,256 l 1328,255 l 1328,253 l 1328,251 l 1328,250 l 1328,248 l 1327,246 l 1327,245 l 1327,243 l 1326,241 l 1326,240 l 1325,238 l 1325,236 l 1324,235 l 1324,233 l 1323,232 l 1322,230 l 1322,229 l 1321,227 l 1320,226 l 1319,224 l 1318,223 l 1317,222 l 1316,220 l 1315,219 l 1314,218 l 1313,216 l 1312,215 l 1311,214 l 1310,213 l 1309,212 l 1307,210 l 1306,209 l 1305,208 l 1303,207 l 1302,206 l 1301,206 l 1299,205 l 1298,204 l 1296,203 l 1295,202 l 1293,202 l 1292,201 l 1290,200 l 1289,200 l 1287,199 l 1285,199 l 1284,198 l 1282,198 l 1281,197 l 1279,197 l 1277,197 l 1276,197 l 1274,196 l 1272,196 l 1271,196 l 1269,196 l 1091,196 l 1090,196 l 1088,196 l 1086,196 l 1085,197 l 1083,197 l 1081,197 l 1080,197 l 1078,198 l 1077,198 l 1075,199 l 1073,199 l 1072,200 l 1070,200 l 1069,201 l 1067,202 l 1066,202 l 1064,203 l 1063,204 l 1061,205 l 1060,206 l 1058,206 l 1057,207 l 1056,208 l 1054,209 l 1053,210 l 1052,212 l 1050,213 l 1049,214 l 1048,215 l 1047,216 l 1046,218 l 1045,219 l 1044,220 l 1043,222 l 1042,223 l 1041,224 l 1040,226 l 1039,227 l 1039,229 l 1038,230 l 1037,232 l 1037,233 l 1036,235 l 1035,236 l 1035,238 l 1034,240 l 1034,241 l 1034,243 l 1033,245 l 1033,246 l 1033,248 l 1033,250 l 1032,251 l 1032,253 l 1032,255 l 1032,256 l 1032,258 l 1032,260 l 1033,261 l 1033,263 l 1033,265 l 1033,266 l 1034,268 l 1034,269 l 1034,271 l 1035,273 l 1035,274 l 1036,276 l 1037,277 l 1037,279 l 1038,281 l 1039,282 l 1039,283 l 1040,285 l 1041,286 l 1042,288 l 1043,289 l 1044,291 l 1045,292 l 1046,293 l 1047,294 l 1048,296 l 1049,297 l 1050,298 l 1052,299 l 1053,300 l 1054,301 l 1056,302 l 1057,303 l 1058,304 l 1060,305 l 1061,306 l 1063,307 l 1064,308 l 1066,309 l 1067,309 l 1069,310 l 1070,311 l 1072,311 l 1073,312 l 1075,312 l 1077,313 l 1078,313 l 1080,313 l 1081,314 l 1083,314 l 1085,314 l 1086,314 l 1088,314 l 1090,314 l 1091,315xe" onmouseover="UpdateTooltip(this,4,24)" onclick="OnShapeClick(4,24)" onfocus="UpdateTooltip(this,4,24);" onkeyup="OnShapeKey(4,24)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="onTouchEvent" origTitle="onTouchEvent"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 516,227 l 414,187 l 312,227 l 276,227 l 276,240 l 237,255 l 276,270 l 276,278 l 297,278 l 414,323 l 531,278 l 552,278 l 552,270 l 591,255 l 552,240 l 552,227 l 516,227xe" onmouseover="UpdateTooltip(this,4,25)" onclick="OnShapeClick(4,25)" onfocus="UpdateTooltip(this,4,25);" onkeyup="OnShapeKey(4,25)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="True  消耗此事件" origTitle="True  消耗此事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 595,252 l 959,252 l 959,182 l 595,182 l 595,252xe" onmouseover="UpdateTooltip(this,4,27)" onclick="OnShapeClick(4,27)" onfocus="UpdateTooltip(this,4,27);" onkeyup="OnShapeKey(4,27)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 439,81 l 985,81 l 985,10 l 439,10 l 439,81xe" onmouseover="UpdateTooltip(this,4,29)" onclick="OnShapeClick(4,29)" onfocus="UpdateTooltip(this,4,29);" onkeyup="OnShapeKey(4,29)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="False  不中断，事件向子view传递" origTitle="False  不中断，事件向子view传递"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -146,419 l 81,419 l 81,348 l 73,348 l 73,332 l -15,332 l -170,332 l -208,332 l -324,332 l -443,332 l -443,348 l -451,348 l -451,419 l -223,419 l -223,430 l -146,430 l -146,419xe" onmouseover="UpdateTooltip(this,4,30)" onclick="OnShapeClick(4,30)" onfocus="UpdateTooltip(this,4,30);" onkeyup="OnShapeKey(4,30)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="处理事件" origTitle="处理事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 1091,904 l 1269,904 l 1271,904 l 1272,904 l 1274,904 l 1276,904 l 1277,904 l 1279,903 l 1281,903 l 1282,903 l 1284,902 l 1285,902 l 1287,901 l 1289,901 l 1290,900 l 1292,900 l 1293,899 l 1295,898 l 1296,898 l 1298,897 l 1299,896 l 1301,895 l 1302,894 l 1303,893 l 1305,892 l 1306,891 l 1307,890 l 1309,889 l 1310,888 l 1311,887 l 1312,885 l 1313,884 l 1314,883 l 1315,882 l 1316,880 l 1317,879 l 1318,878 l 1319,876 l 1320,875 l 1321,873 l 1322,872 l 1322,870 l 1323,869 l 1324,867 l 1324,866 l 1325,864 l 1325,862 l 1326,861 l 1326,859 l 1327,858 l 1327,856 l 1327,854 l 1328,853 l 1328,851 l 1328,849 l 1328,848 l 1328,846 l 1328,844 l 1328,843 l 1328,841 l 1328,839 l 1328,838 l 1327,836 l 1327,834 l 1327,833 l 1326,831 l 1326,829 l 1325,828 l 1325,826 l 1324,825 l 1324,823 l 1323,822 l 1322,820 l 1322,819 l 1321,817 l 1320,816 l 1319,814 l 1318,813 l 1317,811 l 1316,810 l 1315,809 l 1314,807 l 1313,806 l 1312,805 l 1311,804 l 1310,803 l 1309,801 l 1307,800 l 1306,799 l 1305,798 l 1303,797 l 1302,796 l 1301,795 l 1299,794 l 1298,794 l 1296,793 l 1295,792 l 1293,791 l 1292,791 l 1290,790 l 1289,789 l 1287,789 l 1285,788 l 1284,788 l 1282,788 l 1281,787 l 1279,787 l 1277,787 l 1276,786 l 1274,786 l 1272,786 l 1271,786 l 1269,786 l 1091,786 l 1090,786 l 1088,786 l 1086,786 l 1085,786 l 1083,787 l 1081,787 l 1080,787 l 1078,788 l 1077,788 l 1075,788 l 1073,789 l 1072,789 l 1070,790 l 1069,791 l 1067,791 l 1066,792 l 1064,793 l 1063,794 l 1061,794 l 1060,795 l 1058,796 l 1057,797 l 1056,798 l 1054,799 l 1053,800 l 1052,801 l 1050,803 l 1049,804 l 1048,805 l 1047,806 l 1046,807 l 1045,809 l 1044,810 l 1043,811 l 1042,813 l 1041,814 l 1040,816 l 1039,817 l 1039,819 l 1038,820 l 1037,822 l 1037,823 l 1036,825 l 1035,826 l 1035,828 l 1034,829 l 1034,831 l 1034,833 l 1033,834 l 1033,836 l 1033,838 l 1033,839 l 1032,841 l 1032,843 l 1032,844 l 1032,846 l 1032,848 l 1032,849 l 1033,851 l 1033,853 l 1033,854 l 1033,856 l 1034,858 l 1034,859 l 1034,861 l 1035,862 l 1035,864 l 1036,866 l 1037,867 l 1037,869 l 1038,870 l 1039,872 l 1039,873 l 1040,875 l 1041,876 l 1042,878 l 1043,879 l 1044,880 l 1045,882 l 1046,883 l 1047,884 l 1048,885 l 1049,887 l 1050,888 l 1052,889 l 1053,890 l 1054,891 l 1056,892 l 1057,893 l 1058,894 l 1060,895 l 1061,896 l 1063,897 l 1064,898 l 1066,898 l 1067,899 l 1069,900 l 1070,900 l 1072,901 l 1073,901 l 1075,902 l 1077,902 l 1078,903 l 1080,903 l 1081,903 l 1083,904 l 1085,904 l 1086,904 l 1088,904 l 1090,904 l 1091,904xe" onmouseover="UpdateTooltip(this,4,32)" onclick="OnShapeClick(4,32)" onfocus="UpdateTooltip(this,4,32);" onkeyup="OnShapeKey(4,32)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="onTouchEvent" origTitle="onTouchEvent"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 516,816 l 414,777 l 312,816 l 276,816 l 276,830 l 237,845 l 276,860 l 276,868 l 297,868 l 414,913 l 531,868 l 552,868 l 552,860 l 591,845 l 552,830 l 552,816 l 516,816xe" onmouseover="UpdateTooltip(this,4,33)" onclick="OnShapeClick(4,33)" onfocus="UpdateTooltip(this,4,33);" onkeyup="OnShapeKey(4,33)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="True  消耗此事件" origTitle="True  消耗此事件"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 615,842 l 962,842 l 962,771 l 615,771 l 615,842xe" onmouseover="UpdateTooltip(this,4,35)" onclick="OnShapeClick(4,35)" onfocus="UpdateTooltip(this,4,35);" onkeyup="OnShapeKey(4,35)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Flase  不处理事件，向上传递" origTitle="Flase  不处理事件，向上传递"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 430,712 l 1001,712 l 1001,641 l 430,641 l 430,712xe" onmouseover="UpdateTooltip(this,4,37)" onclick="OnShapeClick(4,37)" onfocus="UpdateTooltip(this,4,37);" onkeyup="OnShapeKey(4,37)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Touch 事件发生" origTitle="Touch 事件发生"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -622,-745 l -326,-745 l -326,-816 l -622,-816 l -622,-745xe" onmouseover="UpdateTooltip(this,4,39)" onclick="OnShapeClick(4,39)" onfocus="UpdateTooltip(this,4,39);" onkeyup="OnShapeKey(4,39)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Touch 事件传递机制流程图" origTitle="Touch 事件传递机制流程图"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m -17,-993 l -204,-993 l -204,-988 l -274,-988 l -274,-917 l 548,-917 l 548,-988 l 478,-988 l 478,-993 l -17,-993xe" onmouseover="UpdateTooltip(this,4,40)" onclick="OnShapeClick(4,40)" onfocus="UpdateTooltip(this,4,40);" onkeyup="OnShapeKey(4,40)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="Author:leo  Date:2014-2-25" origTitle="Author:leo  Date:2014-2-25"  style="top:-1000;left:-1000;width:2737;height:2000;position:absolute" path=" m 889,-907 l 1734,-907 l 1734,-997 l 889,-997 l 889,-907xe" onmouseover="UpdateTooltip(this,4,41)" onclick="OnShapeClick(4,41)" onfocus="UpdateTooltip(this,4,41);" onkeyup="OnShapeKey(4,41)"/> 
+
+</v:group>
+
+
+
+</div>
+
+
+
+</body>
+</html>
+

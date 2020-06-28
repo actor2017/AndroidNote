@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--这是GridTableRadioGroup的属性-->
+    <declare-styleable name="GridTableRadioGroup">
+	
+		<!--左边的文字-->
+        <attr name="gtrItemName" format="string"/>
+		
+		<!--左边的红点是否显示-->
+        <attr name="gtrRedStarVisiable" format="boolean"/>
+		
+		<!--radioButton1的值-->
+        <attr name="gtrRb1Text" format="string"/>
+		
+		<!--radioButton2的值-->
+        <attr name="gtrRb2Text" format="string"/>
+		
+		<!--radioButton3的值-->
+        <attr name="gtrRb3Text" format="string"/>
+		
+		<!--默认选中第几个-->
+        <attr name="gtrCheckedPosition" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,61 @@
+SimpleDateFormat的方法:
+public Date parse(String source)
+public final String format(Date date)
+public final String format (Object obj)
+public String toPattern()
+
+
+    //获取每天年月日,日期格式：YYYY-MM-DD
+    private static String getToday() {
+        return new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+    } 
+
+//===========================================================================================
+
+    //获取每天开始时间,日期格式：yyyy-MM-dd HH:mm:ss
+    private static String getStartDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date data = calendar.getTime();
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data);
+    }
+
+    //获取每天结束时间,日期格式：yyyy-MM-dd HH:mm:ss
+    private static String getEndDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        Date data = calendar.getTime();
+        return new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(data);
+    }
+
+//下面的可以
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+        for (GankBeauty gankBeauty : gankBeauties) {
+            Item item = new Item();
+            try {
+                Date date = inputFormat.parse(gankBeauty.createdAt);//2018-06-28T01:44:18.488Z
+                item.description = outputFormat.format(date);//2018/06/28 01:44:18
+            } catch (ParseException e) {
+                e.printStackTrace();
+                item.description = "unknown date";
+            }
+            item.imageUrl = gankBeauty.url;
+
+//===========================================================================================
+下方2个方法报错,还没有解决.
+    //获取每天开始时间,日期格式：yyyy-MM-dd HH:mm:ss
+    private static String getStartDate() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + " 00:00:00");
+    }
+
+    //获取每天结束时间,日期格式：yyyy-MM-dd HH:mm:ss
+    private static String getEndDate() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + " 23:59:59");
+    }

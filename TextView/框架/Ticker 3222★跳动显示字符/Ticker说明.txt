@@ -1,0 +1,11 @@
+https://github.com/robinhood/ticker
+
+compile 'com.robinhood.ticker:ticker:1.2.0'
+
+<com.robinhood.ticker.TickerView
+    android:id="@+id/tickerView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+final TickerView tickerView = findViewById(R.id.tickerView);
+tickerView.setCharacterList(TickerUtils.getDefaultNumberList());

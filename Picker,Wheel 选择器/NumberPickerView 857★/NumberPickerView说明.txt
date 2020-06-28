@@ -1,0 +1,155 @@
+https://github.com/Carbs0126/NumberPickerView
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0629/4397.html
+在Android项目的开发中会用到NumberPicker组件，但是默认风格的NumberPicker具有一些不灵活的属性，定制起来也比较麻烦，并且缺少一些过渡动效，因此在应用开发时，一般采用自定义的控件来完成选择功能。
+
+
+####原始控件特性-NumberPicker
+
+显示窗口只能显示3个备选选项；
+在fling时阻力较大，无法快速滑动；
+在选中与非选中状态切换比较生硬；
+批量改变选项中的内容时，没有动画效果；
+动态设置wrap模式时(setWrapSelectorWheel()方法)，会有“暂时显示不出部分选项”的问题；
+选中位置没有文字说明；
+代码中不能控制选项滑动滚动到某一item；
+####自定义控件特性-NumberPickerView
+
+显示窗口可以显示多个备选选项；
+fling时滑动速度较快，且可以设置摩擦力，如下代码使得摩擦力为默认状态的2倍
+mNumberPickerView.setFriction(2 * ViewConfiguration.get(mContext).getScrollFriction());
+在选中与非选中的状态滑动时，具有渐变的动画效果，包括文字放大缩小以及颜色的渐变；
+在批量改变选项中的内容时，可以选择是否采用友好的滑动效果；
+可以动态的设置是否wrap，即，是否循环滚动；
+选中位置可以添加文字说明，可控制文字字体大小颜色等；
+具有在代码中动态的滑动到某一位置的功能；
+支持wrap_content，支持item的padding
+提供多种属性，优化UI效果
+在滑动过程中不响应onValueChanged()
+点击上下单元格，可以自动滑动到对应的点击对象。
+可通过属性设置onValueChanged等回调接口的执行线程。
+兼容NumberPicker的重要方法和接口：
+    兼容的方法有：
+    setOnValueChangedListener()
+    setOnScrollListener()
+    setDisplayedValues()/getDisplayedValues()
+    setWrapSelectorWheel()/getWrapSelectorWheel()
+    setMinValue()/getMinValue()
+    setMaxValue()/getMaxValue()
+    setValue()/getValue()
+    
+    兼容的内部接口有：
+    OnValueChangeListener
+    OnScrollListener
+    
+    添加的接口有：
+    OnValueChangeListenerInScrolling//滑动过程中响应value change
+
+
+
+1.导入至工程
+    compile 'cn.carbswang.android:NumberPickerView:1.1.1'
+
+
+2.通过布局声明NumberPickerView
+    <cn.carbswang.android.numberpickerview.library.NumberPickerView
+        android:id="@+id/picker"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#11333333"
+        android:contentDescription="test_number_picker_view"
+        app:npv_ItemPaddingHorizontal="5dp"
+        app:npv_ItemPaddingVertical="5dp"
+        app:npv_ShowCount="5"
+        app:npv_RespondChangeOnDetached="false"
+        app:npv_TextSizeNormal="16sp"
+        app:npv_TextSizeSelected="20sp"
+        app:npv_WrapSelectorWheel="true"/>
+
+
+3.Java代码中使用： 1)若设置的数据(String[] mDisplayedValues)不会再次改变，可以使用如下方式进行设置：（与NumberPicker的设置方式一致）
+
+        picker.setMinValue(minValue);
+        picker.setMaxValue(maxValue);
+        picker.setValue(value);
+2)若设置的数据(String[] mDisplayedValues)会改变，可以使用如下组合方式进行设置：（与NumberPicker的更改数据方式一致）
+
+        int minValue = getMinValue();
+        int oldMaxValue = getMaxValue();
+        int oldSpan = oldMaxValue - minValue + 1;
+        int newMaxValue = display.length - 1;
+        int newSpan = newMaxValue - minValue + 1;
+        if (newSpan > oldSpan) {
+            setDisplayedValues(display);
+            setMaxValue(newMaxValue);
+        } else {
+            setMaxValue(newMaxValue);
+            setDisplayedValues(display);
+        }
+或者直接使用NumberPickerView提供的方法：
+refreshByNewDisplayedValues(String[] display)
+使用此方法时需要注意保证数据改变前后的minValue值不变，以及设置的display不能够为null，且长度不能够为0。 3)添加了滑动过程中响应value change的函数
+
+  picker.setOnValueChangeListenerInScrolling(...);
+4.另外，NumberPickerView提供了平滑滚动的方法：
+public void smoothScrollToValue(int fromValue, int toValue, boolean needRespond)
+
+此方法与setValue(int)方法相同之处是可以动态设置当前显示的item，不同之处在于此方法可以使NumberPickerView平滑的从滚动，即从fromValue值挑选最近路径滚动到toValue，第三个参数needRespond用来标识在滑动过程中是否响应onValueChanged回调函数。因为多个NumberPickerView在联动时，很可能不同的NumberPickerView的停止时间不同，如果在此时响应了onValueChanged回调，就可能再次联动，造成数据不准确，将needRespond置为false，可避免在滑动中响应回调函数。
+
+另外，在使用此方法或者间接调用此方法时，需要注意最好不要在onCreate(Bundle savedInstanceState)方法中调用，因为scroll动画需要一定时间，如需确要在onCreate(Bundle savedInstanceState)中调用，请使用如下方式：
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //代码省略
+        mNumberPickerView.post(new Runnable() {
+            @Override
+            public void run() {
+                //调用smoothScrollToValue()等方法的代码
+            }
+        });
+    }
+5.各项自定义属性的说明
+
+    <declare-styleable name="NumberPickerView">
+        <attr name="npv_ShowCount" format="reference|integer" />//显示的条目个数，默认3个
+        <attr name="npv_ShowDivider" format="reference|boolean" />//是否显示两条divider，默认显示
+        <attr name="npv_DividerColor" format="reference|color" />//两条divider的颜色
+        <attr name="npv_DividerMarginLeft" format="reference|dimension" />//divider距左侧的距离
+        <attr name="npv_DividerMarginRight" format="reference|dimension" />//divider距右侧的距离
+        <attr name="npv_DividerHeight" format="reference|dimension" />//divider的高度
+        <attr name="npv_TextColorNormal" format="reference|color" />//未选中文字的颜色
+        <attr name="npv_TextColorSelected" format="reference|color" />//选中文字的颜色
+        <attr name="npv_TextColorHint" format="reference|color" />//中间偏右侧说明文字的颜色
+        <attr name="npv_TextSizeNormal" format="reference|dimension" />//未选中文字的大小
+        <attr name="npv_TextSizeSelected" format="reference|dimension" />//选中文字的大小
+        <attr name="npv_TextSizeHint" format="reference|dimension" />//说明文字的大小
+        <attr name="npv_TextArray" format="reference" />//文字内容，stringarray类型
+        <attr name="npv_MinValue" format="reference|integer" />//最小值，同setMinValue()
+        <attr name="npv_MaxValue" format="reference|integer" />//最大值，同setMaxValue()
+        <attr name="npv_WrapSelectorWheel" format="reference|boolean" />//设置是否wrap，同setWrapSelectorWheel
+        <attr name="npv_HintText" format="reference|string" />//设置说明文字
+        <attr name="npv_EmptyItemHint" format="reference|string" />//空行的显示文字，默认不显示任何文字。只在WrapSelectorWheel==false是起作用
+        <attr name="npv_MarginStartOfHint" format="reference|dimension" />//说明文字距离左侧的距离，"左侧"是指文字array最宽item的右侧
+        <attr name="npv_MarginEndOfHint" format="reference|dimension" />//说明文字距离右侧的距离
+        <attr name="npv_ItemPaddingHorizontal" format="reference|dimension" />//item的水平padding，用于wrap_content模式
+        <attr name="npv_ItemPaddingVertical" format="reference|dimension" />//item的竖直padding，用于wrap_content模式
+        <attr name="npv_RespondChangeOnDetached" format="reference|boolean" />//在detach时如果NumberPickerView正好滑动，设置
+        //是否响应onValueChange回调，用在一个Dialog/PopupWindow被显示多次，
+        //且多次显示时记录上次滑动状态的情况。建议Dialog/PopupWindow在显示时每次都指定初始值，且将此属性置为false
+        <attr name="npv_RespondChangeInMainThread" format="reference|boolean" />//指定`onValueChanged`响应事件在什么线程中执行。
+        //默认为`true`，即在主线程中执行。如果设置为`false`则在子线程中执行。
+
+        //以下属性用于在wrap_content模式下，改变内容array并且又不想让控件"跳动"，那么就可以设置所有改变的内容的最大宽度
+        <!--just used to measure maxWidth for wrap_content without hint,
+            the string array will never be displayed.
+            you can set this attr if you want to keep the wraped numberpickerview
+            width unchanged when alter the content list-->
+        <attr name="npv_AlternativeTextArrayWithMeasureHint" format="reference" />//可能达到的最大宽度，包括说明文字在内，最大宽度只可能比此String的宽度更大
+        <attr name="npv_AlternativeTextArrayWithoutMeasureHint" format="reference" />//可能达到的最大宽度，不包括说明文字在内，最大宽度只可能比此String的宽度+说明文字+说明文字marginstart +说明文字marginend 更大
+        <!--the max length of hint content-->
+        <attr name="npv_AlternativeHint" format="reference|string" />//说明文字的最大宽度
+    </declare-styleable>
+
+

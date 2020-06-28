@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <paths>
+<!--http://blog.csdn.net/ruancoder/article/details/67639621?utm_source=itdadao&utm_medium=referral-->
+        <!--1.对应getFilesDir()。-->
+        <!--<files-path name="name" path="path"/>-->
+
+        <!--2.对应getCacheDir()。-->
+        <!--<cache-path name="name" path="path"/>-->
+
+        <!--3.对应Environment.getExternalStorageDirectory()。-->
+        <!--<external-path name="name" path="path"/>-->
+
+        <!--4.对应getExternalFilesDir()。-->
+        <!--<external-files-path name="name" path="path" />-->
+
+        <!--5.对应getExternalCacheDir()。-->
+        <!--<external-cache-path name="name" path="path" />-->
+
+        <!--path:下载所在目录,path=""它代表根目录,也就是说你可以向其它的应用共享根目录及其子目录下任何一个文件了。-->
+        <external-path
+            name="download"
+            path=""/>
+    </paths>
+</resources>

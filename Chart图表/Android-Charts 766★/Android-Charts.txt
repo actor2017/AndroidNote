@@ -1,0 +1,17 @@
+https://github.com/limccn/Android-Charts
+
+Open-source native Android graph/chart framework includes line chart,stick chart,candlestick chart,pie chart,spider-web chart etc. http://www.lidaren.com/androidcharts
+开源原生Android图形/图表框架包括线状图、棍状图、烛台图、饼状图、蛛网图等。
+
+gird chart
+line chart
+stick chart
+candlestick chart
+macd chart
+pie chart
+spider web chart
+area chart
+separated stick chart
+pizza chart
+round radar chart
+rose chart

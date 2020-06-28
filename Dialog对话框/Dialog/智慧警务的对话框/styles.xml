@@ -1,0 +1,12 @@
+
+	
+	<!--红孩子对话框的style-->
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item><!--#0011dddd-->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <!--对话框的背景颜色-->
+    <color name="transparent">#0011dddd</color>

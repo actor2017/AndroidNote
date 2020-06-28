@@ -1,0 +1,5 @@
+https://github.com/SJX516/AndroidStudio-JavaCodeColor
+
+在这里 Identifier under caret 代表的是 光标所在的标识符，也就是我们当前选中的单词，然后右边三个颜色，Foreground和Background是设置字的颜色，Error stripe mark是当前的选中在右边线上的标识颜色
+
+Identifier under caret(write)代表的是 这个标识符在代码里面被写入的地方，也可以理解为这个标识符被修改的地方，然后颜色设置的话同上

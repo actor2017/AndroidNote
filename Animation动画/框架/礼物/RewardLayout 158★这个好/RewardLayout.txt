@@ -1,0 +1,44 @@
+https://github.com/Yuphee/RewardLayout
+
+仿斗鱼直播送礼物和连击效果动画
+
+    <!--送礼物-->
+    <com.zhangyf.gift.RewardLayout
+        android:id="@+id/reward_gift_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        app:gift_item_layout="@layout/gift_animation_item"
+        app:layout_constraintBottom_toBottomOf="@id/space2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:max_gift="3"/>//送礼物显示3行
+
+2.设置Adapter
+rewardLayout.setGiftAdapter(new com.ly.hihifriend.gift.MyGiftAdapter(this));
+
+3.put自定义数据(发送礼物)
+rewardLayout.put(new SendGiftBean(senderId, data.giftId, headUrl,senderNickname,
+                            data.giftName, giftUrl, data.giftNum));
+
+4.手动更新礼物过期时间
+rewardLayout.updateRefreshTime(bean1,2000);
+
+5.生命周期
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (rewardLayout != null) rewardLayout.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (rewardLayout != null) rewardLayout.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (rewardLayout != null) rewardLayout.onDestroy();
+    }

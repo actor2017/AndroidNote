@@ -1,0 +1,25 @@
+SearchView默认是展示一个search的icon，点击icon展开搜索框，
+如果你想让搜索框默认就展开，可以通过setIconifiedByDefault(false);实现。
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/sv_door_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/white"
+        app:iconifiedByDefault="false"//false:搜索框是否收缩成放大镜图标,(默认收缩是,点击放大镜才展开)
+		app:queryBackground="@android:color/transparent"//点击搜索获取焦点之后的背景色(去掉下划线)
+        app:queryHint="请输入搜索关键词"//点击搜索按钮后,显示的提示
+		//app:defaultQueryHint=""//不知道和上面什么区别
+		//android:imeOptions="actionSearch"//输入法右下角,默认是"搜索"
+		//android:inputType="text"
+		//app:closeIcon="@null"//获取焦点后的关闭图标(删除所有已输入的文字)
+		//app:goIcon=""
+		//app:searchIcon="@drawable/icon_smile"//搜索图标(默认放大镜)
+		//app:searchHintIcon=""
+		//app:voiceIcon=""
+		//app:commitIcon=""
+		//app:suggestionRowLayout=""
+		//app:submitBackground="@android:color/transparent"/>//设置了还是有一个下划线...
+		
+		searchView.setSubmitButtonEnabled(true);//有一个提交按钮'>'

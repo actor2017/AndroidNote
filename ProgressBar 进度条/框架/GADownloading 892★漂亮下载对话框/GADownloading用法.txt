@@ -1,0 +1,70 @@
+https://github.com/Ajian-studio/GADownloading
+  中文网址:https://github.com/Ajian-studio/GADownloading/blob/master/README_CN.md
+
+2.添加依赖compile 'com.github.Ajian-studio:GADownloading:v1.0.2'
+
+3.在layout中示例:
+
+<xxx.xxx.xxxx.GADownloadingView
+    android:id="@+id/ga_downloading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/show_failed"
+    android:layout_centerHorizontal="true" />
+
+4.代码中在Activity中找到组件:
+GADownloadingView mGADownloadingView = (GADownloadingView) findViewById(R.id.ga_downloading);
+
+4.核心接口：
+
+4.1.performAnimation()：
+
+启动动画，包括背景和下载箭头抖动部分、背景镂空、圆变换为进度条、进度条抖动、下载箭头变换为承载文字的线框；
+
+4.2.updateProgress(int progress)：
+
+更新进度；
+
+4.3.onFail()：
+
+下载失败、调用则执行失败部分动效；
+
+5.自定义属性：
+
+5.1 可更改属性 
+
+    <declare-styleable name="GADownloadingView">
+
+        <attr name="arrow_color" format="color" />
+        <attr name="loading_circle_back_color" format="color" />
+        <attr name="loading_line_color" format="color" />
+        <attr name="progress_line_color" format="color" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="done_text_color" format="color" />
+    </declare-styleable>
+
+5.2.自定义属性使用方式：
+
+添加自定义属性命名空间：
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:gastudio="http://schemas.android.com/apk/res-auto"
+         ... ...
+    />
+
+添加自定义属性
+
+<com.gastudio.gadownloading.ui.GADownloadingView
+        android:id="@+id/ga_downloading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        gastudio:arrow_color="@android:color/white"
+        gastudio:done_text_color="@android:color/white"
+        gastudio:loading_circle_back_color="@android:color/white"
+        gastudio:loading_line_color="@android:color/white"
+        gastudio:progress_line_color="@android:color/white"
+        gastudio:progress_text_color="@android:color/white" />
+
+最后，如果你觉得还不错，欢迎Star！
+
+欢迎加入GAStudio交流qq群: 277582728 ；

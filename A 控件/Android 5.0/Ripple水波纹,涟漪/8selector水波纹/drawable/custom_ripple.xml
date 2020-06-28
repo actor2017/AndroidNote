@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:color="@color/colorAccent">  <!--按下,粉红色-->
+    <item>  
+        <selector>  
+            <item  
+                android:state_pressed="true"  
+                android:drawable="@drawable/ic_launcher"/>  <!--按下,launcher形状区域变成粉红色-->
+            <item  
+                android:state_pressed="false"  
+                android:drawable="@drawable/bg"/>  <!--松开,直接变成这张背景图片-->
+        </selector>  
+    </item>  
+</ripple>  

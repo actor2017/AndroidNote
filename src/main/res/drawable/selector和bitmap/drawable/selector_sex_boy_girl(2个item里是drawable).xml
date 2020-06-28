@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--通过设置selected状态, 简介设置性别-->
+    <item android:drawable="@drawable/sex_boy_blue" android:state_selected="true"/>
+    <item android:drawable="@drawable/sex_girl_red"/>
+</selector>

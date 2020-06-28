@@ -1,0 +1,2 @@
+https://github.com/markzhai/AndroidPerformanceMonitor
+A transparent ui-block detection library for Android. (known as BlockCanary)

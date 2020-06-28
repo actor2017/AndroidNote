@@ -1,0 +1,18 @@
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //这里，当Acivity第一次被创建的时候为空
+        //所以我们需要判断一下
+        if( savedInstanceState != null ){
+            savedInstanceState.getString("anAnt");
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("anAnt","Android");
+
+    }

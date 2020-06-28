@@ -1,0 +1,37 @@
+    /**
+     * 枚举--》class
+     * 1、关键字变了class-->enum
+     * 2、创建对象的写法简化(例:LOADING是ResultState的对象)
+     * 3、枚举的构造方法必须私有化
+     * 通过构造方法的私有化，达到对象的数量得到有效控制的效果
+     * 通常我们会有枚举来代表一些返回值，这样显得更专业一些。
+     */
+
+//===================================================================================
+1.示例写法:(不赋值)
+    public enum ReportType {//报备类型
+        //实际居住人报备
+        DWELLER, CAR, ANIMALS, RENT
+    }
+
+//===================================================================================
+2.googlePlay示例
+    public static final int STATE_NONE = 0;
+    public static final int STATE_LOADING = 1;
+    public static final int STATE_ERROR = 2;
+    public static final int STATE_SUCCESS = 3;
+    public static final int STATE_EMPTY = 4;
+
+public enum ResultState {
+
+    LOADING(STATE_LOADING), ERROR(STATE_ERROR), EMPTY(STATE_EMPTY), SUCESS(STATE_SUCCESS);
+    public int state;
+
+    private ResultState(int state) {
+        this.state = state;
+    }
+}
+示例用法:	return LoadingPage.ResultState.ERROR;//如果单独写个类,就是:ResultState.ERROR;
+
+//===================================================================================
+3.

@@ -1,0 +1,46 @@
+Transition：Transiton则是用来设置过渡动画效果用的。而且系统给提供了一些非常使用的Transtion动画效果，如下表所示:
+
+	系统Transition
+			解释
+
+	ChangeBounds
+    	检测View的位置边界创建移动和缩放动画(关注布局边界的变化)
+
+  
+  
+    ChangeTransform
+		检测View的scale和rotation创建缩放和旋转动画(关注scale和ratation的变化)
+
+  
+  
+    ChangeClipBounds
+	检测View的剪切区域的位置边界，和ChangeBounds类似。不过ChangeBounds针对的是view
+				而ChangeClipBounds针对的是view的剪切区域setClipBound(Rect rect) 中的rect(关注的是
+				setClipBounds(Rect rect)rect的变化)
+
+  
+  
+    ChangeImageTransform	检测ImageView的ScaleType，并创建相应动画(关注的是ImageView的scaleType)
+
+  
+  
+    Fade
+			根据View的visibility状态的的不同创建淡入淡动画,调整的是透明度(关注的是View的visibility的状态)
+
+  
+  
+    Slide
+			根据View的visibility状态的的不同创建滑动动画(关注的是View的visibility的状态)
+
+  
+  
+    Explode
+			根据View的visibility状态的的不同创建分解动画(关注的是View的visibility的状态)
+
+  
+  
+    AutoTransition
+		默认动画，ChangeBounds、Fade动画的集合
+
+
+要想实现一个场景过渡动画，至少需要一个transition实例和一个ending scene实例。并通过TransitionManager执行过渡动画。TransitionManager执行动画有两种方式：TransitionManager.go()、beginDelayedTransition()。下面简单来介绍下这两种开启场景动画的方式。

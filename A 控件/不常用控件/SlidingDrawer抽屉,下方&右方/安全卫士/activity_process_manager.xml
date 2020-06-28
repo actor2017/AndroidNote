@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:heima="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.heima.mobilesafe_work.activity.ProcessManagerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="进程管理"
+            android:textColor="@color/white"
+            android:textSize="22sp"/>
+
+        <!--右上角的清扫按钮-->
+        <ImageButton
+            android:id="@+id/btn_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:src="@drawable/clean_selector"/>
+
+    </RelativeLayout>
+
+    <!--自定义进度条-->
+    <com.heima.mobilesafe_work.view.ProgressView
+        android:id="@+id/pv_process_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--自定义进度条-->
+    <com.heima.mobilesafe_work.view.ProgressView
+        android:id="@+id/pv_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!--粘性ListView-->
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/lv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </se.emilsjolander.stickylistheaders.StickyListHeadersListView>
+
+        <!--加载的布局-->
+        <include layout="@layout/layout_loading"/>
+
+        <!--抽屉-->
+        <SlidingDrawer
+            android:id="@+id/drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:content="@+id/content"
+            android:handle="@+id/handle">
+
+            <!--抽屉的把手-->
+            <RelativeLayout
+                android:id="@id/handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawer_bg">
+
+                <!--抽屉把手上的箭头1-->
+                <ImageView
+                    android:id="@+id/iv_arrow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/drawer_arrow_up"/>
+
+                <!--抽屉把手上的箭头2-->
+                <ImageView
+                    android:id="@+id/iv_arrow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_arrow1"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/drawer_arrow_up"/>
+            </RelativeLayout>
+
+            <!--抽屉内的内容-->
+            <LinearLayout
+                android:id="@id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="进程管理设置"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+
+                <!--自定义相对布局的条目开关-->
+                <com.heima.mobilesafe_work.view.SettingItemView
+                    android:id="@+id/siv_show_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    heima:Setting_Background="first"
+                    heima:Setting_Title="显示系统进程"/>
+
+                <com.heima.mobilesafe_work.view.SettingItemView
+                    android:id="@+id/siv_auto_kill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    heima:Setting_Background="last"
+                    heima:Setting_Title="锁屏自动清理"/>
+
+            </LinearLayout>
+        </SlidingDrawer>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--全选 按钮-->
+        <Button
+            android:id="@+id/btn_select_all"
+            style="@style/white_btn_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:text="全选"/>
+
+        <Button
+            android:id="@+id/btn_reverse_select"
+            style="@style/white_btn_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:text="反选"/>
+
+    </LinearLayout>
+
+</LinearLayout>

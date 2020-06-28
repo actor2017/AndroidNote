@@ -1,0 +1,38 @@
+
+    /**
+     * 重写返回键,flagClicked是全局变量
+     * private long flagClicked = 0;
+     */
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - flagClicked <= 1000) {
+            super.onBackPressed();
+            System.exit(0);//这样才能完全退出!!
+        } else {
+            flagClicked = System.currentTimeMillis();
+            ToastUtils.show(this, "再点击一下退出");
+        }
+    }
+
+//====================================下面:重写闪屏页面splash的返回键=================
+    /**
+     * 闪屏页面splash,重写返回键
+     * 1.声明一个全局变量,private boolean backPressen = false;
+     * 2.Handler(写在onCreat()上面)收到消息后,先判断是否按了返回键,如果没按,才打开第二个页面HomeActivity
+     *     Handler mhandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (!backPressen) {
+                enterHomeActivi();
+            }
+         }
+     };
+     */
+    @Override
+    public void onBackPressed() {
+        //表示已经按了返回键,就不要从闪屏页面splash再打开第二个页面了
+        backPressen = true;
+        super.onBackPressed();
+    }
+}

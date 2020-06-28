@@ -1,0 +1,6 @@
+这个用于对app进行系统签名.
+
+1.获取到要安装到对应系统的秘钥&私钥(platform.pk8 & platform.x509.pem)
+2.把apk放入这个文件夹,并改名成app.apk
+3.双击运行sign.bat
+4.会在这个文件夹生成一个app(sign).apk,签名完成

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.kuchuanyun.test.CoordinatorLayoutActivity">
+
+    <!--<android.support.design.widget.CoordinatorLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:layout_height="match_parent">-->
+
+
+    <!--AppBarLayout extends LinearLayout-->
+    <!--★注意:最好在这里设置高度,不给toolbar设置高度,默认@dimen/app_bar_height(180dp)-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_height="@dimen/app_bar_height">
+
+        <!--★注意:app:theme="@style/ToolBarTheme"写在这里,写在toolbar里没什么卵用-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:expandedTitleMarginEnd="64dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:statusBarScrim="@color/colorPrimary"//@android:color/transparent透明也是一样的效果
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:theme="@style/ToolBarTheme">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/header"
+                app:layout_collapseMode="parallax"/>
+
+            <!--★注意:这里layout_height="?attr/actionBarSize",否则title不显示-->
+            <!--★注意:titleTextColor这个属性在这里没什么卵用-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="这是Toolbar,高=200,最小高度=默认.">
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/large_text"/>
+    </android.support.v4.widget.NestedScrollView>
+    <!--</android.support.design.widget.CoordinatorLayout>-->
+</android.support.design.widget.CoordinatorLayout>

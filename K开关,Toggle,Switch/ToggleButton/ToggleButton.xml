@@ -1,0 +1,12 @@
+ToggleButton extends CompoundButton extends Button implements Checkable
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToggleButton"
+			
+			android:checked="true"		//默认选中
+			android:disabledAlpha="0.5"	//当禁用时应用于指示器的alpha值, 默认0.5
+			android:textOff="左右滑动 = false"
+			android:textOn="左右滑动 = true" />

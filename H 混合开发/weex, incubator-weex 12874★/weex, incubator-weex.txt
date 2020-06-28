@@ -1,0 +1,5 @@
+https://github.com/alibaba/weex
+A framework for building Mobile cross-platform UI
+用于构建移动跨平台UI的框架
+
+https://github.com/apache/incubator-weex

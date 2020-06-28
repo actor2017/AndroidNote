@@ -1,0 +1,36 @@
+//计算TextView的高度
+
+    //获取des  7行的高度
+    //我们可以打造一个TextView ，这个TextView和我们自己的textview完全一致，然后给这个TextView设置maxLines
+    //然后返回的高度就 = 我们控件的高度
+    //注意,这个自定义的textview只是用于计算高度
+public class TextUtils {
+
+    private TextUtils(){}
+
+    public static int getMinHeight(int maxLines,String text,int textSize,boolean boldAble,int paddingLeft,int paddingRight) {
+        //des.setMaxLines(7);
+        TextView tv = new TextView(UiUtils.getContext());
+        tv.setText(text);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize);
+        tv.getPaint().setFakeBoldText(boldAble);//设置粗体
+        tv.setMaxLines(maxLines);
+        int size = UiUtils.getScreenWidth()  - UiUtils.dp2(pxpaddingLeft) - UiUtils.dp2px(paddingRigh);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        tv.measure(widthMeasureSpec,0);
+        return tv.getMeasuredHeight();
+    }
+
+    //获取des 完整的高度
+    public static int getMaxHeight(String text,int textSize,boolean boldAble,int paddingLeft,int paddingRight) {
+        TextView tv = new TextView(UiUtils.getContext());
+        tv.setText(text);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize);
+        tv.getPaint().setFakeBoldText(boldAble);//设置粗体
+        //tv.setMaxLines(7);
+        int size = UiUtils.getScreenWidth()  - UiUtils.dp2(pxpaddingLeft) - UiUtils.dp2px(paddingRigh);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        tv.measure(widthMeasureSpec,0);
+        return tv.getMeasuredHeight();
+    }
+}

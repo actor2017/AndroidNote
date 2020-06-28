@@ -1,0 +1,4 @@
+https://github.com/tbruyelle/RxPermissions
+
+Android runtime permissions powered by RxJava2
+

@@ -1,0 +1,2 @@
+https://github.com/bingoogolapple/BGASwipeBackLayout-Android
+Android Activity 滑动返回。支持微信滑动返回样式、横屏滑动返回、全屏滑动返回

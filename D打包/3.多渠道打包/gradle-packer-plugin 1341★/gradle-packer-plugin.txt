@@ -1,0 +1,3 @@
+https://github.com/mcxiaoke/gradle-packer-plugin
+http://mcxiaoke.github.io/gradle-packer-plugin/
+Android渠道打包工具

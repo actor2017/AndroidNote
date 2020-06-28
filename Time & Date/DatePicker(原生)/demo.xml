@@ -1,0 +1,31 @@
+<TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择时间:" />
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "center_vertical"
+        android:id="@+id/datePicker"
+		android:startYear="2016"
+        android:endYear="2017"
+		android:spinnersShown="false"
+		android:calendarViewShown="true"
+        android:datePickerMode="calendar|spinner"//显示哪种形式
+        android:layout_below="@+id/textView">
+    </DatePicker>
+    <TimePicker
+        android:id = "@+id/timePicker"
+        android:layout_gravity = "center_horizontal"
+        android:layout_width="wrap_content"
+		android:timePickerMode="spinner|clock"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datePicker">
+    </TimePicker>
+    <EditText
+        android:id="@+id/show"
+        android:cursorVisible="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timePicker"/>

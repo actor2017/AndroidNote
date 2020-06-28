@@ -1,0 +1,4 @@
+https://github.com/Frank-Zhu/PullZoomView
+
+An Android custom ListView and ScrollView with pull to zoom-in.
+一个Android自定义列表视图和滚动视图，具有拉入放大功能。

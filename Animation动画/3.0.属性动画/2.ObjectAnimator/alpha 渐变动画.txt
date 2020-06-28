@@ -1,0 +1,4 @@
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(ll_footer,"alpha",0.0f,1.0f);
+        objectAnimator.setDuration(2000);
+        objectAnimator.start();

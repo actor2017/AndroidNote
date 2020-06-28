@@ -1,0 +1,10 @@
+https://github.com/socketio/socket.io-client-java
+安卓示例写法(没有重连机制):https://github.com/nkzawa/socket.io-android-chat
+http://blog.csdn.net/l_lhc/article/details/68950278
+
+Demo实现了以下功能:
+
+基本文字聊天功能
+每个用户加入或者离开时发送通知
+用户开始输入信息时发送输入状态的通知
+

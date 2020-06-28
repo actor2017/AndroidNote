@@ -1,0 +1,10 @@
+Retrofit支持多种网络请求适配器方式：guava、Java8和rxjava
+使用时如使用的是 Android 默认的 CallAdapter，则不需要添加网络请求适配器的依赖，
+否则则需要按照需求进行添加 Retrofit 提供的 CallAdapter.
+
+网络请求适配器	Gradle依赖
+guava		com.squareup.retrofit2:adapter-guava:2.0.2
+Java8		com.squareup.retrofit2:adapter-java8:2.0.2
+rxjava		com.squareup.retrofit2:adapter-rxjava:2.0.2
+
+					//★★★版本与retrofit一致★★★

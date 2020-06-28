@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这里面写contentFragment的布局,包括RadioGroup和一个ViewPager-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.heima.wisdomxian.widget.NoScrollViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rg_bottom">
+    </com.heima.wisdomxian.widget.NoScrollViewPager>
+
+    <RadioGroup
+        android:id="@+id/rg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_tab_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/Bottom_TextStyle"
+            android:drawableTop="@drawable/selector_home"
+            android:text="首页"/>
+
+        <RadioButton
+            android:id="@+id/rb_news_center"
+            style="@style/Bottom_TextStyle"
+            android:drawableTop="@drawable/selector_news_center"
+            android:text="新闻中心"/>
+
+        <RadioButton
+            android:id="@+id/rb_smart_service"
+            style="@style/Bottom_TextStyle"
+            android:drawableTop="@drawable/selector_smart_service"
+            android:text="智慧服务"/>
+
+        <RadioButton
+            android:id="@+id/rb_gov_affairs"
+            style="@style/Bottom_TextStyle"
+            android:drawableTop="@drawable/selector_gov_affairs"
+            android:text="政务"/>
+
+        <RadioButton
+            android:id="@+id/rb_setting"
+            style="@style/Bottom_TextStyle"
+            android:drawableTop="@drawable/selector_setting"
+            android:text="设置"/>
+    </RadioGroup>
+</RelativeLayout>

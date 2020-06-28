@@ -1,0 +1,3 @@
+https://github.com/BlueMor/DragLayout
+
+An Android Project.强迫症头像制作器，使用support.v4包下的ViewDragHelper实现QQ5.0侧滑

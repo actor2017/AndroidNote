@@ -1,0 +1,3 @@
+https://github.com/JakeWharton/u2020
+A sample Android app which showcases advanced usage of Dagger among other open source libraries. 
+一个示例Android应用程序展示了Dagger在其他开源库中的高级用法。

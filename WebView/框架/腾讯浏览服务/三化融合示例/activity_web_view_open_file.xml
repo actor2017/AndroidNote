@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.WebViewOpenFileActivity">
+
+    <com.ly.changyi.view.titlebar.CommonTitleBar
+        android:id="@+id/ctb_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:centerType="textView"
+        app:leftCustomView="@layout/layout_home_selection_street_custom_left"
+        app:leftType="customView"
+        app:rightType="textView"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_0.5_dp"
+        android:background="@color/color_circle_info_comment_content"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </RelativeLayout>
+</LinearLayout>

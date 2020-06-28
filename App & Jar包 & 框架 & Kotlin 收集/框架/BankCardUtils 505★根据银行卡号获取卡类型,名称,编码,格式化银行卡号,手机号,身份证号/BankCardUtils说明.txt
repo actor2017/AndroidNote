@@ -1,0 +1,36 @@
+https://github.com/nanchen2251/BankCardUtils
+
+根据银行卡号 获取 银行卡类型、银行名称和银行编码 自动格式化银行卡号、手机号、身份证号输入的工具类
+
+特点
+
+支持自动根据银行卡号获取出银行名称、银行编码、银行卡类型
+银行相关信息都比较全，无需每次去都 xls 类型的 bin 文件
+支持自动格式化手机号、身份证号、银行卡号输入
+手机号：xxx xxxx xxxx
+身份证号：xxxxxx xxxx xxxx xxxx
+银行卡号：xxxx xxxx xxxx xxxx
+使用方法
+
+1、添加依赖
+
+Step 1. Add it in your root build.gradle at the end of repositories:
+
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+dependencies {
+	        compile 'com.github.nanchen2251:BankCardUtils:1.0.2'
+
+	}
+2、使用方式最好参照 demo 
+
+BankInfoUtil mInfoUtil = new BankInfoUtil(cardNum); // 把银行卡号作为参数传入
+String bankName = mInfoUtil.getBankName(); // 可以获取银行名称
+String bankId = mInfoUtil.getBankId();  // 可以获取银行编码
+String bankCardType = mInfoUtil.getCardType(); // 可以获取卡片类型

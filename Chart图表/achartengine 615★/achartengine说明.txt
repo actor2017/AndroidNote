@@ -1,0 +1,14 @@
+https://github.com/ddanny/achartengine
+
+line chart
+area chart
+scatter chart
+time chart
+bar chart
+pie chart
+bubble chart
+doughnut chart
+range (high-low) bar chart
+dial chart / gauge
+combined (any combination of line, cubic line, scatter, bar, range bar, bubble) chart
+cubic line chart

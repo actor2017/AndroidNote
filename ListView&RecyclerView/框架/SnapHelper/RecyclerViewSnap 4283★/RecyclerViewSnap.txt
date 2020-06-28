@@ -1,0 +1,2 @@
+https://github.com/rubensousa/RecyclerViewSnap
+RecyclerView snapping example with SnapHelper

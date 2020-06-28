@@ -1,0 +1,4 @@
+https://github.com/manolovn/trianglify
+
+Android view inspired by http://qrohlf.com/trianglify/
+Android view的灵感来自于http://qrohlf.com/trianglify/

@@ -1,0 +1,14 @@
+
+ObjectAnimator translationX = ObjectAnimator.ofFloat(mImageView, "translationX", 500);
+Path path = new Path();
+//先以「动画完成度 : 时间完成度 = 1 : 1」的速度匀速运行 25%
+path.lineTo(0.25f, 0.25f);
+//然后瞬间跳跃到 150% 的动画完成度
+path.moveTo(0.25f, 1.5f);//至少有一个轴和上面值一样
+//再匀速倒车，返回到目标点
+path.lineTo(1, 1);
+
+Interpolator interpolator = PathInterpolatorCompat.create(path);
+translationX.setInterpolator(interpolator);
+translationX.setDuration(2000);
+translationX.start();

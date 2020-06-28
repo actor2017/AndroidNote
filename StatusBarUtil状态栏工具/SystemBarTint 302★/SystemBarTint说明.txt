@@ -1,0 +1,28 @@
+https://github.com/jgilfelt/SystemBarTint
+
+compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+To enable the tint:
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    // create our manager instance after the content view is set
+    SystemBarTintManager tintManager = new SystemBarTintManager(this);
+    // enable status bar tint
+    tintManager.setStatusBarTintEnabled(true);
+    // enable navigation bar tint
+    tintManager.setNavigationBarTintEnabled(true);
+}
+
+
+
+To provide custom tint color values or drawables:
+
+// set a custom tint color for all system bars
+tintManager.setTintColor(Color.parseColor("#99000FF"));
+// set a custom navigation bar resource
+tintManager.setNavigationBarTintResource(R.drawable.my_tint);
+// set a custom status bar drawable
+tintManager.setStatusBarTintDrawable(MyDrawable);

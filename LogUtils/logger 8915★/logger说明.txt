@@ -1,0 +1,60 @@
+https://github.com/orhanobut/logger
+Simple, pretty(漂亮) and powerful logger for android
+
+1.添加依赖
+implementation 'com.orhanobut:logger:2.2.0'
+
+2.初始化
+Logger.addLogAdapter(new AndroidLogAdapter());
+
+3.示例使用
+Logger.d("debug");
+Logger.e("error");
+Logger.w("warning");
+Logger.v("verbose");
+Logger.i("information");
+Logger.wtf("What a Terrible Failure");
+
+4.String format arguments are supported(支持字符串格式参数)
+Logger.d("hello %s", "world");
+
+5.Collections are supported (only available for debug logs)(支持集合(仅用于调试日志))
+Logger.d(MAP);
+Logger.d(SET);
+Logger.d(LIST);
+Logger.d(ARRAY);
+
+6.Json and Xml support (output will be in debug level)[Json和Xml支持(输出将处于debug级别)]
+Logger.json(JSON_CONTENT);
+Logger.xml(XML_CONTENT);
+
+
+Advanced
+FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+  .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
+  .methodCount(0)         // (Optional) How many method line to show. Default 2
+  .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
+  .logStrategy(customLog) // (Optional) Changes the log strategy to print out. Default LogCat
+  .tag("My custom tag")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+  .build();
+
+Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
+Loggable
+Log adapter checks whether the log should be printed or not by checking this function. If you want to disable/hide logs for output, override isLoggable method. true will print the log message, false will ignore it.
+
+Logger.addLogAdapter(new AndroidLogAdapter() {
+  @Override public boolean isLoggable(int priority, String tag) {
+    return BuildConfig.DEBUG;
+  }
+});
+Save logs to the file
+//TODO: More information will be added later
+
+Logger.addLogAdapter(new DiskLogAdapter());
+Add custom tag to Csv format strategy
+
+FormatStrategy formatStrategy = CsvFormatStrategy.newBuilder()
+  .tag("custom")
+  .build();
+  
+Logger.addLogAdapter(new DiskLogAdapter(formatStrategy));

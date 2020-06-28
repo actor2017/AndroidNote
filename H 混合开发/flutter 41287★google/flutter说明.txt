@@ -1,0 +1,5 @@
+﻿https://github.com/flutter/flutter
+
+Flutter makes it easy and fast to build beautiful mobile apps. https://flutter.io
+
+Flutter 吸收了前两者(Cordova和react-native)的教训之后,在渲染技术上,选择了自己实现(GDI),由于有更好的可控性,使用了新的语言Dart,避免了RN的那种通过桥接器与Javascript通讯导致效率低下的问题,所以在性能方面比RN更高一筹;有经验的开发者可以打开Android手机开发者选项里面的显示边界布局,发现Flutter的布局是一个整体.说明Flutter的渲染没用使用原生控件进行渲染

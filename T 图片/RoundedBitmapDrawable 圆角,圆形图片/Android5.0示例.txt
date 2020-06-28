@@ -1,0 +1,15 @@
+
+    private Bitmap createRoundConerImage(Bitmap source) {
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+
+        int size = Math.min(source.getWidth(),source.getHeight());
+
+        Bitmap target = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(target);
+        RectF rect = new RectF(0, 0, size, size);
+        canvas.drawRoundRect(rect, size /2, size/2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(source, 0, 0, paint);
+        return target;
+    }

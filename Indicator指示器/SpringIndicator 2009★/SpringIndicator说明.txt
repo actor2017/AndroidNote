@@ -1,0 +1,16 @@
+https://github.com/chenupt/SpringIndicator
+
+compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+
+<github.chenupt.springindicator.SpringIndicator
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:siTextSize="18sp"
+    app:siIndicatorColors="@array/indicator_colors"
+    app:siTextColor="@color/colorPrimaryDark"
+    app:siSelectedTextColor="@android:color/white"
+    app:siIndicatorColor="@color/colorPrimary"
+    android:id="@+id/indicator"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"/>
+
+springIndicator.setViewPager(viewPager);

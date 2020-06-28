@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.itheima.androidl">
+
+    <application
+        android:name=".utils.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/DefaultTheme">
+        <!--给所有activity设置为 MD主题-->
+        <activity
+            android:name="com.itheima.androidl.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.itheima.androidl.taransitions.TransitionsActivity"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <activity
+            android:name="com.itheima.androidl.taransitions.ExplodeActivity"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <activity
+            android:name="com.itheima.androidl.taransitions.FadeActivity"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <activity
+            android:name="com.itheima.androidl.taransitions.SlideActivity"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+        <activity
+            android:name="com.itheima.androidl.taransitions.ShareActivity"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <activity
+            android:name="com.itheima.androidl.widget.WidgetActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/WidgetTheme">
+        </activity>
+    </application>
+
+</manifest>

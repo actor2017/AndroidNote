@@ -1,0 +1,31 @@
+
+    <android.support.v7.widget.AppCompatCheckedTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        //android:checkMark="@drawable/selector_checkbox"//自定义复选框的样式
+
+	//复选框在左边显示,可以写在右边&&单选模式(listChoiceIndicatorMultiple多选模式)
+        android:drawableLeft="?android:attr/listChoiceIndicatorSingle"
+        android:drawablePadding="10dp"//复选框和文字的距离
+        android:gravity="center_vertical"//垂直居中,这个要写
+        android:text="个人"
+        //android:textAlignment="center"//文字位置(居中)
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+
+
+//自定义复选框的样式
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/check_nnn" android:state_checked="false"></item>
+    <item android:drawable="@drawable/check_nnn" android:state_selected="true"></item>
+    <item android:drawable="@drawable/check_nnn" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/check_yyy"></item>
+</selector>
+
+
+public void toggle ()//反转当前视图的选中状态
+public boolean isChecked ()//是否选中。
+public void setCheckMarkDrawable (Drawable d)//为一个给定的Drawable设定检查标记。当isChecked()为true时则绘制
+public void setCheckMarkDrawable (int resid)//为一个给定的Drawable设定检查标记，使用它的资源id来标识。当isChecked()为true时则绘制
+public void setChecked (boolean checked)//改变文本视图的选中状态

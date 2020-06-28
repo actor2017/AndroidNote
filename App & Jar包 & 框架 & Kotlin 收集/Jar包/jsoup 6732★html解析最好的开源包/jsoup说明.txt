@@ -1,0 +1,39 @@
+https://github.com/jhy/jsoup
+http://www.open-open.com/jsoup/
+
+compile 'org.jsoup:jsoup:1.11.3'
+
+添加混淆:(严振杰:http://blog.csdn.net/yanzhenjie1003/article/details/78384725)
+-keeppackagenames org.jsoup.nodes
+
+
+示例:将图片中&amp;替换成&
+public static void getInstance(String content) {
+        Document document = Jsoup.parse(content);
+        Elements select = document.select("img[src]");
+        for (int i = 0; i < select.size(); i++) {//将图片中&amp;替换成&
+            Element element = select.get(i);
+            String before = element.toString();
+            String after = before.replaceAll("&amp;", "&");
+            content = content.replace(before, after);
+        }
+    }
+
+    /**
+     * 给html content设置图片宽100%, 高auto
+     * @param htmltext
+     * @return
+     */
+    public static String getNewContent(String htmltext) {
+        try {
+            Document doc = Jsoup.parse(htmltext);
+            Elements elements = doc.getElementsByTag("img");
+            for (Element element : elements) {
+                element.attr("width", "100%").attr("height", "auto");
+            }
+            return doc.toString();
+        } catch (Exception e) {
+
+            return htmltext;
+        }
+    }

@@ -1,0 +1,9 @@
+1.添加权限
+    <!--Notification通知栏:振动,呼吸灯-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
+2.不知道的话,参考网址:http://blog.csdn.net/w804518214/article/details/51231946
+
+Demo下载地址 :http://download.csdn.net/detail/w804518214/9500651

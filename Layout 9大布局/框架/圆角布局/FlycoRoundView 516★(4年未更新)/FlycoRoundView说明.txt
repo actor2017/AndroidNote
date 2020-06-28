@@ -1,0 +1,35 @@
+https://github.com/H07000223/FlycoRoundView (不可以裁剪VideoView)
+
+A library helps Android built-in views easy and convenient to set round rectangle background and accordingly related shape resources can be reduced.
+一个库帮助Android内置视图方便快捷地设置圆角矩形背景，从而减少相关的形状资源。
+支持TextView,FrameLayout，LinearLayout，RelativeLayout
+
+
+compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
+
+一个扩展原生控件支持圆角矩形框背景的库,可以减少相关shape资源文件,
+支持TextView,FrameLayout，LinearLayout，RelativeLayout
+
+
+Attributes
+	name		format		description
+rv_backgroundColor	color		background color				圆角矩形背景色
+rv_backgroundPressColor	color		background press color				圆角矩形背景色press
+rv_cornerRadius		dimension	background rectangle corner radius,unit dp	圆角弧度,单位dp
+rv_strokeWidth		dimension	background rectangle stroke width,unit dp	圆角弧度,单位dp
+rv_strokeColor		color		background rectangle stroke color 		圆角边框颜色
+rv_strokePressColor	color		background rectangle stroke press color		圆角边框颜色press
+rv_textPressColor	color		text press color				文字颜色press
+rv_isRadiusHalfHeight	boolean		corner radius is half of height			圆角弧度是高度一半
+rv_isWidthHeightEqual	boolean		width and height is the same size which is the max value of them圆角矩形宽高相等,取较宽高中大值
+rv_cornerRadius_TL	dimension	corner radius top left,unit dp			圆角弧度,单位dp,TopLeft
+rv_cornerRadius_TR	dimension	corner radius top right,unit dp			圆角弧度,单位dp,TopRight
+rv_cornerRadius_BL	dimension	corner radius bottom left,unit dp		圆角弧度,单位dp,BottomLeft
+rv_cornerRadius_BR	dimension	corner radius bottom right,unit dp		圆角弧度,单位dp,BottomRight
+rv_isRippleEnable	boolean		is ripple effect enable for Api21+		是否有Ripple效果,api21+有效
+
+
+设置背景:
+btn_pay.getDelegate().setBackgroundColor(R.color.gray);---------first time【it works】
+btn_pay.getDelegate().setBackgroundColor(R.color.colorPrimary);----second time【it can't work!】
+btn_pay.getDelegate().setBackgroundColor(ContextCompat.getColor(context,R.color.colorPrimary));

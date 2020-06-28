@@ -1,0 +1,37 @@
+1.在Module的build.gradle中把minifyEnabled 改成true
+
+2.Build -> Generate Signed APK
+Key store path		秘钥的路径(身份证放在哪?)
+Create new...	Choose existing...	创建/选择签名
+Key store password	秘钥的密码
+Key alias		秘钥的别名
+Key password		Key的密码
+
+
+
+Create new...创建签名过程:
+Key store path		存储签名文件的路径地址
+Password	Confirm	密码/确认密码
+
+Key-------------------------
+Alias			秘钥别名
+Password	Confirm	签名密码/确认签名密码
+Validity(years)		有效年限(最大999)
+
+Certificate-----------------证书
+First and Last Name	作者名字
+Organizational Unit	组织或公司
+Organizational		组织
+City or Locality	城市
+State or Province	省份
+Country Code(XX)	国家代码(中国:0086)
+
+-->.jks
+
+//==============================
+查看jks文件的指纹证书MD5值：
+打开命令面板：win+R
+进入到你的.android目录，一般在C盘，我的在C:\Users\Administrator\.android。
+keytool -v -list -keystore F:\test.jks回车，输入私钥口令，
+也就是你的密码（注意你输入的时候是看不见的，输入完直接回车就可以了）如图：
+

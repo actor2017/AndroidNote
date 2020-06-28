@@ -1,0 +1,6 @@
+https://github.com/CB-ysx/CBEmotionsKeyBoard
+
+开源表情键盘
+
+说明
+该库是基于w446108264提供的开源表情键盘解决方案XhsEmoticonsKeyboard修改的

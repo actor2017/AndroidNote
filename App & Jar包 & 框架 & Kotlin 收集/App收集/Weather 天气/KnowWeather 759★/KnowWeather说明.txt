@@ -1,0 +1,20 @@
+https://github.com/SilenceDut/KnowWeather
+一款美观、实用的天气app。实践了模块化架构 和 Android Architecture Components
+
+KnowWeather
+美观、实用的天气app,基于谷歌最新的 Android Architecture Components架构和微信Android模块化架构重构实践对项目进行了重构
+建议先下载应用knowweather.apk 体验下，以免浪费你的时间O(∩_∩)O。
+
+
+特点
+多moudle架构的实践
+Android Architecture Components 实践
+支持县级、区级天气
+JobScheduler与JobService的使用
+轮询系统定时更新天气
+简洁的界面
+...
+
+
+天气接口使用声明
+现在这个天气的接口用的是和风天气的免费接口，key值也直接暴露出来了，建议自己去申请使用，因为免费版每天有一定的请求限制。

@@ -1,0 +1,2 @@
+https://github.com/belerweb/pinyin4j
+http://www.jianshu.com/p/dcf04101f268

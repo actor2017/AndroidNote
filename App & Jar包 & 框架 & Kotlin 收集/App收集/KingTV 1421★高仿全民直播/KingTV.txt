@@ -1,0 +1,4 @@
+https://github.com/jenly1314/KingTV
+
+高仿全民直播（全民TV），项目采用 MVP + RXJava + Retrofit + OKHttp + Material Design + Dagger2 + Base + Glide + GreenDao构建。 推荐MVPFrame： https://github.com/jenly1314/MVPFrame 和你值得拥有的MVVMFrame快速开发框架: https://github.com/jenly1314/MVVMFrame
+

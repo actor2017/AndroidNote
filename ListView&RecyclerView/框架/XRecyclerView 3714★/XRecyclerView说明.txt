@@ -1,0 +1,42 @@
+https://github.com/XRecyclerView/XRecyclerView
+
+带下拉刷新，上拉加载已封装好可直接依赖使用
+
+gradle
+
+// 1.5.2 is the main
+compile 'com.jcodecraeer:xrecyclerview:1.5.2'
+just like a standard RecyclerView
+
+LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+mRecyclerView.setLayoutManager(layoutManager);
+mRecyclerView.setAdapter(mAdapter);
+pull to refresh and load more
+
+the pull to refresh and load more featrue is enabled by default. we provide a callback to trigger the refresh and LoadMore event.
+
+ mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+    @Override
+    public void onRefresh() {
+       //refresh data here
+    }
+
+    @Override
+    public void onLoadMore() {
+       // load more data here
+    }
+});
+call notifyItemRemoved or notifyItemInserted, remember to use the functions inside XRecyclerView
+
+listData.remove(pos);
+mRecyclerView.notifyItemRemoved(listData,pos);
+and of course you have to tell our RecyclerView when the refreshing or loading more work is done. you can use
+
+mRecyclerView.loadMoreComplete();
+to control when the item number of the screen is list.size-2,we call the onLoadMore
+
+mRecyclerView.setLimitNumberToCallLoadMore(2); // default is 1
+to notify that the loading more work is done. and
+
+ mRecyclerView.refreshComplete();

@@ -1,0 +1,4 @@
+https://github.com/Cleveroad/FanLayoutManager
+
+Using Fan Layout Manager you can implement the horizontal list, the items of which move like fan blades 
+使用扇布局管理器，您可以实现水平列表，其中的项像扇叶一样移动

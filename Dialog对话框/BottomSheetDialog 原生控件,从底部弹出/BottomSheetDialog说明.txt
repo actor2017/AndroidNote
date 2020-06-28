@@ -1,0 +1,22 @@
+好像要添加依赖: compile 'com.android.support:design:24.2.1'
+
+默认情况下:
+当弹出的layout是一个ListView的时候，当ListView的item比较多时，弹出对话框时只会显示几个item，向上拖动时，才会显示全部item
+
+
+BottomSheetDialog dialog=new BottomSheetDialog(BottomSheetActivity.this);
+
+View dialogView= LayoutInflater.from(BottomSheetActivity.this).inflate(R.layout.dialog_layout,null);
+
+dialog.setContentView(dialogView);
+
+dialog.show();
+
+
+
+
+3485428-a17e83df6a2631ef.gif来源:
+http://www.jianshu.com/p/0a7383e0ad0f
+
+Demo地址:
+https://github.com/itdais/MaterialDesignDing

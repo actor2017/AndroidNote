@@ -1,0 +1,4 @@
+https://github.com/asyl/ArcAnimator
+
+ArcAnimator helps to create arc transition animation: 2.3.+
+ArcAnimator帮助创建弧过渡动画:2.3.+

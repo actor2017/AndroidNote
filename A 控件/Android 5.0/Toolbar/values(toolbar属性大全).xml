@@ -1,0 +1,34 @@
+<declare-styleable name="Toolbar">
+	<attr format="reference" name="titleTextAppearance"/>
+	<attr format="reference" name="subtitleTextAppearance"/>
+	<attr name="title"/>
+	<attr name="subtitle"/>
+	<attr name="android:gravity"/>
+	<attr format="dimension" name="titleMargin"/>
+	<attr format="dimension" name="titleMarginStart"/>
+	<attr format="dimension" name="titleMarginEnd"/>
+	<attr format="dimension" name="titleMarginTop"/>
+	<attr format="dimension" name="titleMarginBottom"/>
+	<attr format="dimension" name="titleMargins"/>
+	<attr name="contentInsetStart"/>
+	<attr name="contentInsetEnd"/>
+	<attr name="contentInsetLeft"/>
+	<attr name="contentInsetRight"/>
+	<attr name="contentInsetStartWithNavigation"/>
+	<attr name="contentInsetEndWithActions"/>
+	<attr format="dimension" name="maxButtonHeight"/>
+	<attr name="buttonGravity">
+            <flag name="top" value="0x30"/>
+            <flag name="bottom" value="0x50"/>
+    </attr>
+	<attr format="reference" name="collapseIcon"/>
+	<attr format="string" name="collapseContentDescription"/>
+	<attr name="popupTheme"/>
+	<attr format="reference" name="navigationIcon"/>
+	<attr format="string" name="navigationContentDescription"/>
+	<attr name="logo"/>
+	<attr format="string" name="logoDescription"/>
+	<attr format="color" name="titleTextColor"/>
+	<attr format="color" name="subtitleTextColor"/>
+	<attr name="android:minHeight"/>
+</declare-styleable>

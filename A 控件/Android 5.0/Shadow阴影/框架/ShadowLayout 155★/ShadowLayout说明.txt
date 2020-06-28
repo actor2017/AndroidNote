@@ -1,0 +1,54 @@
+https://github.com/lijiankun24/ShadowLayout
+http://lijiankun24.com/%E7%AE%80%E5%8D%95%E5%A5%BD%E7%94%A8%E7%9A%84%E9%98%B4%E5%BD%B1%E5%BA%93-ShadowLayout/
+
+
+1.implementation 'com.lijiankun24:shadowlayout:x.y.z'//1.1.0
+
+
+2.总共有 6 个自定义属性，其含义分别如下：
+app:shadowColor="#66000000" 控制阴影的颜色，注意：颜色必须带有透明度的值
+app:shadowShape="rectangle|oval" 控制阴影的形状：圆角矩形|圆形
+app:shadowDx="0dp" 控制阴影 x 轴的偏移量
+app:shadowDy="3dp" 控制阴影 y 轴的偏移量
+app:shadowRadius="10dp" 控制阴影的范围
+app:shadowSide="all|left|right|top|bottom" 控制阴影显示的边界，共有五个值
+
+
+3.阴影的展示
+在 xml 中添加如下布局文件：
+
+    <com.lijiankun24.shadowlayout.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        app:shadowColor="#66000000"
+        app:shadowShape="rectangle"
+        app:shadowDx="0dp"
+        app:shadowDy="3dp"
+        app:shadowRadius="10dp"
+        app:shadowSide="all">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_launcher"/>
+    </com.lijiankun24.shadowlayout.ShadowLayout>
+
+
+4.阴影的动态改变
+// 改变阴影颜色
+ShadowLayout slOval = findViewById(R.id.sl_oval);
+slOval.setShadowColor(ContextCompat.getColor(this, R.color.drak_yellow))
+
+// 改变阴影颜色
+ShadowLayout slRectangle = findViewById(R.id.sl_rectangle)
+slRectangle.setShadowColor(Color.parseColor("#EE00FF7F"));
+
+// 改变阴影范围
+ShadowLayout slRadius = findViewById(R.id.sl_radius);
+slRadius.setShadowRadius(dip2px(12))
+
+

@@ -1,0 +1,44 @@
+/**
+ * 补间动画：只改变view的绘制流程，不改变View的真实属性,有插值器Interpolator extends TimeInterpolator
+ * 帧动画：gif图片
+ * 属性动画：android3.0之后才有的，改变View真实的属性,有插值器TimeInterpolator
+ */
+
+//如果将一个控件的可见度设置不可见的情况下，要确保，这个控件中已经没有了动画对象
+private void setVisiable(View view) {
+    view.clearAnimation();
+    view.setVisibility(INVISIBLE);
+}
+
+http://gqdy365.iteye.com/blog/2194297
+1.Android动画分类： 
+一、Tweened Animations(补间动画),设置过度过程,系统完成过度效果补偿。即通过对场景里的对象不断做图像变换(平移、缩放、旋转)产生动画效果。 
+分类 
+１、Alpha：淡入淡出效果 
+２、Scale：缩放效果 
+３、Rotate：旋转效果 
+４、Translate：移动效果 
+
+二、Frame-by-frame Animations帧动画，原理类似于Flash，即通过设置多做相近图片的集合，来逐个播放； 
+
+
+简介: AnimatorSet 和 AnimationSet 都是动画集合。这里简单介绍下他们的异同，了解这些后在设计动画实现时才能得心应手。 
+AnimationSet 我们最常用的是调用其 addAnimation 将一个个不一样的动画组织到一起来，然后调用view 的 startAnimation 方法触发这些动画执行。功能较弱不能做到把集合中的动画按一定顺序进行组织然后在执行的定制。 
+
+AnimatorSet 我们最常用的是调用其play、before、with、after 等方法设置动画的执行顺序，然后调用其start 触发动画执行。 
+
+AnimationSet 与 AnimatorSet 最大的不同在于，AnimationSet 使用的是 Animation 子类、AnimatorSet 使用的是 Animator 的子类。 
+
+Animation 是针对视图外观的动画实现，动画被应用时外观改变但视图的触发点不会发生变化，还是在原来定义的位置。 
+
+Animator  是针对视图属性的动画实现，动画被应用时对象属性产生变化，最终导致视图外观变化。 
+
+Animator详解参考： 
+http://blog.csdn.net/yuzhiboyi/article/details/7731826 
+http://blog.csdn.net/sin90lzc/article/details/7517837 
+http://blog.csdn.net/jiabailong/article/details/14168707 
+http://blog.csdn.net/jiabailong/article/details/14168495 
+
+动画框架： 
+http://www.cnblogs.com/wangkewei/archive/2011/01/12/1933995.html 
+http://blog.csdn.net/jdsjlzx/article/details/44601175

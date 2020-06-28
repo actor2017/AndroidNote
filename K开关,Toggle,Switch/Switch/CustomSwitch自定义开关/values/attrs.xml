@@ -1,0 +1,20 @@
+<resources>
+    <declare-styleable name="CustomSwitch">
+        <!--下面四条是生成的原属性-->
+        <!--<attr name="exampleString" format="string"/>-->
+        <!--<attr name="exampleDimension" format="dimension"/>-->
+        <!--<attr name="exampleColor" format="color"/>-->
+        <!--<attr name="exampleDrawable" format="color|reference"/>-->
+
+        <!--背景属性    另类写法,里面是枚举,可写多个属性
+            <attr name="Setting_Background">
+                <enum name="first" value="0"/>
+                <enum name="middle" value="1"/>
+                <enum name="last" value="2"/>
+            </attr>-->
+
+        <attr name="toggleState" format="boolean"/>      <!--开关状态-->
+        <attr name="slideSrc" format="reference"/>       <!--滑块图片-->
+        <attr name="slideBackground" format="reference"/><!--背景图片-->
+    </declare-styleable>
+</resources>

@@ -1,0 +1,2 @@
+https://github.com/Siy-Wu/ExcludeAar
+用于过滤aar中冲突类(class)和so库的脚本,也可以用来过滤jar中冲突class

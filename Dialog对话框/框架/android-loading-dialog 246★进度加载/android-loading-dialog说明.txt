@@ -1,0 +1,34 @@
+https://github.com/liangchengcheng/android-loading-dialog
+
+dependencies {
+    // Other dependencies
+    implementation 'com.kaopiz:kprogresshud:1.0.2'//加载框
+}
+
+KProgressHUD.create(MainActivity.this)
+	.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+	.setLabel("登录中...")
+	//.setDetailsLabel("Downloading data")//显示在label下方
+        .setAutoDismiss(true)//确定模式,当最大进度时是否自动dismiss,默认true
+	.setCancellable(true)//默认false
+        //.setCornerRadius(10)//圆角,默认10
+	.setAnimationSpeed(2)//设置动画速度,只对不确定style有效,默认1
+	.setDimAmount(0.5f)//背景透明度,默认0
+        //.setMaxProgress(100)//最大进度,确定style有效
+        //.setWindowColor()//背景色,默认0x7f0600b0
+	.show()
+        //.setProgress(50);//确定style有效
+
+//自定义
+ImageView imageView = new ImageView(this);
+imageView.setImageResource(R.mipmap.ic_launcher);
+KProgressHUD.create(MainActivity.this)
+	.setCustomView(imageView)
+    .setLabel("This is a custom view")
+	.show();
+
+style:
+SPIN_INDETERMINATE 	旋转_不确定
+PIE_DETERMINATE		预先_确定
+ANNULAR_DETERMINATE	环形_确定
+BAR_DETERMINATE		进度条_确定

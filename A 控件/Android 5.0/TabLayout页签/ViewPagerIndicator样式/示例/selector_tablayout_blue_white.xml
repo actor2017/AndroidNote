@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/blue_467DEC"/>
+            <corners android:radius="24dp"/>
+
+            <!--通过设置trans间接设置TabItem间的间距-->
+            <stroke android:width="3dp" android:color="@color/trans"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+            <corners android:radius="24dp"/>
+            <stroke android:width="3dp" android:color="@color/trans"/>
+        </shape>
+    </item>
+</selector>

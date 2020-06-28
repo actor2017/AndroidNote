@@ -1,0 +1,7 @@
+https://github.com/tyrantgit/HeartLayout
+
+compile 'tyrant:heartlayout:1.0.1'
+
+HeartLayout heartLayout = findViewById...;
+heartLayout.addHeart(color);
+heartLayout.addHeart(color,heartResId,heartBorderResId);

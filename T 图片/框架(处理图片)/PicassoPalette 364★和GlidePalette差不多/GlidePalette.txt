@@ -1,0 +1,4 @@
+https://github.com/florent37/PicassoPalette
+http://florent37.github.io/PicassoPalette/
+
+Android Lollipop Palette is now easy to use with Picasso ! 

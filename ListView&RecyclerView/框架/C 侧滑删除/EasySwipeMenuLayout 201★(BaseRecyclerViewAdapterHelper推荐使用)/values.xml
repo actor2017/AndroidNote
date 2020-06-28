@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Library</string>
+    <declare-styleable name="EasySwipeMenuLayout">
+        <attr format="reference" name="leftMenuView"/>
+        <attr format="reference" name="rightMenuView"/>
+        <attr format="reference" name="contentView"/>
+        <attr format="boolean" name="canRightSwipe"/>
+        <attr format="boolean" name="canLeftSwipe"/>
+        <attr format="float" name="fraction"/>
+    </declare-styleable>
+</resources>

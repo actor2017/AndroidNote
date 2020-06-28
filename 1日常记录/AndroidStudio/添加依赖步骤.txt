@@ -1,0 +1,17 @@
+1.工具添加:
+  1.点击左上角File→Project Structrue...	快捷键:Ctrl+Alt+Shift+S
+  2.点击左下角选择要添加的模块,一般是app
+  3.点击Dependencies(依赖性),点击右上角的 + 号
+  4.选择添加依赖的方式:
+	1.Library dependency	连接库依赖(网络依赖)
+	2.File dependency	文件依赖
+	3.Module Dependency	模块(项目)依赖(别人的项目,例:StickyListView_Li[粘性的ListView]))
+	  (要先把模块导入项目中)
+
+
+2.文件依赖:
+  把3个jar包粘贴到libs文件夹下, 再添加3个文件的依赖(右击.jar文件 -> add as library...)
+
+
+3.网络依赖:
+  在app模块的 build.gradle 的 dependency 内添加: compile 'com.zhy:okhttputils:2.6.2'

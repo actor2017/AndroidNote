@@ -1,0 +1,54 @@
+https://github.com/sd6352051/NiftyDialogEffects
+https://tympanus.net/Development/ModalWindowEffects/
+
+Gradle
+
+using JitPack:
+
+repositories { 
+    maven { url "https://jitpack.io" }
+}
+dependencies {
+    compile 'com.github.sd6352051:NiftyDialogEffects:v1.0.2'
+}
+Usage
+
+NiftyDialogBuilder dialogBuilder=NiftyDialogBuilder.getInstance(this);
+
+dialogBuilder
+    .withTitle("Modal Dialog")
+    .withMessage("This is a modal Dialog.")
+    .show();
+Configuration
+
+dialogBuilder
+    .withTitle("Modal Dialog")                                  //.withTitle(null)  no title
+    .withTitleColor("#FFFFFF")                                  //def
+    .withDividerColor("#11000000")                              //def
+    .withMessage("This is a modal Dialog.")                     //.withMessage(null)  no Msg
+    .withMessageColor("#FFFFFFFF")                              //def  | withMessageColor(int resid)
+    .withDialogColor("#FFE74C3C")                               //def  | withDialogColor(int resid)
+    .withIcon(getResources().getDrawable(R.drawable.icon))
+    .withDuration(700)                                          //def
+    .withEffect(effect)                                         //def Effectstype.Slidetop
+    .withButton1Text("OK")                                      //def gone
+    .withButton2Text("Cancel")                                  //def gone
+    .isCancelableOnTouchOutside(true)                           //def    | isCancelable(true)
+    .setCustomView(R.layout.custom_view,v.getContext())         //.setCustomView(View or ResId,context)
+    .setButton1Click(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(v.getContext(), "i'm btn1", Toast.LENGTH_SHORT).show();
+                    }
+    })
+    .setButton2Click(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(v.getContext(),"i'm btn2",Toast.LENGTH_SHORT).show();
+        }
+    })
+    .show();
+Effects
+
+Fadein, Slideleft, Slidetop, SlideBottom, Slideright, Fall, Newspager, Fliph, Flipv, RotateBottom, RotateLeft, Slit, Shake, Sidefill
+

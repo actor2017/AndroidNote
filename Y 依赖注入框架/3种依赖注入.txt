@@ -1,0 +1,22 @@
+//########################################################
+2017.3.3
+聚合性框架一定要放弃,例如:Afinal,xUtils
+
+
+依赖和注入
+MainActivity有User的依赖
+User user = new User("张三",23);	高耦合
+
+依赖注入:IoC/DI	Inversion of Control控制反转/dependency Injection依赖注入	容器
+
+
+1.第一个依赖注入的框架:ButterKnife	(没要求就写这个)
+2.第二个依赖注入的框架:annotation注解	(功能强大,写起来麻烦,容易出错,不推荐)
+3.第三个依赖注入的框架:Dagger2		(重要,google的亲儿子,性能好,提升13%,这个不是用的反射)
+用法:
+1.在gradle等添加
+2.必须写一个bean
+3.写一个MainactivityModule
+4.必须写一个容器MainActivityCommpont(是一个接口)
+5.rebuiled重写编译
+6.在MainActivity中用容器

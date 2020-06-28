@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <!--上面定义是矩形-->
+    <!--本文件在drawable文件下,写一个xml继承shape★★★★★-->
+
+    <!--圆角-->
+    <corners
+        android:radius="30dp"/>
+
+    <!--内边距-->
+    <padding
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"/>
+
+    <!--内部填充,纯色-->
+    <solid
+        android:color="@color/white"/>
+
+    <!--描边-->
+    <stroke
+        android:width="2dp"
+        android:color="@color/blue_button_normal"
+        android:dashGap="0dp"
+        android:dashWidth="2dp"/>
+</shape>

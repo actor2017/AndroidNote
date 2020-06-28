@@ -1,0 +1,3 @@
+身份证、银行卡、机动车驾驶证、机动车行驶证(要上传图片):
+http://ai.baidu.com/tech/ocr/idcard
+

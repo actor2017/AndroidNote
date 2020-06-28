@@ -1,0 +1,6 @@
+http://www.jianshu.com/p/0a7383e0ad0f
+Demo地址: https://github.com/itdais/MaterialDesignDing
+
+implementation 'com.android.support:design:28.0.0'//compile
+
+design24.2.1的BottomSheets和23.2.0的BottomSheet有很大的区别,design23.2.0的包中如果你使用了BottomSheet,可以在屏幕外任何位置上拉即可拉出来布局,在24.2.1中没有了这个效果。

@@ -1,0 +1,36 @@
+https://github.com/donkingliang/LabelsView
+Android的标签列表控件。可以设置标签的选中效果。 可以设置标签的选中类型：不可选中、单选、限数量多选和不限数量多选等， 并支持设置必选项等功能。
+
+1、引入依赖 在Project的build.gradle在添加以下代码
+
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+在Module的build.gradle在添加以下代码
+
+dependencies {
+    compile 'com.github.donkingliang:LabelsView:1.4.7'
+}
+
+
+   <com.donkingliang.labels.LabelsView 
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/labels"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:labelBackground="@drawable/label_bg"     //标签的背景
+       app:labelTextColor="@drawable/label_text_color" //标签的字体颜色 可以是一个颜色值
+       app:labelTextSize="14sp"      //标签的字体大小
+       app:labelTextPaddingBottom="5dp"   //标签的上下左右边距
+       app:labelTextPaddingLeft="10dp"
+       app:labelTextPaddingRight="10dp"
+       app:labelTextPaddingTop="5dp"
+       app:lineMargin="10dp"   //行与行的距离
+       app:wordMargin="10dp"   //标签与标签的距离
+       app:selectType="SINGLE"   //标签的选择类型 有单选(可反选)、单选(不可反选)、多选、不可选四种类型
+       app:maxLines="3"    // 设置最大显示行数，小于等于0则不限行数。
+       app:maxSelect="5" />  //标签的最大选择数量，只有多选的时候才有用，0为不限数量
+

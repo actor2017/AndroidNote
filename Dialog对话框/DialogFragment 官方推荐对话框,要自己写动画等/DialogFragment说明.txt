@@ -1,0 +1,4 @@
+https://www.jianshu.com/p/8d420b668eda
+
+DialogFragment是3.0之后提供的一个弹出框实现类。使用DialogFragment的好处是能够更好的控制其生命周期。
+

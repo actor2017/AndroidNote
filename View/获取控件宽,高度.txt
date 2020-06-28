@@ -1,0 +1,48 @@
+获取控件的宽和高
+//3个方法来自网上------------------------
+　　在onCreate()里面获取控件的高度是0，那是因为当onCreate方法执行完以后，我们定义的控件才会被度量(measure)，所以我们在onCreate方法里面通过view.getHeight()获取控件的高度或者宽度是0。
+方法一：
+int w = View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED); 
+int h = View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED); 
+mView.measure(w, h); 
+int height =mView.getMeasuredHeight(); 
+int width =mView.getMeasuredWidth(); 
+
+方法二：
+ViewTreeObserver vto = mView.getViewTreeObserver(); 
+vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() { 
+    public boolean onPreDraw() { 
+        int height = mView.getMeasuredHeight(); 
+        int width = mView.getMeasuredWidth();
+        return true; 
+    } 
+});
+
+方法三：
+ViewTreeObserver vto2 = mView.getViewTreeObserver();   
+vto2.addOnGlobalLayoutListener(new OnGlobalLayoutListener() { 
+    @Override   
+    public void onGlobalLayout() { 
+        mView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        imageView.getHeight();
+        imageView.getWidth();
+    }   
+});
+
+总结：那么需要获取控件的宽高该用那个方法呢？
+方法一：比其他的两个方法多了一次计算，也就是多调用了一次onMeasure()方法,该方法虽然看上去简单，但是如果要目标控件计算耗时比较大的话,不见时使用，如listView等。
+方法二：它的回调方法会调用很多次，并且滑动TextView的时候任然会调用,所以不建议使用。
+方法三：比较合适。
+当然，实际应用的时候需要根据实际情况而定。
+
+//-------------------------------下面来自郑平(用于textview宽度判断,和上面3个方法不是一回事)-----------------
+    private int getMaxHeight() {
+        //我们可以对ll_footer进行手动测量
+        int size = UiUtils.getScreenWidth() - UiUtils.dp2px(5);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        ll_footer.measure(widthMeasureSpec, 0);
+        return ll_footer.getMeasuredHeight();
+        //return ll_footer.getHeight();
+    }
+
+详情见UiUtils,不知道那2个方法写对了没有?

@@ -1,0 +1,10 @@
+F7: Step Into
+F8: Step Over下一步
+F9: Resume Program下一个断点
+
+Alt + F8: Evaluate Expression
+Alt + F9: Run to Cursor
+Alt + F10: Show Execution Point
+Alt + Shift + F7: Force Step Into
+
+Shift + F8: Step Out

@@ -1,0 +1,61 @@
+在线制作:https://editor.method.ac/
+Iconfont-阿里巴巴矢量图标库:http://www.iconfont.cn/(下载svg文件,drawable-->New-->Vector Asset-->生成的宽高信息适当)
+或者将SVG文件里有path,可直接粘贴到AndroidStudio,viewport的宽高值=.svg文件viewBox后2个参数
+或者如果觉得一行path看起来不舒服,可以用外面一个文件夹里的jar包格式化path.
+
+通过path命令来进行简单的图形还是可行的，但是复杂的图形我们就需要借助工具来生成了，
+比如使用 Expression Design，就可以直接粘贴来自其它软件的矢量图形，然后选择导出，
+导出时做如后选择：文件->导出->导出属性->格式->XAML Silverlight 画布，即可得到XAML格式的矢量图形，也就是Path。
+
+更多矢量图学习可参考：http://www.w3.org/TR/SVG11/paths.html#PathData
+
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"		//定义该drawable的内部(intrinsic)宽度,图片宽度
+        android:height="24dp"		//定义该drawable的内部(intrinsic)高度,图片高度
+		android:viewportHeight="1024.0"//定义矢量图视图的高度，视图就是矢量图 path 路径数据所绘制的虚拟画布
+        android:viewportWidth="1024.0" //定义矢量图视图的宽度，视图就是矢量图 path 路径数据所绘制的虚拟画布
+		注意:<path>中pathData中的值在viewport取值范围内
+		
+		android:alpha				//该图片的透明度属性
+		android:autoMirrored 		//设置当系统为 RTL(right-to-left)布局的时候,是否自动镜像该图片.比如:阿拉伯语
+		android:name 				//定义该drawable的名字
+		android:tint 				//定义该drawable的tint颜色,默认没有tint颜色
+		android:tintMode			//定义tint颜色的Porter-Duff blending模式,默认值:src_in
+		>
+		
+        <path
+			android:fillColor="#ff00ff"	//定义填充路径的颜色,如果没有定义则不填充路径
+            android:pathData="M11.1,1.1..."
+			
+			android:name	//定义该 path 的名字,这样在其他地方可以通过名字来引用这个路径
+			android:fillAlpha 定义填充路径颜色的透明度
+			
+			android:trimPathEnd 从路径结束位置截断路径的比率，取值范围从 0 到1
+			android:trimPathOffset 设置路径截取的范围 Shift trim region (allows showed region to include the start and end), in the range from 0 to 1.
+			android:trimPathStart 从路径起始位置截断路径的比率，取值范围从 0 到1
+			
+			android:strokeAlpha 定义路径边框的透明度
+			android:strokeColor	定义如何绘制路径边框，如果没有定义则不显示边框
+			android:strokeLineCap 设置路径线帽的形状，取值为 butt, round, square.
+			android:strokeLineJoin 设置路径交界处的连接方式，取值为 miter,round,bevel.
+			android:strokeMiterLimit 设置斜角的上限，Sets the Miter limit for a stroked path.
+			android:strokeWidth 定义路径边框的粗细尺寸
+			/>
+</vector>
+
+命令类型	使用描述												代表含义					举例说明
+移动指令	M=moveto(M X,Y)											M移动绝对位置				M 100,240
+移动指令	m x,y													m移动相对于上一个点		m 100,240
+绘制指令	L 或 l=lineto(X,Y)										从当前点绘制直线到指定点	L 100,100
+绘制指令	H 或 h=lineto(H,X)										水平直线					h 100
+绘制指令	V 或 v=lineto(V,Y)										垂直直线					v 100
+绘制指令	C 或 c=curveto(X1,Y1,X2,Y2,ENDX,ENDY)					三次方程式贝塞尔曲线		C 100,200 200,400 300,200
+绘制指令	Q 或 q=quadratic Belzier curve(X,Y,ENDX,ENDY)			二次方程式贝塞尔曲线		Q 100,200 300,200
+绘制指令	S 或 s=smooth curveto(X2,Y2,ENDX,ENDY)					平滑三次方程式贝塞尔曲线	S 100,200 200,400 300,200
+绘制指令	T 或 t=smooth quadratic Belzier curveto(ENDX,ENDY)		平滑二次方程式贝塞尔曲线	T 100,200 300,200
+绘制指令	A 或 a=elliptical Arc(RX,RY,XROTATION,FLAG1,FLAG2,X,Y)	椭圆						A 5,5 0 0 1 10,10
+关闭指令	Z 或 z=closepath()										将图形的首、尾点用直线连接	Z
+填充规则	F0														EvenOdd 填充规则	
+填充规则	F1														Nonzero 填充规则	
+

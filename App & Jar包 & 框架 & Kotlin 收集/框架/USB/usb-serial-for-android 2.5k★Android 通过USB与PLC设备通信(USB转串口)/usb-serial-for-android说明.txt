@@ -1,0 +1,2 @@
+https://github.com/mik3y/usb-serial-for-android
+https://blog.csdn.net/aa425705261/article/details/86288880

@@ -1,0 +1,31 @@
+https://github.com/wasabeef/richeditor-android
+iso:https://github.com/cjwirth/RichEditorView
+
+Bold
+ Italic
+ Subscript
+ Superscript
+ Strikethrough
+ Underline
+ Justify Left
+ Justify Center
+ Justify Right
+ Blockquote
+ Heading 1
+ Heading 2
+ Heading 3
+ Heading 4
+ Heading 5
+ Heading 6
+ Undo
+ Redo
+ Indent
+ Outdent
+ Insert Image
+ Insert Link
+ Checkbox
+ Text Color
+ Text Background Color
+ Text Font Size
+ Unordered List (Bullets)
+ Ordered List (Numbers)

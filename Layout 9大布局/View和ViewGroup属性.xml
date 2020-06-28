@@ -1,0 +1,24 @@
+<View
+    android:keepScreenOn="true"					//这个activity就会一直亮起，直到手动关闭,Gone好像会无效
+    android:layerType="software|hardware|none"	//硬件加速? 当从shape.xml中加载虚线时, 需要开启layerType="software"
+    ></View>
+
+
+
+<ViewGroup
+    android:animateLayoutChanges="true"//添加删除动画
+    android:cropToPadding="true"	   //解决沉浸式状态栏 & 设置ImageView的scaletype属性后padding不起作用
+
+    android:descendantFocusability="blocksDescendants"//viewGroup.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
+					//descendantFocusability: 后代 焦点能力(ViewGroup属性)
+					//afterDescendants: viewgroup只有当其子类控件不需要获取焦点时才获取焦点
+					//beforeDescendants: viewgroup会优先其子类控件而获取到焦点
+					//blocksDescendants: viewgroup会覆盖子类控件而直接获得焦点
+					//1.在Recyclerview直属父布局上加, 解决NestedScrollView嵌套Recyclerview时, Item点击跳动的问题,
+					//2.DatePicker、TimePicker、NumberPicker等控件在由于默认是可编辑的，所以会经常跳出键盘. 加上后屏蔽这些编辑模式
+
+
+
+
+	>
+</ViewGroup>

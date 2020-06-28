@@ -1,0 +1,21 @@
+是从ViewPagerIndicator里面抽取出来的.
+
+    <CirclePageIndicator.CirclePageIndicator
+        android:id="@+id/cpi_circlepageindicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        //android:orientation="horizontal"//指示的布局方式，水平还是垂直
+        android:background="#FFCCCCCC"//指示整体的背景色
+        android:padding="10dp"
+        app:fillColor="#FF888888"//当前选择指示的颜色
+        app:pageColor="#88FF0000"//当前未被选择指示的颜色
+        app:radius="10dp"//圆的半径。这也是圈之间的间距
+        app:strokeColor="#FF000000"//描边的颜色
+        app:strokeWidth="2dp"/>//描边的宽度
+
+
+
+代码中
+vpViewpager.setAdapter(new MyViewPagerAdapter());
+        cpiCirclepageindicator.setViewPager(vpViewpager);
+        cpiCirclepageindicator.setCurrentItem(position);

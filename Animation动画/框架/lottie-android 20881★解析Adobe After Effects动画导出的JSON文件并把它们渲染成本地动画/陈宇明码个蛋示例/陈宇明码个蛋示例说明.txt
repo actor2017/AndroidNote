@@ -1,0 +1,77 @@
+https://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&mid=2247489401&idx=1&sn=9eecc9faa9d2dc0ce8bae6d7c45885a9
+https://www.jianshu.com/u/3a5162ea1c99
+
+1,使用示例
+我们尝试把它应用在启动图上，告别一成不变的图片。例如下面这个效果：
+
+我们可以看到，画面生动起来了。动画一共5秒，做了3个效果：
+一、文字淡化出现（从1秒后开始淡化显示）
+二、落叶（从上往下掉落，加入倾斜仿风吹的效果）
+三、云朵移动（天空上的白云从左边移动到右边）
+
+
+2-4.下载并安装AE(Adobe After Effects CC)
+
+
+5.动画制作
+一、把文件导入AE,见:把背景图、落叶、云朵、文字四个素材导入AE，并且设置工程的长度为5秒,1.gif
+
+二、文字淡化出现,见:把文字的素材拉到背景图上面，然后点击变换，选择不透明度，移动时间轴到1s的时候，设置不透明度为0，然后拖动时间轴到3s，设置不透明度为100,2.gif
+
+三、落叶,把落叶的素材拖到文字层上面，点击变换，在0s的时候点击位置设立关键帧，然后把落叶的位置调到顶端，之后把时间轴拖到5s，再设置关键帧并把落叶的位置调到底端。最后，加上水平偏移，模仿风吹的效果。在3s和5s的时候设立关键帧，然后调整位置x的坐标,3.gif
+
+四、白云,把白云的素材放在背景层上面，然后复制一层背景放在白云上面，因为白云移动不能在树的前面显示，所以要用钢笔工具，把树的部分进行遮罩。然后选择白云的素材，点击变换，在1s的时候设立关键帧，并设置位置在最左边，最后移动到5s设置关键帧并设置位置在最右边,4.gif
+
+五、输出动画文件,见:制作完成后，点击窗口，扩展，bodymovin，然后点击设置按钮，选择下面的演示模式（输出后会有一个demo.html文件，可以直接打开预览效果），设置后，点击渲染。成功的话，会生成一个image文件夹和data.json文件，把这两个文件放到android或者ios，或者web都可以直接使用了,5.gif
+
+6.Android端使用
+compile 'com.airbnb.android:lottie:2.1.2'
+
+把image文件夹和data.json文件放在assets文件夹里面，然后在布局声明，最后在代码调用
+lottieAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
+lottieAnimationView.setImageAssetsFolder("images");
+lottieAnimationView.setAnimation("data.json");
+lottieAnimationView.playAnimation();
+
+如果是想下载的方式，然后放在内存卡的话（一般都是这样用，因为可以随时更改动画），把下载的文件解压到内存卡，然后把路径传进去
+File jsonFile = new File(getIntent().getStringExtra(JSON_PATH));
+       File imagesDir = new File(getIntent().getStringExtra(IMAGES_PATH));
+       FileInputStream fis = null;
+       if (jsonFile.exists()) {
+           try {
+               fis = new FileInputStream(jsonFile);
+           } catch (FileNotFoundException e) {
+               e.printStackTrace();
+           }
+       }
+       if (fis == null || !imagesDir.exists()) {
+           Toast.makeText(FangShengAnimActivity.this, "动画资源不存在", Toast.LENGTH_SHORT).show();
+           finish();
+           return;
+       }
+       final String absolutePath = imagesDir.getAbsolutePath();
+       lottieAnimationView.setImageAssetDelegate(new ImageAssetDelegate() {
+           @Override
+           public Bitmap fetchBitmap(LottieImageAsset asset) {
+               BitmapFactory.Options opts = new BitmapFactory.Options();
+               opts.inScaled = true;
+               opts.inDensity = 160;
+               return BitmapFactory.decodeFile(absolutePath + File.separator + asset.getFileName(), opts);
+           }
+       });
+       LottieComposition.Factory.fromInputStream(this, fis, new OnCompositionLoadedListener() {
+           @Override
+           public void onCompositionLoaded(@Nullable LottieComposition composition) {
+               lottieAnimationView.setComposition(composition);
+               lottieAnimationView.playAnimation();
+           }
+       });
+
+IOS端和web端使用
+这里不介绍啦，可以去官网看看详细用法：
+IOS：https://github.com/airbnb/lottie-ios
+web：https://github.com/airbnb/lottie-react-native
+
+总结
+有人问，那个启动图的，用gif也能实现类似的效果啊。可以是可以，但gif的体积一般比较大、而且大尺寸的gif可能导致崩溃，而且画质肯定是不如lottie好的。lottie的画质和图片的画质是一样的，而且体积就是图片的体积，加上一个json文件（几十kb）就能实现动画效果了。lottie给我们提供了一个工具，只要我们花点创意，就能做出生动的动画效果了。lottie的使用，不仅仅是应用在启动图那么局限，可以出现在：抽奖画面、加载画面、摇签画面、灵符开光等等都是可以的。发动你的思维，让app更多地方用上lottie，打造一个活泼生动的app吧。
+

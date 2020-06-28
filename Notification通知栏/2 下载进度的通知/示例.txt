@@ -1,0 +1,24 @@
+注意事项 
+1. setProgress的第三个bool类型的参数表示progressbar的Indeterminate属性 指是否使用不确定模式 
+2. 高版本上progressbar的进度值可以在setContentInfo显示，但是低版本上使用这个属性会导致progressbar不显示，setContentText一样
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.push));
+        //禁止用户点击删除按钮删除
+        builder.setAutoCancel(false);
+        //禁止滑动删除
+        builder.setOngoing(true);
+        //取消右上角的时间显示
+        builder.setShowWhen(false);
+        builder.setContentTitle("下载中..."+progress+"%");
+        builder.setProgress(100,progress,false);
+        //builder.setContentInfo(progress+"%");
+        builder.setOngoing(true);
+        builder.setShowWhen(false);
+        Intent intent = new Intent(this,DownloadService.class);
+        intent.putExtra("command",1);
+        Notification notification = builder.build();
+        manger.notify(MainActivity.TYPE_Progress,notification);
+

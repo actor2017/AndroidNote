@@ -1,0 +1,31 @@
+https://github.com/akexorcist/Android-RoundCornerProgressBar
+
+Round Corner Progress Bar Library for Android
+Android的圆角进度条库
+
+// Old (MavenCentral)
+implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+
+// New (JCenter)androidx
+implementation 'com.akexorcist:round-corner-progress-bar:2.1.0'
+
+
+圆角:
+<!--
+                app:rcSecondaryProgress="float"
+                app:rcReverse="boolean"
+                app:rcAnimationSpeedScale="float"
+                app:rcMax="float"
+                app:rcSecondaryProgressColor="color"
+                -->
+                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                    android:id="@+id/progress_location"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv4"
+                    app:layout_constraintLeft_toRightOf="@id/tv4"
+                    app:layout_constraintRight_toLeftOf="@id/tv5"
+                    app:rcBackgroundColor="#F5F5F5"
+                    app:rcProgress="70.0"
+                    app:rcProgressColor="#F5A623"
+                    app:rcRadius="2dp" />

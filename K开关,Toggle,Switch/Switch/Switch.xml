@@ -1,0 +1,184 @@
+<android.support.v7.widget.SwitchCompat
+or <Switch
+	android:text="性别"		//左侧文字
+	android:textColor="@color/gray_585858"
+	android:textSize="16sp"
+	android:textStyle="bold"//左侧text字体的style: 粗体，斜体
+	android:typeface="":	//左侧文字字体
+	
+	android:checked="true"			//选中状态
+	android:textOn="开"
+	android:textOff="关"			//按钮没有被选中时, 滑块上显示的文字
+	android:showText="true"			//设置on/off的时候是否显示文字, 默认false
+	android:switchPadding="10dp"	//文字和开关间距
+
+	android:splitTrack="false"		//分离轨道, 是否设置一个间隙，让滑块与底部图片分隔(滑块周围有间隙), 默认false
+	android:switchMinWidth			//设置开关的最小宽度
+	android:thumbTextPadding		//滑块内文本两侧的填充量
+	android:thumbTint				//滑块固定着色
+	android:trackTint				//背景固定着色
+
+	android:track="drawable|selector"//底部的图片/selector, 设置后 theme 属性无效
+	android:thumb="drawable|selector"//滑块的图片/selector, 设置后 theme 属性无效
+	
+	android:switchTextAppearance="@style/switchTextAppearance"//滑块上文字大小,颜色,style,字体
+	android:theme="@style/MySwitchTheme"//滑块/轨迹 颜色
+	/>
+
+
+<!--使用方法: android/app:switchTextAppearance="@style/switchTextAppearance"-->
+<!--parent="TextAppearance.AppCompat.Small"-->
+<style name="switchTextAppearance">
+	<item name="android:textSize">14sp</item>
+	<!--<item name="android:textColor">@color/colorAccent</item>-->
+	<item name="android:textColor">@color/selector_switch_text_color</item>
+	<item name="android:textStyle">bold</item>
+	<item name="android:textAllCaps">false</item>
+	<!--<item name="android:typeface">monospace</item>-->
+</style>
+
+<!--使用方法： 在布局文件中给需要自定义控件中增加android/app:theme="@style/MySwitch"-->
+<style name="MySwitchTheme">
+	<!--switch 打开时的拇指按钮的颜色 轨迹颜色默认为30%这个颜色-->
+	<item name="colorControlActivated">@color/colorPrimary</item>
+	<!--switch关闭时的拇指按钮的颜色-->
+	<item name="colorSwitchThumbNormal">@color/white</item>
+	<!--switch关闭时的轨迹的颜色 30%这个颜色-->
+	<item name="android:colorForeground">@color/colorAccent</item>
+	<!--<item name="fontFamily">@android:string/font_family_button_material</item>-->
+</style>
+
+selector_switch_text_color.xml
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#FFF" android:state_checked="false" />
+    <item android:color="#000" android:state_checked="true" />
+</selector>
+
+switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    //Todo
+                }else {
+                    //Todo
+                }
+            }
+        });
+
+
+<declare-styleable name="SwitchCompat">
+	<!-- Drawable to use as the "thumb" that switches back and forth. -->
+	<attr name="android:thumb"/>
+	<!-- Tint to apply to the thumb drawable. -->
+	<attr format="color" name="thumbTint"/>
+	<!-- Blending mode used to apply the thumb tint. -->
+	<attr name="thumbTintMode">
+		<!-- The tint is drawn on top of the drawable.
+			 [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
+		<enum name="src_over" value="3"/>
+		<!-- The tint is masked by the alpha channel of the drawable. The drawable’s
+			 color channels are thrown out. [Sa * Da, Sc * Da] -->
+		<enum name="src_in" value="5"/>
+		<!-- The tint is drawn above the drawable, but with the drawable’s alpha
+			 channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
+		<enum name="src_atop" value="9"/>
+		<!-- Multiplies the color and alpha channels of the drawable with those of
+			 the tint. [Sa * Da, Sc * Dc] -->
+		<enum name="multiply" value="14"/>
+		<!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
+		<enum name="screen" value="15"/>
+		<!-- Combines the tint and drawable color and alpha channels, clamping the
+			 result to valid color values. Saturate(S + D) -->
+		<enum name="add" value="16"/>
+	</attr>
+	<!-- Drawable to use as the "track" that the switch thumb slides within. -->
+	<attr format="reference" name="track"/>
+	<!-- Tint to apply to the track. -->
+	<attr format="color" name="trackTint"/>
+	<!-- Blending mode used to apply the track tint. -->
+	<attr name="trackTintMode">
+		<!-- The tint is drawn on top of the drawable.
+			 [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
+		<enum name="src_over" value="3"/>
+		<!-- The tint is masked by the alpha channel of the drawable. The drawable’s
+			 color channels are thrown out. [Sa * Da, Sc * Da] -->
+		<enum name="src_in" value="5"/>
+		<!-- The tint is drawn above the drawable, but with the drawable’s alpha
+			 channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
+		<enum name="src_atop" value="9"/>
+		<!-- Multiplies the color and alpha channels of the drawable with those of
+			 the tint. [Sa * Da, Sc * Dc] -->
+		<enum name="multiply" value="14"/>
+		<!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
+		<enum name="screen" value="15"/>
+		<!-- Combines the tint and drawable color and alpha channels, clamping the
+			 result to valid color values. Saturate(S + D) -->
+		<enum name="add" value="16"/>
+	</attr>
+	<!-- Text to use when the switch is in the checked/"on" state. -->
+	<attr name="android:textOn"/>
+	<!-- Text to use when the switch is in the unchecked/"off" state. -->
+	<attr name="android:textOff"/>
+	<!-- Amount of padding on either side of text within the switch thumb. -->
+	<attr format="dimension" name="thumbTextPadding"/>
+	<!-- TextAppearance style for text displayed on the switch thumb. -->
+	<attr format="reference" name="switchTextAppearance"/>
+	<!-- Minimum width for the switch component -->
+	<attr format="dimension" name="switchMinWidth"/>
+	<!-- Minimum space between the switch and caption text -->
+	<attr format="dimension" name="switchPadding"/>
+	<!-- Whether to split the track and leave a gap for the thumb drawable. -->
+	<attr format="boolean" name="splitTrack"/>
+	<!-- Whether to draw on/off text. -->
+	<attr format="boolean" name="showText"/>
+</declare-styleable>
+
+<declare-styleable name="Switch">
+	<!-- Drawable to use as the "thumb" that switches back and forth. -->
+	<attr name="thumb" />//上方那个圆,传drawable
+	<!-- Tint to apply to the thumb. -->
+	<attr name="thumbTint" />
+	<!-- Blending mode used to apply the thumb tint. -->
+	<attr name="thumbTintMode" />
+	<!-- Drawable to use as the "track" that the switch thumb slides within. -->
+	<attr name="track" format="reference" />
+	<!-- Tint to apply to the track. -->
+	<attr name="trackTint" format="color" />
+	<!-- Blending mode used to apply the track tint. -->
+	<attr name="trackTintMode">
+		<!-- The tint is drawn on top of the drawable.
+			 [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
+		<enum name="src_over" value="3" />
+		<!-- The tint is masked by the alpha channel of the drawable. The drawable’s
+			 color channels are thrown out. [Sa * Da, Sc * Da] -->
+		<enum name="src_in" value="5" />
+		<!-- The tint is drawn above the drawable, but with the drawable’s alpha
+			 channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
+		<enum name="src_atop" value="9" />
+		<!-- Multiplies the color and alpha channels of the drawable with those of
+			 the tint. [Sa * Da, Sc * Dc] -->
+		<enum name="multiply" value="14" />
+		<!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
+		<enum name="screen" value="15" />
+		<!-- Combines the tint and drawable color and alpha channels, clamping the
+			 result to valid color values. Saturate(S + D) -->
+		<enum name="add" value="16" />
+	</attr>
+	<!-- Text to use when the switch is in the checked/"on" state. -->
+	<attr name="textOn" />
+	<!-- Text to use when the switch is in the unchecked/"off" state. -->
+	<attr name="textOff" />
+	<!-- Amount of padding on either side of text within the switch thumb. -->
+	<attr name="thumbTextPadding" format="dimension" />
+	<!-- TextAppearance style for text displayed on the switch thumb. -->
+	<attr name="switchTextAppearance" format="reference" />
+	<!-- Minimum width for the switch component. -->
+	<attr name="switchMinWidth" format="dimension" />
+	<!-- Minimum space between the switch and caption text. -->
+	<attr name="switchPadding" format="dimension" />
+	<!-- Whether to split the track and leave a gap for the thumb drawable. -->
+	<attr name="splitTrack" />
+	<!-- Whether to draw on/off text. -->
+	<attr name="showText" format="boolean" />
+</declare-styleable>

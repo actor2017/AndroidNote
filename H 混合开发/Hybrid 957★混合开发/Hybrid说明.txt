@@ -1,0 +1,6 @@
+https://github.com/yexiaochai/hybrid
+
+简单Hybrid框的实现
+经过之前的简单Hybrid框的实现，现在正在形成一个通用的Hybrid平台，详情请看博客介绍，代码会持续更新
+Native Andriod代码由明月同学提供
+Native iOS代码由Nil同学提供

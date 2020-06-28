@@ -1,0 +1,31 @@
+<android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/head_layout"
+        android:layout_gravity="center"
+        android:persistentDrawingCache="animation" >
+
+        <android.support.v4.view.PagerTabStrip//能点击互动
+            android:id="@+id/tabstrip"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:layout_gravity="bottom" />
+    </android.support.v4.view.ViewPager>
+
+
+viewpager的adapter中重写:
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // TODO Auto-generated method stub
+            return titles[position];
+        }
+
+
+设置PagerTabStrip； 
+通过PagerTabStrip 对象的setTextColor()方法设置导航条文字颜色；
+通过PagerTabStrip 对象的setBackgroundColor ()方法设置导航条背景颜色；
+通过PagerTabStrip 对象的setDrawFullUnderline()方法设置导航条下方是否有完整下划线颜色；
+通过PagerTabStrip 对象的setTabIndicatorColor()方法设置导航条文字下方的指示颜色；
+通过PagerTabStrip 对象的setTextSpacing()方法设置导航条文字的间隔。

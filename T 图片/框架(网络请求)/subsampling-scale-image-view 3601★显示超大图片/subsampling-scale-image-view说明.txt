@@ -1,0 +1,5 @@
+https://github.com/davemorrissey/subsampling-scale-image-view
+
+Android library (AAR). Highly configurable, easily extendable deep zoom view for displaying huge images without loss of detail. Perfect for photo galleries, maps, building plans etc.
+Android图书馆(AAR)。高度可配置的、可扩展的深度缩放视图，用于显示巨大的图像而不丢失细节。适合相片画廊、地图、建筑计划等。
+

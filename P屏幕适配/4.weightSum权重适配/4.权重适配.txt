@@ -1,0 +1,6 @@
+<LinearLayout
+    android:weightSum="3"><!-- 注意这个属性 -->
+
+    <TextView
+     android:layout_weight="1"/>
+</LinearLayout>

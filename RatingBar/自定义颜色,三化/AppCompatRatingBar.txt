@@ -1,0 +1,11 @@
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/rb_score"
+        style="@style/Base.Widget.AppCompat.RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:theme="@style/RatingBar_CustomColor"
+        android:rating="3"
+        android:stepSize="1"/>

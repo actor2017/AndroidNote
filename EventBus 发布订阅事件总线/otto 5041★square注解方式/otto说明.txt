@@ -1,0 +1,111 @@
+https://github.com/square/otto
+
+OTTO是Square推出的基于Guava项目的Android支持库，otto是一个事件总线，用于应用程序的不同组件之间进行有效的通信。OTTO是基于Observer的设计模式。它有发布者，订阅者这两个主要对象。OTTO的最佳实践就是通过反射牺牲了微小的性能，同时极大的降低了程序的耦合度。
+
+注解
+@Subscribe:这个在调用了register后有效,表示订阅了一个事件,并且方法的用 public 修饰的.方法名可以随意取,重点是参数,它是根据你的参数进行判断
+@Produce注解告诉Bus该函数是一个事件产生者，产生的事件类型为该函数的返回值。(不用写这个注解也可以)
+
+public final class BusProvider {
+
+    private static final Bus BUS = new Bus();
+
+
+    public static Bus getInstance() {
+
+        return BUS;
+
+    }
+
+
+    private BusProvider() {
+
+    }
+
+}
+
+public class MessageEvent {
+    public String msg;
+    public MessageEvent(String msg) {
+        this.msg = msg;
+    }
+}
+
+//接收方
+public class MainActivity extends Activity {
+
+    private TextView tv;
+
+
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_second);
+        BusProvider.getInstance().register(this);//1.onCreate中注册
+        tv = (TextView) findViewById(R.id.tv);
+
+    //2.这个注解一定要有,表示订阅了MessageEvent,并且方法的用public修饰.方法名随意取,重点是根据你的参数进行判断来自于哪个发送的事件
+    @Subscribe
+
+    public void showEvent(MessageEvent event) {
+
+        tv.setText(event.msg);
+
+    }
+    //3.onDestroy中注销
+    @Override
+
+    protected void onDestroy() {
+
+        super.onDestroy();
+
+        BusProvider.getInstance().unregister(this);
+
+    }
+
+}
+
+
+
+//发送方
+public class ThreeActivity extends Activity {
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_three);
+
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View v) {
+
+                BusProvider.getInstance().post(new MessageEvent("非著名程序员"));//1.post发消息
+                finish();
+
+            }
+
+        });
+
+
+    }
+}
+
+
+
+
+混淆(没试过)
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+
+    @com.squareup.otto.Subscribe public *;
+
+    @com.squareup.otto.Produce public *;
+
+}

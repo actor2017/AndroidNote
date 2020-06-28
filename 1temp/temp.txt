@@ -1,0 +1,60 @@
+﻿FileFilter
+application中Activity生命周期
+
+你们用webrtc是自己编译的吗 ?还是用的org.webrtc:google-webrtc:1.0.+这种方式啊？
+
+rxjava + retrofit
+kotlin
+rxjava 事件总线
+java8新特性
+混合开发
+
+GifTextView
+SDKInitializer.initialize(instance);//PickAddressFragment
+
+PullRefreshLayout
+MenuDialog(PublishDynamicFragment)
+
+EMClient.getInstance().isLoggedInBefore();
+EaseVoiceRecorderView
+EaseChatPrimaryMenu
+
+boolean b = true;
+for(int i = 0; i < 10 && b; i ++) {
+    if(i == 5) b = false;
+}
+fragment_chat_conversation
+
+StringUtils
+
+
+//会议
+RippleButton
+afinal
+Map迭代器,见hihi项目
+
+
+hihi:
+HIHI交友, 抖音形式刷视频
+
+各种嵌套
+
+glide 加载部分(加载上半部分图片)
+
+
+LiteAVSDK_Professional_Android:
+TextMsgInputDialog
+
+HIHI位置信息修改成张老师的发送样式
+@interface value
+
+HIHI项目整理
+
+
+
+
+
+
+
+
+

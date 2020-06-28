@@ -1,0 +1,4 @@
+https://github.com/ksvc/KSYLive_Android
+http://v.ksyun.com/
+
+Android播放&推流融合版本[Android Play and LiveStreaming SDK] 直播延时2-3秒（Living delay 2 or 3 seconds），supporting jitter control，software&hardware decode, 支持内置/自定义美颜(Beauty Filter)、美声(Beauty Voice)、软硬编(Software/Hardware Encoder) 、网络自适应(Network Auto Adapt)、混音(Voice Mixer)、混响(Reverb)、画中画(PIP) 、连麦(RTC)、动态贴纸(Sticker)

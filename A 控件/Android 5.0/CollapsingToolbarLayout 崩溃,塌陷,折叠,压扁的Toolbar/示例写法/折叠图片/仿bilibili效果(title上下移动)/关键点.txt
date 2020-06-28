@@ -1,0 +1,12 @@
+1.在布局文件中,CollapsingToolbarLayout:
+//不能设置:app:titleEnabled="false"
+在CollapsingToolbarLayout中设置title,这样就能实现标题不上下移动.
+
+2.appBar.setExpanded(true, false);//如果设置true(有展开动画),图片显示/隐藏无效,不知道为什么???????
+
+3.
+    /**
+     * 切换CollapsingToolbarLayout的滑动状态
+     * @param collapsingToolbarLayout
+     */
+    nsvNestedScrollView.setNestedScrollingEnabled(!nsvNestedScrollView.isNestedScrollingEnabled());

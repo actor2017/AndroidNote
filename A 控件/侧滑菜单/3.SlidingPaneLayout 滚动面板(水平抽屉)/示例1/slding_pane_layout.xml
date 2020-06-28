@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingpanelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+ 
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent">
+ 
+        <LinearLayout
+            android:id="@+id/full_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#acd"
+            android:gravity="center"
+            android:orientation="vertical">
+ 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="baidu"
+                android:text="百度"
+                android:textColor="#aaff00" />
+ 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="qq"
+                android:text="QQ"
+                android:textColor="#aaff00" />
+ 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="wangyi"
+                android:text="网易"
+                android:textColor="#aaff00" />
+ 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="sina"
+                android:text="新浪"
+                android:textColor="#aaff00" />
+        </LinearLayout>
+ 
+        <TextView
+            android:id="@+id/small_left"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="#acd"
+            android:text="我是侧边的收缩状态. 右滑展开侧边栏，书签。"
+            android:textColor="#ff00" />
+    </FrameLayout>
+ 
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="80dp" />
+ 
+</android.support.v4.widget.SlidingPaneLayout>
+--------------------- 
+作者：匆忙拥挤repeat 
+来源：CSDN 
+原文：https://blog.csdn.net/jjwwmlp456/article/details/46468603 
+版权声明：本文为博主原创文章，转载请附上博文链接！

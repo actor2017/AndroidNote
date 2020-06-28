@@ -1,0 +1,28 @@
+1.其实不用打包,把module添加到项目依赖,然后运行一下,也可以生成.aar文件
+
+
+2.将混淆文件打包到aar中
+android {
+    defaultConfig {
+        consumerProguardFiles 'proguard-rules.pro'//,'proguard-b.pro'将单/多个混淆文件打包到aar中
+    }
+}
+
+
+2.注意:aar文件可以用360加固
+
+
+3.如果自己打包,Module中的libs目录文件会随着项目的编译被打包进aar文件中，但是build.gradle中的引用库不会打包进aar文件中,
+如果你忽略了这个Module的build.gradle中的引用库，很可能引发ClassNotFoundException异常.
+
+
+4.如果打包出现以下错误:
+Error:Execution failed for task ':myandroidlibrary:processReleaseResources'.
+> Error: more than one library with package name 'android.support.graphics.drawable'
+
+把依赖的compile 'com.android.support:appcompat-v7:28.+'改成:
+compile 'com.android.support:appcompat-v7:27.+'
+
+compileSdkVersion 27//这个由28改成27
+buildToolsVersion "28.0.1"
+targetSdkVersion 27//这个由28改成27

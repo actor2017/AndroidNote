@@ -1,0 +1,3 @@
+﻿https://github.com/pqpo/SmartCropper
+🔥 A library for cropping image in a smart way that can identify the border and correct the cropped image. 智能图片裁剪框架。自动识别边框，手动调节选区，使用透视变换裁剪并矫正选区；适用于身份证，名片，文档等照片的裁剪。 https://pqpo.me/2017/09/11/opencv-border-recognition/
+

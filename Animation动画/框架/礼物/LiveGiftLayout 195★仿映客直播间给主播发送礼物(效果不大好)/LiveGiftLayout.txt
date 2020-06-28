@@ -1,0 +1,6 @@
+https://github.com/DyncKathline/LiveGiftLayout
+https://blog.csdn.net/DyncKathline/article/details/55682053
+
+一个带礼物面板的直播礼物连击效果
+Android 仿映客直播间给主播发送礼物（实现连击效果）
+

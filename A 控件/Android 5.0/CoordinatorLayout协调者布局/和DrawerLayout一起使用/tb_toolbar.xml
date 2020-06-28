@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ android:id="@+id/tb_toolbar"
+ android:layout_width="match_parent"
+ android:layout_height="@dimen/dp_56"
+ app:titleTextColor="@color/white"
+ app:title="@string/app_name"
+ app:theme="@style/OverFlowMenuTheme"
+ app:popupTheme="@style/AppTheme"
+ android:background="@color/blue"
+ app:layout_scrollFlags="scroll|enterAlways"/>
+<!--
+作者：亦枫
+链接：http://www.jianshu.com/p/4b0f3c80ebc9
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。-->

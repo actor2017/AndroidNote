@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kuchuanyun.test.GridLayoutActivity">
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical|end"
+        android:text="0"
+        android:textSize="50sp"/>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        app:columnCount="4"
+        app:rowCount="5">
+
+        <Button
+            android:soundEffectsEnabled="true"
+            android:text="C"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="+/-"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="%"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="÷"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="7"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="8"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="9"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="x"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="4"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="5"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="6"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="—"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="1"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="2"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="3"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="+"
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="0"
+            android:textSize="50sp"
+            app:layout_columnSpan="2"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="."
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+
+        <Button
+            android:text="="
+            android:textSize="50sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"/>
+    </android.support.v7.widget.GridLayout>
+</LinearLayout>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TestActivity">
+
+    <!--★1.ConstraintLayout专属属性-->
+	
+	https://blog.csdn.net/u013254166/article/details/80938666
+	ConstraintSet能使我们在代码中轻松地改变控件的位置大小，再也不用LayoutParams了。
+    <!--constraintSet="reference"过渡?动画,例:@layout/activity...-->
+    <!--chainUseRtl="boolean"链适配右到左?-->
+	<!--android:baseline="@dimen/dp_10"? dimen-->
+	<!--android:baselineAlignBottom="true"?-->
+	<!--app:layout_constraintBaseline_creator=""?-->
+	<!--app:layout_optimizationLevel=""?-->
+
+
+    <!--★2.上下左右对齐,如果这个控件设置了上下/左右,则这个控件相对上下/左右居中-->
+    <!--layout_constraintLeft_toLeftOf="reference|enum"这个控件←,与谁的←对齐-->
+    <!--layout_constraintLeft_toRightOf="reference|enum"这个控件←,与谁的→对齐-->
+    <!--layout_constraintRight_toLeftOf=""reference|enum"这个控件→,与谁的←对齐-->
+    <!--layout_constraintRight_toRightOf="reference|enum"这个控件→,与谁的→对齐-->
+    <!--layout_constraintTop_toTopOf="reference|enum"这个控件的↑,与谁的↑对齐-->
+    <!--layout_constraintTop_toBottomOf="reference|enum"这个控件的↑,与谁的↓对齐-->
+    <!--layout_constraintBottom_toTopOf="reference|enum"这个控件的↓,与谁的↑对齐-->
+    <!--layout_constraintBottom_toBottomOf="reference|enum"这个控件的↓,与谁的↓对齐-->
+    <!--layout_constraintStart_toStartOf="reference|enum"-->
+    <!--layout_constraintStart_toEndOf="reference|enum"-->
+    <!--layout_constraintEnd_toStartOf="reference|enum"-->
+    <!--layout_constraintEnd_toEndOf="reference|enum"-->
+    <!--layout_constraintBaseline_toBaselineOf="reference|enum"文字对齐(如果是其它控件居中对齐,请使用top2top & b2b)-->
+
+
+    <!--★3.百分比/比例/权重/偏离率(可用来设置浮动按钮)-->
+    <!--layout_constraintWidth_percent="float"宽度百分比,示例:0.5(android:layout_width="0dp"才行)-->
+    <!--layout_constraintHeight_percent="float"高度百分比,示例:0.5(高度=0dp)-->
+    <!--layout_constraintDimensionRatio="string"宽高比,示例:1.77或16:9或H,16:9(H宽高比)或W:9:16(W高宽比)-->
+    <!--layout_constraintHorizontal_weight="float"宽度占比(用于链样式)-->
+    <!--layout_constraintVertical_weight="float"高度占比(用于链样式)-->
+    <!--layout_constraintHorizontal_bias="float" 水平偏离率(该空间左侧的外边距占剩余宽度的比例),默认0.5(中间)(需设置左右对齐才生效)-->
+    <!--layout_constraintVertical_bias="float" 垂直偏离率(该控件上边的外边距占剩余高度的比例)(需设置上下对齐才生效)-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="7:4"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"/>
+
+
+    <!--★4.最大/最小/默认 宽高-->
+    <!--android:layout_width="0dp"占用剩余宽度(match_contraint)-->
+    <!--layout_constraintWidth_max="dimension|enum"设置最大宽度|wrap-->
+    <!--layout_constraintWidth_min="dimension|enum"设置最小宽度|wrap-->
+    <!--layout_constraintHeight_max="dimension|enum"设置最大高度|wrap-->
+    <!--layout_constraintHeight_min="dimension|enum"设置小大高度|wrap-->
+    <!--layout_constraintWidth_default="enum"   默认宽度,width=0才生效:spread(默认),wrap,percent-->
+    <!--layout_constraintHeight_default="enum"  默认高度,height=0才生效:spread(默认),wrap,percent-->
+
+
+    <!--★5.当"约束目标"的可见性为View.GONE时,"本控件"可通过以下属性设置不同的边距值(本控件的margin)-->
+    <!--layout_goneMarginLeft="dimension"-->
+    <!--layout_goneMarginRight="dimension"-->
+    <!--layout_goneMarginTop="dimension"-->
+    <!--layout_goneMarginBottom="dimension"-->
+    <!--layout_goneMarginStart="dimension"-->
+    <!--layout_goneMarginEnd="dimension"-->
+
+
+    <!--★6.不常用属性-->
+    <!--layout_constraintCircle="reference"         相对于哪一个控件进行约束-->
+    <!--layout_constraintCircleRadius="dimension"   离引用控件中心的距离,默认在引用控件顶部↑-->
+    <!--layout_constraintCircleAngle="integer"      正上开始,顺时针方向角度|↗(实际开发中不常用,可用来实现钟表效果)-->
+	//可用在chain中,chain太长挤压时,可以设置多行等
+    layout_constrainedWidth="boolean"           //宽度设置为WRAP_CONTENT时,是否对宽度进行强制约束,默认false(例:TextView一行装不下,来2行)
+    layout_constrainedHeight="boolean"          //高度设置为WRAP_CONTENT时,是否对高度进行强制约束,默认false
+
+
+    <!--★7.引导线:控制距离.   虚拟辅助类,并不会占用实际的空间-->
+    <!--orientation="horizontal|vertical"       必须设置方向-->
+    <!--layout_constraintGuide_percent="float"  距离父容器↖宽度/高度的百分比,示例:0.2-->
+    <!--layout_constraintGuide_begin="dimension"距离父容器↖位置的距离-->
+    <!--layout_constraintGuide_end="dimension"  距离父容器↘位置的距离-->
+    <android.support.constraint.Guideline
+        android:id="@+id/gl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="100dp"/>
+
+    <!--★8.障碍物,屏障,界线:控制对齐.
+        在约束布局中,可以使用属性constraint_referenced_ids属性来引用多个带约束的组件,
+        从而将它们看作一个整体,Barrier的介入可以完成很多其他布局不能完成的功能,
+        示例:表单左侧右侧对齐(姓名:...,身份证:...)-->
+    <!--constraint_referenced_ids="string" 引用控件id,多个以逗号隔开,示例:tv_name,tv_idcard-->
+    <!--barrierDirection="enum" 界线在哪些控件的哪个方向-->
+    <!--barrierAllowsGoneWidgets="boolean"作用未知,默认未知-->
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="tv_name,tv_idcard"/>
+
+    <!--★9.Group extends ConstraintHelper extends View:控制多个控件的可见性
+		    Group方法:
+			int[] getReferencedIds();//父类方法
+			setReferencedIds(int[] ids);
+			setTag(int tag, Object value);
+			validateParams();
+			updatePreLayout(ConstraintLayout container);//子类重写父类方法,更新显示状态
+			updatePostLayout(ConstraintLayout container);
+			
+	        但是在activity中setVisibility()会有很大几率造成设置不成功,
+			所以stackoverflow有以下解决方案:https://stackoverflow.com/questions/47865436/cant-set-visibility-on-constraint-group
+	1.遍历然后findViewById,挨个设置(没试过)
+	private fun setGroupVisibility(layout: ConstraintLayout, group: Group, visibility: Int) {
+		val refIds = group.referencedIds
+		for (id in refIds) {
+			layout.findViewById<View>(id).visibility = visibility
+		}
+	}
+	2.先设置相反的visibility,然后再设置回来(没试过)
+	private fun toggleLoginUI(show: Boolean) {
+		if (show) {
+			group.visibility = GONE
+			group.visibility = VISIBLE
+		} else {
+			group.visibility = GONE
+			group.visibility = INVISIBLE
+		}
+	}
+	3.看起来比较优雅(Problem is that android.support.constraint.Group updates visibility of its members
+					  in updatePreLayout method which is called from onMeasure in ConstraintLayout.)
+	fun makeGroupInvisible(group: Group) {
+		group.visibility = View.INVISIBLE
+		group.requestLayout()
+	}
+	4.实际上官方解决方法:
+	private void setGroupVisibilisty(Group group, boolean visibilisty) {
+        group.setVisibility(visibilisty ? View.VISIBLE : View.GONE);
+        group.updatePreLayout((ConstraintLayout) group.getParent());
+    }-->
+    <android.support.constraint.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="tv_name,tv_idcard"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入姓名"
+        app:layout_constraintLeft_toRightOf="@id/barrier"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名:"
+        app:layout_constraintBaseline_toBaselineOf="@id/et_name"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_idcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="身份证:"
+        app:layout_constraintTop_toBottomOf="@id/et_name"/>
+
+    <!--★10.设置链样式,效果看图(只设置这条链的链头)-->
+    <!--layout_constraintHorizontal_chainStyle="enum"
+            spread:       伸展(默认),宽&高≠0(=0是weighted,如果是TextView,文字会靠左),这种模式设置margin无效
+            spread_inside:左右靠边,中间居中
+            packed:       全部居中
+            weighted:     宽/高占比:(没有这个属性)宽/高设置为0dp.还可以设置宽度占比:layout_constraintHorizontal_weight
+            packed_with_bias:3个控件离左/右偏离率:(没有这个属性)宽/高设为wrap_content,然后layout_constraintHorizontal_bias-->
+    <!--layout_constraintVertical_chainStyle="enum"-->
+    <TextView
+        android:id="@+id/tab1"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#f67"
+        android:gravity="center"
+        android:text="Tab1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tab2"/>
+
+    <!--★11.Placeholder占位符.一个用来占位的东西,它可以把自己的内容设置为ConstraintLayout内的其它view.
+    因此它用来写 "布局的模版"/"动态修改UI" 的内容-->
+    <!--app:content="reference"用id为reference的控件来填充这个位置-->
+    <!--app:emptyVisibility="enum"值:gone,invisible,作用未知,默认值未知-->
+    <android.support.constraint.Placeholder
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tab2"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#A67"
+        android:gravity="center"
+        android:text="Tab2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tab1"
+        app:layout_constraintRight_toLeftOf="@+id/tab3"/>
+
+    <TextView
+        android:id="@+id/tab3"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#767"
+        android:gravity="center"
+        android:text="Tab3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tab2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <!--★12.下面2个不知道怎么用-->
+    <android.support.constraint.Constraints
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </android.support.constraint.Constraints>
+
+    <android.support.constraint.ConstraintHelper/>
+
+</android.support.constraint.ConstraintLayout>

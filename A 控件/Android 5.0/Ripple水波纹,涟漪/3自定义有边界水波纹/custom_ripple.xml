@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorPrimary">  
+    <item  
+        android:id="@android:id/mask"  
+        android:drawable="@color/colorAccent"/>  
+		<!--有界水波纹需要我们在ripple节点中定义item，item的id要为系统id  mask，
+		然后还要定义drawable，drawable中的颜色并没有什么卵用，要图片才行!
+		水波纹的颜色是由ripple节点中的颜色来控制的-->
+</ripple>

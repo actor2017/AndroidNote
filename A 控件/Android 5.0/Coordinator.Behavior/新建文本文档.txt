@@ -1,0 +1,23 @@
+CoordinatorLayout的使用核心是Behavior，Behavior就是执行你定制的动作。
+在讲Behavior之前必须先理解两个概念：Child和Dependency，什么意思呢？
+
+Child是子View的意思了，是CoordinatorLayout的子View；其实Child是指要执行动作的CoordinatorLayout的子View。
+
+Dependency是指Child依赖的View。
+如过Dependency这个View发生了变化，那么Child这个View就要相应发生变化。
+这里引入Behavior，Child发生变化的具体执行的代码都是放在Behavior这个类里面。
+
+怎么使用Behavior呢，首先，我们定义一个类，继承CoordinatorLayout.Behavior<T>,其中，泛型参数T是我们要执行动作的View类，也就是Child。然后就是去实现Behavior的两个方法：
+
+
+
+
+CoordinatorLayout功能如此强大，而他的神奇之处在于Behavior对象，CoordinatorLayout自己并不控制View，所有的控制权都在Behavior。这些Behavior实现了复杂的控制功能。系统的Behavior毕竟有限，我们可以通过自定义的方式来实现自己的Behavior。
+
+通过 CoordinatorLayout.Behavior(YourView.Behavior.class)来定义自己的Behavior,并在layout文件中设置app:layout_behavior=”com.example.app.YourView$Behavior” 来达到效果。自定义Behavior 需要重写两个方法：
+
+public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency)
+public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency)
+
+
+app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"//上滑向下隐藏

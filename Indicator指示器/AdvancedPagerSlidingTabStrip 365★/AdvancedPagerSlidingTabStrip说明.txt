@@ -1,0 +1,12 @@
+https://github.com/HomHomLin/AdvancedPagerSlidingTabStrip
+
+Android AdvancedPagerSlidingTabStrip是一种Android平台的导航控件，完美兼容Android自带库和兼容库的ViewPager组件，最低支持Android api v9。
+
+Feature
+
+支持Tab小圆点以及数量显示和隐藏
+支持自定义Tab View
+支持使用Bitmap、Drawable和本地resId来显示Tab图标
+支持对Tab图标替换成自定义View来加载网络图片
+支持自由设置小圆点、tab大小和位置等设置
+支持实现如：微博等不均匀Tab的APP风格，并支持滑动

@@ -1,0 +1,6 @@
+1.在Setting-->Plugins-->搜索GsonFormat-->点击Search in repositories
+2.安装
+3.重启AndroidStudio
+4.用法:
+	1.在json的bean文件右击-->Generate...-->GsonFormat
+	2.把json粘贴进去-->OK

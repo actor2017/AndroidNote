@@ -1,0 +1,83 @@
+https://github.com/google/dagger
+
+1.在 project/build.gradle 文件中按下图所示添加1行代码:
+dependencies {
+	classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+
+2.在 app/build.gradle 文件中按下图所示添加4行代码:
+apply plugin: 'com.neenbedankt.android-apt'(一般在第一行下面)
+
+dependencies {
+	compile 'com.google.dagger:dagger:2.2'
+	apt 'com.google.dagger:dagger-compiler:2.2'
+	provided 'org.glassfish:javax.annotation:10.0-b28'
+
+
+3.主要的注解:
+
+@Provides: 在@Module 中使用，我们定义的方法用这个注解，用于告诉 Dagger 我们需要构造实例并提供依赖。用来修饰方法，方法的返回类型就是所提供的依赖类型，可以简单的把方法的返回值理解为我们通常要new出来的对象.
+
+@Module: 用来修饰类，表示此类的方法是用来提供依赖的，它告诉Dagger在哪里可以找到依赖。用来给@Component组件提供实例化的对象.
+
+@Inject: 通常在需要依赖的地方使用这个注解,简单的理解为声明一个对象
+
+@Component 它是@Inject和@Module的桥梁，它的主要作用就是连接这两个部分.
+
+我们必须用@Component注解一个接口,为该注解传入Module类，或者添加其依赖的组件
+@Component的实现类
+
+@Component注解的接口或抽象类，Dagger将会为该接口或者抽象类生成一个实现，这个实现的命名是在接口或抽象类前面加上Dagger，如MyComponent生成的实现是DaggerMyComponent
+
+
+4.使用步骤:
+1.创建Module,并在其中创建Provides.示例代码:
+
+@Module
+public class MainActivityModuel {
+
+    @Provides
+    User provideUser(){
+        return  new User("翠花", 18);
+    }
+}
+
+2.创建Component.示例代码:
+@Component(modules = MainActivityModuel.class)
+public interface MainActivityComponent {
+    void inject(MainActivity activity);
+}
+
+3.Rebuild工程,生成对应的以Dagger开始的工具类（否则，无法生成 DaggerMainActivityComponent类 ）
+
+4.利用对应的以Dagger工具类初始化,并注入对象.示例代码:
+ublic class MainActivity extends AppCompatActivity {
+    @Inject
+    User user;  
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        MainActivityComponent component = DaggerMainActivityComponent.builder().mainActivityModuel(new MainActivityModuel()).build();
+        component.inject(this);
+    }
+}
+
+
+示例使用步骤:	(可直接查看文件,下面的可以不用看)#########################################
+
+1.写一个javaBean类,重写有参构造
+
+2.写一个Module(例:MainActivityModule),要在MainActivity中用User
+
+3.写一个容器MainActivityCommpont(是一个Interface)
+
+4.Rebuild一下,等编译完成
+
+5.在MainActivity中写代码,获取User对象,还要写注解
+
+6.Module中可以返回多个对象,所以后来又写了一个Person
+
+##################################################################################

@@ -1,0 +1,4 @@
+https://github.com/2359media/EasyAndroidAnimations
+
+Easy Android Animations is an animation library that aims to make android animations easier, with 50+ builtin animations, it allows you to introduce many complex animation effects in your application with one or two lines of code.
+简单的Android动画是一个动画库，旨在使Android动画更容易，50+内置动画，它允许你在你的应用程序中引入许多复杂的动画效果与一两行代码。

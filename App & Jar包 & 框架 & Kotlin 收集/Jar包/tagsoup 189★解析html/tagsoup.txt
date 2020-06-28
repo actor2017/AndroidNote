@@ -1,0 +1,4 @@
+https://github.com/ndmitchell/tagsoup
+
+Haskell library for parsing and extracting information from (possibly malformed) HTML/XML documents
+Haskell库，用于解析和从(可能是畸形的)HTML/XML文档中提取信息

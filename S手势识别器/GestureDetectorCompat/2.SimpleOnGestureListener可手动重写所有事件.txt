@@ -1,0 +1,68 @@
+
+        GestureDetectorCompat gestureDetectorCompat1 = new GestureDetectorCompat(this,new GestureDetector.SimpleOnGestureListener(){
+
+            @Override
+            public boolean onContextClick(MotionEvent e) {//Context 的点击事件
+                return super.onContextClick(e);
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                return super.onDoubleTap(e);
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent e) {
+                return super.onDoubleTapEvent(e);
+            }
+
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return super.onDown(e);
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float
+                    velocityY) {
+                return super.onFling(e1, e2, velocityX, velocityY);
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                super.onLongPress(e);
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float
+                    distanceY) {
+                return super.onScroll(e1, e2, distanceX, distanceY);
+            }
+
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                return super.onSingleTapConfirmed(e);
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return super.onSingleTapUp(e);
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+                super.onShowPress(e);
+            }
+        });
+
+    /**
+     * 为了让我们的GestureDetector对象能到接收到触摸事件，
+     * 我们需要重写 View 或 Activity 的 onTouchEvent() 函数，
+     * 并且把所有捕获到的事件传递给 detector 实例
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetectorCompat1.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }

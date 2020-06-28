@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.kuchuanyun.cpptest.MainActivity">
+
+            <!--TextSwitcher extends ViewSwitcher extends ViewAnimator extends FrameLayout-->
+			<!--继承自ViewSwitcher,so只能有2个TextView-->
+			<!--android:inAnimation="@android:anim/slide_in_left/right"-->
+			<!--android:outAnimation="@android:anim/slide_out_right"-->
+			<TextSwitcher
+				android:id="@+id/ts"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:animateFirstView="true"
+				android:inAnimation="@anim/up_in"
+				android:outAnimation="@anim/down_out"
+				android:loopViews="true">
+			</TextSwitcher>
+</LinearLayout>

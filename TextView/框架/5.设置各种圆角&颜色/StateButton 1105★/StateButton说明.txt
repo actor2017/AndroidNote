@@ -1,0 +1,37 @@
+﻿https://github.com/niniloveyou/StateButton
+
+一个可以用代码设置selector背景（按下去背景颜色更改，样式变化等等）的button, 再也不用写selector了
+你有没有讨厌给每种类型的button写一个drawable(selector)
+
+allprojects {
+       repositories {
+           ......
+           maven { url 'https://jitpack.io' }
+       }
+   }
+
+implementation 'com.github.niniloveyou:StateButton:v1.0.0'
+
+
+Customizable attributes
+Attribute               default value       xml                 java
+normalTextColor         android:textColor 正常颜色             setNormalTextColor(int color)
+pressedTextColor        android:textColor 按下颜色             setPressedTextColor(int color)
+unableTextColor         android:textColor unable时颜色         setUnableTextColor(int color)
+strokeDashWidth         0               描边虚线宽度(每截长度) setStrokeDash(int dashWidth, int dashGap)
+strokeDashGap           0               描边虚线间隔           setStrokeDash(int dashWidth, int dashGap)
+normalStrokeWidth       0               正常描边宽度(高度)     setNormalStrokeWidth(int widht)
+pressedStrokeWidth      0               按下描边宽度(高度)     setPressedStrokeWidth(int widht)
+unableStrokeWidth       0               unable时描边宽度(高度) setUnableStrokeWidth(int widht)
+normalStrokeColor       0               正常描边颜色           setNormalStrokeColor(int color)
+pressedStrokeColor      0               按下描边颜色           setPressedStrokeColor(int color)
+unableStrokeColor       0               unable时描边颜色       setUnableStrokeColor(int color)
+normalBackgroundColor   0               正常背景颜色           setNormalBackgroundColor(int color)
+pressedBackgroundColor  0               按下背景颜色           setPressedBackgroundColor(int color)
+unableBackgroundColor   0               unable时背景颜色       setUnableBackgroundColor(int color)
+
+                                                           //示例数组:0f, 0f, 20f, 20f, 40f, 40f, 60f, 60f
+radius                  0               圆角半径           setRadius(int radius) / setRadius(float[] radii)
+round                   false           两边是否是圆形     setRound(boolean round)
+animationDuration       0ms             状态切换显示动画持续时间    setAnimationDuration(int duration)
+

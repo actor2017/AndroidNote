@@ -1,0 +1,25 @@
+https://github.com/linsir6/webRTC-android-demo-and-Server
+
+和版本1一样,手机允许黑屏.
+
+Android-webRTC and NodeJS client
+一个webRTC Demo，你可以非常简单的运行起来它，之后我会继续优化的，现在只能实现P2P的聊天功能
+
+需要依赖：
+
+compile 'com.android.support:appcompat-v7:22.0.0'
+compile 'com.github.nkzawa:socket.io-client:0.4.2'    //webSocket相关
+compile 'io.pristine:libjingle:8871@aar'    //webRTC官方aar包
+如何运行它：
+
+首先我们的服务端需要依赖于nodeJS
+
+git clone git@github.com:linsir6/webRTC-android-demo-and-Server.git
+用Android-studio打开Android，需要修改app->strings.xml下面的host和prot，分别修改成电脑的局域网下的ip和运行Node服务端的端口号
+cd NodeServer
+npm install
+npm start
+先在手机上打开apk
+在浏览器端打开http://127.0.0.1:3000/
+点击star Camera
+点击call

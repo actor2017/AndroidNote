@@ -1,0 +1,11 @@
+//--------------------------------------------------------广播开启Activity----------------------
+Intent Flags
+记住一点：Activity都是运行在任务栈里面，但如果要从广播接受者BordercastReceiver或者
+服务Service去启动一个Activity，必须为当前Activity创建一个新的任务栈才能正常显示
+
+public class MyReceiver extends BroadcastReceiver{
+   public void onReceive(Context context, Intent intent) {
+      Intent intent=new Intent(context,DemoActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//创建新的任务栈
+      context.startActivity(intent);
+ }

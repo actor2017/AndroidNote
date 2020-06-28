@@ -1,0 +1,24 @@
+
+    private void open() {
+        //改变ll_footer的高度
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();//获取布局参数
+        layoutParams.height = getMaxHeight(view);
+        view.setLayoutParams(layoutParams);			//设置布局参数
+    }
+
+
+    private void close() {
+        //改变ll_footer的高度
+       ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        layoutParams.height = 0;
+        view.setLayoutParams(layoutParams);
+    }
+
+    private int getMaxHeight(View view) {
+        //我们可以对view进行手动测量
+        int size = UiUtils.getScreenWidth() - UiUtils.dp2px(5);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.AT_MOST);
+        view.measure(widthMeasureSpec, 0);
+        return view.getMeasuredHeight();
+        //return view.getHeight();
+    }

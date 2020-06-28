@@ -1,0 +1,3 @@
+https://github.com/r0adkll/Slidr
+Easily add slide to dismiss functionality to an Activity
+很容易添加幻灯片来取消活动的功能

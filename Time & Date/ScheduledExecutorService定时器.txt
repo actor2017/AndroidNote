@@ -1,0 +1,57 @@
+ScheduledExecutorService是从java.util.concurrent里,做为(并发工具类)被引进的
+是JAVA 1.5 后新增的定时任务接口,
+这是最理想的定时任务实现方式，它有以下好处：
+	1.相比于Timer的单线程，它是通过线程池的方式来执行任务的
+	2.可以很灵活的去设定第一次执行任务delay时间
+	3.提供了良好的约定，以便设定执行的时间间隔
+好处
+1.相比于Timer的单线程，它是通过线程池的方式来执行任务的
+2.可以很灵活的去设定第一次执行任务delay时间
+3.提供了良好的约定，以便设定执行的时间间隔
+
+schedule(Runnable command, long delay, TimeUnit unit);
+schedule(Callable<V> callable, long delay, TimeUnit unit);
+scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit);
+scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit);
+
+
+public static void main(String[] args) {
+	//第1种方法
+	ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+	service.schedule(new Runnable() {
+		
+		@Override
+		public void run() {
+			System.out.println(Thread.currentThread().getName() + " run");//pool-1-thread-1 run
+		}
+	}, 2, TimeUnit.SECONDS);
+	service.shutdown();
+	
+	//第2种方法
+//		ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(10);
+//		System.out.println(executor.getPoolSize());//0
+//		System.out.println(executor.getCorePoolSize());//10
+//		System.out.println(executor.getLargestPoolSize());//0
+//		System.out.println(executor.getMaximumPoolSize());//2147483647
+//        for (int i = 0; i < executor.getCorePoolSize(); ++i) {
+//            executor.schedule(new Runnable() {
+//                @Override
+//                public void run() {
+//                	/**
+//                	 * pool-1-thread-1 run
+//                	 * pool-1-thread-1 run
+//                	 * pool-1-thread-1 run
+//                	 * pool-1-thread-1 run
+//                	 * pool-1-thread-4 run
+//                	 * pool-1-thread-10 run
+//                	 * pool-1-thread-3 run
+//                	 * pool-1-thread-4 run
+//                	 * pool-1-thread-6 run
+//                	 * pool-1-thread-2 run
+//                	 */
+//                    System.out.println(Thread.currentThread().getName() + " run");
+//                }
+//            } , 2 , TimeUnit.SECONDS);
+//        }
+//        executor.shutdown();
+}

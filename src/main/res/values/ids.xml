@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="smContentView" type="id"/>
+    <item name="smMenuViewLeft" type="id"/>
+    <item name="smMenuViewRight" type="id"/>
+    <item name="smMenuViewTop" type="id"/>
+    <item name="smMenuViewBottom" type="id"/>
+    <item name="jz_fullscreen_id" type="id" />
+    <item name="jz_tiny_id" type="id" />
+</resources>

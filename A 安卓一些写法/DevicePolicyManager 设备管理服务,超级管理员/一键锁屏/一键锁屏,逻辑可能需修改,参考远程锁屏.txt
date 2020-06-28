@@ -1,0 +1,5 @@
+        //一进入app, 就立即锁屏, 一键锁屏
+	//设备管理器
+        DevicePolicyManager mDPM = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+        mDPM.lockNow();
+        finish();

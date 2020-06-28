@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--如果ListView的头布局是相对布局的话，有可能会出现一些莫名其妙的问题，这个是系统的bug-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="horizontal">
+
+    <!--进度条,设置自定义颜色是:indeterminateDrawable-->
+    <ProgressBar
+        android:indeterminateDrawable="@drawable/shape_custom_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--上拉加载-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在加载..."
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"/>
+</LinearLayout>

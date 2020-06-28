@@ -1,0 +1,63 @@
+https://github.com/nex3z/FlowLayout
+
+属性:
+flFlow			是否能自动排多行,默认true,flase只显示一行
+flChildSpacing		子view的水平间距,value= auto/固定某个值
+flChildSpacingForLastRow 最后一行的子视图之间的水平间距。value= auto/align(对齐)/固定的尺寸。如果没有设置，使用上面的距离
+flRowSpacing		行之间的垂直间距。value= auto/固定的尺寸。默认是0 dp。
+flRtl			true从右到左布局子视图。false从左到右的布局。默认的是false。
+flMaxRows		最大行数，如果设置为2那么显示出的行数只有两行。
+
+1.添加依赖
+compile 'com.nex3z:flow-layout:1.1.0'
+
+
+2.xml中用
+<com.nex3z.flowlayout.FlowLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:flChildSpacing="auto"
+    app:flChildSpacingForLastRow="align"
+    app:flRowSpacing="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUN"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MON"/>
+
+    <!--...-->
+
+</com.nex3z.flowlayout.FlowLayout>
+
+
+3.代码里面动态用
+for (int i = 0; i < strList.size(); i++) {
+    TextView textView = buildLabel(strList.get(i));
+    flowLayout.addView(textView);
+}
+
+private TextView buildLabel(final String text) {
+    TextView textView = new TextView(this);
+    textView.setText(text);
+    textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+    textView.setPadding((int) dpToPx(16), (int) dpToPx(8), (int) dpToPx(16), (int) dpToPx(8));
+    textView.setBackgroundResource(R.drawable.bg_gray);
+    textView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            et.setText(text);
+        }
+    });
+    return textView;
+}
+
+private float dpToPx(float dp) {
+    return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+}

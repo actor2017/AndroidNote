@@ -1,0 +1,26 @@
+注意事项 
+1. 使用类 Android.support.v4.app.NotificationCompat.BigTextStyle 
+2. 在低版本系统上只显示点击前的普通通知样式 如4.4可以点击展开，在4.0系统上就不行 
+3. 点击前后的ContentTitle、ContentText可以不一致，bigText内容可以自动换行 好像最多5行的样子
+
+    private void bigTextStyle(){
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("BigTextStyle");
+        builder.setContentText("BigTextStyle演示示例");
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
+        android.support.v4.app.NotificationCompat.BigTextStyle style = new android.support.v4.app.NotificationCompat.BigTextStyle();
+        style.bigText("这里是点击通知后要显示的正文，可以换行可以显示很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长");
+        style.setBigContentTitle("点击后的标题");
+        //SummaryText没什么用 可以不设置
+        style.setSummaryText("末尾只一行的文字内容");
+        builder.setStyle(style);
+        builder.setAutoCancel(true);
+        Intent intent = new Intent(this,SettingsActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,0);
+        builder.setContentIntent(pIntent);
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        Notification notification = builder.build();
+        manger.notify(TYPE_BigText,notification);
+    }

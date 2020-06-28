@@ -1,0 +1,3 @@
+https://github.com/zzhoujay/ColorSelector4Android
+
+Deprecated 安卓平台下的颜色选择器

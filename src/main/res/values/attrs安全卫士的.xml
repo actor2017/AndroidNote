@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--声明本xml是SettingItemView的属性-->
+    <declare-styleable name="SettingItemView">
+
+        <!--自定义标题属性,注意string是小写★★★★★★★★★★★★★★★★★★-->
+        <attr name="Setting_Title" format="string"/>
+
+        <!--背景属性-->
+        <attr name="Setting_Background">
+            <enum name="first" value="0"/>
+            <enum name="middle" value="1"/>
+            <enum name="last" value="2"/>
+        </attr>
+
+        <!--是否显示开关图片-->
+        <attr name="ToogleVisiable" format="boolean"/>
+		
+		
+		
+		//其余属性示例:
+		<attr name="gtrRedStarVisiable" format="boolean"/>
+		<attr name="gtrCheckedPosition" format="integer"/>
+		<attr name="inputType" format="fraction"/><!--百分比, 比如20%-->
+		
+		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.GridTableEditText);
+		//使用系统属性, 获取方式: typedArray.getString(R.styleable.GridTableEditText_android_text);
+		typedArray.recycle();
+		<attr name="android:text"/>
+
+    </declare-styleable>
+
+
+    //也可以这样写, 如果上方的SettingItemView想获取这个属性定义的值的话:
+	//TypedArray ta = context.obtainStyledAttributes(attrs, R.attr.testAttr/*加上这个,重点*/, R.attr.GridTableEditText);
+	<attr name="testAttr" format="integer" />
+</resources>

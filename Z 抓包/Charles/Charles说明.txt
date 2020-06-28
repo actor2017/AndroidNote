@@ -1,0 +1,14 @@
+https://www.charlesproxy.com/
+Charles使用
+
+1.下载程序 和 Charles 汉化&授权补丁
+
+2.手机和电脑连接同一个wifi(同一局域网),手机设置手动代理
+  把电脑IP设进去, 端口设置成8888
+
+
+3.抓取https的包:
+  1.Charles安装整数:
+    帮助-->SSL代理-->安装Charles Root证书-->安装证书-->下一步-->将所有的整数都安放入下列存储-->收信人的根证书颁发机构
+
+  2.手机浏览器打开: chls.pro/ssl, 安装证书, 名称应该是随意写,比如Charles

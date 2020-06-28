@@ -1,0 +1,4 @@
+https://github.com/ongakuer/CircleIndicator
+
+A lightweight indicator like in nexus 5 launcher
+一个轻量级指示器，类似于nexus 5启动器

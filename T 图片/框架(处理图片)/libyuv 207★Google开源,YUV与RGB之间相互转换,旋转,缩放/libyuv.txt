@@ -1,0 +1,23 @@
+https://github.com/lemenkov/libyuv
+
+unofficial libyuv mirror https://chromium.googlesource.com/libyuv/libyuv
+
+libyuv is an open source project that includes YUV scaling and conversion functionality.
+
+Scale YUV to prepare content for compression, with point, bilinear or box filter.
+Convert to YUV from webcam formats for compression.
+Convert to RGB formats for rendering/effects.
+Rotate by 90/180/270 degrees to adjust for mobile devices in portrait mode.
+Optimized for SSSE3/AVX2 on x86/x64.
+Optimized for Neon on Arm.
+Optimized for MSA on Mips.
+
+libyuv是一个开源项目，包括YUV缩放和转换功能。
+
+缩放YUV以准备压缩内容，使用点，双线性或盒式过滤器。
+从网络摄像头格式转换为YUV以进行压缩。
+转换为RGB格式以进行渲染/效果。
+旋转90/180/270度可在纵向模式下调整移动设备。
+针对x86 / x64上的SSSE3 / AVX2进行了优化。
+针对手臂上的霓虹灯进行了优化。
+针对Mips上的MSA进行了优化。

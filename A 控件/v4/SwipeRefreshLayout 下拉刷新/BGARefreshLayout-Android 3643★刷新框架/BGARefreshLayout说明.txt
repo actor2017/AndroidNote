@@ -1,0 +1,9 @@
+https://github.com/bingoogolapple/BGARefreshLayout-Android
+
+多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位
+
+开发者使用 BGARefreshLayout-Android 可以对各种控件实现多种下拉刷新效果、上拉加载更多以及配置自定义头部广告位
+
+测试 BGARefreshLayout 与 Activity、Fragment、ViewPager 的各种嵌套的 Demo:
+https://github.com/bingoogolapple/BGARefreshLayoutDemo
+

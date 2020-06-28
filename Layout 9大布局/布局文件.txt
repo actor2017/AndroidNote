@@ -1,0 +1,83 @@
+### 3 五种常见ui布局（重点）
+
+android:orientation="horizontal"     	
+	制定线性布局的排列方式    	
+	水平 horizontal    	
+	垂直 vertical
+
+gravity 控制当前控件内容显示区域	//没学过
+	layout_gravity 当前控件在父元素的位置
+	Layout_weight 额外空间分配(权重)
+
+android:visibility="invisible"	
+	控制布局是否显示	
+	显示 visible	
+	不显示，但占空间 invisible	
+	隐藏 gone
+
+1. 线性布局：LinearLayout
+	* android:orientation="vertical" 设置朝向
+	* android:layout_width="0dp"
+      	android:layout_weight="1"
+	应用场景：控件线性排列
+
+2. 相对布局：RelativeLayout
+	原理：相对位置
+
+3. 帧布局：FrameLayout
+	应用场景：一个控件叠在另外一个控件的上面
+帧布局每次添加的控件都显示在最上面，最后显示在界面上的是最后添加的一个控件
+
+
+4. 表格布局：TableLayout
+	应用场景：办公类软件
+
+5. 绝对布局：AbsoluteLayout	//过时
+AbsoluteLayout
+android:layout_x	指定控件在父布局的x轴坐标
+android:layout_y	指定控件在父布局的y轴坐标
+
+	应用常见：机顶盒
+------------------------------------------------------------------------------
+    android:layout_width="match_parent"  //match_parent匹配父类的宽度
+//  android:layout_height="match_parent" //匹配父类的高度(全屏红)
+    android:layout_height="wrap_content" //包裹内容(例:下面的键)(按键区红)
+    android:background="#ff0000"	//红色
+    android:orientation="vertical" >	//朝向:垂直
+//  android:orientation="horizontal"	//朝向:水平
+
+        android:id="@+id/btn"
+        android:layout_width="0dp"	//控件"宽高":一律用 dp
+//      android:layout_height="0dp"	//控件"宽高":一律用 dp
+        android:layout_weight="1"	//控件的权重
+android:textColorHint="#f00"		//设置hint字体的颜色,红色
+android:singleLine="1"			//过时,但用于"跑马灯"
+android:lines="4"			//设置TextView行高(限高)
+android:maxLines="1"			//最大1行
+ android:minLines="1"			//至少1行?
+android:inputType="textPassword"	//输入密码
+inputType = number			//只能输入数字
+android:drawableLeft="@drawable/dialog_title_default_icon"//TextView字体前面插入图片
+@android:drawable/presence/online	//系统自带的绿点
+			  /invisible	//系统自带的灰点
+
+<EditText
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_margin="5dp"
+	android:background="@drawable/input_selector"
+	android:hint="请输入要查询的号码"
+	android:enabled="false"		//是否能输入
+	android:padding="10dp"
+        android:textSize="20sp"
+	android:inputType="number"/>
+
+
+<GridView
+    android:id="@+id/gv_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:horizontalSpacing="5dp"	//每个元素间水平间距
+    android:verticalSpacing="5dp"	//垂直间距
+    android:numColumns="2">		//纵列
+</GridView>

@@ -1,0 +1,8 @@
+如果发现Fragment宽度不能填充满屏幕,看一下Fragment的根布局是不是LinearLayout,要改成RelativeLayout.
+
+如果 NestedScrollView 中嵌套 ViewPager 嵌套 Fragment, 而ViewPager高度不显示:
+    在 NestedScrollView 中添加属性: android:fillViewport="true"
+
+获取FragmentManager对象:
+1.如果Fragment依附在Activity,可以通过getSupportFragmentManager获取
+2.如果Fragment里面再嵌套Fragment,必须通过getChildFragmentManager获取

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<explode xmlns:android="http://schemas.android.com/apk/res/android"
+         android:duration="1000">
+
+    <targets>
+        <!--除了状态栏、导航栏以外其他所有的View进行爆炸分解动画效果-->
+        <target android:excludeId="@android:id/statusBarBackground"/>
+        <target android:excludeId="@android:id/navigationBarBackground"/>
+
+        <!--也可以是我们自己视图中的 view 的 id-->
+        <!--<target android:targetId="@+id/cut1"/>-->
+    </targets>
+</explode>
+
+    <!--//资源文件指定过渡动画-->
+    <!--getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));-->

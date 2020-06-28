@@ -1,0 +1,22 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+    <script language="javascript">
+        /* This function is invoked by the activity */
+        function wave() {
+            alert("Android调用Js啦");
+        }
+    </script>
+    <body>
+        <!-- Js调用Android代码 -->
+        <a onClick="window.demo.onJsCallback()"><div style="width:80px;
+            margin:0px auto;
+            padding:10px;
+            text-align:center;
+            border:2px solid #202020;" >
+                <img id="droid" src="android_normal.png"/><br>
+                Click me!
+        </div></a>
+    </body>
+</html>

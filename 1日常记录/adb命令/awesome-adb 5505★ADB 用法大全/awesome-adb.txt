@@ -1,0 +1,112 @@
+https://github.com/mzlogin/awesome-adb
+
+ADB Usage Complete / ADB 用法大全
+
+ADB，即 Android Debug Bridge，它是 Android 开发/测试人员不可替代的强大工具，也是 Android 设备玩家的好玩具。
+持续更新中，欢迎提 PR 和 Issue 补充指正，觉得有用的可以将 此 GitHub 仓库 Star 收藏备用。
+注： 有部分命令的支持情况可能与 Android 系统版本及定制 ROM 的实现有关。
+
+
+基本用法
+命令语法
+为命令指定目标设备
+启动/停止
+查看 adb 版本
+以 root 权限运行 adbd
+指定 adb server 的网络端口
+设备连接管理
+查询已连接设备/模拟器
+USB 连接
+无线连接（需要借助 USB 线）
+无线连接（无需借助 USB 线）
+应用管理
+查看应用列表
+所有应用
+系统应用
+第三方应用
+包名包含某字符串的应用
+安装 APK
+卸载应用
+清除应用数据与缓存
+查看前台 Activity
+查看正在运行的 Services
+查看应用详细信息
+查看应用安装路径
+与应用交互
+启动应用/ 调起 Activity
+调起 Service
+停止 Service
+发送广播
+强制停止应用
+收紧内存
+文件管理
+复制设备里的文件到电脑
+复制电脑里的文件到设备
+模拟按键/输入
+电源键
+菜单键
+HOME 键
+返回键
+音量控制
+媒体控制
+点亮/熄灭屏幕
+滑动解锁
+输入文本
+查看日志
+Android 日志
+按级别过滤日志
+按 tag 和级别过滤日志
+日志格式
+清空日志
+内核日志
+查看设备信息
+型号
+电池状况
+屏幕分辨率
+屏幕密度
+显示屏参数
+android_id
+IMEI
+Android 系统版本
+IP 地址
+Mac 地址
+CPU 信息
+内存信息
+更多硬件与系统属性
+修改设置
+分辨率
+屏幕密度
+显示区域
+关闭 USB 调试模式
+允许/禁止访问非 SDK API
+状态栏和导航栏的显示隐藏
+实用功能
+屏幕截图
+录制屏幕
+重新挂载 system 分区为可写
+查看连接过的 WiFi 密码
+设置系统日期和时间
+重启手机
+检测设备是否已 root
+使用 Monkey 进行压力测试
+开启/关闭 WiFi
+刷机相关命令
+重启到 Recovery 模式
+从 Recovery 重启到 Android
+重启到 Fastboot 模式
+通过 sideload 更新系统
+安全相关命令
+启用/禁用 SELinux
+启用/禁用 dm_verity
+更多 adb shell 命令
+查看进程
+查看实时资源占用情况
+查看进程 UID
+其它
+常见问题
+启动 adb server 失败
+com.android.ddmlib.AdbCommandRejectedException
+adb 的非官方实现
+相关命令
+致谢
+参考链接

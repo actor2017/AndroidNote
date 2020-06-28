@@ -1,0 +1,10 @@
+
+    private void parseLoginJson(String response) {
+        LoginInfo loginInfo = JSON.parseObject(response, LoginInfo.class);
+        if (loginInfo.errCode == 0) {
+            ToastUtils.show(this,"µÇÂ¼³É¹¦!");
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            ToastUtils.show(this,"µÇÂ¼Ê§°Ü!");
+        }
+    }

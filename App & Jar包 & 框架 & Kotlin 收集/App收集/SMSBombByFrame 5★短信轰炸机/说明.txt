@@ -1,0 +1,118 @@
+http://blog.csdn.net/never_cxb/article/details/47614247
+https://github.com/studychen/android/tree/master/SMSBombByFrame
+
+根据电话号码, 调用的是互联网第三方接口发送的短信，使用的是其他网站的get post请求。不会泄露自己的手机号码的，不需本手机的短信费用
+
+亮点
+
+滚动数字的TextView, 仿支付宝的余额宝滚动效果
+利用Activity托管Fragment的方式
+能够根据接口的response(一般是json字符串)判断发送成功的条数
+多线程发送, 更快
+圆角 Button 设计
+橙色底线的edittext
+有用户友好提示, 比如: 当前网络无法连接, 稍后再试
+
+
+前期准备
+
+圆角按钮
+查看这篇文章 Android 实现圆角按钮
+http://blog.csdn.net/never_cxb/article/details/47662129
+
+Internet是否可用
+查看这篇文章 Android 判读Internet是否可用
+http://blog.csdn.net/never_cxb/article/details/47658257
+
+Log工具类
+查看这篇文章 定制自己的android工具类
+http://blog.csdn.net/never_cxb/article/details/47167935
+
+橙色底线的edittext
+查看这篇文章定制edittext 改变底线颜色
+http://blog.csdn.net/never_cxb/article/details/47664111
+
+遇到的问题
+
+AsyncTask的全局线程池有几个工作线程
+How many AsyncTasks can you run at once?
+In most versions of Android, the answer is 128.
+有些版本是5个, 我在我机子上测试, 10个 AsyncTasks 可以 运行
+ConcurrentModificationException
+
+08-13 17:58:17.905: E/AndroidRuntime(20074): Caused by: java.util.ConcurrentModificationException
+for (RequestGetPostTask task : taskList) {
+    if (task.getStatus() == AsyncTask.Status.FINISHED) {
+        taskList.remove(task);
+    }
+}
+这段代码的错误, 遍历的同时又对 List 修改
+
+
+多线程发送短信, 最后需要统计成功的个数
+利用 synchronized 进行同步
+synchronized (successAccount) {
+    if (result instanceof Boolean) {
+        if ((Boolean) result) {
+            ++successAccount;
+        }
+    }
+}
+
+
+
+怎么样判断 所有的 AsyncTask 都结束
+
+Solution 
+把 AsyncTask 先都 加到一个 集合里, 然后遍历这个集合, 查看状态
+
+优化 
+可以把 finished 的AsyncTask移出集合, 这样减少下次遍历的数目
+List<RequestGetPostTask> taskList = new ArrayList<RequestGetPostTask>();
+for (int i = 0; i < timesInt; i++) {
+    RequestGetPostTask singleTask = new RequestGetPostTask(getActivity(), bobmResultListener);
+    taskList.add(singleTask);
+    singleTask.execute();
+}
+
+while (true) {
+    if (taskList == null || taskList.size() == 0) {
+        break;
+    }
+    Iterator<RequestGetPostTask> it = taskList.iterator();
+    while (it.hasNext()) {
+        if (it.next().getStatus().equals(AsyncTask.Status.FINISHED)) {
+                it.remove();
+            }
+    }
+    if (taskList == null || taskList.size() == 0) {
+        break;
+    }
+    try {
+        Thread.sleep(30);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+
+
+
+state_focused 和 state_window_focused 区别
+android:state_focused 获得焦点
+android:state_window_focused 所在的窗口获得焦点
+
+
+
+预览 layout xml 产生的效果图 模糊 不清楚
+
+xml 预览 模糊 花了似的
+
+原因
+没有使用 9.png 直接使用了 png, 图片拉伸后变形
+
+
+录制app运行视频
+cd /Applications/sdk/platform-tools/
+./adb shell 
+screenrecord /sdcard/ll.mp4  
+按下 ctrl + c 终止 或者到了最长录制时间(179s)

@@ -1,0 +1,41 @@
+https://github.com/zetbaitsu/Compressor
+
+implementation 'id.zelory:compressor:2.1.0'
+
+
+Compress Image File
+compressedImageFile = new Compressor(this).compressToFile(actualImageFile);
+
+
+Compress Image File to Bitmap
+compressedImageBitmap = new Compressor(this).compressToBitmap(actualImageFile);
+
+
+I want custom Compressor!
+compressedImage = new Compressor(this)
+            .setMaxWidth(640)
+            .setMaxHeight(480)
+            .setQuality(75)
+            .setCompressFormat(Bitmap.CompressFormat.WEBP)
+            .setDestinationDirectoryPath(Environment.getExternalStoragePublicDirectory(
+              Environment.DIRECTORY_PICTURES).getAbsolutePath())
+            .compressToFile(actualImage);
+
+
+Stay cool compress image asynchronously with RxJava!
+new Compressor(this)
+        .compressToFileAsFlowable(actualImage)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<File>() {
+            @Override
+            public void accept(File file) {
+                compressedImage = file;
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                throwable.printStackTrace();
+                showError(throwable.getMessage());
+            }
+        });

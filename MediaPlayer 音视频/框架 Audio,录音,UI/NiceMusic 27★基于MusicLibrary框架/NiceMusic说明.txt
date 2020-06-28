@@ -1,0 +1,15 @@
+https://github.com/lizixian18/NiceMusic
+A Nice MusicPlayer Powered by MusicLibrary
+
+Statement
+
+本项目现阶段旨在尽量模拟各种场景来测试MusicLibrary，并作为一个例子去使用MusicLibrary， 所以做得比较粗糙，界面也不多，以后会慢慢完善起来，暂不提供Apk下载，有兴趣可以下载代码运行一下，一起学习。
+
+如果你有想法或者意见和建议，欢迎提issue，喜欢点个star。
+
+About me
+
+An android developer in GuangZhou
+简书：http://www.jianshu.com/users/286f9ad9c417/latest_articles
+Email:386707112@qq.com
+If you want to make friends with me, You can give me a Email and follow me。

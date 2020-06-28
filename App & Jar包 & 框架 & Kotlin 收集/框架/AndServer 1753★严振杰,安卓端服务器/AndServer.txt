@@ -1,0 +1,37 @@
+﻿https://github.com/yanzhenjie/AndServer
+https://github.com/yanzhenjie/AndServer/blob/master/README-CN.md
+https://yanzhenjie.com/AndServer
+
+🍒 Web server and web framework of Android platform. 
+
+AndServer
+Android平台的Web服务器和Web开发框架。AndServer像SpringMVC一样提供了注解方式，不同的是AndServer基于编译时注解，如果你使用过SpringMVC，那么你将很快的掌握它。
+
+静态网站部署
+动态Http Api部署
+
+@RestController
+@RequestMapping(path = "/user")
+public class UserController {
+
+    @PostMapping("/login")
+    public String login(@RequestParam("account") String account, 
+        @RequestParam("password") String password) {
+        if (...) {
+            return "Successful.";
+        }
+        return "Failed.";
+    }
+
+    @GetMapping(path = "/info/{userId}")
+    public User detail(@PathVariable("userId") String userId) {
+        User user = findUserById(userId);
+        ...
+
+        return user;
+    }
+}
+上面的代码将会生成下面的两个Http Api：
+
+POST http://.../user/login
+GET http://.../user/info/uid_001

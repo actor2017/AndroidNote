@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kuchuan.education.view.impl.activity.BigPhotosActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
+    <CirclePageIndicator.CirclePageIndicator
+        android:id="@+id/cpi_circlepageindicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        app:fillColor="#FF888888"
+        app:pageColor="@android:color/transparent"
+        app:radius="10dp"
+        app:strokeColor="#FF888888"
+        app:strokeWidth="2dp"/>
+</FrameLayout>

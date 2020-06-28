@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--在toolBar中设置app:theme="@style/ToolBarStyle"-->
+    <style name="ToolBarTheme" parent="AppTheme">
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <!--设置溢出菜单项图标,也可以在代码中设置-->
+        <!--<item name="actionOverflowButtonStyle">@style/OverFlowIcon</item>-->
+        <!--只要ToolBar没有自定义颜色,就是这个颜色(包括popup里的文字颜色)-->
+        <item name="android:textColorPrimary">@color/color_white</item>
+        <!-- 设置 显示在toobar上菜单文字的颜色,网上另外一种方法,没试过 -->
+        <!--<item name="actionMenuTextColor">@android:color/white</item>-->
+        <!--只要ToolBar没有自定义字体大小,就是这个大小(包括popup例的文字大小)-->
+        <item name="android:textSize">25sp</item>
+        <!--指定的返回键的颜色,activity中:getSupportActionBar().setDisplayHomeAsUpEnabled(true)设置返回键-->
+        <item name="colorControlNormal">@color/color_white</item>
+    </style>
+
+    <!--设置溢出菜单项图标,也可以在代码中设置溢出菜单的图标:
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.add_white));-->
+    <style name="OverFlowIcon" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/add_white</item>
+    </style>
+
+
+    <!--溢出菜单项下移-->
+    <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->
+        <item name="overlapAnchor">false</item>
+        <!-- 弹出层背景颜色 -->
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
+        <item name="android:dropDownVerticalOffset">50dp</item>
+        <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
+        <item name="android:dropDownHorizontalOffset">-10dp</item>
+    </style>
+
+    <color name="color_white">#fff</color>
+    <color name="color_red">#f00</color>
+
+    <!--ToolBar中的Title的Appearance-->
+    <style name="ToolBarTitleStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

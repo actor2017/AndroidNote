@@ -1,0 +1,6 @@
+https://github.com/dm77/barcodescanner
+Barcode Scanner Libraries for Android
+Android库项目提供了易于使用和可扩展的基于ZXing和ZBar的条形码扫描视图。
+
+//https://github.com/dm77/barcodescanner
+implementation 'me.dm7.barcodescanner:zxing:1.9.13'

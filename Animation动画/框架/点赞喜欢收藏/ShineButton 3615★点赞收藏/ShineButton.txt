@@ -1,0 +1,3 @@
+https://github.com/ChadCSong/ShineButton
+This is a UI lib for Android. Effects like shining.
+这是Android的UI库。像闪亮的效果。

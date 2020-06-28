@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="圆环"/>
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="单个波浪"/>
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="滑动无数波浪"/>
+    </RadioGroup>
+
+    <cn.itcast.wave12.MyRing
+        android:id="@+id/mr_myRing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <cn.itcast.wave12.SimpleWave
+        android:id="@+id/sw_simpleWave"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <cn.itcast.wave12.MyWave
+        android:id="@+id/mw_myWave"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -1,0 +1,80 @@
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="开启夜间模式"
+            android:textSize="16sp"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/sc_switch_compat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:longClickable="false"
+            android:textColor="@color/white"
+            android:textOff="Off"
+            android:textOn="On"
+            app:showText="true"
+            app:switchPadding="5dp"
+            app:switchTextAppearance="@style/SwitchCompat.Text"
+            app:theme="@style/SwitchCompat.Control"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/tv_switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="开启夜间模式"
+            android:textSize="16sp"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/sc_switch_compat2"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:checked="false"
+            android:longClickable="false"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/tv_switch3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="开启夜间模式"
+            android:textSize="16sp"/>
+
+        <Switch
+            android:id="@+id/s_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:checked="false"
+            android:longClickable="false"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:theme="@style/SwitchStyle"/>
+    </RelativeLayout>

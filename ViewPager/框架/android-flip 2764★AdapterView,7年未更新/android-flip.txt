@@ -1,0 +1,7 @@
+https://github.com/openaphid/android-flip
+
+import android.widget.AdapterView;
+
+
+A component for flip animation on Android, which is similar to the effect in Flipboard iPhone/Android http://openaphid.github.com/
+Android上的flip动画组件，类似于Flipboard iPhone/Android http://openaphid.github.com/中的效果

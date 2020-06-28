@@ -1,0 +1,2 @@
+https://github.com/sockeqwe/mosby
+A Model-View-Presenter / Model-View-Intent library for modern Android apps http://hannesdorfmann.com/mosby/

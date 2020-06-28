@@ -1,0 +1,32 @@
+
+public class SettingActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_setting);
+
+        /**
+         * 这是B Activity,且是singleTask  或者  singleTop,如果想要就收D Activity
+         * 传递过来的数据,就接收不到,显示的还是原来的A Activity的老的数据
+         */
+        int num = getIntent().getIntExtra("num",0);
+        EditText test11111111111111 = (EditText) findViewById(R.id.et_versionName);
+        test11111111111111.setText(num);
+    }
+
+    /**
+     * 当B页面启动模式是:singleTask  或者  singleTop 的时候,如果B页面要接收
+     * D页面新的Intent传递过来的数据,就必须重写onNewIntent()方法
+     * @param intent
+     */
+    @Override
+    protected void onNewIntent(Intent intent) {
+        System.out.println("B Activity 被复用了");
+        setIntent(intent);
+        int num = getIntent().getIntExtra("num",0);
+        EditText test11111111111111 = (EditText) findViewById(R.id.et_versionName);
+        test11111111111111.setText(num);
+        super.onNewIntent(intent);
+    }
+}

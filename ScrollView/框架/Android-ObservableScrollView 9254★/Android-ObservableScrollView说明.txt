@@ -1,0 +1,13 @@
+https://github.com/ksoichiro/Android-ObservableScrollView
+
+Android library to observe scroll events on scrollable views. 
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Other dependencies are omitted
+    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
+}
+

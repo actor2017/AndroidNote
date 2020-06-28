@@ -1,0 +1,35 @@
+https://github.com/yshrsmz/KeyboardVisibilityEvent
+
+Android Library to handle soft keyboard visibility change event. show/hide keyboard method is also included.
+
+from 2.0.0, AAR is distributed via jCenter.
+
+dependencies {
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
+}
+Usage
+check out sample project!
+
+Add event listener for keyboard change event
+Automatically unregistering the event on the Activity's onDestroy
+KeyboardVisibilityEvent.setEventListener(
+        getActivity(),
+        new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                // some code depending on keyboard visiblity status
+            }
+        });
+Manually unregistering the event
+// get Unregistrar
+Unregistrar unregistrar = KeyboardVisibilityEvent.registerEventListener(
+        getActivity(),
+        new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                // some code depending on keyboard visiblity status
+            }
+        });
+
+// call this method when you don't need the event listener anymore
+unregistrar.unregister();

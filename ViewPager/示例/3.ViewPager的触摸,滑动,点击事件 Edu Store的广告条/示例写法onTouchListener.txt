@@ -1,0 +1,54 @@
+            //viewpager的触摸监听
+            vpViewpager.setOnTouchListener(new View.OnTouchListener() {
+
+                private float downY;
+                private float downX;
+                private long clickTime;
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN://注意,如果viewpager内容有点击事件,那么不走这个down方法
+                            clickTime = System.currentTimeMillis();
+                            downX = event.getX();
+                            downY = event.getY();
+                        case MotionEvent.ACTION_MOVE:
+                            bannerHandler.removeMessages(0);
+                            bannerHandler.removeCallbacksAndMessages(null);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            bannerHandler.removeMessages(0);
+                            bannerHandler.sendEmptyMessageDelayed(0, 3000);
+                            //点击事件
+                            if (bannerDatas != null && (Math.abs(event.getX() - downX)) < 5 && (Math.abs(event.getY() - downY)) < 5 && (System.currentTimeMillis() - clickTime) < 150) {
+                                int position = vpViewpager.getCurrentItem();
+                                switch (bannerDatas.get(position).bannerType) {
+                                    case 1://1.跳转APP详情页
+                                        intent = new Intent(getActivity(), DetailActivity.class);
+                                        intent.putExtra(Global.APPID, bannerDatas.get(position).appId);
+                                        intent.putExtra(Global.APPURL, bannerDatas.get(position).appUrl);
+                                        intent.putExtra(Global.APPPACKAGENAME, bannerDatas.get(position).packageName);
+                                        startActivity(intent);
+                                        break;
+                                    case 2://2.跳转活动
+                                        break;
+                                    case 3://3.跳转html5页面
+                                        if (!TextUtils.isEmpty(bannerDatas.get(position).jumpUrl)) {
+                                            intent = new Intent(getActivity(), WebPageActivity.class);
+                                            intent.putExtra(Global.JUMPURL, bannerDatas.get(position).jumpUrl);
+                                            startActivity(intent);
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        default:
+                            bannerHandler.removeMessages(0);
+                            bannerHandler.sendEmptyMessageDelayed(0, 3000);
+                            break;
+                    }
+                    return false;
+                }
+            });

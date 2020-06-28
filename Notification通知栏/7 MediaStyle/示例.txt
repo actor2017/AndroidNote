@@ -1,0 +1,36 @@
+注意事项 
+1. 使用类v7包下的NotificationCompat.MediaStyle 
+2. addAction方法并普通样式也可以用，使用后普通通知可以点击展开，展开部分会显示一排添加的图标，并且可以给每个图标设置不同的点击事件 
+3. 最多可以添加5哥action 并排显示在点击展开的部分 
+4. setShowActionsInCompactView的参数是添加的action在所有action组成的数组中的下标，从0开始 
+5. setShowActionsInCompactView设置的action会显示在点击前的通知的右侧，低版本上也可以显示 
+6. setShowCancelButton(true)会在通知的右上部分显示一个删除图标 5.0以下有效
+
+    private void mediaStyle(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("MediaStyle");
+        builder.setContentText("Song Title");
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        Intent intent = new Intent(this,ImageActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,0);
+        builder.setContentIntent(pIntent);
+        //第一个参数是图标资源id 第二个是图标显示的名称，第三个图标点击要启动的PendingIntent
+        builder.addAction(R.drawable.ic_previous_white,"",null);
+        builder.addAction(R.drawable.ic_stop_white,"",null);
+        builder.addAction(R.drawable.ic_play_arrow_white_18dp,"",pIntent);
+        builder.addAction(R.drawable.ic_next_white,"",null);
+        NotificationCompat.MediaStyle style = new NotificationCompat.MediaStyle();
+        style.setMediaSession(new MediaSessionCompat(this,"MediaSession",
+                new ComponentName(MainActivity.this,Intent.ACTION_MEDIA_BUTTON),null).getSessionToken());
+        //CancelButton在5.0以下的机器有效
+        style.setCancelButtonIntent(pIntent);
+        style.setShowCancelButton(true);
+        //设置要现实在通知右方的图标 最多三个
+        style.setShowActionsInCompactView(2,3);
+        builder.setStyle(style);
+        builder.setShowWhen(false);
+        Notification notification = builder.build();
+        manger.notify(TYPE_Media,notification);
+    }

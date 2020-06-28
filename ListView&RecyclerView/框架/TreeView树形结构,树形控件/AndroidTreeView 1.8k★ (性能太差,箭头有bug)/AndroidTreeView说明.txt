@@ -1,0 +1,60 @@
+https://github.com/bmelnychuk/AndroidTreeView
+
+1)添加库作为项目的依赖项
+compile 'com.github.bmelnychuk:atv:1.2.+'
+
+2)从根元素开始创建tree。TreeNode.root()元素将不会显示，因此不需要设置任何内容。
+TreeNode root = TreeNode.root();
+
+创建并添加您的节点(使用自定义对象作为构造函数param)
+TreeNode parent = new TreeNode("MyParentNode");
+ TreeNode child0 = new TreeNode("ChildNode0");
+ TreeNode child1 = new TreeNode("ChildNode1");
+ parent.addChildren(child0, child1);//添加许多孩子
+ root.addChild(parent);//添加一个孩子
+
+3)将树视图添加到布局中Add tree view to layout
+AndroidTreeView tView = new AndroidTreeView(getActivity(), root);
+ containerView.addView(tView.getView());
+
+最简单但没有样式的树已经准备好了。现在可以将父节点视为树的根
+
+4)节点的自定义视图Custom view for nodes
+继承 TreeNode.BaseNodeViewHolder 和重写 createNodeView 方法为节点准备定制视图:
+public class MyHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem> {
+    ...
+    @Override
+    public View createNodeView(TreeNode node, IconTreeItem value) {
+        final LayoutInflater inflater = LayoutInflater.from(context);
+        final View view = inflater.inflate(R.layout.layout_profile_node, null, false);
+        TextView tvValue = (TextView) view.findViewById(R.id.node_value);
+        tvValue.setText(value.text);
+        
+        return view;
+    }
+    ...
+    public static class IconTreeItem {
+        public int icon;
+        public String text;
+    }
+}
+
+5)连接视图持有者与节点 Connect view holder with node
+IconTreeItem nodeItem = new IconTreeItem();
+  TreeNode child1 = new TreeNode(nodeItem).setViewHolder(new MyHolder(mContext));
+
+6)考虑使用 Consider using
+TreeNode.setClickListener(TreeNodeClickListener listener);
+AndroidTreeView.setDefaultViewHolder
+AndroidTreeView.setDefaultNodeClickListener
+...
+
+7)其余方法
+AndroidTreeView.expandAll();//展开全部
+AndroidTreeView.collapseAll();//收缩全部
+
+有关更多细节，请使用示例应用程序
+如果我错过了什么，请告诉我，谢谢你的支持，谢谢!
+For more details use sample application as example
+Let me know if i missed something, appreciate your support, thanks!
+

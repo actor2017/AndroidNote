@@ -1,0 +1,9 @@
+https://github.com/wzb19960208/idCardRecognition
+博客园：http://www.cnblogs.com/wzben/p/5945071.html
+基于Tesseract的身份证识别
+
+idCardRecognition
+
+基于Tesseract的身份证识别
+
+图片来源均为网络，且对着屏幕拍照，影响很大，所以有误差，实际拍摄照片效果良好

@@ -1,0 +1,18 @@
+    compile "com.android.support:design:$supportLibVersion"
+
+
+###Android5.0、6.0新特性。
+
+	1. Android5.0新特性：
+		MaterialDesign设计风格
+		支持多种设备
+		支持64位ART虚拟机
+	2. Android6.0新特性
+		大量漂亮流畅的动画
+		支持快速充电的切换
+		支持文件夹拖拽应用
+		相机新增专业模式
+	3. Android7.0新特性
+		分屏多任务
+		增强的Java8语言模式
+		夜间模式

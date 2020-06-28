@@ -1,0 +1,5 @@
+https://github.com/Luolc/EmojiRain
+Implement a simple and funny Android animation —— the emoji rain in WeChat app.
+这是一个特别小巧的Android掉emoji表情包实现。效果类似于微信中发送"生日快乐"和"么么哒"之类的词语时触发的动画效果。
+
+现在你也可以把这个有趣的特性加入自己的app啦在圣诞节的时候给用户掉圣诞树emoji吧 :D

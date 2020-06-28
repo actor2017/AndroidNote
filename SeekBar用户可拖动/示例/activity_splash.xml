@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SeekBar 和 AppCompatSeekBar:\nstyle一样的时候,长的一样"
+            android:textColor="@color/colorAccent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="没写style"
+            android:textColor="@color/green"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.style=@style/Base.Widget.AppCompat.SeekBar"
+            android:textColor="@color/green"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@style/Base.Widget.AppCompat.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.style=@style/MediaController_SeekBar"
+            android:textColor="@color/green"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@style/MediaController_SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.style=@style/Widget.AppCompat.SeekBar"
+            android:textColor="@color/green"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@style/Widget.AppCompat.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--=========================================================-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.style=@android:style/Widget.SeekBar"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:splitTrack="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.style=@android:style/Widget.Holo.SeekBar"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.Holo.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.style=@android:style/Widget.Holo.Light.SeekBar"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.Holo.Light.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.style=@android:style/Widget.Material.SeekBar(api21)"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.Material.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.style=@android:style/Widget.Material.Light.SeekBar(api21)"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.Material.Light.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6.style=@android:style/Widget.DeviceDefault.SeekBar"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.DeviceDefault.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7.style=@android:style/Widget.DeviceDefault.Light.SeekBar"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--=========================================================-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义\n1.滑块:图片.\n2.背景:纯色/渐变颜色"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/layer_list_seekbar"
+            android:splitTrack="false"
+            android:thumb="@drawable/icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.滑块:selector\n2.背景:图片(背景图片好像不用写android:splitTrack="false")"
+            android:textColor="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/layer_list_seekbar2"
+            android:thumb="@drawable/selector_seekbar_thumb"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,10 @@
+https://github.com/emilsjolander/StickyListHeaders
+
+1.添加依赖:compile 'se.emilsjolander:stickylistheaders:2.7.0'
+
+2.布局文件中
+<se.emilsjolander.stickylistheaders.StickyListHeadersListView
+    android:id="@+id/slhlv_progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</se.emilsjolander.stickylistheaders.StickyListHeadersListView>

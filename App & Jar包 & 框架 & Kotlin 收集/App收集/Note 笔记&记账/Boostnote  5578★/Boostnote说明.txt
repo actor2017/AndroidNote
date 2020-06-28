@@ -1,0 +1,7 @@
+JavaScript:https://github.com/BoostIO/Boostnote
+iOS and Android:https://github.com/BoostIO/Boostnote-mobile
+官网:https://boostnote.io
+知乎:https://zhuanlan.zhihu.com/p/32015294
+
+Boostnote是为程序员开发的一种记事本开放源码应用程序。 我们的GitHub 星数已经超过了5,400。Boostnote主要的功能有两个。Markdown笔记,Snippet笔记。
+

@@ -1,0 +1,5 @@
+https://github.com/apache/cordova-android
+
+Apache Cordova Android
+
+基础是html和js运行在webview容器里面,通过Cordova提供的接口与硬件通讯;所以它的效率天生收到限制,而且也受到了各个厂商对webkit内核的好坏;比如之前基于国产某Cloud的程序,在华为手机上显示就不正常,花费了不少精力修改;

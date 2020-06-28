@@ -1,0 +1,43 @@
+    /**
+     * 拍照
+     *
+     * @param needSaveInDir 是否需要保存到指定目录
+     * @param picName       如果需要保存到指定目录,那么给照片取个名字吧,例:1.jpg or 1.png.如果不需要保存到指定目录,传null吧
+     * @param requestCode   请求码
+     */
+    public void takePhoto(boolean needSaveInDir, @Nullable String picName, int requestCode) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (needSaveInDir) {
+            if (picName != null) {
+                if (!picName.toLowerCase().endsWith(".jpg") && !picName.toLowerCase().endsWith(""
+                        + ".png")) {
+                    picName += ".jpg";
+                }
+            } else {
+                toast("takePhoto:拍照时保存照片名字为null");
+                return;
+            }
+            File file = new File(BitmapToPngFile.getDefaultPath(getClass().getSimpleName() + picName));
+            Uri imageUri = Uri.fromFile(file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+
+    //获取图片
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //这里data == null,注意
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            //这里的picPaths里是String path.
+            picPaths.add(BitmapToPngFile.getDefaultPath(getClass().getSimpleName() + picPaths.size() + ".jpg"));
+            if (myPicsAdapter == null) {//初始化
+                myPicsAdapter = new MyPicsAdapter();
+                rvPics.setAdapter(myPicsAdapter);
+            } else {
+                myPicsAdapter.notifyDataSetChanged();
+            }
+        }
+    }

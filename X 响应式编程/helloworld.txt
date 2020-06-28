@@ -1,0 +1,50 @@
+
+
+1、创建Observable对象
+	Observable<String> myObservable = Observable.create(  
+		new Observable.OnSubscribe<String>() {  
+			@Override  
+			public void call(Subscriber<? super String> sub) {  
+				sub.onNext("Hello, world!"); //通知订阅者
+				sub.onCompleted();  
+			}  
+		}  
+	);
+	
+2、创建一个Subscriber来处理Observable对象发出的字符串
+	Subscriber<String> mySubscriber = new Subscriber<String>() {  
+		@Override  
+		public void onNext(String s) { System.out.println(s); }  
+	  
+		@Override  
+		public void onCompleted() { }  
+	  
+		@Override  
+		public void onError(Throwable e) { }  
+	}; 
+	
+3、将定义的myObservable对象和mySubscriber对象关联起来，这样就完成了subscriber对observable的订阅。
+	myObservable.subscribe(mySubscriber);  
+
+	
+简化版：
+
+	Observable<String> myObservable = Observable.just("Hello, world!");
+	Action1<String> onNextAction = new Action1<String>() {  
+		@Override  
+		public void call(String s) {  
+			System.out.println(s);  
+		}  
+	}; 
+	myObservable.subscribe(onNextAction); 
+	
+	
+最终简化版：
+
+	Observable.just("Hello, world!")  
+			  .subscribe(new Action1<String>() {  
+					@Override  
+					public void call(String s) {  
+						  System.out.println(s);  
+					}  
+			  });  

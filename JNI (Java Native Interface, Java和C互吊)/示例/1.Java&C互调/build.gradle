@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    buildTypes {
+        defaultConfig {
+            applicationId "com.kuchuanyun.cpptest"
+            minSdkVersion 15
+            targetSdkVersion 25
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+            /**
+             * 1. 两个字段的作用
+             * -frtti：如果您希望支持 RTTI，Gradle 会将其传递到 CMake。
+             * -fexceptions：启用对 C++ 异常处理的支持，Gradle 会将其传递到 CMake。
+             */
+            externalNativeBuild {
+                cmake {
+                    cppFlags "-frtti -fexceptions"
+                }
+            }
+            //2.不写也可以
+//            ndk {
+//                moduleName 'native-lib'//moduleName要与CMakeLists.txt中add_library定义的libraryName一致
+//                //指定本机的ABI配置,类库应该与APK一起构建和打包。
+//                abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a', 'mips', 'mips64'
+//            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //3.添加so库,与buildTypes { 同级
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    //4.编译成linux环境下可执行的.so文件
+    externalNativeBuild {
+        //CMake一款外部构建工具,可与Gradle搭配使用来构建原生库.如果您只计划使用ndk-build,则不需要此组件.
+        cmake {
+            path "CMakeLists.txt"
+        }
+
+        //使用NDK的方式编译,编译时到这个文件下找到.c文件位置(一般用上面种cmake编译方式)
+//        ndkBuild {
+//            path "Android.mk"
+//        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.+'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:design:25.1.1'
+}

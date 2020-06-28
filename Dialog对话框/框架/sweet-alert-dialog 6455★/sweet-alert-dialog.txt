@@ -1,0 +1,5 @@
+https://github.com/pedant/sweet-alert-dialog
+
+SweetAlert for Android, a beautiful and clever alert dialog
+针对Android的SweetAlert，一个漂亮而聪明的警告对话框
+

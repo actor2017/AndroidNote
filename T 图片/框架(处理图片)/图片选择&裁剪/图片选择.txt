@@ -1,0 +1,26 @@
+Œ¥∫À µ????????????????????
+ intent = new Intent(Intent.ACTION_GET_CONTENT);
+       intent.setType("image/*");
+       startActivityForResult(intent, GALLERY_REQUEST_CODE);
+
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+if (requestCode == GALLERY_REQUEST_CODE) {
+     if (data == null) {//œ‡≤·
+       return;
+     }
+     Uri uri;
+     uri = data.getData();
+     Uri fileUri = convertUri(uri);
+     startImageZoom(fileUri);
+   } else if (requestCode == CROP_REQUEST_CODE) {
+     if (data == null) {
+       return;
+     }//ºÙ≤√∫ÛµƒÕº∆¨
+     Bundle extras = data.getExtras();
+     if (extras == null) {
+       return;
+     }
+     Bitmap bm = extras.getParcelable("data");
+     ShowImageView(bm);
+   }

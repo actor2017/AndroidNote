@@ -1,0 +1,13 @@
+https://github.com/CameraKit/blurkit-android
+
+The missing Android blurring library. Fast blur-behind layout that parallels iOS.
+BlurKit是一款非常易于使用且高性能的工具，可在Android中渲染实时模糊效果。
+
+性能比较
+由于大量的位图检索和绘图优化，BlurKit比其他模糊库更快。我们一直在为300dp x 100dp BlurView的基本高强度任务记录基准：
+
+任务			BlurKit时间	平均。没有BlurKit的时间
+检索源位图		1-2毫秒		8-25毫秒
+模糊并绘制到BlurView	1-2毫秒		10-50ms
+这导致平均工作/帧时间为2-4ms，这将是大多数用户和应用程序的无缝体验。
+

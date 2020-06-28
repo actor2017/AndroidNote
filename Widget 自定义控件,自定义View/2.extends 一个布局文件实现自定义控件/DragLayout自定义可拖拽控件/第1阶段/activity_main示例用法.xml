@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DragLayout里面2个孩子-->
+<com.heima.android50.widght.DragLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.heima.android50.MainActivity">
+
+    <LinearLayout
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#0f0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </LinearLayout>
+
+</com.heima.android50.widght.DragLayout>

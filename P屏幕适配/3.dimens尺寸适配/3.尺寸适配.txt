@@ -1,0 +1,22 @@
+﻿dp-->px转化关系
+
+//手机分辨率的长的平方加上宽的平方和再开方，再除以手机屏幕尺寸(英寸),每英寸上像素的个数,超过320人眼基本无法识别
+1.屏幕的ppi(Pixel per inch,像素每一英寸,像素分辨率):PPI=√(X² + Y²)/Z;
+  比如以iPhone4手机为例来计算屏幕PPI值:ppi=√(960² + 640²)/3.5;=330
+
+2.屏幕的密度(屏幕的精细程度): density=ppi/160;
+
+dp=px/屏幕密度
+px=dp*屏幕密度
+
+获取屏幕密度:float density = getResource().getDisplayMetrics().density;
+屏幕ppi:     density*160;
+
+
+如何适配:
+1.要写成dp,不要写成px
+2.可以用权重
+3.values-hdpi
+  ...
+4.values-1280x720(精确适配)
+这些文件夹下放dimens.xml文件

@@ -1,0 +1,23 @@
+https://github.com/ybq/Android-SpinKit
+
+
+<com.github.ybq.android.spinkit.SpinKitView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/spin_kit"
+    style="@style/SpinKitView.Large.Circle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:SpinKit_Color="@color/colorAccent" />
+
+
+ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
+DoubleBounce doubleBounce = new DoubleBounce();
+progressBar.setIndeterminateDrawable(doubleBounce);
+
+
+@style/SpinKitView
+@style/SpinKitView.Circle
+@style/SpinKitView.Large
+@style/SpinKitView.Small
+@style/SpinKitView.Small.DoubleBounce 

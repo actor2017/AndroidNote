@@ -1,0 +1,26 @@
+【1】getActivity(Context context, int requestCode, Intent intent, int flags)
+
+【2】getBroadcast(Context context, int requestCode, Intent intent, int flags)
+
+【3】getService(Context context, int requestCode, Intent intent, int flags)
+
+【4】其他方法
+
+https://developer.android.com/reference/android/app/PendingIntent.html
+
+3. PendingIntent介绍
+
+【1】使用方法类的静态方法getActivity,getBroadcast,getService,可以得到一个PendingIntent对象，分别对应着Intent的三个行为，跳转到一个activity组件、打开一个广播组件和打开一个服务组件
+
+【2】参数有4个，比较重要的是第三个和第一个，可以看到，要得到PendingIntent对象，必须传入一个Intent作为参数
+
+【3】PendingIntent是一种特殊的Intent，主要的区别在于Intent的执行是立刻的，而PendingIntent的执行不是立刻的，PendingIntent执行的操作实质上是参数传进来的Intent的操作
+
+【4】使用PendingIntent的目的在于它所包含的Intent的操作的执行是需要满足某些条件的
+  状态栏通知(Notification的发送)
+  短消息发送(SmsManager)
+  警报器执行(AlarmManager)
+
+【5】参考链接
+
+http://www.cnblogs.com/wjjair/p/3392031.html

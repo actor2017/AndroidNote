@@ -1,0 +1,52 @@
+用法:2种方式
+1,添加网络依赖:compile 'com.google.code.gson:gson:2.8.0'
+
+
+2.如下===============================================================
+1.先把Gson导入到libs文件夹里面		Gson:Google json
+2.刷新,否则无法用Gson
+3.例如短信备份:
+	Gson gson = new Gson();
+        String json = gson.toJson(list);//将集合装换成json类的String
+        FileOutputStream fos = new FileOutputStream(backupPath);
+        fos.write(json.getBytes());
+        fos.flush();
+        fos.close();
+
+短信还原:..............................将json流还原成list集合.................0.
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<SmsInfo>>() {}.getType();//SmsInfo一个对象
+        ArrayList<SmsInfo> list = gson.fromJson(new FileReader(backupPath), type);//backupPath上面备份的地址
+
+
+        //将对象持久化到本地, 将对象转为字符串--->序列化
+        //xml, json
+        //对象-->json-->Gson(google json)
+
+//-----------------------------------------------------------------------
+
+        //将集合(list)变为json类型的String.....................................1.
+        Gson gson = new Gson();
+        String json = gson.toJson(list);//将list集合转换成json类型的String
+        // System.out.println("json:" + json);
+
+
+        //将对象变为json类型的String...........................................2.
+//        SmsInfo info = new SmsInfo();
+//        info.address = "110";
+//        info.body = "xxxxxx";
+//        String json1 = gson.toJson(info);
+//        System.out.println("json1:" + json1);
+
+
+        //将json类型的String解析为集合..........................................3.
+//        ArrayList jList = gson.fromJson(json, ArrayList.class);
+//        Type type = new TypeToken<ArrayList<SmsInfo>>() {
+//        }.getType();
+//        ArrayList<SmsInfo> jList = gson.fromJson(json, type);
+//        System.out.println("jList:" + jList);
+
+
+        //将json类型的String解析为对象..........................................4.
+//        SmsInfo smsInfo = gson.fromJson(json1, SmsInfo.class);
+//        System.out.println("smsInfo:" + smsInfo);

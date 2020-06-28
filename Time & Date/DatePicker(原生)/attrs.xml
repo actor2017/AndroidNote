@@ -1,0 +1,78 @@
+        <!-- The DatePicker style. -->
+        <attr name="datePickerStyle" format="reference" />
+
+
+	<declare-styleable name="DatePicker">
+        <!-- The first day of week according to {@link java.util.Calendar}. -->
+        <attr name="firstDayOfWeek" />
+        <!-- The minimal date shown by this calendar view in mm/dd/yyyy format. -->
+        <attr name="minDate" format="string" />
+        <!-- The maximal date shown by this calendar view in mm/dd/yyyy format. -->
+        <attr name="maxDate" format="string" />
+
+        <!-- Whether the spinners are shown. Only valid for "spinner" mode. -->
+        <attr name="spinnersShown" format="boolean" />
+        <!-- Whether the calendar view is shown. Only valid for "spinner" mode. -->
+        <attr name="calendarViewShown" format="boolean" />
+
+        <!-- @hide The layout of the date picker. -->
+        <attr name="internalLayout" format="reference"  />
+        <!-- @hide The layout of the legacy DatePicker. -->
+        <attr name="legacyLayout" />
+
+        <!-- The text color for the selected date header text, ex. "2014" or
+             "Tue, Mar 18". This should be a color state list where the
+             activated state will be used when the year picker or day picker is
+             active.-->
+        <attr name="headerTextColor" format="color" />
+        <!-- The background for the selected date header. -->
+        <attr name="headerBackground" />
+
+        <!-- The list year's text appearance in the list.
+             {@deprecated Use yearListTextColor. }-->
+        <attr name="yearListItemTextAppearance" format="reference" />
+        <!-- @hide The list year's text appearance in the list when activated. -->
+        <attr name="yearListItemActivatedTextAppearance" format="reference" />
+        <!-- The text color list of the calendar. -->
+        <attr name="calendarTextColor" format="color" />
+
+        <!-- Defines the look of the widget. Prior to the L release, the only choice was
+             spinner. As of L, with the Material theme selected, the default layout is calendar,
+             but this attribute can be used to force spinner to be used instead. -->
+        <attr name="datePickerMode">
+            <!-- Date picker with spinner controls to select the date. -->
+            <enum name="spinner" value="1" />
+            <!-- Date picker with calendar to select the date. -->
+            <enum name="calendar" value="2" />
+        </attr>
+
+        <!-- The first year (inclusive), for example "1940".
+             {@deprecated Use minDate instead.} -->
+        <attr name="startYear" format="integer" />
+        <!-- The last year (inclusive), for example "2010".
+             {@deprecated Use maxDate instead.} -->
+        <attr name="endYear" format="integer" />
+        <!-- The text appearance for the month (ex. May) in the selected date header.
+             {@deprecated Use headerTextColor instead.} -->
+        <attr name="headerMonthTextAppearance" format="reference" />
+        <!-- The text appearance for the day of month (ex. 28) in the selected date header.
+             {@deprecated Use headerTextColor instead.} -->
+        <attr name="headerDayOfMonthTextAppearance" format="reference" />
+        <!-- The text appearance for the year (ex. 2014) in the selected date header.
+             {@deprecated Use headerTextColor instead.} -->
+        <attr name="headerYearTextAppearance" format="reference" />
+        <!-- The background color for the header's day of week.
+             {@deprecated No longer displayed.} -->
+        <attr name="dayOfWeekBackground" format="color" />
+        <!-- The text color for the header's day of week.
+             {@deprecated No longer displayed.} -->
+        <attr name="dayOfWeekTextAppearance" format="reference" />
+        <!-- The list year's selected circle color in the list.
+             {@deprecated No longer displayed.} -->
+        <attr name="yearListSelectorColor" format="color" />
+
+        <!-- @hide Whether this time picker is being displayed within a dialog,
+             in which case it may ignore the requested time picker mode due to
+             space considerations. -->
+        <attr name="dialogMode" format="boolean" />
+    </declare-styleable>

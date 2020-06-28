@@ -1,0 +1,3 @@
+# 和Android.mk一个文件夹,作用:支持多个平台,armeabi armeabi-v7a x86...
+# APP_ABI := armeabi  x86
+APP_ABI := all

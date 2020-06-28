@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vector_drawable">
+    <target
+        android:name="vector"
+        android:animation="@anim/vector_anim"/>
+
+    <!--下面不要也是一样的啊?-->
+    <!--<target-->
+        <!--android:name="rotation"-->
+        <!--android:animation="@anim/vector_rotation"/>-->
+</animated-vector>

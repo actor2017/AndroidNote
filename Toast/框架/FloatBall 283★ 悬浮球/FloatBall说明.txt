@@ -1,0 +1,2 @@
+https://github.com/huxq17/FloatBall
+android可拖动，展示菜单，能自动吸边和半隐藏的悬浮球。

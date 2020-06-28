@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_title"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/color_red"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+                <!--|snap-->
+
+                <!--android:background="@color/color_red"-->
+                <LinearLayout
+                    android:id="@+id/head_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/margin_15_dp"
+                    android:paddingRight="@dimen/margin_15_dp">
+
+                    <com.futils.ui.view.widget.RoundImageView
+                        android:id="@+id/left_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/defult_head"/>
+
+                    <TextView
+                        android:id="@+id/h_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="请登录"
+                        android:textColor="@color/color_white"
+                        android:textSize="11sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/search_view"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_background_search"
+                    android:drawableLeft="@drawable/ic_srh"
+                    android:drawablePadding="@dimen/margin_5_dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin_10_dp"
+                    android:text="请输入搜索内容..."
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/txt_size_13_sp"/>
+
+                <LinearLayout
+                    android:id="@+id/public_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/margin_15_dp"
+                    android:paddingRight="@dimen/margin_15_dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/p_pic"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="发布"
+                        android:textColor="@color/color_white"
+                        android:textSize="11sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--|snap-->
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <include
+                    android:id="@+id/header_view"
+                    layout="@layout/item_homeheadview"/>
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/color_red"
+                app:tabIndicatorHeight="3dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/color_red"
+                app:tabTextColor="@color/color_black1">
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="书记讲党课"/>
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="党会记实"/>
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="榜样力量"/>
+            </android.support.design.widget.TabLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.v4.view.ViewPager>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include
+        layout="@layout/load_view"
+        android:visibility="gone"/>
+</android.support.v4.widget.SwipeRefreshLayout>

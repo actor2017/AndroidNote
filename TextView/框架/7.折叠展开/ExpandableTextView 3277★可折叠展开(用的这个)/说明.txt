@@ -1,0 +1,41 @@
+https://github.com/Manabu-GT/ExpandableTextView
+
+API Level 8 (Froyo) and above.
+
+compile 'com.ms-square:expandableTextView:0.1.4'
+textview和imageButton必不可少,好像名字都不能改?
+
+<!-- sample xml -->
+  <com.ms.square.android.expandabletextview.ExpandableTextView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/expand_text_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      expandableTextView:maxCollapsedLines="4"
+      //expandableTextView:animAlphaStart(默认为0.7f)TextView的Alpha值。如果想禁用Alpha动画，就把此值设置为1
+      expandableTextView:animDuration="200">
+      <TextView
+          android:id="@id/expandable_text"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dp"
+          android:layout_marginRight="10dp"
+          android:textSize="16sp"
+          android:textColor="#666666" />
+      <ImageButton
+          android:id="@id/expand_collapse"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="16dp"
+          android:layout_gravity="right|bottom"
+          android:background="@android:color/transparent"/>
+  </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+
+// sample code snippet to set the text content on the ExpandableTextView
+ExpandableTextView expTv1 = (ExpandableTextView) rootView.findViewById(R.id.sample1)
+                    .findViewById(R.id.expand_text_view);
+                    
+// IMPORTANT - call setText on the ExpandableTextView to set the text content to display
+expTv1.setText(getString(R.string.dummy_text1));

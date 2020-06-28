@@ -1,0 +1,76 @@
+1.导入v7包:    compile 'com.android.support:appcompat-v7:24.2.1'
+这个switch 默认是 粉红色的 有的时候我们需要设置成和我们的主题颜色一致 就需要更改 switch的颜色
+一种方式是 设置 thumb(拇指按钮) 和 track(轨迹) 颜色
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/switch_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:background="@color/transparent"//否则可能有一个矩形背景,or试一下@null
+        android:checked="true"
+        android:longClickable="false"
+        android:textColor="@color/white"
+        android:textOff="OFF"
+        android:textOn="ON"
+        app:showText="true"
+        app:switchPadding="5dp"
+        app:switchTextAppearance="@style/SwitchCompat.Text"
+        app:theme="@style/SwitchCompat.Control"/>
+
+//----------------------
+    <style name="SwitchCompat.Control" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="colorSwitchThumbNormal">@color/red</item>
+        <item name="android:colorForeground">@color/red_500</item>
+    </style>
+
+    <!--SwitchCompat的背景颜色-->
+    <color name="transparent">#0011dddd</color>
+    <color name="yellow">#FE9800</color>
+    <color name="red_500">#FAC4C0</color>
+
+    <style name="SwitchCompat.Text" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">9dp</item>
+    </style>
+
+
+//======================================================
+如果有适合的图片 可以这样设置
+switch1 = (SwitchCompat) view.findViewById(R.id.switch1);
+        switch1.setTrackResource();
+        switch1.setThumbResource();
+
+
+//==========================================其他相关用法===
+//SwitchCompat被竖线隔开
+switchCompat.setSplitTrack(false);
+
+//SwitchCompat右边会出现错误提示
+switchCompat.setError("error");
+
+//是否显示文字[默认为 开启/关闭](当然也可以自定义文字)
+switchCompat.setShowText(true);
+
+//自定义文字
+switchCompat.setTextOff("Off");
+switchCompat.setTextOn("On");
+
+//设置左边文字和右边按钮的距离
+switchCompat.setSwitchPadding(20);
+
+//设置关闭和开启
+switchCompat.setChecked(true/false);
+
+
+//监听switchCompat开启和关闭变化
+switchCompat.setOnCheckedChangeListener();
+
+//设置Track图标
+switchCompat.setTrackResource(R.mipmap.ic_back_gray);
+
+//switchCompat设置指示图标[但是开启和关闭都是一个图标,可以在setOnCheckedChangeListener里动态设置]
+switchCompat.setThumbResource(R.mipmap.ic_back_gray);

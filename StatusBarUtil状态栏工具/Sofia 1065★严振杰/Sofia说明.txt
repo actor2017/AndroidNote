@@ -1,0 +1,109 @@
+﻿https://github.com/yanzhenjie/StatusView
+Android沉浸式效果的实现，状态栏和导航栏均支持设置颜色、渐变色、图片、透明度、内容入侵和状态栏深色字体；兼容竖屏、横屏，当屏幕旋转时会自动适配。 https://github.com/yanzhenjie/Sofia
+
+Android状态栏与导航栏一体化项目，实现沉浸式效果，状态栏和导航栏均支持设置颜色、渐变色、图片、透明度、内容入侵和状态栏深色字体；兼容竖屏、横屏，当屏幕旋转时会自动适配。
+
+Sofia一词源自于希腊语∑οφία，含义为智慧，译为中文应该可以叫做索菲亚，这也是我赋予这个项目的愿望。
+
+
+如何使用
+
+依赖本项目后，使用 StatusView和StatusUtils简单几行代码即可完成状态栏一体化。
+
+依赖
+
+Gradle
+compile 'com.yanzhenjie:statusview:1.0.3'
+Maven
+<dependency>
+  <groupId>com.yanzhenjie</groupId>
+  <artifactId>statusview</artifactId>
+  <version>1.0.3</version>
+  <type>pom</type>
+</dependency>
+类和方法介绍
+
+StatusView：用来替代系统的Status，开发者只需要把它布局在Layout的最顶部，控制它的background属性即可，其它都会自动处理。
+NavigationView：用来替代系统的虚拟Navigationi，开发者只需要把它布局在Layout的最底部，控制它的backgroud属性即可，其它都会自动处理。
+StatusUtils：用来设置Activity的状态栏和导航栏，这个类的方法要着重说明。
+setStatusBarColor：设置状态栏颜色。
+setNavigationBarColor：设置导航栏颜色。
+setSystemBarColor：同时设置状态栏、导航栏颜色，每个颜色可以单独指定。
+setFullToStatusBar：设置Activity的ContentView侵入到状态栏，并让状态栏透明，但是不会隐藏状态栏。
+setFullToNavigationBar：设置Activity的ContentView侵入到虚拟导航栏，并让导航栏透明，但是不会隐藏导航栏。
+setStatusBarDarkFont：设置状态栏的字体为深色，一般用于当Toolbar和状态栏为浅色时（比如白色状态栏）。
+图一效果实现
+
+ContentView的顶部的第一个View放StatusView，然后调用setLayoutFullScreen把StatusView顶到状态栏下层，接下来就可以控制状态栏颜色了。
+
+布局如下：
+
+<LinearLayout android:id="@+id/root_layout">
+
+    <LinearLayout>
+        <com.yanzhenjie.statusview.StatusView
+            <!-- 宽高随便指定 -->
+            android:background="?attr/colorPrimary"
+            app:fitsView="@id/root_layout"/>
+
+        <android.support.v7.widget.Toolbar/>
+    </LinearLayout>
+
+    <.../>
+    
+</LinearLayout>
+布局伪代码如上所示，app:fitsView="@id/root_layout"这个属性必须要指定，并且只能通过xml布局指定，它的作用是适配Android5.0以下时避免霸占了状态栏，但是不能修改状态栏颜色的问题。
+
+接着在Activity#onCreate()中调用setFullToStatusBar：
+
+setContentView(...);
+StatusUtils.setFullToStatusBar(this); // StatusBar.
+接下来随意修改状态栏颜色：
+
+mStatusView.setBackgroundColor(Color.BLUE);
+图二效果实现
+
+使用FrameLayout作为root，底层放需要侵入状态栏的View，上层放StatusView，然后调用setLayoutFullScreen把StatusView顶到状态栏下层，接下来就可以控制状态栏的透明度了。
+
+布局如下：
+
+<FrameLayout android:id="@+id/root_layout">
+
+    <.../>
+
+    <LinearLayout>
+
+        <com.yanzhenjie.statusview.StatusView
+            <!-- 宽高随便指定 -->
+            android:background="?attr/colorPrimary"
+            app:fitsView="@id/root_layout"/>
+
+        <android.support.v7.widget.Toolbar/>
+
+    </LinearLayout>
+
+</FrameLayout>
+接着在Activity#onCreate()中调用setFullToStatusBar：
+
+setContentView(...);
+StatusUtils.setFullToStatusBar(this); // Layout full screen.
+接下来随意修改状态栏的透明度：
+
+mStatusView.getBackground().mutate().setAlpha(0~255); // 透明度值是[0, 255]。
+图三效果实现
+
+图三就比较简单了，因为它是修改状态栏的字体为深色：
+
+StatusUtils.setStatusBarDarkFont(this, true); // Dark font for StatusBar.
+因为仅仅在在6.0以后可以修改状态栏字体为深色字体，部分小米和魅族在6.0以下也支持修改状态栏字体为深色，所以这里要判断下：
+
+if(StatusUtils.setStatusBarDarkFont(this, true)) {
+	// 成功设置深色字体后再设置状态栏为白色。
+    mStatusView.setBackgroundColor(Color.WHITE);
+} else {
+	// 如果没成功设置为深色字体，那么状态栏用灰色或者黑色（可以理解为原生色）。
+    mStatusView.setBackgroundColor(Color.BLACK);
+}
+虚拟导航栏用法
+
+用法和StatusView相同，开发者只需要把它布局在Layout的最底部然后控制它的background属性即可，这里不再例举，请查看Sample。

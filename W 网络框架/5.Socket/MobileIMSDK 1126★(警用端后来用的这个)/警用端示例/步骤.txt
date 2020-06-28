@@ -1,0 +1,31 @@
+我用的3.0版本,3.1的没试过
+
+1.把jar包加入libs目录
+
+2.在MyApplication中初始化
+        //初始化IMSDK
+        IMClientManager.getInstance().initMobileIMSDK(Global.IP, Global.PORT_WS);
+
+3.清单文件中
+
+    <!--IMSDK-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
+        <!--IMSDK的Service-->
+        <service
+            android:name=".mobileimsdk.MobileImSdkService"
+            android:enabled="true"
+            android:label="MobileImSdkService">
+            <intent-filter>
+                <action android:name="com.kuchuan.wisdompolice.service.MobileImSdkService"/>
+            </intent-filter>
+        </service>
+
+4.添加混淆:
+##---------Begin: proguard configuration for MobileIMSDK---------
+-keep class net.openmob.mobileimsdk.** {*;}
+##---------End: proguard configuration for MobileIMSDK-----------
+
+5.注意:
+这个jar包用到了Gson,否则报错.

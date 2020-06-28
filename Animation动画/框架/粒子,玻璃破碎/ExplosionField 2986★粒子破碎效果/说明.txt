@@ -1,0 +1,8 @@
+https://github.com/tyrantgit/ExplosionField
+
+ÃÌº”“¿¿µ:
+compile 'tyrantgit:explosionfield:1.0.1'
+
+”√∑®:
+ExplosionField explosionField = ...;
+explosionField.explode(view);

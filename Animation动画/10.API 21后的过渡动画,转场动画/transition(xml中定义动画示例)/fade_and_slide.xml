@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--多种动画示例-->
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="sequential">
+    <!--transitionOrdering:sequential表示顺序执行, together表示同时执行-->
+
+    <!--滑动-->
+    <slide android:slideEdge="bottom">
+        <targets>
+            <target android:excludeId="@android:id/statusBarBackground"/>
+            <target android:excludeId="@android:id/navigationBarBackground"/>
+        </targets>
+    </slide>
+
+    <!--淡入淡出-->
+    <fade>
+        <targets>
+            <target android:excludeId="@android:id/statusBarBackground" />
+            <target android:excludeId="@android:id/navigationBarBackground"/>
+        </targets>
+    </fade>
+</transitionSet>
+
+    <!--//资源文件指定过渡动画-->
+    <!--getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));-->

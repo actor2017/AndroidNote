@@ -1,0 +1,62 @@
+https://github.com/elye/loaderviewlibrary
+
+这个库使ImageView的TextView在等待文本和图像加载的时候显示加载动画
+
+提供TextView和ImageView在显示任何文本或图像之前显示shimmer(动画加载器)的能力。在等待从网络加载数据时有用。
+
+Features / Usage
+
+Loader View for TextView defined in layout XML
+
+<com.elyeproj.loaderviewlibrary.LoaderTextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" />
+Loader View for ImageView defined in layout XML
+
+<com.elyeproj.loaderviewlibrary.LoaderImageView
+     android:layout_width="100dp"
+     android:layout_height="100dp" />
+Define the % width of the TextView that shows the loading animation with width_weight
+
+<com.elyeproj.loaderviewlibrary.LoaderTextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:width_weight="0.4" />
+Define the % height of the TextView that shows the loading animation with height_weight
+
+<com.elyeproj.loaderviewlibrary.LoaderTextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:height_weight="0.8" />
+Define use gradient of the TextView or ImageView that shows the gradient with use_gradient
+
+<com.elyeproj.loaderviewlibrary.LoaderTextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:use_gradient="true" />
+Define rectangle round radius using corner. The default corner is 0.
+
+<com.elyeproj.loaderviewlibrary.LoaderTextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:corner="16" />
+Setting the Text Style as BOLD would darken the loading shimmer
+
+Other feature of TextView and ImageView is still applicable.
+
+Reset and show shimmer (animation loader) again by calling the below API
+
+myLoaderTextView.resetLoader();
+myLoaderImageView.resetLoader();
+Requirement
+
+Android SDK API Version 15 and above.
+
+Importing the Library
+
+On your module build.gradle, add
+
+dependencies {
+    compile 'com.elyeproj.libraries:loaderviewlibrary:1.3.0'
+}
+

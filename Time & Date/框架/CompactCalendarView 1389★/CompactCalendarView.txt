@@ -1,0 +1,4 @@
+https://github.com/SundeepK/CompactCalendarView
+
+An android library which provides a compact calendar view much like the one used in google calenders.
+一个android库，它提供了一个紧凑的日历视图，很像谷歌日历器中使用的日历视图。

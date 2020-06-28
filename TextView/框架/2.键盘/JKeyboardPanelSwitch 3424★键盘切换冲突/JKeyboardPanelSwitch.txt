@@ -1,0 +1,2 @@
+https://github.com/Jacksgong/JKeyboardPanelSwitch
+For resolve the layout conflict when keybord & panel are switching (Android键盘面板冲突 布局闪动处理方案)

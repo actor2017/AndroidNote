@@ -1,0 +1,30 @@
+https://github.com/mthli/Slice
+Android drawable that allows you custom round rect position.
+Android drawable允许您自定义圆形矩形位置。
+
+allprojects {
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    implementation 'com.github.mthli:Slice:v1.3'
+}
+
+API
+setColorRes(@ColorRes int colorRes)
+setColor(@ColorInt int color)
+setElevation(@FloatRange(from = 0.0F) float elevationDp)
+setRadius(@FloatRange(from = 0.0F) float radiusDp)
+setRippleRes(@ColorRes int maskRes) only work for API 21+.
+setRipple(@ColorInt int mask) only work for API 21+.
+showLeftTopRect(boolean show)
+showRightTopRect(boolean show)
+showRightBottomRect(boolean show)
+showLeftBottomRect(boolean show)
+showLeftEdgeShadow(boolean show) only work for pre API 21.
+showTopEdgeShadow(boolean show) only work for pre API 21.
+showRightEdgeShadow(boolean show) only work for pre API 21.
+showBottomEdgeShadow(boolean show) only work for pre API 21.

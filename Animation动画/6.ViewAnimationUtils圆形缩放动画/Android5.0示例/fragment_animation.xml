@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/demo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="1.下面几个Button的background不一样"
+                android:textColor="@color/black_text"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="默认"
+                android:textColor="#88000000"/>
+
+            <LinearLayout
+                android:id="@+id/ll_btn"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="30dp"
+                android:background="@color/control_highlight_deep_orange">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="false"
+                    android:text="background=&quot;?android:attr/selectableItemBackground&quot;"
+                    android:textAllCaps="false"
+                    android:textColor="#88000000"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#55000000"/>
+
+            <Button
+                android:id="@+id/bt_circle"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/circle_shape"
+                android:text="圆形缩小动画"
+                android:textColor="#88000000"/>
+
+            <Button
+                android:id="@+id/bt2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
+                android:background="#00b8d4"
+                android:gravity="center"
+                android:text="圆形放大动画"
+                android:textColor="#88000000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

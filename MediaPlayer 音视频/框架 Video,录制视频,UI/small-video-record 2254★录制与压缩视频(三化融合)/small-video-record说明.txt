@@ -1,0 +1,11 @@
+https://github.com/mabeijianxi/small-video-record
+
+Android端音频视频采集，底层利用FFmpeg编码压缩处理（small-video-record2已从C到Java全面开源）！
+
+使用：
+见官网
+
+如果报错就混淆:
+##-----Begin: proguard configuration for small-video-record2-----
+-keep class com.mabeijianxi.smallvideorecord2.** {*;}
+##-----End: proguard configuration for small-video-record2-------

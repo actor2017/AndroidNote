@@ -1,0 +1,8 @@
+https://github.com/pedrovgs/AndroidWiFiADB
+
+Preferences/Settings->Plugins->Browse Repositories->搜索Android WIFI ADB(131716★)
+
+2.本地安装:
+下载插件:https://plugins.jetbrains.com/plugin/7983
+安装:Preferences/Settings->Plugins->Install plugin from disk->AndroidWiFiADB-2.4.zip
+

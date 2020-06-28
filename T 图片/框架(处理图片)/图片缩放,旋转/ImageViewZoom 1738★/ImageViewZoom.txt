@@ -1,0 +1,5 @@
+https://github.com/sephiroth74/ImageViewZoom
+
+
+Android ImageView widget with zoom and pan capabilities
+Android ImageView小部件具有缩放和平移功能

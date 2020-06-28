@@ -1,0 +1,4 @@
+https://github.com/tvbarthel/BlurDialogFragment
+
+Library project to display DialogFragment with a blur effect.
+库项目，以显示带有模糊效果的对话框片段。

@@ -1,0 +1,11 @@
+
+    //需要注意的是，通过此方法来获取ScrollView，就必须保证，view的父控件层级中必须得要有一个ScrollView
+    private ScrollView getScrollView(View view) {
+        //获取父控件
+        ViewParent parent = view.getParent();
+        if(parent instanceof  ScrollView) {
+            return (ScrollView) parent;
+        } else {
+            return getScrollView((View) parent);
+        }
+    }

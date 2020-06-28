@@ -1,0 +1,4 @@
+https://github.com/PaNaVTEC/DrawableView
+
+A view that allows to paint and saves the result as a bitmap http://panavtec.me
+允许绘制并将结果保存为位图的视图

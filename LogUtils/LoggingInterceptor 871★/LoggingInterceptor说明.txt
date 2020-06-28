@@ -1,0 +1,86 @@
+https://github.com/ihsanbal/LoggingInterceptor
+
+An OkHttp interceptor which pretty logs request and response data. +Mock support
+LoggingInterceptor - Interceptor for OkHttp3 with pretty logger
+
+Usage
+OkHttpClient.Builder client = new OkHttpClient.Builder();
+        client.addInterceptor(new LoggingInterceptor.Builder()
+                .loggable(BuildConfig.DEBUG)
+                .setLevel(Level.BASIC)
+                .log(Platform.INFO)
+                .request("Request")
+                .response("Response")
+                .addHeader("version", BuildConfig.VERSION_NAME)
+                .addQueryParam("query", "0")
+		.enableMock(true, 1000L, request -> {
+                    String segment = request.url().pathSegments().get(0);
+                    return Okio.buffer(Okio.source(mAssetManager.open(String.format("mock/%s.json", segment)))).readUtf8();
+                })
+//              .enableAndroidStudio_v3_LogsHack(true) /* enable fix for logCat logging issues with pretty format */
+//              .logger(new Logger() {
+//                  @Override
+//                  public void log(int level, String tag, String msg) {
+//                      Log.w(tag, msg);
+//                  }
+//              })
+//              .executor(Executors.newSingleThreadExecutor())
+               .build());
+        OkHttpClient okHttpClient = client.build();
+
+//You can use with Retrofit
+Retrofit retrofitAdapter = new Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .baseUrl("https://.../")
+            .client(okHttpClient)
+            .build();
+Download
+Gradle:
+
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+dependencies {
+	compile('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        	exclude group: 'org.json', module: 'json'
+    	}
+}
+Maven:
+
+<repository>
+   <id>jitpack.io</id>
+   <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+	    <groupId>com.github.ihsanbal</groupId>
+	    <artifactId>LoggingInterceptor</artifactId>
+	    <version>3.0.0</version>
+</dependency>
+Executor
+Add executor for allows to perform sequential concurrent print.
+
+Level
+setLevel(Level.BASIC)
+	      .NONE // No logs
+	      .BASIC // Logging url,method,headers and body.
+	      .HEADERS // Logging headers
+	      .BODY // Logging body
+Platform - Platform
+loggable(BuildConfig.DEBUG) // enable/disable sending logs output.
+log(Platform.WARN) // setting log type
+Tag
+tag("LoggingI") // Request & response each log tag
+request("request") // Request log tag
+response("response") // Response log tag
+Header - Recipes
+addHeader("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 ") // Adding to request
+Notes
+Some tips about log at this blog post: ¡°The way to get faster on development.¡±
+
+Also use the filter & configure logcat header for a better result

@@ -1,0 +1,131 @@
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class Setup3Activity extends BaseGestureDetector {
+
+    private EditText et_safe_teleNum;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setup3);
+
+        //edittext
+        et_safe_teleNum = (EditText) findViewById(R.id.et_safe_teleNum);
+        //buttom
+        Button btn_contact = (Button) findViewById(R.id.btn_contact);
+        //1.回显
+        String safe_telenum = GetSharedPreferencesUtils.getString(this, GlobalConstants.SAFE_TELENUM, null);
+        if (!TextUtils.isEmpty(safe_telenum)) {
+            et_safe_teleNum.setText(safe_telenum);
+        }
+        //2.监听联系人按钮
+        btn_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectContact();
+            }
+        });
+    }
+
+    //获取选择联系人的方法
+    //权限:<uses-permission android:name="android.permission.READ_CONTACTS"/>
+    private void selectContact() {
+        //跳到系统选择联系人的页面
+        Intent intent = new Intent(Intent.ACTION_PICK); //ACTION_PICK:联系人的意图
+        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);//指定联系人数据库uri
+        startActivityForResult(intent, 99);     //99:请求码,这儿乱写的
+    }
+
+    //返回界面的时候回调
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //取出联系人的电话号码
+        //联系人的数据: raw_contacts(联系人id), data(联系人数据), mimetypes(数据类型)
+
+        if (resultCode == RESULT_OK) {//-1
+            //if (data != null) {       //用这种方法也可以
+            //1. 查询联系人id  content://com.android.contacts/
+            Uri uri = data.getData();//当前被选择的联系人的数据库uri地址
+
+            //查询联系人id
+            Cursor cursor = getContentResolver().query(uri, new String[]{ContactsContract.Contacts
+                    ._ID}, null, null, null);
+
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {//游标移动到第一条记录
+                    String contactId = cursor.getString(0);//联系人id,0:第一个联系人id(从0开始数)
+                    System.out.println("联系人id:" + contactId);
+                    //2. 根据联系人id查询数据
+                    //权限:<uses-permission android:name="android.permission.READ_CONTACTS"/>
+                    Cursor phoneCursor = getContentResolver().query(ContactsContract.CommonDataKinds
+                            .Phone.CONTENT_URI, new String[]{ContactsContract.CommonDataKinds.Phone
+                            .NUMBER}, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", new
+                            String[]{contactId}, null);
+
+                    if (phoneCursor != null) {
+                        if (phoneCursor.moveToFirst()) {
+                            String number = phoneCursor.getString(0);
+                            System.out.println("电话号码:" + number);
+
+                            //测试号码2个:-+#*   and    023+14#32465456
+                            String regex = "[^\\d]{1,}";
+                            String num = number.replaceAll(regex, "");
+                            if(!TextUtils.isEmpty(num)){
+                                System.out.println("regex手机号::::::::::::::::::::::::"+num);
+                            //回显在文本框上
+                            et_safe_teleNum.setText(num);
+                            } else {
+                                //否则返回"",如果不返回"",TextView里面的值不变(测试号码:-+#*)
+                                et_safe_teleNum.setText("");
+                                ToastUtils.show(this,"请检查联系人号码");
+                            }
+                            //11 2 去掉空格, 短杠, 括号     //老师的
+                            //即使加上android:inputType="number"也不能自动过滤,必须编辑number
+                            //number = number.trim().replaceAll(" ", "").replaceAll("-", "")
+                            //        .replaceAll("\\(", "").replaceAll("\\)", "");
+                            //回显在文本框上
+                            //et_safe_teleNum.setText(number);
+                        }//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+                    } else {    //写在这儿好像没啥用???????????????如果一个联系人只有姓名,没存号码,不知道怎么判断
+                        et_safe_teleNum.setText("");
+                        ToastUtils.show(this, "请检查联系人号码");
+                        //phoneCursor.close();      //老师的
+                    }
+                        phoneCursor.close();
+                }
+                cursor.close();
+            }
+        }//如果进入联系人界面,没有选联系人,点击返回,resultCode=0
+    }
+
+    @Override
+    public void goToPre() {
+        startActivity(new Intent(this, Setup2Activity.class));
+        finish();
+        overridePendingTransition(R.anim.anim_pre_enter, R.anim.anim_pre_exit);
+    }
+
+    @Override
+    public void goToNext() {
+        String safe_num = et_safe_teleNum.getText().toString().trim();
+        if (TextUtils.isEmpty(safe_num)) {
+            ToastUtils.show(getApplicationContext(), "必须设置联系人才能进行下一步哦!");
+            return;
+        }
+        //保存联系人
+        GetSharedPreferencesUtils.putString(this, GlobalConstants.SAFE_TELENUM, safe_num);
+        //打开下一个页面
+        startActivity(new Intent(this, Setup4Activity.class));
+        finish();
+        overridePendingTransition(R.anim.anim_next_enter, R.anim.anim_next_exit);
+    }
+}

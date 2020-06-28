@@ -1,0 +1,33 @@
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+
+    /**
+     * 创建一个圆角图片
+     * @param bitmap
+     * @param radius 圆角半径
+     * @return
+     */
+    public Bitmap createRadiusPic(Bitmap bitmap,float radius) {
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create
+                (getResources(), bitmap);                                //1.直接传入Bitmap
+//        RoundedBitmapDrawableFactory.create(getResources(),"filePath");//2.可以传入图片路径
+//        RoundedBitmapDrawableFactory.create(getResources(), InputStream);3.可以传入图片流
+        roundedBitmapDrawable.setAntiAlias(true);//抗锯齿
+        roundedBitmapDrawable.setDither(true);//防抖动,当位图的像素配置与屏幕不同时（例如 ARGB_8888 的位图和 RGB_565 的屏幕）
+        roundedBitmapDrawable.setCornerRadius(radius);//设置角半径
+        return roundedBitmapDrawable.getBitmap();
+    }
+
+    /**
+     * 创建一个圆形图片,没试过,不知道是否变形.
+     * @param bitmap
+     * @return
+     */
+    public Bitmap createCircularPic(Bitmap bitmap) {
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create
+                (getResources(), bitmap);
+        roundedBitmapDrawable.setAntiAlias(true);//抗锯齿
+        roundedBitmapDrawable.setDither(true);//防抖动,当位图的像素配置与屏幕不同时（例如 ARGB_8888 的位图和 RGB_565 的屏幕）
+        roundedBitmapDrawable.setGravity(Gravity.CENTER);//从中间裁剪,避免变形
+        roundedBitmapDrawable.setCircular(true);//圆形
+        return roundedBitmapDrawable.getBitmap();
+    }

@@ -1,0 +1,14 @@
+    public static void downLoadApk(Context context, int url) {
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(Api.FILE_PATH + url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setTitle(AppUtils.getAppName());
+        request.setDescription("版本更新");
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+        //不显示下载界面
+        request.setVisibleInDownloadsUi(true);
+        request.setDestinationInExternalFilesDir(context, null, "guotushichang.apk");
+        long id = downloadManager.enqueue(request);
+        SPUtils.getInstance().put(Constant.DOWNLOAD_ID, id);
+    }

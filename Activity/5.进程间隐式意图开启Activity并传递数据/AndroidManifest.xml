@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.itheima.androidl">
+
+    <application
+        android:name=".utils.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/DefaultTheme">
+		
+        <activity
+            android:name="com.itheima.androidl.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="main"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            <intent-filter>
+			    <!--必须同时写下面2句,否则app不能启动-->
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+				<!--如果在这个LAUNCHER里写了data,就没有启动图标了-->
+                <!--<data android:scheme="tobecomegod"/>-->
+            </intent-filter>
+        </activity>
+		
+        <activity
+            android:name="com.itheima.androidl.taransitions.FadeActivity"
+            android:label="fade"
+            android:configChanges="orientation|keyboardHidden">
+			
+            <intent-filter>
+				<!--其它程序打开这个activity:intent.setAction("com.google.sample.fade");,不能写成android.intent.action.MAIN,否则打不开-->
+                <action android:name="com.google.sample.fade"/>
+
+                <!--如果清单文件有,代码必须写intent.setData(Uri.parse("callPhone://110")),否则报错如下↓-->
+                <data android:scheme="callPhone"/>
+                <category android:name="android.intent.category.DEFAULT"/><!--这句必写,且是DEFAULT,否则报错ActivityNotFoundException-->
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

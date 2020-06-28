@@ -1,0 +1,3 @@
+https://github.com/permissions-dispatcher/PermissionsDispatcher
+Simple annotation-based API to handle runtime permissions.
+

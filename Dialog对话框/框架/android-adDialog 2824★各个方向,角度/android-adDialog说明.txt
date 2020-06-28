@@ -1,0 +1,3 @@
+https://github.com/yipianfengye/android-adDialog
+一个简单，强大的广告活动弹窗控件
+

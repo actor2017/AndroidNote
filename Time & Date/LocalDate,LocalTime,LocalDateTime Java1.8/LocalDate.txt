@@ -1,0 +1,18 @@
+public final class LocalDate implements Temporal, TemporalAdjuster, ChronoLocalDate, Serializable
+
+1.静态方法
+LocalDate from = LocalDate.from(TemporalAccessor temporal);
+LocalDate now = LocalDate.now();
+LocalDate now = LocalDate.now(ZoneId zone);
+LocalDate now = LocalDate.now(Clock clock);
+LocalDate of = LocalDate.of(int hour, int minute);
+LocalDate of = LocalDate.of(int hour, int minute, int second);
+LocalDate of = LocalDate.of(int hour, int minute, int second, int nanoOfSecond);
+LocalDate ofEpochDay = LocalDate.ofEpochDay(long epochDay);
+LocalDate ofYearDay = LocalDate.ofYearDay(int year, int dayOfYear);
+LocalDate parse = LocalDate.parse(CharSequence text);
+LocalDate parse = LocalDate.parse(CharSequence text, DateTimeFormatter formatter);
+LocalDate MAX = LocalDate.MAX;//LocalDate.of(Year.MAX_VALUE, 12, 31)
+LocalDate MIN = LocalDate.MIN;//LocalDate.of(Year.MIN_VALUE, 1, 1)
+
+2.其余方法

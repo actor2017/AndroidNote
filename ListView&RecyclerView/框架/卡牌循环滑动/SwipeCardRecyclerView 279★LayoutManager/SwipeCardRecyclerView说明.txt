@@ -1,0 +1,30 @@
+https://github.com/HalfStackDeveloper/SwipeCardRecyclerView
+https://www.jianshu.com/p/7977006d2d6a
+
+利用RecyclerView打造的滑动卡片View，支持左滑右滑删除
+
+1.在项目根目录 build.gradle文件中加入：
+
+allprojects {
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
+	}
+}
+2.在app build.gradle文件中添加依赖
+
+dependencies {
+        compile 'com.github.HalfStackDeveloper:SwipeCardRecyclerView:v1.0.1'
+}
+使用 (参见demo)
+
+1.RecyclerView设置
+
+mRecyclerView = (SwipeCardRecyclerView) findViewById(R.id.recyclerView);
+mRecyclerView.setLayoutManager(new SwipeCardLayoutManager());
+
+mAdapter = new MyAdapter(this, list);
+mRecyclerView.setAdapter(mAdapter);
+2.创建继承自SwipeCardAdapter的adapter
+
+class MyAdapter extends SwipeCardAdapter

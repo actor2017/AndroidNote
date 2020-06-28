@@ -1,0 +1,45 @@
+https://github.com/opencv/opencv
+Open Source Computer Vision Library https://opencv.org
+
+OpenCV(Open Source Computer Vision Library)
+是一个跨平台的计算机视觉库,IBM 1999年开始研发,用C++提供接口.
+
+应用领域:
+增强现实,人年识别
+手势识别,人机交互
+动作识别,运动跟踪
+物体识别,图像分割
+机器人
+
+实时换脸,美女与野兽
+OpenCV+OCR打造身份证识别
+OpenCV人工智能应用,车牌号码检测与识别
+人工智能神经网络在分类器中的运用--android与人工智能
+OpenCV人脸跟踪与定位
+人脸磨皮算法与美白
+ARToolkit打造例题甩狗脸趣味功能(增强现实技术)
+识别嘴型及变换与放大(图形变化与持续跟踪)
+人脸动态贴纸(opengl FBO与PBO, 着色器GLSL语言, OpenCV人脸定位)
+大眼瘦脸(OpenSL ES图像局部缩放,平移,人脸关键点检测)
+
+
+
+微信挑一挑外挂:
+1.MediaProjection类解决了问题,Android 5.0位我们开源了解决方案.
+2.OpenCV进行图像识别.
+3.root权限,手机模拟按键:
+adb shell input startX startY endX endY time
+adb shell input 250 250 300 300 1000
+
+怎么计算图片物体之间距离:
+1.找到棋子所在物体:
+    1.图像归一化
+        屏幕大小,棋子大小
+    2.灰度化
+    3.模糊匹配
+2.查找要跳到的物体:
+    1.图像像素平扫与校准
+    2.图像精扫
+    3.特殊图片处理
+3.计算距离
+    1.勾股定理,线性计算输出距离

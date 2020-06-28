@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义RatingBar Color, 在RatingBar中添加属性: android:theme="@style/RatingBar_CustomColor"-->
+    <style name="RatingBar_CustomColor" parent="@android:style/Widget.Holo.RatingBar.Indicator">
+
+        <!--Background Color, 松开后背景色-->
+        <item name="colorControlNormal">@color/red_dc143c</item>
+
+        <!--Progress Color, 按下时颜色-->
+        <item name="colorControlActivated">@color/red_dc143c</item>
+    </style>
+</resources>

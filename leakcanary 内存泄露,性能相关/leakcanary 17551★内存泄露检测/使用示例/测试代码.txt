@@ -1,0 +1,27 @@
+public class SecondActivity extends AppCompatActivity {
+    static Demo sDemo;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        if (sDemo == null) {
+            sDemo = new Demo();
+        }
+        finish();
+    }
+
+    class Demo {
+    }
+
+}
+
+/**
+这个Activity中，存在一个静态的Demo实例，并且这个实例在Activity初始化的时候也进行了初始化，接着我们在初始化完毕后finish掉这个Activity。
+
+因为sDemo是一个静态的变量并且不为null，所以GC不会将其清理，而Activity因为持有这个静态变量，生命周期也不能正常执行，这样这个Activity就被泄漏了。
+
+我们在MainActivity中打开这个Activity，启动应用。
+
+模拟器的状态栏会出现一个图标，我们打开可以得到如下界面：
+*/

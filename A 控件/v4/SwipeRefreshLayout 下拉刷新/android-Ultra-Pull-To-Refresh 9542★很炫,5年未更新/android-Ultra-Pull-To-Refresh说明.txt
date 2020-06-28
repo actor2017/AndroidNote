@@ -1,0 +1,8 @@
+https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh
+这是现在已经停止维护的下拉刷新项目的替代方案。继承于ViewGroup可以包含任何View。功能比SwipeRefreshLayout强大。
+
+使用起来非常简单。良好的设计，如果你想定制自己的UI样式，非常简单，就像给ListView加一个Header View那么简单。
+
+支持 API LEVEL >= 8。
+
+Supports all of the views: ListView, GridView, ScrollView, FrameLayout, or Even a single TextView.

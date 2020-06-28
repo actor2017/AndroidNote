@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--ViewPager,用于显示大图片-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
+    <!--右下角的小圆点,从例子程序打印的ActivityManager而得之,sample用了这个-->
+    <!--fillColor:移动点的颜色
+        pageColor:原点里面的颜色
+        strokeColor:圆环的颜色
+        radius:原的半径
+        strokeWidth:圆环的宽度-->
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        app:fillColor="#FF888888"
+        app:pageColor="#88FF0000"
+        app:radius="10dp"
+        app:strokeColor="#FF000000"
+        app:strokeWidth="2dp"/>
+    />
+</RelativeLayout>

@@ -1,0 +1,26 @@
+https://github.com/LouBii/OneAccount
+一款简约风格的记账app
+
+Library:
+butterknife
+gson
+eventbus
+greenDAO
+UltimateRecyclerView
+BaseRecyclerViewAdapterHelper
+SwitchButton
+CircleIndicator
+Android-PickerView
+material-calendarview
+CircleImageView
+AndPermission
+Features
+自定义FragmentTabHost实现首页tab切换效果，避免重复加载问题
+greendao作为本地数据库存储数据
+账单与图表页均使用CoordinatorLayout + AppBarLayout + CollapsingToolbarLayout实现联动效果，账单页列表同时实现吸顶效果
+图表页折线图使用自定义view实现
+支出分类可自定义添加，并实现拖拽添加与删除
+ToDo
+卡包部分尚未开发完成，部分功能待完善
+End
+如项目中对你有所帮助，希望大家点个star

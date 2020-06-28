@@ -1,0 +1,3 @@
+https://github.com/adrielcafe/AndroidAudioRecorder
+A fancy audio recorder lib for Android. Supports WAV format at 48kHz.
+Android的一个高级录音机库。支持WAV格式在48千赫。

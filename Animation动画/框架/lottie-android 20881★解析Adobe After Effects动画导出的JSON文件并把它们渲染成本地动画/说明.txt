@@ -1,0 +1,4 @@
+http://airbnb.io/lottie/	官网
+https://github.com/airbnb/lottie-android
+这是一个能解析Adobe After Effects动画导出的JSON文件并把它们渲染成本地动画的库,能在Android 、IOS、WEB上播放。
+

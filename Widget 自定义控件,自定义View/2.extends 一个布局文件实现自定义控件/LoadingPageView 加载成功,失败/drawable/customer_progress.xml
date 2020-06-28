@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--一层又一层的效果-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <rotate
+            android:drawable="@drawable/spinner_big_inner"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="720"
+            android:visible="true"
+            ></rotate>
+    </item>
+    <item>
+
+        <rotate
+            android:drawable="@drawable/spinner_big_outer"
+            android:fromDegrees="360"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="0"
+            android:visible="true"
+            ></rotate>
+    </item>
+</layer-list>

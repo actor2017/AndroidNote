@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--下一页的箭头-->
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/news_cate_arr"/>
+
+        <!--从例子程序抄过来的   页签,里面重写了dispatchTouchEvent()方法-->
+        <com.viewpagerindicator.TabPageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ivNext"
+            />
+    </RelativeLayout>
+
+    <!--下面是一个自定义ViewPager,只是继承了一个第0页面才能往左划得viewpager
+    详情在文件夹ViewPager中去找-->
+    <!--NewsMenuViewPager:如果是第0个pager,父类拦截,能左滑,否则请求不拦截,共12个pager
+        ,每一个pager里面装的是ListView,而ListView添加了头布局ViewPager(上方显示图片那个)-->
+    <com.heima.wisdomxian.widget.NewsMenuViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@id/rl">
+    </com.heima.wisdomxian.widget.NewsMenuViewPager>
+
+</RelativeLayout>

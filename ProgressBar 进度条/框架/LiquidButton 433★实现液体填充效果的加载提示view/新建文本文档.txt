@@ -1,0 +1,3 @@
+https://github.com/yoruriko/LiquidButton
+
+compile 'com.gospelware.liquidbutton:liquidButtonLib:1.1.5'

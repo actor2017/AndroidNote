@@ -1,0 +1,23 @@
+    @Override
+    public View initView() {
+        //刷新的头布局(只是一个item0,没有其它布局,会在下面的代码中添加头布局[注意不要写成viewpager]和设置listview适配器)
+        View view = View.inflate(activity, R.layout.pager_tab_detail, null);
+        refreshListViewItem = (RefreshListViewItem) view.findViewById(R.id.lvListNews);//刷新的条目
+
+        //这个是头条(加载图片那个,是一个viewpager,tv_title,indicator)
+        headerView = View.inflate(activity, R.layout.layout_topnews_header, null);
+        vp_viewpager = (ViewPager) headerView.findViewById(R.id.viewPager);//头条新闻显示图片的viewpager
+        tv_title = (TextView) headerView.findViewById(R.id.tvTitle);//viewpager中左下角显示的图片信息
+        cpi_indicator = (CirclePageIndicator) headerView.findViewById(R.id.indicator);//头条新闻右下角的指示器(几个小圆点)
+
+
+    //解析json
+    private void parseJson(String response) {
+        Gson gson = new Gson();
+        TabInfo tabInfo =  gson.fromJson(response, TabInfo.class);
+        viewPagerTopnews = tabInfo.data.topnews;     //头条新闻viewpager的图片信息
+        listViewNews = tabInfo.data.news;           //下方listview的条目信息
+
+        tv_title.setText(viewPagerTopnews.get(0).title);//手动的将tvTitle设置为第0个元素的标题
+        vp_viewpager.setAdapter(new mPagerAdapter());
+        cpi_indicator.setViewPager(vp_viewpager);   //右下角的小圆点,绑定viewpager

@@ -1,0 +1,62 @@
+https://github.com/wasabeef/glide-transformations
+
+An Android transformation library providing a variety of image transformations for Glide.
+Android转换库，为Glide提供各种图像转换。Android转换库，为Glide提供各种图像转换。
+
+
+Step 1
+Gradle
+repositories {
+  jcenter()
+}
+
+dependencies {
+  implementation 'jp.wasabeef:glide-transformations:4.x.x'
+  // If you want to use the GPU Filters
+  implementation 'jp.co.cyberagent.android:gpuimage:2.x.x'
+}
+Step 2
+Set Glide Transform.
+
+Glide.with(this).load(R.drawable.demo)
+  .apply(bitmapTransform(BlurTransformation(25, 3)))
+  .into(imageView)
+Advanced Step 3
+You can set a multiple transformations.
+
+val multi = MultiTransformation<Bitmap>(
+  BlurTransformation(25),
+  RoundedCornersTransformation(128, 0, CornerType.BOTTOM))))
+Glide.with(this).load(R.drawable.demo)
+  .apply(bitmapTransform(multi))
+  .into(imageView))
+Step 4
+If you are using SupportRSBlurTransformation.
+
+android {
+  //...
+  defaultConfig {
+  //...
+  renderscriptTargetApi YOUR_TARGET_SDK_VERSION as int
+  renderscriptSupportModeEnabled true
+  }
+}
+Transformations
+Crop
+CropTransformation, CropCircleTransformation, CropSquareTransformation, RoundedCornersTransformation
+
+Color
+ColorFilterTransformation, GrayscaleTransformation
+
+Blur
+BlurTransformation
+
+Mask
+MaskTransformation
+
+GPU Filter (use GPUImage)
+Will require add dependencies for GPUImage.
+
+ToonFilterTransformation, SepiaFilterTransformation, ContrastFilterTransformation
+InvertFilterTransformation, PixelationFilterTransformation, SketchFilterTransformation
+SwirlFilterTransformation, BrightnessFilterTransformation, KuwaharaFilterTransformation VignetteFilterTransformation

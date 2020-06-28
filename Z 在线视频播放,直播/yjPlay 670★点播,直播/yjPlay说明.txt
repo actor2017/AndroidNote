@@ -1,0 +1,114 @@
+https://github.com/yangchaojiang/yjPlay
+一个支持自定义UI布局,流式API, 加密,直播 ,亮度,音量,快进等手势 ,广告视频预览,多种加载模式 ,多种分辨率切换 ,多种封面图, 自定义数据源,列表播放,倍数播放,边播变缓存 不是使用AndroidVideoCache ,离线播放,神奇的播放器
+
+
+基于exoPlayer 自定义播放器 JPlayer支持功能：
+ExoUserPlayer 基本播放（默认关闭手势 亮度，音量，快进，等手势，支持自定义布局）
+自动适配适配TV。
+支持横屏和竖屏两种模式全屏。
+适配音频控制布局。
+支持广告视频预览(轻松实现，完美切换，可自定义)。
+支持多种分辨率视频切换。
+缓存下载加密视频功能（边播变缓存轻松实现不是使用AndroidVideoCache。
+支持自定义多种 kttp,Rtmp,Https,Cronet等协议。
+支持列表集合 播放视频（列表到详情播放完美过度）
+支持多种文件类型，MP4，M4A，WebM，Matroska,Ogg,WAV，MP3，MPEG-TS，MPEG-PS，FLV，ADTS (AAC)，Flac，M3U8,mkv 等。
+支持网络类型 提示是否播放(可自定义屏蔽)。
+支持视频加载布局, 错误布局,重播布局，提示布局自定义，更灵活实现自己布局样式。
+支持视频加速慢速播放。
+支持多种视频封面图（两种模式封面图）。
+支持支持自定义MediaSource。
+支持精简版和完整版，选择使用更丰富。
+增加离线下载辅助类ExoWholeDownLoadManger,ExoWholeDownloadTracker,ExoDownLoadManger,DownloadService()-->戳我)
+支持播放锁屏功能和控制布局显示显示动画效果.
+支持返回按钮和全屏按钮图标自定义。
+支持自定义视频封面布局.(视频封面图布局样式完美多样化)。
+支持视频实时进度（头条底部进度）。
+支持流式API方式调用。
+
+
+repositories {
+        jcenter()
+        mavenCentral();
+    }
+
+dependencies {
+   //完整版
+    compile 'com.ycjiang:VideoPlayModule:2.3.17'
+   //精简版（没有smoothstreaming,dash,hls,只有常规点播功能）
+    compile 'com.ycjiang:VideoPlayModule-Lite:2.3.17'
+
+}
+
+基本使用如下
+
+      <chuangyuan.ycj.videolibrary.widget.VideoPlayerView
+              android:id="@+id/exo_play_context_id"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/transparent"
+              />
+1.控件属性
+  <chuangyuan.ycj.videolibrary.widget.VideoPlayerView
+        android:id="@+id/exo_play_context_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:controller_layout_id="@layout/simple_exo_playback_control_view"
+        app:player_layout_id="@layout/simple_exo_view"
+        app:player_replay_layout_id="@layout/custom_play_replay"
+        app:player_error_layout_id="@layout/custom_play_error"
+        app:player_hint_layout_id="@layout/custom_play_btn_hint"
+        app:player_load_layout_id="@layout/custom_exo_play_load"
+        app:player_gesture_audio_layout_id="@layout/custom_gesture_audio"
+        app:player_gesture_bright_layout_id="@layout/custom_gesture_brightness"
+        app:player_gesture_progress_layout_id="@layout/custom_gesture_pro"
+        app:player_preview_layout_id="@layout/exo_default_preview_layout"
+        app:resize_mode="fit"
+        app:show_timeout="3000"
+        app:surface_type="texture_view"
+        app:fastforward_increment="0"
+        app:rewind_increment="0"
+        app:user_watermark="@mipmap/watermark_big"
+        app:player_list="true"
+        app:use_controller="true"
+        app:player_fullscreen_image_selector="@drawable/custom_full_selector"
+        app:player_back_image="@drawable/ic_back_custom"
+         />
+2.属性说明 自定义视图的可用属性：
+name	type	info
+surface_type	enum	视频渲染类型 texture_view 和surface_view 枚举类型 默认surface_view
+resize_mode	enum	视频缩放渲染显示方式一共5种
+reference	1.fit 正常模式
+reference	2.fixed_16_9 保持的是视频的比例16:9
+reference	3.fixed_4_3 保持的是视频比例4:3
+reference	4.fill 全屏模式，拉伸视频宽高
+reference	4.match 矩阵模式
+player_layout_id	reference	(播放器布局):目前默认布局 simple_exo_view.xml
+controller_layout_id	reference	控制器布局 默认有四种布局
+reference	1.simple_exo_playback_control_view.xml 视频封面控制布局下面,（默认）
+reference	2.simple_exo_playback_list_view.xml.xml 在列表播放使用控制布局
+reference	3.simple_exo_playback_top_view.xml.xml 视频封面控制布局上面
+reference	4.exo_playback_control_view.xml exo 提供默认风格
+player_replay_layout_id	reference	设置 自定义重播布局文件
+player_error_layout_id	reference	设置 自定义错误布局文件
+player_hint_layout_id	reference	设置 自定义非wifi提示布局文件
+player_load_layout_id	reference	设置 自定义视频加载布局文件
+player_gesture_audio_layout_id	reference	设置 自定义手势音频调节布局
+player_gesture_bright_layout_id	reference	设置 自定义手势亮度调节布局
+player_gesture_progress_layout_id	reference	设置 自定义手势进度调节布局
+player_preview_layout_id	reference	设置 自定义封面图布局(默认 exo_default_preview_layout.xml)
+player_list	boolean	设置 是否指定列表播放 默认 false true 列表播放
+player_fullscreen_image_selector	reference	设置 自定义全屏按钮selector
+player_back_image	reference	设置 自定义返回按钮图标
+default_artwork	reference	设置 封面占位图
+show_timeout	integer	设置 控制布局隐藏时间 默认值为3秒
+fastforward_increment	integer	设置 按钮设置快进增量,以毫秒为单位（exo控制布局使用）
+rewind_increment	integer	设置 按钮设置快退增量,以毫秒为单位（exo控制布局使用）
+user_watermark	reference	设置 水印图片 默认在右上角
+
+
+混淆声明
+##-----------Begin: proguard configuration for yjPlay------------
+-dontwarn chuangyuan.ycj.**
+-keep class chuangyuan.ycj.** { *;}
+##-----------End: proguard configuration for yjPlay--------------

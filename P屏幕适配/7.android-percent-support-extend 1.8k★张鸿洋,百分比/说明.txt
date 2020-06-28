@@ -1,0 +1,60 @@
+https://github.com/hongyangAndroid/android-percent-support-extend
+http://blog.csdn.net/lmj623565791/article/details/46767825
+
+我个人建议:建议固定竖屏,否则宽屏可能会非常违和
+
+当使用图片时，无法设置宽高的比例
+
+比如我们的图片宽高是200*100的，我们在使用过程中我们设置宽高为20%、10%，这样会造成图片的比例失调。为什么呢？因为20%参考的是屏幕的宽度，而10%参考的是屏幕的高度。
+
+很难使用百分比定义一个正方形的控件
+
+比如，我现在界面的右下角有一个FloatingActionButton，我希望其宽度和高度都为屏幕宽度的10%，很难做到。
+
+一个控件的margin四个方向值一致
+
+有些时候，我设置margin，我希望四边的边距一致的，但是如果目前设置5%，会造成，上下为高度的5%，左右边距为宽度的5%。
+
+综合上述这些问题，可以发现目前的percent-support-lib并不能完全满足我们的需求，所以我们考虑对其进行扩展。说白了，我们就希望在布局的时候可以自己设定参考看度还是高度，比如上述2，我们对于宽高可以写成10%w，10%w。也就是在不改变原库的用法的前提下，添加一些额外的支持。
+
+android-percent-support-extend
+对于android-percent-support的扩展库。
+目前支持：
+
+不改变原有库的用法
+添加了PercentLinearLayout
+支持宽度高度百分比设置值
+支持margin百分比设置值
+支持padding百分比设置值
+支持minWidth , maxWidth , minHeight , maxHeight百分比设置值
+支持TextView、Button、EditText的textSize
+支持ScrollView内部为Linearlayout
+支持任何View的尺寸参照屏幕的宽或者高
+
+1.添加依赖
+compile 'com.zhy:percent-support-extends:1.1.1'
+
+2.
+app:layout_heightPercent="50%w"
+app:layout_marginPercent="15%w"
+app:layout_marginBottomPercent="20%h"
+
+app:layout_maxWidthPercent
+app:layout_maxHeightPercent	（注：用法和maxHeight等一致，如果使用：值会覆盖原本的maxHeight等属性）。
+app:layout_minWidthPercent
+app:layout_minWidthPercent
+
+7.支持padding百分比设置值
+app:layout_paddingBottomPercent="8%w"
+app:layout_paddingLeftPercent="2%w"
+app:layout_paddingRightPercent="4%w"
+app:layout_paddingTopPercent="6%w"
+
+8.支持任何尺寸参考屏幕的宽或者高
+<ImageView
+  //...
+   app:layout_heightPercent="30%sh"
+   app:layout_widthPercent="30%sh"/>
+
+<TextView
+      app:layout_textSizePercent="3%h"/>

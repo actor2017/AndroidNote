@@ -1,0 +1,4 @@
+https://github.com/EyalBira/loading-dots
+
+Customizable bouncing dots for smooth loading effect. Mostly used in chat bubbles to indicate the other person is typing.
+可定制的弹跳点平滑加载效果。主要用于聊天框中，表示对方正在打字。

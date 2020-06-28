@@ -1,0 +1,123 @@
+https://github.com/JakeWharton/ViewPagerIndicator
+
+1.不知道就看sample源码或者直接打开apk用ActivityManager一起查看
+
+2.添加依赖 或 导入library, 重命名ViewPagerIndicatorLibrary
+<dependency>
+  <groupId>com.viewpagerindicator</groupId>
+  <artifactId>library</artifactId>
+  <version>2.4.1</version>
+  <type>apklib</type>
+</dependency>
+
+
+3.添加项目依赖
+
+4.本例示例用的TabPageIndicator
+1.先在布局文件中像sample一样布局文件添加,并固定好位置:
+    <!--从例子程序抄过来的   页签-->
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/indicator"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+
+2.找到    页签
+        tpi_indicator = (TabPageIndicator) view.findViewById(indicator);
+        //4.页签绑定ViewPager
+        //tpi_indicator.setViewPager(vp_viewpager); //在ViewPager设置Adapter之后才能绑定,不然报错
+
+
+3.在ViewPager的PagerAdapter()中重写getPageTitle()方法,返回页签要显示的标题
+
+运行,FloatMath.ceil(result);报错,改成Math.ceil(result);即可
+
+  然后就会发现点击页签,下面的ViewPager会联动
+
+4.发现页签没间距,且没有背景图片等,不美观
+  改变布局文件中的样式,除了布局文件,还有★★给Activity配置主题★★
+  然后再AndroidManifest中找例子类SampleTabsDefault的主题,
+  发现配置了主题:android:theme="@style/Theme.PageIndicatorDefaults"
+  然后我们也给我们的Activity配置主题(不要配错了)
+
+5.运行程序,发现我们ViewPager的背景变量,在自己布局中设置一个background即可,例#fff白色
+  发现页签控件和例子程序变成一样的了
+  但是发现字体颜色.背景还需设置成自己的,点进去theme,发现有2个item,见名知意,显然是第二个设置字体的属性等,
+  如果不确定,可在TabPageIndicator搜索2个item,看例子引用了哪一个
+
+
+6.然后修改背景和字体(本例可直接用,已抽取出来文件)
+
+7.运行app,发现页签猛地向右一拉的时候,会把左边LeftMenuFragment拉出来,父控件拦截了飞快滑动的事件,
+  所以要在导入的Library的TabPageIndicator中重写dispatchTouchEvent(),如下:
+
+    //当用户触摸到页签控件的时候，请求父控件别拦截事件
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        LogUtils.Warn(ev.getAction()+"");//选择Warn级别日志,发现打印0,3.没有1.2
+        //请求父类,祖类别拦截触摸事件
+        getParent().requestDisallowInterceptTouchEvent(true);
+        return super.dispatchTouchEvent(ev);
+    }
+
+8.实现自动轮播
+//===========================================================1.给ViewPager添加触摸监听==============
+    private Handler mHandler;               //图片轮播
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_product_detail_pager);
+
+        mHandler = new Handler() {				//先在onCreate中初始化Handler
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                int currentItem = vp_viewpager.getCurrentItem();
+                int next = currentItem + 1;
+                if (next == smallImgsList.size()) {
+                    next = 0;
+                }
+                vp_viewpager.setCurrentItem(next);
+
+                sendEmptyMessageDelayed(0, 2000);
+            }
+        };
+    
+
+        //设置触摸监听
+        vp_viewpager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:	//当按下的时候
+                        mHandler.removeMessages(0);	//停止轮播
+			//mHandler.removeCallbacksAndMessages(null);//这样写也行
+			Toast.makeText(MainActivity.this, "未来记得添加双击事件", Toast.LENGTH_SHORT).show();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
+                    case MotionEvent.ACTION_UP:		//继续轮播
+                    case MotionEvent.ACTION_CANCEL:
+                        mHandler.removeMessages(0);	//先移除消息
+                        mHandler.sendEmptyMessageDelayed(0, 2000);
+                        break;	//返回true表示全权消费掉此事件,会导致viewpager无法响应触摸; 所以此处要返回false
+                }
+                return false;
+            }
+        });
+
+	//解析网络数据
+	private void parseJson(String response) {
+		Gson gson = new Gson();
+		HomeAdInfo homeAdInfo = gson.fromJson(response, HomeAdInfo.class);
+		home_images = homeAdInfo.home_images;
+
+		viewPager.setAdapter(new MyPagerAdapter());
+		indicator.setViewPager(viewPager);
+
+		//						3.首次进入轮播
+		mHandler.removeMessages(0);
+		mHandler.sendEmptyMessageDelayed(0, 2000);
+	}
+

@@ -1,0 +1,14 @@
+由于本例是静默安装,所以onResume不会回调,用EventBus回调.
+1.接收安装app的广播
+2.接收到广播后EventBus通知页面更新下载的状态.
+
+还有一种更简单的方法.
+1.在静默安装后有安装成功/失败的boolean值返回,这儿直接EventBus回调.
+new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (SilentInstall.install(apkPath)) {
+                    EventBus.getDefault().post(new UpdateDownloadStatus(packageName));//这儿packageName可以随便传什么.
+                }
+            }
+        }).start();

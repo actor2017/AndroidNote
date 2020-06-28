@@ -1,0 +1,4 @@
+https://github.com/curtis2/SuperVideoPlayer
+android超级视频播放器. 集成android流媒体处理的主流框架，vitamio, ijkplayer等等。使用不同的主流框架实现播放本地视频，网络视频，直播等功能。
+
+demo有示例写法

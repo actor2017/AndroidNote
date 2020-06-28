@@ -1,0 +1,25 @@
+注意事项 
+1. 使用类android.support.v4.app.NotificationCompat.BigPictureStyle 
+2. style.bigPicture传递的是个bitmap对象 所以也不应该传过大的图 否则会oom 
+3. 同BigTextStyle 低版本上系统只能显示普通样式
+
+public void bigPictureStyle(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("BigPictureStyle");
+        builder.setContentText("BigPicture演示示例");
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
+        android.support.v4.app.NotificationCompat.BigPictureStyle style = new android.support.v4.app.NotificationCompat.BigPictureStyle();
+        style.setBigContentTitle("BigContentTitle");
+        style.setSummaryText("SummaryText");
+        style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.small));
+        builder.setStyle(style);
+        builder.setAutoCancel(true);
+        Intent intent = new Intent(this,ImageActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,1,intent,0);
+        //设置点击大图后跳转
+        builder.setContentIntent(pIntent);
+        Notification notification = builder.build();
+        manger.notify(TYPE_BigPicture,notification);
+    }

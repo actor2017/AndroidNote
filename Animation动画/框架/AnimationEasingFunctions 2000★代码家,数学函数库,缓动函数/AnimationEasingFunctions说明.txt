@@ -1,0 +1,41 @@
+https://github.com/daimajia/AnimationEasingFunctions
+
+minSdkVersion: 11
+
+Step 1
+
+Gradle
+
+compile 'com.android.support:appcompat-v7:25.1.1'
+compile 'com.daimajia.easing:library:2.1@aar'
+or maven
+
+<dependency>
+    <groupId>com.android.support</groupId>
+    <artifactId>appcompat-v7</artifactId>
+    <version>25.1.1</version>
+    <type>apklib</type>
+</dependency>
+<dependency>
+    <groupId>com.daimajia.easing</groupId>
+    <artifactId>library</artifactId>
+    <version>2.1</version>
+    <type>apklib</type>
+</dependency>
+Step 2
+
+Just like a glider.
+
+AnimatorSet set = new AnimatorSet();
+ set.playTogether(
+         Glider.glide(Skill.BounceEaseInOut, 1200, ObjectAnimator.ofFloat(mTarget, "translationY", 0, 100))
+ );
+
+set.setDuration(1200);
+set.start();
+Tips
+
+If you encounter exceptions such as ClassNotFoundExceptions (#4), please add the following to your proguard-project.txt:
+
+-keep class com.daimajia.easing.** { *; }
+-keep interface com.daimajia.easing.** { *; }

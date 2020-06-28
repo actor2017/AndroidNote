@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--本文件在res/drawable文件下,写一个xml继承shape★★★★★
+        在代码中通过R.drawable.filename进行访问,在xml文件中通过@[package:]drawable/filename进行访问-->
+
+<!--形状-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+android:shape=["rectangle" | "oval" | "line" | "ring"] //默认为:  矩形  椭圆形  线性形状  环形
+android:dither="true">		//防抖动
+
+<!--下面5行环形ring专用:
+android:shape="ring
+android:innerRadius	  内环的半径。
+android:innerRadiusRatio  浮点型,内环半径=环的宽度/ratio，这个值是可以被覆盖的，默认为3.
+android:thickness	  尺寸，环的厚度
+//浮点型,环的厚度=环的宽度/ratio,这个值是可以被android:thickness覆盖的，默认值是9. 和innerRadiusRatio配合使用,否则可能会有外边距
+android:thicknessRatio="9"
+android:useLevel="false" ★★必须写★★boolean值，如果当做是 LevelListDrawable(<level-list/>) 使用时值为true，否则为false,不然图形不显示.-->
+
+<!--圆角-->
+<corners
+    android:radius="8dp"            R半径
+    android:topLeftRadius="5dp"     ↖角半径
+    android:topRightRadius="15dp"   ↗角半径
+    android:bottomLeftRadius="20dp" ↙角半径
+    android:bottomRightRadius="25dp"↘角半径
+    />
+
+<!--梯度(渐变色),4种渐变类型linear:线性渐变(默认)  radial:放射性渐变,以开始色为中心   sweep:扫描线式的渐变-->
+<gradient
+    android:type=["linear" | "radial" | "sweep"] 线性渐变(默认)/放射渐变/扫描式渐变
+    android:centerX="0.2"       		渐变中心X点坐标的相对位置[0~1]
+    android:centerY="0.8"       		渐变中心Y点坐标的相对位置[0~1]
+    android:startColor="#FFFF0000"  	起始颜色
+    android:endColor="#80FF00FF"    	结束颜色
+    android:centerColor="integer"	渐变中间颜色,即开始颜色与结束颜色之间的颜色
+    android:angle="45"              	渐变角度(angle必须为45的整数倍.当angle=0时(默认),渐变色是从左向右. angle=90时为从下往上. angle=270,从上到下)
+    android:useLevel=["true" | "false"]	如果要使用 LevelListDrawable 对象，就要设置为true.设置为true无渐变。false有渐变色
+    android:gradientRadius="integer"	渐变半径.当 android:type="radial"时才使用,单独使用 android:type="radial"会报错。
+    />
+
+<!--内边距:内容与边的距离-->
+<padding
+    android:left="10dp"     左内边距
+    android:top="10dp"      上内边距
+    android:right="10dp"    右内边距
+    android:bottom="10dp"   下内边距
+    />
+
+<!--内部填充,纯色-->
+<solid
+    android:color="#ffff9d77"	填充形状内部颜色(纯色)
+    />
+
+<!--描边-->
+<stroke
+    android:width="2dp"         描边的宽度(高度)(可以是小数,例:0.3)
+    android:color="#dcdcdc"     描边的颜色
+    android:dashWidth="integer" 虚线的宽度(每截长度)    值为0时，表示为实线。值大于0则为虚线。
+    android:dashGap="integer"   虚线之间的间隔
+    />
+
+<!--size 图形大小,例:画小圆点-->
+<size
+    android:width="600dp"   宽度
+    android:height="integer"高度
+    />
+
+</shape>
+
+//==============================================================
+划线示例:
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="line">
+    <!--1.引用虚线的view需要添加属性android:layerType="software"
+    否则显示不了虚线.
+        2.引用虚线的view的高度必须大于虚线的width, 否则不显示.-->
+    <stroke
+        android:width="1dp"
+        android:color="#e8e8e8"
+        android:dashWidth="5dp"
+        android:dashGap="5dp"/>
+</shape>

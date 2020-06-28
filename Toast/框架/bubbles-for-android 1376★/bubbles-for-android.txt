@@ -1,0 +1,4 @@
+https://github.com/txusballesteros/bubbles-for-android
+
+Bubbles for Android is an Android library to provide chat heads capabilities on your apps. With a fast way to integrate with your development.
+bubble for Android是一个Android库，可以在你的应用程序上提供聊天头功能。以一种快速的方式与您的开发集成。

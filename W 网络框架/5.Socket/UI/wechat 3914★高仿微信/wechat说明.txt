@@ -1,0 +1,22 @@
+https://github.com/motianhuo/wechat
+https://github.com/motianhuo/wechat/tree/wechat2.0
+
+
+A High Copy WeChat ,SNS APP (高仿微信)
+
+wechat-master\WeChat\bin里有1.0版本安装包
+
+2.0版本:
+Update
+1、重构项目，代码逻辑更清晰。
+2、加入红包功能，使聊天更有趣味性。
+3、让微信更好玩儿，将用户体验做到极致！
+
+
+功能模块:
+
+消息：订阅号、列表滑动删除、TitleBar弹出菜单单聊，群聊（发送文字，语音，位置，视频，文件，语音电话，视频通话）微信表情、
+通讯录：按字母索引排序、添加手机通讯录好友、
+发现：二维码扫描添加好友、二维码扫描加入群聊、扫码微信支付、生成自己二维码图片
+朋友圈、发布朋友圈信息、购物、游戏、设置WebView与Javascript交互、播放视频、加载HTML5页面FastJson Json转换神器、Imageloader图片加载库、android-async-http 网络请求库、图片缩放查看、加密解密
+

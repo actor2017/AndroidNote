@@ -1,0 +1,82 @@
+http://blog.jobbole.com/66117/
+commit()函数和commitAllowingStateLoss()函数的唯一区别就是当发生状态丢失的时候，后者不会抛出一个异常。通常你不应该使用这个函数，因为它意味可能发生状态丢失。当然，更好的解决方案是commit函数确保在Activity的状态保存之前调用，这样会有一个好的用户体验。除非状态丢失的可能无可避免，否则就不应该使用commitAllowingStateLoss()函数。
+
+
+原文内容↓
+Fragment Transactions和Activity状态丢失
+
+2014/08/19 · Android, 开发 · 1 评论 · 安卓开发, 异常处理
+分享到： 18
+本文由 伯乐在线 - 独孤昊天 翻译。未经许可，禁止转载！
+英文出处：androiddesignpatterns。欢迎加入翻译组。
+下面的堆栈跟踪和异常代码，自从Honeycomb的初始发行版本就一直使得StackOverflow很迷惑。
+
+Java
+
+; html-script: false ]
+java.lang.IllegalStateException:Can not perform this action after onSaveInstanceState
+    at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1341)
+    at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1352)
+    at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)
+    at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:574)
+1
+2
+3
+4
+5
+6
+; html-script: false ]
+java.lang.IllegalStateException:Can not perform this action after onSaveInstanceState
+    at android.support.v4.app.FragmentManagerImpl.checkStateLoss(FragmentManager.java:1341)
+    at android.support.v4.app.FragmentManagerImpl.enqueueAction(FragmentManager.java:1352)
+    at android.support.v4.app.BackStackRecord.commitInternal(BackStackRecord.java:595)
+    at android.support.v4.app.BackStackRecord.commit(BackStackRecord.java:574)
+这篇博客将会解释，这个异常在什么时候发生以及为什么会发生？并且提供几种方法让这种异常不会发生在你的应用中。
+
+为什么会抛出这个异常？
+
+这种异常的出现是由于，在Activity的状态保存之后，尝试去提交一个FragmentTransaction。这种现象被称为活动状态丢失（Activity State Loss）。然而，在我们了解这种异常的真正含义之前，让我们先看看当onSaveInstanceState()函数被调用的时候到底发生了什么。
+
+正如最近我在关于Binders & Death Recipients博客里面讨论的那样，Android应用在Android运行环境里很难决定自己的命运。Android系统可以在任何时候通过结束一个进程以释放内存，而且background activities可能在没有任何警告的情况下被清理。为了确保这种不确定的行为对于用户是透明的，在Activity可以销毁之前，通过调用onSaveInstanceState()方法，架构给每个Activity一个保存自身状态的机会。在重新加载已保存的状态时，对于foreground和background Activities的切换，为用户带来了无缝切换的体验。用户不用去关心这个Activity是否被系统销毁了。
+
+在框架调用onSaveInstanceState()方法时，给这个方法传递了一个Bundle对象。Activity可以通过这个对象来存储它的状态，而且Activity把它的dialogs、fragments以及views的状态都保存在这个对象里面。当这个函数返回时，系统打包这个Bundle对象通过一个Binder接口传递给系统服务处理，然后它会被安全的存储下来。当系统决定重新创建这个Activity的时候，它会给这个应用传回一个相同的Bundle对象，通过这个对象可以重新装载Activity销毁时的状态。
+
+那为什么会抛出这个异常呢？这个问题源于这样的事实，Bundle对象代表一个Activity在调用onSaveInstanceState()方法的一个瞬间快照，仅此而已。这意味着，当你在onSaveInstanceState()方法调用后会调用FragmentTransaction的commit方法。这个transaction将不会被记住，因为它没有在第一时间记录为这个Activity的状态的一部分。从用户的角度来看，这个transaction将会丢失，可能导致UI状态丢失。为了保证用户的体验，Android不惜一切代价避免状态的丢失。因此，无论什么时候发生，都将简单的抛出一个IllegalStateException异常。
+
+什么时候会抛出这个异常？
+
+如果之前你遇到过这个异常，也许你已经注意到异常抛出的时间在不同的版本平台有细微的差别。也许你会发现，老版本的机器抛出异常的频率更低，或者你的应用使用Support Library比使用官方的框架类的时候更容易抛出异常。这个细微的区别已经导致一些人在猜测Support Library有bug，是不值得相信的。然而，这样的猜想完全错误。
+
+这些细微区别存在的原因是源于Honeycomb上对于Activity生命周期所做的巨大改变。在Honeycomb之前，Activity直到暂停后才考虑被销毁。这意味着在onPause()方法之前onSaveInstanceState()方法被立即调用。然而，从Honeycomb开始，考虑销毁Activity只能是在他们停止之后，这意味着onSaveInstanceState()方法现在是在onStop()方法之前调用，以此代替在onPause()方法之前调用。这些不同总结如下表：
+
+Honeycomb之前的版本	Honeycomb及更新的版本
+Activities会在onPause()调用前被结束？	NO	NO
+Activities会在onStop()调用前被结束？	YES	NO
+onSaveInstanceState(Bundle)会在哪些方法调用前被执行？	onPause()	onStop()
+作为Activity生命周期已做的细微改变的结果，Support Library有时候需要根据平台的版本来改变它的行为。比如，在Honeycomb及以上的设备中，每当一个commit方法在onSaveInstanceState()方法之后调用时，都会抛出一个异常来提醒开发者状态丢失发生了。然而，在Honeycomb之前的设备上，每次它发生时并抛出异常将更受限制，他们的onSaveInstanceState()方法在Activity的生命周期中更早调用，结果更容易发生状态丢失。Android团队被迫做了一个折中的办法：为了更好的与老版本平台交互，老的设备不得不接受偶然状态丢失可能发生在onPause()方法和onStop()方法之间。Support Library在不同平台的行为总结如下表：
+
+Honeycomb之前的版本	Honeycomb及更新的版本
+commit()在onPause()前被调用	OK	OK
+commit()在onPause()和onStop()执行中间被调用	STATE LOSS	OK
+commit()在onStop()之后被调用	EXCEPTION	EXCEPTION
+如何避免抛出异常？
+
+一旦你了解了到底发生了什么，避免发生Activity状态丢失将会很简单。如果你读了这篇博客，那么很幸运你更好的了解了Support Library是怎么工作的，以及在你的应用中避免状态丢失为什么如此的重要。假如你查看这个博客是为了查找快速解决的办法，那么，当你在你的应用中使用FragmentTransactions的时候，应牢记以下的这些建议：
+
+建议一
+
+当你在Activity生命周期函数里面提交transactions的时候要小心。大部分的应用仅仅在onCreate()方法被调用的开始时间提交transactions，或者在相应用户输入的时候，因此将不可能碰到任何问题。然而，当你的transactions在其他的Activity生命周期函数提交，如onActivityResult()、onStart()和onResume()，事情将会变得微妙。例如，你不应该在FragmentActivity的onResume()方法中提交transactions。因为有些时候这个函数可以在Activity的状态恢复前被调用（可以查看相关文档了解更多信息）。如果你的应用要求在除onCreate()函数之外的其他Activity生命周期函数中提交transaction，你可以在FragmentActivity的onResumeFragments()函数或者Activity的onPostResume()函数中提交。这两个函数确保在Activity恢复到原始状态之后才会被调用，从而避免了状态丢失的可能性。（示例：看看我对this StackOverflow question的回答，来想想如何提交FragmentTransactions作为Activity的onActivityResult方法被调用的响应）。
+
+建议二
+
+避免在异步回调函数中提交transactions。包括常用的方法，比如AsyncTask的onPostExecute方法和LoaderManager.LoaderCallbacks的onLoadFinished方法。在这些方法中执行transactions的问题是，当他们被调用的时候，他们完全没有Activity生命周期的当前状态。例如，考虑下面的事件序列：
+
+一个Activity执行一个AsyncTask。
+用户按下“Home”键，导致Activity的onSaveInstanceState()和onStop()方法被调用。
+AsyncTask完成并且onPostExecute方法被调用，而它没有意识到Activity已经结束了。
+在onPostExecute函数中提交的FragmentTransaction，导致抛出一个异常。
+一般来说，避免这种类型异常的最好办法就是不要在异步回调函数中提交transactions。Google工程师似乎同意这个信条。根据Android Developers group上的这篇文章,Android团队认为UI主要的改变，源于从异步回调函数提交FragmentTransactions引起不好的用户体验。如果你的应用需要在这些回调函数中执行transaction而没有简单的方法可以确保这个回调函数不好在onSaveInstanceState()之后调用。你可能需要诉诸于使用commitAllowingStateLoss方法，并且处理可能发生的状态丢失。(可以看看StackOverflow上的另外两篇文章，这一篇和另一篇)。
+
+建议三
+
+作为最后的办法，使用commitAllowingStateLoss()函数。commit()函数和commitAllowingStateLoss()函数的唯一区别就是当发生状态丢失的时候，后者不会抛出一个异常。通常你不应该使用这个函数，因为它意味可能发生状态丢失。当然，更好的解决方案是commit函数确保在Activity的状态保存之前调用，这样会有一个好的用户体验。除非状态丢失的可能无可避免，否则就不应该使用commitAllowingStateLoss()函数。

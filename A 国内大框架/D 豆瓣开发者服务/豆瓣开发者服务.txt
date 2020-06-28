@@ -1,0 +1,6 @@
+https://developers.douban.com/
+
+示例:
+https://api.douban.com/v2/book/search?q=%E9%87%91%E7%93%B6%E6%A2%85&tag=&start=0&count=1
+返回json:
+{"count":1,"start":0,"total":542,"books":[{"rating":{"max":10,"numRaters":4178,"average":"8.6","min":0},"subtitle":"张竹坡批评第一奇书","author":["兰陵笑笑生"],"pubdate":"1991","tags":[{"count":1991,"name":"金瓶梅","title":"金瓶梅"},{"count":1163,"name":"古典文学","title":"古典文学"},{"count":838,"name":"兰陵笑笑生","title":"兰陵笑笑生"},{"count":744,"name":"小说","title":"小说"},{"count":629,"name":"中国古典文学","title":"中国古典文学"},{"count":412,"name":"中国文学","title":"中国文学"},{"count":358,"name":"古典","title":"古典"},{"count":347,"name":"中国","title":"中国"}],"origin_title":"（明）兰陵笑笑生","image":"https://img1.doubanio.com\/mpic\/s10069398.jpg","binding":"","translator":[],"catalog":"\n      ","pages":"","images":{"small":"https://img1.doubanio.com\/spic\/s10069398.jpg","large":"https://img1.doubanio.com\/lpic\/s10069398.jpg","medium":"https://img1.doubanio.com\/mpic\/s10069398.jpg"},"alt":"https:\/\/book.douban.com\/subject\/1456692\/","id":"1456692","publisher":"齐鲁出版社","isbn10":"7533300815","isbn13":"9787533300814","title":"金瓶梅","url":"https:\/\/api.douban.com\/v2\/book\/1456692","alt_title":"（明）兰陵笑笑生","author_intro":"","summary":"本书由王汝梅与李昭恂、于凤树校点。","series":{"id":"4279","title":"明代四大奇书"},"price":"268.00元"}]}

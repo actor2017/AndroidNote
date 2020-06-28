@@ -1,0 +1,113 @@
+1.添加依赖:    compile 'com.android.support:design:24.1.1'
+
+    Snackbar.LENGTH_SHORT// 短时间显示，然后自动取消1.8s
+    Snackbar.LENGTH_LONG// 长时间显示，然后自动取消3s
+    Snackbar.LENGTH_INDEFINITE// 不消失显示，除非手动取消
+dismiss()
+show()
+
+Snackbar.make(view,"欢迎来到Android快餐店",Snackbar.LENGTH_SHORT).show();//view可以传btn等
+显示在view的父view的底部★
+示例:
+
+    <android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <Button
+    android:id="@+id/btnShowSnackBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:text="显示SnackBar"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+//==========================================================
+简便写法:
+ Snackbar.make(view, "Hello Snackbar", Snackbar.LENGTH_LONG).show();
+
+设置回调监听:
+Snackbar.make(btnShowSnackBar,"欢迎来到Android快餐店",Snackbar.LENGTH_SHORT).setCallback(newSnackbar.Callback() {
+
+    @Override
+    public void onShown(Snackbar snackbar) {
+    super.onShown(snackbar);
+    showTime=System.currentTimeMillis();//显示的时间
+    }
+
+    @Override
+    public voidonDismissed(Snackbar snackbar,int event) {
+    super.onDismissed(snackbar, event);
+    dismissTime=System.currentTimeMillis();//消失的时间
+    tvTime.setText(""+(dismissTime-showTime));//用一个TextView显示时间的差值
+
+    }
+    }).show();
+
+
+//======================================================
+    if(event==DISMISS_EVENT_SWIPE){
+    //滑动消失后的逻辑
+
+    }
+
+//===============================================点击事件
+Snackbar.make(btnShowSnackBar,"欢迎来到Android快餐店",Snackbar.LENGTH_LONG).setAction("点餐",newView.OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+    tvTime.setText("点餐成功");
+    }
+    }).show();
+
+//=====================================设置字体颜色,设置时间
+Snackbar.make(rootlayout, "Hello SnackBar!", Snackbar.LENGTH_SHORT)
+       .setAction("Undo", new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               // Perform anything for the action selected
+           }
+       })
+       .setActionTextColor(R.color.material_blue)
+       .setDuration(4000).show();
+
+
+//======================================使FAB跟随Snackbar移动==
+fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 第一个参数设置为FAB就可以使FAB跟随Snackbar移动
+                Snackbar.make(v, "去下一页？", Snackbar.LENGTH_LONG).setAction("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, NextActivity.class));
+                    }
+                }).show();
+            }
+        });
+
+//================================设置字体颜色&设置btn的字体不全都大写
+    /**
+     * set the message text color
+     *
+     * @param snackbar
+     * @param color    the text color
+     */
+    public static void setSnackbarMessageTextColor(Snackbar snackbar, int color) {
+        View view = snackbar.getView();
+        TextView textView = (TextView) view.findViewById(R.id.snackbar_text);
+        textView.setTextColor(color);
+    }
+
+    /**
+     * set the action text whether all caps
+     *
+     * @param snackbar the sanckbar
+     * @param allCaps  boolean allCaps,true or false
+     */
+    public static void setSnackbarActionTextAllCaps(Snackbar snackbar, boolean allCaps) {
+        View view = snackbar.getView();
+        TextView textView = (TextView) view.findViewById(R.id.snackbar_action);
+        textView.setAllCaps(allCaps);
+    }

@@ -1,0 +1,14 @@
+点播，类似于重播，编辑好的视频文件，被观众任意观看，每次都从头播放
+
+直播，类似于新闻联播，视频流在网络上，只要终端接收流就从那一刻开始
+湖南卫视: rtmp://58.200.131.2:1935/livetv/hunantv
+
+韩国朝鲜日报: rtmp://live.chosun.gscdn.com/live/tvchosun1.stream
+韩国GoodTV: rtmp://mobliestream.c3tv.com:554/live/goodtv.sdp
+香港卫视: rtmp://live.hkstv.hk.lxdns.com/live/hks
+香港财经: rtmp://202.69.69.180:443/webcast/bshdlive-pc
+美国1: rtmp://ns8.indexforce.com/home/mystream
+美国2: rtmp://media3.scctv.net/live/scctv_800
+美国中文电视: rtmp://media3.sinovision.net:1935/live/livestream
+
+https://github.com/ccx1/LiveplayPack(见具体项目)

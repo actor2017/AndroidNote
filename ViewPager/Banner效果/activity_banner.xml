@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".BannerActivity">
+
+    <!--android:clipToPadding="false"关键属性
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:clipToPadding="false"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+    </android.support.v4.view.ViewPager>
+
+    <!--这种方式有个缺点, 下一个页面会在滑动后才加载
+        需设置: viewPager.setOffscreenPageLimit(3);-->
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:clipChildren="false">-->
+
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/vp_main"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="148dp"-->
+    <!--android:layout_marginLeft="50dp"-->
+    <!--android:layout_marginRight="50dp"-->
+    <!--android:clipChildren="false">-->
+    <!--</android.support.v4.view.ViewPager>-->
+    <!--</FrameLayout>-->
+
+    <Button
+        android:id="@+id/btn_set_page_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="viewPager.setPageMargin(35);//设置page间隔"
+        android:textAllCaps="false"
+        android:textColor="#FFF"/>
+</LinearLayout>

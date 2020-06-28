@@ -1,0 +1,85 @@
+https://www.jianshu.com/p/b2a4a732cf99
+记录一波Android大图片上传遇到的坑
+
+之前项目里，为了规避大图片上传的问题，我特意利用裁切把图片切的非常小了，然而后来还是让我把整张图片上传上去。
+如果后台用流上传还好，但我们公司后台用Base64 上传的，上传一张照片转成字符串的速度都比上传慢，据说一张图片转成字符串体积还会增加1/3，这就不适合大图片上传。
+
+让后台改是不可能了，只能从图片下手了，问了IOS他们把图片压缩了，我们也压缩下吧，但网上找的各种压缩，要么压的太狠了，要么压的太欠火候，还那么大，不过前几天看一个开源项目PictureSelector 里面的压缩特别好，大小和清晰度都非常不错，我从里面提出来他的压缩代码了， 压缩之后2M图片，控制在100KB左右，上传从1分钟多，提速到几秒即可，速度提速非常快。
+
+下边是解决方案，要放到异步里面，或者RxJava，思路先判定图片长宽是否超过了1200，然后进行了等比例缩放，缩放完了，进行压缩。
+
+private byte[] getBytes(String path) {
+
+        //File file = new File(path);
+
+        //读取图片 只读边,不读内容
+
+        BitmapFactory.Options newOpts = new BitmapFactory.Options();
+
+        newOpts.inJustDecodeBounds = true;		
+//不加载bitmap,只获取宽高
+        BitmapFactory.decodeFile(path, newOpts);	//C语言风格,给option赋值
+        //开始按比例缩放图片
+
+        newOpts.inJustDecodeBounds = false;
+
+        int width = newOpts.outWidth;
+        int height = newOpts.outHeight;
+
+        float maxSize = 1200;
+
+        int be = 1;
+
+        if (width >= height && width > maxSize) {//缩放比,用高或者宽其中较大的一个数据进行计算
+
+            be = (int) (newOpts.outWidth / maxSize);
+
+            be++;
+
+        } else if (width < height && height > maxSize) {
+
+            be = (int) (newOpts.outHeight / maxSize);
+
+            be++;
+
+        }
+
+        newOpts.inSampleSize = be;//设置采样率
+
+        newOpts.inPreferredConfig = Bitmap.Config.ARGB_8888;//该模式是默认的,可不设
+
+        newOpts.inPurgeable = true;// 同时设置才会有效
+
+        newOpts.inInputShareable = true;//。当系统内存不够时候图片自动被回收
+
+        //下面可是图片压缩
+
+        Bitmap bitmap = BitmapFactory.decodeFile(path, newOpts);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        int options = 100;
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);//质量压缩方法，把压缩后的数据存放到baos中 (100表示不压缩，0表示压缩到最小)
+
+        while (baos.toByteArray().length > 100 * 1024) {//循环判断如果压缩后图片是否大于指定大小,大于继续压缩
+
+            baos.reset();//重置baos即让下一次的写入覆盖之前的内容
+
+            options -= 5;//图片质量每次减少5
+
+            if (options <= 5) options = 5;//如果图片质量小于5，为保证压缩后的图片质量，图片最底压缩质量为5
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);//将压缩后的图片保存到baos中
+
+            if (options == 5) break;//如果图片的质量已降到最低则，不再进行压缩
+
+        }
+
+        LogUtil.i("size=="+baos.toByteArray().length);
+
+        return baos.toByteArray();
+
+    }
+
+最后感谢PictureSelector作者。

@@ -1,0 +1,117 @@
+###27.13_JDK5新特性(自己实现枚举类)
+* A:枚举概述
+	* 是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内。举例：一周只有7天，一年只有12个月等。
+* B:回想单例设计模式：单例类是一个类只有一个实例
+	* 那么多例类就是一个类有多个实例，但不是无限个数的实例，而是有限个数的实例。这才能是枚举类。
+* C:案例演示
+	* 自己实现枚举类
+1,自动拆装箱
+2,泛型
+3,可变参数
+4,静态导入
+5,增强for循环
+6,互斥锁
+7,枚举
+		
+###27.14_JDK5新特性(通过enum实现枚举类)
+* A:案例演示
+	* 通过enum实现枚举类
+
+###27.15_JDK5新特性(枚举的注意事项)
+
+* A:案例演示
+	* 定义枚举类要用关键字enum
+	* 所有枚举类都是Enum的子类
+	* 枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略
+	* 枚举类可以有构造器，但必须是private的，它默认的也是private的。
+	* 枚举类也可以有抽象方法，但是枚举项必须重写该方法
+	* 枚举在switch语句中的使用
+
+State.LoginState state = Enum.valueOf(State.LoginState.class, state);
+
+
+public class Demo1_Enum {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		//demo1();
+		//demo2();
+		Week3 mon = Week3.MON;
+		mon.show();
+	}
+
+	public static void demo2() {
+		Week2 mon = Week2.MON;
+		System.out.println(mon.getName());
+	}
+
+	public static void demo1() {
+		Week mon = Week.MON;
+		Week tue = Week.TUE;
+		Week wed = Week.WED;
+		
+		System.out.println(mon);
+	}
+
+}
+
+
+//-----------------------------------
+public class Week {
+	
+	public static final Week MON = new Week();
+	public static final Week TUE = new Week();
+	public static final Week WED = new Week();
+	
+	private Week(){}						//私有构造,不让其他类创建本类对象
+}
+//-----------------------------------------
+package com.heima.枚举;
+
+public class Week2 {
+	
+	public static final Week2 MON = new Week2("星期一");
+	public static final Week2 TUE = new Week2("星期二");
+	public static final Week2 WED = new Week2("星期三");
+	
+	private String name;
+	private Week2(String name){
+		this.name = name;
+	}						//私有构造,不让其他类创建本类对象
+	public String getName() {
+		return name;
+	}
+	
+	
+}
+//--------------------------------------------------
+public abstract class Week3 {
+	
+	public static final Week3 MON = new Week3("星期一") {
+		public void show() {
+			System.out.println("星期一");
+		}
+	};
+	public static final Week3 TUE = new Week3("星期二"){
+		public void show() {
+			System.out.println("星期二");
+		}
+	};
+	public static final Week3 WED = new Week3("星期三"){
+		public void show() {
+			System.out.println("星期三");
+		}
+	};
+	
+	private String name;
+	private Week3(String name){
+		this.name = name;
+	}						//私有构造,不让其他类创建本类对象
+	public String getName() {
+		return name;
+	}
+	
+	public abstract void show();
+}

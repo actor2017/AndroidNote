@@ -1,0 +1,3 @@
+https://github.com/huangfangyi/FanXin
+
+IM服务器端+Api服务器+客户端(android+ios)全部开源的项目->https://github.com/YiChat http://www.yichatsystem.com

@@ -1,0 +1,9 @@
+https://github.com/jjoe64/GraphView
+
+Android Graph Library for creating zoomable and scrollable line and bar graphs. http://www.android-graphview.org
+Android图形库，用于创建可缩放和可滚动的直线和条形图。
+
+Line Graphs
+Bar Graphs
+Point Graphs
+or implement your own custom types.

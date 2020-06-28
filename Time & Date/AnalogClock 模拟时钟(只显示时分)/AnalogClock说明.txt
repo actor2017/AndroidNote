@@ -1,0 +1,7 @@
+
+    <AnalogClock
+        android:layout_width="wrap_content"
+        //android:dial="@mipmap/ic_launcher"//模拟时钟的表背景。
+        //android:hand_hour="@mipmap/ic_launcher"//模拟时钟的表时针。
+        //android:hand_minute="@mipmap/ic_launcher"//模拟时钟的表分针。
+        android:layout_height="wrap_content"/>

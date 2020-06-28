@@ -1,0 +1,2 @@
+https://github.com/hitherejoe/animate
+n application demoing meaningful motion on Android

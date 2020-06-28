@@ -1,0 +1,9 @@
+支持自定义ViewHolder，让开发者随心所欲。
+
+https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89BaseViewHolder
+
+#使用代码 之前的写法
+public class QuickAdapter extends BaseQuickAdapter<Status> 
+
+现在的写法
+public class QuickAdapter extends BaseQuickAdapter<Status, BaseViewHolder> 

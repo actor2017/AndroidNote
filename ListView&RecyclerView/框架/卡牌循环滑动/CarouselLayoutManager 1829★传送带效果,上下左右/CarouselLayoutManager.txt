@@ -1,0 +1,3 @@
+https://github.com/Azoft/CarouselLayoutManager
+Android Carousel LayoutManager for RecyclerView
+安卓传送带布局

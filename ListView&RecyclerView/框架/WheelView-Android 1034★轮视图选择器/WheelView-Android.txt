@@ -1,0 +1,4 @@
+https://github.com/lantouzi/WheelView-Android
+
+Selector with wheel view, applicable to selecting money or other short length values.
+带有轮视图的选择器，适用于选择货币或其他短长度值。

@@ -1,0 +1,8 @@
+https://github.com/TakahikoKawasaki/nv-websocket-client
+http://blog.csdn.net/zly921112/article/details/72973054 WebSocket安卓客户端实现详解(一)--连接建立与重连
+
+WebSocket安卓客户端实现详解(一)–连接建立与重连
+
+今年在公司第一个需求就是基于websocket写一个客户端消息中心,现在已经上线很久了在司机这种网络环境平均一天重连8次,自认为还是不错的.当时写的时候那个心酸啊,主要因为第一次写都不知道该从哪下手,没有方向.所以这里我将尽可能详细的跟大家分享出来.
+
+

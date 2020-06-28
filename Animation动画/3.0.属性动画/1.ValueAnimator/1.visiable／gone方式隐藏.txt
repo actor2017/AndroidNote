@@ -1,0 +1,10 @@
+
+    private void open() {
+        //∞—ll_footerœ‘ æ
+        view.setVisibility(View.VISIBLE);
+    }
+
+    private void close() {
+        //∞—ll_footer“˛≤ÿ
+        view.setVisibility(View.GONE);
+    }

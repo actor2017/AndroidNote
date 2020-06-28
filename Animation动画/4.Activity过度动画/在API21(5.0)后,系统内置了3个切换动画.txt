@@ -1,0 +1,34 @@
+﻿API 21之前Activity过渡动画使用
+
+
+      API21之前Activity过渡动画通过两种方式来实现:style主题里面统一设置、或者使用代码overridePendingTransition函数单独设置。(当然了代码设置的优先级要高于style主题里面统一设置)
+
+
+
+style文件主题里面统一定义，全局为所有Activity设置过渡动画效果。
+
+
+
+1.<item name="android:windowAnimationStyle">@style/Animation.Activity.Customer</item>
+
+    <style name="Animation.Activity.Customer" parent="@android:style/Animation.Activity">
+
+        <!-- 进入一个新的Activity的时候，A->B B进入动画 -->
+
+        <item name="android:activityOpenEnterAnimation">@anim/right_in</item>
+
+        <!-- 进入一个新的Activity的时候，A->B A退出动画 -->
+
+        <item name="android:activityOpenExitAnimation">@anim/left_out</item>
+
+        <!-- 退出一个Activity的时候，B返回到A A进入动画 -->
+
+        <item name="android:activityCloseEnterAnimation">@anim/left_in</item>
+
+        <!-- 退出一个Activity的时候，B返回到A B退出动画 -->
+
+        <item name="android:activityCloseExitAnimation">@anim/right_out</item>
+
+    </style>
+
+2.代码overridePendingTransition(enterAnim, exitAnim)函数单独设置

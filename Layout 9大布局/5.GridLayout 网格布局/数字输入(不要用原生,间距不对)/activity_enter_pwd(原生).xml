@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.shijing.tobecomegod.activity.EnterPwdActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="1.不能打开i管家.\n2.晚上不能玩手机.\n3.想用手机请输入密码~"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        tools:text="王者荣耀"/>
+
+    <TextView
+        android:id="@+id/tv_packageName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/pink_cc99"
+        android:textSize="18sp"
+        tools:text="com.google.example"/>
+
+    <android.support.v4.widget.Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入15位年月日时分MD5密码"
+        android:inputType="number"
+        android:maxLength="15"
+        android:padding="10dp"
+        android:textSize="18sp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="3">
+
+        <Button
+            android:id="@+id/btn7"
+            android:text="7"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn8"
+            android:text="8"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn9"
+            android:text="9"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:text="←"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:text="4"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:text="5"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn6"
+            android:text="6"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn0"
+            android:text="0"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn1"
+            android:text="1"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:text="2"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:text="3"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:text="确定"
+            android:textSize="30sp"
+            android:layout_columnWeight="1"/>
+    </GridLayout>
+</LinearLayout>

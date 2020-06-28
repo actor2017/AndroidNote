@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context="com.kuchuan.immersivemode.MainActivity">
+    <!--fitsSystemWindows:false(默认,可不写):能透明.true:不能透明-->
+
+    <!--clipToPadding:true(默认).false:滑动的时候就忽视paddingTop,能滑动到padding内-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="40dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!
+        sdf\n
+        asdf\n
+        asdf\n
+        asdf\n
+        asdf\n
+        asdf\n
+        asd\n
+        fa\n
+        sdf\n
+        asdf\n
+        a\n
+        sdf\n
+        asd\n
+        f\n
+        asdf\n
+        a\n
+        sdf\n
+        asd\n
+        f\n
+        asdf\n
+        a\n
+        sdf\n
+        a\n
+        df\n
+        a\n
+        sdf\n
+        asd\n
+        f\n
+        asdf\n
+        a\n
+        df\n
+        a\n
+        dsf\n
+        ads\n
+        f\n
+        asdf\n
+        a\n
+        dsf\n
+        a\n
+        sdf\n
+        as\n
+        df\n
+        adf\n
+        a\n
+        df\n
+        a\n
+        dsf\n
+        asd\n
+        fas\n
+        df\n
+        asd\n
+        f\n
+        asd\n
+        f\n
+        asdf\n
+        asd\n
+        f\n
+        sdf\n
+        sd\n
+        f\n
+        sf\n"/>
+    </ScrollView>
+</RelativeLayout>

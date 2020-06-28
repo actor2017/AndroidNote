@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--#cfd8dc 必须写在color.xml里,否则编译报错-->
+    <item android:drawable="@color/control_highlight_blue_grey"
+          android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="200"
+                            android:propertyName="translationZ"
+                            android:valueTo="20dp"
+                            android:valueType="floatType"/>
+            <objectAnimator android:duration="200"
+                            android:propertyName="scaleX"
+                            android:valueTo="0.5"
+                            android:valueType="floatType"/>
+            <objectAnimator android:duration="200"
+                            android:propertyName="scaleY"
+                            android:valueTo="0.5"
+                            android:valueType="floatType"/>
+        </set>
+    </item>
+
+    <!--#607d8b 必须写在color.xml里,否则编译报错-->
+    <!--android:state_enabled="true" 这个可以不写-->
+    <!--android:state_pressed="false" 这个可以不写-->
+    <item android:drawable="@color/button_normal_blue_grey"
+          android:state_enabled="true"
+          android:state_pressed="false">
+        <set>
+            <objectAnimator android:duration="200"
+                            android:propertyName="translationZ"
+                            android:valueTo="0"
+                            android:valueType="floatType"/>
+            <objectAnimator android:duration="200"
+                            android:propertyName="scaleX"
+                            android:valueTo="1"
+                            android:valueType="floatType"/>
+            <objectAnimator android:duration="200"
+                            android:propertyName="scaleY"
+                            android:valueTo="1"
+                            android:valueType="floatType"/>
+        </set>
+    </item>
+</selector>

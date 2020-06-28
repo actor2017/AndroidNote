@@ -1,0 +1,6 @@
+https://github.com/jsntjinjin/simplereader
+参考"任阅" 网络小说阅读器,一款小说阅读器
+
+介绍
+项目基于ReactNative + Redux的框架开发。项目中的API均来自追书神器，纯属共享学习之用，不得用于商业！！
+

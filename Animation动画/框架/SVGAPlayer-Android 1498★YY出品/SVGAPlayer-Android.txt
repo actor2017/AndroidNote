@@ -1,0 +1,24 @@
+https://github.com/yyued/SVGAPlayer-Android
+http://svga.io
+
+Similar to Lottie. Render After Effects / Animate CC (Flash) animations natively on Android and iOS, Web. 使用 SVGAPlayer 在 Android、iOS、Web中播放 After Effects / Animate CC (Flash) 动画。 
+
+SVGAPlayer 是一个轻量的动画渲染库。你可以使用工具从 Adobe Animate CC 或者 Adobe After Effects 中导出动画文件，然后使用 SVGAPlayer 在移动设备上渲染并播放。
+
+SVGAPlayer-Android 使用原生 Android Canvas 库渲染动画，为你提供高性能、低开销的动画体验。
+
+
+功能示例
+使用位图替换指定元素。
+在指定元素上绘制文本。
+在指定元素上绘制富文本。
+隐藏指定元素。
+在指定元素上自由绘制。
+
+
+<com.opensource.svgaplayer.SVGAImageView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:source="posche.svga"
+        app:autoPlay="true"
+        android:background="#000" />

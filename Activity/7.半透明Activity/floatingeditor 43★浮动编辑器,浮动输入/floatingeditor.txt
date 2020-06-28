@@ -1,0 +1,42 @@
+https://github.com/kevin-mob/floatingeditor
+https://www.jianshu.com/p/18279708fa46
+
+android 浮动编辑器
+
+compile project(':floatingeditor')
+
+功能
+浮动编辑器，使编辑界面始终浮于软键盘的上方
+
+
+1.根据实际需求自定义浮动布局文件
+2.调用
+    EditorCallback editorCallback = new EditorCallback(){
+
+            @Override
+            public void onCancel() {
+                //onCancel callback
+            }
+
+            @Override
+            public void onSubmit(String content) {
+                //onSubmit callback
+            }
+            @Override
+            public void onAttached(ViewGroup rootView) {
+                //on layout Attached callback
+            }
+        }
+
+    //自定义view
+    FloatEditorActivity.openEditor(context, editorCallback,
+                        new EditorHolder(R.layout.fast_reply_floating_layout,//Custom layout
+                                R.id.tv_cancel, R.id.tv_submit, R.id.et_content));//The cancel view id,submit view id and The submit view id of The Custom layout.
+                                
+//打开默认
+FloatEditorActivity.openDefaultEditor(this, new EditorCallback() {
+    @Override
+    public void onSubmit(String content) {
+        tvContent.setText(content);
+    }
+}, null);

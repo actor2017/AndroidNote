@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--本文件在drawable/目录下,继承selector-->
+    <!--设置按下状态的图片-->
+    <!--可用&&有焦点 时,使用选中的图片-->
+    <item android:drawable="@drawable/shape_input_select" android:state_enabled="true" android:state_focused="true"/>
+
+    <!--设置默认状态图片-->
+    <!--注意: 1. 设置默认图片的这行语句要放在最后再写 -->
+    <!--注意: 2. 图片一定不要写成当前状态选择器, 否则递归死循环, 栈溢出-->
+    <item android:drawable="@drawable/shape_input_normal"/>
+</selector>

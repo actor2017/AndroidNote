@@ -1,0 +1,5 @@
+http://www.jianshu.com/p/e2a8791e80d6
+http://blog.csdn.net/a_zhon/article/details/78334515(Ìí¼Ó½Ç±êµÈ)
+
+BottomNavigationMenuView
+BottomNavigationItemView

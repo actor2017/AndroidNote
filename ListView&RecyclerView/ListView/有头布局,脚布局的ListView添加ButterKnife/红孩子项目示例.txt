@@ -1,0 +1,2 @@
+1.ListView不能用ButterKnife
+2.给listview设置头&脚布局后,才能绑定ButterKnife.bind(this);

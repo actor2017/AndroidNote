@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slide xmlns:android="http://schemas.android.com/apk/res/android"
+       android:duration="1000"
+       android:slideEdge="top">
+    <!--slideEdge:滑动的方向,向上-->
+
+    <targets>
+        <!--除了状态栏、导航栏以外其他所有的View进行滑入滑出动画效果-->
+        <!--代码中:slide.excludeTarget(int id);-->
+        <target android:excludeId="@android:id/statusBarBackground"/>
+        <target android:excludeId="@android:id/navigationBarBackground"/>
+
+        <!--也可以是我们自己视图中的 view 的 id-->
+        <!--代码中:slide.addTarget(int id);-->
+        <!--<target android:targetId="@+id/cut1"/>-->
+    </targets>
+</slide>
+
+    <!--//资源文件指定过渡动画-->
+    <!--getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));-->

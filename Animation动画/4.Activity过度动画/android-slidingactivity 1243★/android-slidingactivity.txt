@@ -1,0 +1,4 @@
+https://github.com/klinker41/android-slidingactivity
+
+Android library which allows you to swipe down from an activity to close it.
+Android库，允许你从一个Activity向下滑动来关闭它。

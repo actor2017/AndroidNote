@@ -1,0 +1,76 @@
+
+    private GestureDetectorCompat gestureDetectorCompat;
+    public void initGestureDetector(){//listener must not null,不能为null
+        gestureDetectorCompat = new GestureDetectorCompat(this, new GestureDetector.OnGestureListener() {
+
+            @Override
+            public boolean onDown(MotionEvent e) {//轻触摸屏幕的一瞬间，由单个ACTION_DOWN组成
+                System.out.println("按下");
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {//双指轻轻触摸屏，尚未松开或拖动
+                System.out.println("双指轻轻触摸屏，尚未松开或拖动");
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                System.out.println("手指松开后，伴随着一个ACTION_UP事件，是一次单击行为");
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float
+                    distanceY) {
+                System.out.println("手指按下屏幕并拖动，由一个ACITON_DOWN,和多个ACTION_MOVE触发");
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                System.out.println("长按");
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                System.out.println("快速滑动行为，由一个ACTION_DOWN,多个ACTION_MOVE,和一个ACTION_UP触发");
+                return false;
+            }
+        });
+
+        gestureDetectorCompat.setIsLongpressEnabled(true);//②....................是否有长按事件
+
+        //③.......................................................................双击事件
+        gestureDetectorCompat.setOnDoubleTapListener(new GestureDetector.OnDoubleTapListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {//严格的单击行为(不可能是双击中的一次单击)
+                System.out.println("单击");
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {//由两次单击组成，不可能和onSingleTapConfirmed共存
+                System.out.println("双击");
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent e) {//双击行为，在双击期间ACITON_DOWN,ACTION_MOVE,ACTION_UP,都会触发此回调
+                System.out.println("双击行为");
+                return false;
+            }
+        });
+
+    /**
+     * 为了让我们的GestureDetector对象能到接收到触摸事件，
+     * 我们需要重写 View 或 Activity 的 onTouchEvent() 函数，
+     * 并且把所有捕获到的事件传递给 detector 实例
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetectorCompat.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }

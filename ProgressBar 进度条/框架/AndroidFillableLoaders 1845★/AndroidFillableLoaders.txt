@@ -1,0 +1,4 @@
+https://github.com/JorgeCastilloPrz/AndroidFillableLoaders
+
+Android fillable progress view working with SVG paths. This is a nice option too if you want to create an interesting branding logo for your app. Based on the iOS project: https://github.com/poolqf/FillableLoaders
+使用SVG路径的Android可填充进度视图。如果你想为你的应用创建一个有趣的品牌标识，这也是一个不错的选择。基于iOS项目:https://github.com/poolqf/fillableloader

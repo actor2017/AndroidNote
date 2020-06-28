@@ -1,0 +1,4 @@
+https://github.com/MikeOrtiz/TouchImageView
+
+Adds touch functionality to Android ImageView.
+添加触摸功能到Android ImageView。

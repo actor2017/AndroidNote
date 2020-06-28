@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--设置按下状态的图片-->
+    <item android:drawable="@drawable/first_pressed" android:state_pressed="true"/>
+
+    <!--设置默认状态图片-->
+    <!--注意: 1. 设置默认图片的这行语句要放在最后再写 -->
+    <!--注意: 2. 图片一定不要写成当前状态选择器, 否则递归死循环, 栈溢出-->
+    <item android:drawable="@drawable/first_normal"/>
+
+</selector>

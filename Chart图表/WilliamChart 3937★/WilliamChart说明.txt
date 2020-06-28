@@ -1,0 +1,3 @@
+https://github.com/diogobernardino/WilliamChart
+
+compile 'com.diogobernardino:williamchart:2.5.0'

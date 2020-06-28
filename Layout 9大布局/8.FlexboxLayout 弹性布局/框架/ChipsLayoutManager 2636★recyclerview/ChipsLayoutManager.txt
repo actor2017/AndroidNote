@@ -1,0 +1,5 @@
+https://github.com/BelooS/ChipsLayoutManager
+
+ANDROID. ChipsLayoutManager (SpanLayoutManager, FlowLayoutManager). A custom layout manager for RecyclerView which mimicric TextView span behaviour, flow layouts behaviour with support of amazing recyclerView features
+ANDROID。ChipsLayoutManager (SpanLayoutManager FlowLayoutManager)。一个自定义布局管理器为clerview，其中模仿TextView跨行为，流布局行为支持惊人的clerview功能
+

@@ -1,0 +1,41 @@
+TimePickerDialog的样式(不要TimePicker,不在xml中写)
+TimePickerDialog可以配置很多种样式，可以直接在构造函数中来配置。代码如下：
+
+    // 定义5个记录当前时间的变量
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+    private int second;
+    private int nowMillisecond;//毫秒
+        Calendar ca = Calendar.getInstance();
+        year = ca.get(Calendar.YEAR);
+        month = ca.get(Calendar.MONTH) + 1;
+        day = ca.get(Calendar.DAY_OF_MONTH);
+        hour = ca.get(Calendar.HOUR_OF_DAY);
+        minute = ca.get(Calendar.MINUTE);
+        second = calendar.get(Calendar.SECOND);
+        nowMillisecond = calendar.get(Calendar.MILLISECOND);//毫秒
+
+timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog,new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            }
+        },hour,minute,true);//(context,themeResId可以完全不写,时,分,是否是24h的View)
+        timePickerDialog.setTitle("dialog'title");
+        timePickerDialog.show();
+
+
+注意:
+有时候是click模式(圆形滑动模式),有时候是spinner模式(上下滑动),怎么更改?
+
+在代码中更改第二个属性,输入themedialog,随意选择一款,总有一款适合你.
+
+示例:
+1.不写style,默认MaterialDesign模式,与2相同(我的手机是这样).
+2.android.R.style.Theme_DeviceDefault_Light_Dialog;//clock圆形滑动模式(MaterialDesign模式)
+3.android.R.style.Theme_Holo_Dialog;//spinner上下滑动模式(黑色)
+4.android.R.style.Theme_Holo_Light_Dialog;//spinner上下滑动模式(白色,常用)
+

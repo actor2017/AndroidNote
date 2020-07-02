@@ -8,14 +8,27 @@ https://xg.qq.com/xg/ctr_index/download
 NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 则在 Project 根目录的 gradle.properties 文件中添加：android.useDeprecatedNdk=true
 https://xg.qq.com/docs/android_access/upgrade_guide.html
+
+android {
+	defaultConfig {
+		manifestPlaceholders = [
+                XG_ACCESS_ID : "2100338579",
+                XG_ACCESS_KEY: "AQM8J759C2AT",
+//                HW_APPID: "华为的APPID", //如果需要华为通道，则加上华为的APPID
+//                PACKAGE_NAME : applicationId, //如果需要加入小米通道，则加上应用包名
+        ]
+	}
+}
+
     //信鸽依赖
     implementation 'com.tencent.xinge:xinge:4.3.2-release'
     implementation 'com.tencent.wup:wup:1.0.0.E-Release'
     implementation 'com.tencent.jg:jg:1.1'
     implementation 'com.tencent.mid:mid:4.0.7-Release'
-//    implementation 'com.tencent.xinge:mipush:4.3.2-xiaomi-release'
-//    implementation 'com.tencent.xinge:xgmz:4.3.2-meizu-release'
-//    implementation 'com.tencent.xinge:xghw:4.3.2-huawei-release'
+//    implementation 'com.tencent.xinge:mipush:4.3.2-xiaomi-release'//小米
+//    implementation 'com.tencent.xinge:xgmz:4.3.2-meizu-release'//魅族
+//    implementation 'com.tencent.xinge:xghw:4.3.2-huawei-release'//华为
+
 
 //如需监听消息请参考XGBaseReceiver接口或者是 demo 的 MessageReceiver 类。自行继承XGBaseReceiver并且在配置文件中配置如下内容
         <!-- 信鸽接收消息和结果反馈的receiver，需要开发者自己在AndroidManifest.xml静态注册 -->
@@ -32,9 +45,19 @@ https://xg.qq.com/docs/android_access/upgrade_guide.html
             </intent-filter>
         </receiver>
 
+//Global.java
+    /**
+     * 信鸽推送
+     */
+    public static final String XG_APP_ID = "4aaaca270811d";
+    public static final String XG_SECRET_KEY = "ad834bf4244b68b5cec3cf80a062a587";
+    public static final String XG_ACCESS_ID = "2100338579";
+    public static final String XG_ACCESS_KEY = "AQM8J759C2AT";
+
+
     //MainActivity中
     private void initXg() {
-        XGPushConfig.enableDebug(this, MyApplication.instance.isDebugMode);
+        XGPushConfig.enableDebug(this, ConfigUtils.isDebugMode);
         XGPushConfig.setNotificationShowEnable(this, true);
 //        XGPushConfig.enableOtherPush(getApplicationContext(), false);
 //        XGPushConfig.setMiPushAppId(getApplicationContext(), "APPID");
@@ -44,7 +67,7 @@ https://xg.qq.com/docs/android_access/upgrade_guide.html
         /**
          * account: 绑定的账号，绑定后可以针对账号发送推送消息，account不能为单个字符如“2”，“a”。
          */
-        XGPushManager.bindAccount(this, SPUtils.getString(Global.username), new XGIOperateCallback() {
+        XGPushManager.bindAccount(this, "username", new XGIOperateCallback() {
             @Override
             public void onSuccess(Object data, int flag) {
                 //token在设备卸载重装的时候有可能会变

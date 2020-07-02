@@ -111,7 +111,7 @@ Observable<ResponseBody> startDownload(@Url String url);//直接指定url(包括baseUr
 			
 @Field		//表单参数注解
 @FieldMap	//同上
-@Header		//添加不固定值的Header
+@Header		//将这个字段添加到请求头: Call<Info> send(@Header(Global.surpassm) String imei, @Query(Global.phone) String phone);
 @HeaderMap	//同上
 @Headers	//添加请求体
 @Part		//表单参数注解,用于有文件上传的情况

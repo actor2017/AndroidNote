@@ -1,0 +1,8 @@
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"		//如果只有这个属性, 在窄屏图片2边会有留白
+        android:scaleType="fitXY"		//要加上这个属性
+        android:src="@drawable/bg_login"
+        app:layout_constraintTop_toTopOf="parent" />

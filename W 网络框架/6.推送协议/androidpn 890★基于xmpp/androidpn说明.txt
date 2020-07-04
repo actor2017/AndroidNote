@@ -1,0 +1,14 @@
+https://github.com/dannytiehui/androidpn
+https://sourceforge.net/projects/androidpn/
+
+An open source project to provide push notification support for Android -- a xmpp based notification server and a client tool kit.
+
+安卓jar包: 应该是asmack.jar, 可看另一个项目:
+https://github.com/kpioneer123/Androidpn/blob/master/androidpn-client/app/libs/asmack.jar
+
+文件描述：
+androidpn-client：android客户端工程源码包
+androidpn-server-src：androidpn服务器端源码包
+androidpn-server-bin-jetty：androidpn服务器端jetty版本
+androidpn-server-bin-tomcat：androidpn服务器端tomcat版本，可直接绑定数据库(如Mysql)
+apnsUnit：中间件。项目中可以直接引用来调用服务器端消息推送接口

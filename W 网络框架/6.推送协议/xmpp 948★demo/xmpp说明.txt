@@ -1,0 +1,3 @@
+https://github.com/jiangzehui/xmpp
+
+【停止维护】基于Xmpp协议的即时通讯社交软件(客户端+服务端)Open source one last year to write their own Xmpp based on the agreement of the instant messaging social software (client + server)

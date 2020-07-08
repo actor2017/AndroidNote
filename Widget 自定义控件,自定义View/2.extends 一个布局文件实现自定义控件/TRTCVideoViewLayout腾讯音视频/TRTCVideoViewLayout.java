@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ConvertUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.ly.bridgeemergency.R;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloudDef;
@@ -29,14 +32,21 @@ import java.util.List;
  */
 public class TRTCVideoViewLayout extends RelativeLayout {
     private final static String                      TAG        = TRTCVideoViewLayout.class.getSimpleName();
+    public static final  int                         MODE_FLOAT = 1;  // 前后堆叠模式
+    public static final  int                         MODE_GRID  = 2;  // 九宫格模式
     public static final  int                         MAX_USER   = 8;
     private              Context                     mContext;
+
+    /**
+     * 存储的是这个layout:
+     * @see R.layout#layout_toolbar_for_video2
+     */
     private List<View>                               itemViews = new ArrayList<>();
     private              ArrayList<TXCloudVideoView> mVideoViewList;
-    private              ArrayList<LayoutParams>     mGrid9ParamList;
-    private              RelativeLayout              mLayout;
+    private              ArrayList<LayoutParams>     mFloatParamList;//2个人
+    private              ArrayList<LayoutParams>     mGrid9ParamList;//多个人
     private              int                         mCount     = 0;
-    private              int                         mMode;
+    private              int                         mMode = MODE_FLOAT;
     private int                                      screenWidth;
 
     private String                                       mSelfUserId;
@@ -93,9 +103,7 @@ public class TRTCVideoViewLayout extends RelativeLayout {
 
     private void initView(Context context) {
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.room_show_view, this);
-        mLayout = (RelativeLayout) findViewById(R.id.ll_mainview);
-
+        dp5 = ConvertUtils.dp2px(5);
         initTXCloudVideoView();
         initGridLayoutParams();
         showView();
@@ -119,6 +127,35 @@ public class TRTCVideoViewLayout extends RelativeLayout {
 //                tvRole.setSelected(i == 0);
 //            } else {
                 view = LayoutInflater.from(mContext).inflate(R.layout.layout_toolbar_for_video2, null);
+
+                //前2个设置点击事件, 用于缩放
+                if (i < 2) {
+                    view.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //如果是浮动布局
+                            if (mCount <= 2) {
+                                boolean isFullScreen = v.getWidth() == ScreenUtils.getScreenWidth();
+                                //如果点击的是全屏的视频, 什么都不做
+                                if (isFullScreen) {
+                                    return;
+                                }
+                                View view0 = itemViews.get(0);
+                                View view1 = itemViews.get(1);
+                                ViewGroup.LayoutParams lp0 = view0.getLayoutParams();
+                                ViewGroup.LayoutParams lp1 = view1.getLayoutParams();
+                                view0.setLayoutParams(lp1);
+                                view1.setLayoutParams(lp0);
+                                //如果点击的是第0个视频, 就把第1个视频浮动到表面
+                                if (v == view0) {
+                                    view1.bringToFront();
+                                } else {
+                                    view0.bringToFront();
+                                }
+                            }
+                        }
+                    });
+                }
 //            }
             TXCloudVideoView cloudVideoView = view.findViewById(R.id.tx_cloud_video_view);//new TXCloudVideoView(mContext);
 //            if (i == 0) {
@@ -142,14 +179,49 @@ public class TRTCVideoViewLayout extends RelativeLayout {
         }
     }
 
+    public void initFloatLayoutParams(int screenW, int screenH) {
+        mFloatParamList = new ArrayList<LayoutParams>();
+        LayoutParams layoutParams0 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        LayoutParams layoutParams1 = new LayoutParams(screenW / 3, screenH / 3);
+        mFloatParamList.add(layoutParams0);
+        mFloatParamList.add(layoutParams1);
+
+        int midMargin = dp5 * 2;//10
+        int lrMargin = dp5 * 3;//15
+        int bottomMargin = dp5 * 10;//50
+        int subWidth = dp5 * 24;//120
+        int subHeight = dp5 * 36;//180
+
+        for (int i = 0; i < 3; i++) {
+            LayoutParams layoutParams = new LayoutParams(0, 0/*subWidth, subHeight*/);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            layoutParams.rightMargin = lrMargin;
+            layoutParams.bottomMargin = bottomMargin + midMargin * (i + 1) + subHeight * i;
+
+            mFloatParamList.add(layoutParams);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            LayoutParams layoutParams = new LayoutParams(0, 0/*subWidth, subHeight*/);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            layoutParams.leftMargin = lrMargin;
+            layoutParams.bottomMargin = bottomMargin + midMargin * (i + 1) + subHeight * i;
+
+            mFloatParamList.add(layoutParams);
+        }
+    }
+
     public void initGridLayoutParams() {
         mGrid9ParamList = new ArrayList<LayoutParams>();
         int statusH = getStatusBarHeight(mContext);
         screenWidth = getScreenWidth(mContext);
         int screenH = getScreenHeight(mContext);
         int margin = getScreenPercentWidth(0.053328);
-        int topMargin = dip2px(85);//顶部距离
+        int topMargin = dp5 * 17;//85 顶部距离
 
+        initFloatLayoutParams(screenWidth, screenH);
         initGrid9Param(statusH, screenWidth, screenH, topMargin, margin);
     }
 
@@ -308,14 +380,14 @@ public class TRTCVideoViewLayout extends RelativeLayout {
 //    }
 
     private void showView() {
-        mLayout.removeAllViews();
-        for (int i = 0; i < itemViews.size(); i++) {
+        /*mLayout.*/removeAllViews();
+        for (int i = 0; i < mFloatParamList.size(); i++) {
             View view = itemViews.get(i);
-            LayoutParams layoutParams = mGrid9ParamList.get(i);
+            LayoutParams layoutParams = mFloatParamList.get(i);
             view.setLayoutParams(layoutParams);
-            mLayout.addView(view);
+            /*mLayout.*/addView(view);
         }
-//        for (int i = 0; i < mVideoViewList.size(); i++) {
+//        for (int i = 0; i < mGrid9ParamList.size(); i++) {
 //            TXCloudVideoView cloudVideoView = mVideoViewList.get(i);
 //            RelativeLayout.LayoutParams layoutParams = mGrid9ParamList.get(i);
 //            cloudVideoView.setLayoutParams(layoutParams);
@@ -344,14 +416,18 @@ public class TRTCVideoViewLayout extends RelativeLayout {
 
     public void updateLayoutGrid() {
         ArrayList<LayoutParams> paramList;
-        paramList = mGrid9ParamList;
+        if (mCount <= 2) {//已修改, 不要4宫格
+            paramList = mFloatParamList;
+        } else {
+            paramList = mGrid9ParamList;
+        }
         int layoutIndex = 1;
         for (int i = 0; i < mVideoViewList.size(); i++) {
             TXCloudVideoView cloudVideoView = mVideoViewList.get(i);
 //            cloudVideoView.setClickable(false);
 //            cloudVideoView.setOnClickListener(null);
             String userId = cloudVideoView.getUserId();
-            if (!TextUtils.isEmpty(userId)) {
+            if (true/*!TextUtils.isEmpty(userId)这儿不能判空, 因为onMemberLeave已经置空, 但还是要重设LayoutParam*/) {
                 itemViews.get(i).setLayoutParams(paramList.get(i));//layoutIndex++
 //                if (userId.equalsIgnoreCase(mSelfUserId)) {//把自己排第1个位置
 //                    cloudVideoView.setLayoutParams(paramList.get(0));
@@ -383,10 +459,6 @@ public class TRTCVideoViewLayout extends RelativeLayout {
                 break;
             }
         }
-    }
-    public int dip2px(float dpValue) {
-        final float scale = getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
     }
 
     public void showDebugView(int type) {
@@ -883,7 +955,7 @@ public class TRTCVideoViewLayout extends RelativeLayout {
 //                                                    url = headUrl;
 //                                                }
 //                                                if (dp5 < 1) dp5 = dip2px(5);
-//                                                Glide.with(v).load(Global.HOST_PIC.concat(url))
+//                                                Glide.with(v).load(Global.HOST_FILE.concat(url))
 //                                                        .transform(new CenterCrop(), new RoundedCorners(dp5))
 //                                                        .into(ivCover);
 //                                            }

@@ -27,6 +27,12 @@ gson好像有个Double-->Integer的bug:https://github.com/google/gson/issues/692
     EDU生成失败分析:有可能是versionName里有特殊字符
     参考地址:http://blog.csdn.net/myf0908/article/details/70799781
 
+3.解析成JsonObject
+//{"success":true,"data":0,"message":"处理成功","errorMessages":[],"businessStatusCode":"success","enabled":true,"httpStatusCode":200}
+JsonObject info = GsonUtils.fromJson(json, JsonObject.class);
+boolean enabled = info.getAsJsonObject("enabled").getAsBoolean();
+String message = info.getAsJsonObject("message").getAsString();
+
 
 添加混淆
 https://github.com/google/gson/tree/master/examples/android-proguard-example

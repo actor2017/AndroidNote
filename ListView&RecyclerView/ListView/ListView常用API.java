@@ -2,6 +2,7 @@
 	android:id="@+id/list_view"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	android:choiceMode="singleChoice"			//单选
 	android:divider="@android:color/transparent"//设置分割线Divider样式
 	android:cacheColorHint="@android:color/transparent"//item按下有个默认颜色,所以设置透明
 	android:descendantFocusability=""	//afterDescendants:viewgroup只有当其子类控件不需要获取焦点时才获取焦点

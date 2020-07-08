@@ -1,0 +1,11 @@
+JSONObject(安卓原生,org.json包)、第三方jar包（Gson，fastJson）
+
+如何解析Json数据
+1.解析成javabean
+
+2.手动解析json(不用创建bean.class对象)
+  {}--->类
+  []-->List
+  无符号-->String或者基本的数据类型
+  当集合没有字段名称的时候，TypeToken
+

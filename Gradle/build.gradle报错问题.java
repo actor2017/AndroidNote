@@ -4,12 +4,14 @@ Error:Failed to resolve: com.android.support:appcompat-v7:27.0.1
 修改project的gradle,示例:
 allprojects {
     repositories {
+		//url详情见: Settings => Build => Remote Jar Repositories
         google()	//https://dl.google.com/dl/android/maven2/
         jcenter()	//https://jcenter.bintray.com/
 				比如:implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC2"
 					 https://jcenter.bintray.com/io/reactivex/rxjava2/rxjava/2.2.6/rxjava-2.2.6.jar
         maven { url "https://jitpack.io"}
 //        mavenCentral()//https://oss.sonatype.org/content/repositories/releases/老版本Studio默认
+//        mavenCentral()//https://sonatype.org
 //        maven { url "https://maven.google.com" }
 //        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }//阿里云仓库
 		maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }

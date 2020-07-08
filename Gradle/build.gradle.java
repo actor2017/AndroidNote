@@ -18,6 +18,10 @@ android {
 		buildConfigField("int","testInt","1")
 		buildConfigField("String[]", "DNSS", "{\"http://119.29.29.29\",\"http://8.8.8.8\",\"http://114.114.114.114\"}")
 		
+		//https://segmentfault.com/a/1190000004338384
+		//用来跑我们所写的所有的测试用例的。当我们采用test的模式来构建工程时，这个Runner便会自动为我们执行所有的的测试用例，并且返回相应的测试结果。
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+		
         //在 defaultConfig { 中添加ndk
         ndk {
             //"armeabi", "armeabi-v7a", "x86","arm64-v8a","x86_64", 'mips', 'mips64'(最多前面3中就差不多了, 第3个其实也相对不多)
@@ -146,6 +150,8 @@ dependencies {
     }
 	
     api files('libs/BaiduLBS_Android.jar')//如果这个 .jar/.aar 在module中,想让引入的project也使用的话, 用api开头
+	implementation project(path: ':base')//依赖其它模块(base模块必须是library)
+	
     compileOnly  'com.android.support:recyclerview-v7:28.0.0'//见BaseRecyclerViewAdapterHelper
 }
 

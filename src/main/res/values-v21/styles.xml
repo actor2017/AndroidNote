@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="AppThemeForMyAndroidFrameWork">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorStatusBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--android 5.0(21), 修改状态栏颜色-->
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+    </style>
+</resources>

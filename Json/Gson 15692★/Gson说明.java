@@ -1,24 +1,60 @@
 https://github.com/google/gson
+https://www.jianshu.com/p/e740196225a4
+https://www.jianshu.com/p/923a9fe78108 官网翻译
+
+
 gson好像有个Double-->Integer的bug:https://github.com/google/gson/issues/692
 
-1.把gson的jar包放入libs目录,并刷新.或者添加依赖:compile 'com.google.code.gson:gson:2.8.2'
+添加依赖:
+compile 'com.google.code.gson:gson:2.8.2'
 
-    ①.第一种解析方法.
-        Gson gson = new Gson();
-        RegisterGson registerGson = gson.fromJson(response, RegisterGson.class);
 
-    ②.json数据没有名字,是以"["开头,是一个List,怎么写javaBean?
-	Gson gson = new Gson();
-	TypeToken<List<QueryThemeGson>> typeToken = new TypeToken<List<QueryThemeGson>>(){};
-	List<QueryThemeGson> list = gson.fromJson(response, typeToken.getType());
+1.反序列化
+	int one = gson.fromJson("1", int.class);
+	Integer one = gson.fromJson("1", Integer.class);
+	Long one = gson.fromJson("1", Long.class);
+	Boolean false = gson.fromJson("false", Boolean.class);
+	String str = gson.fromJson("\"abc\"", String.class);
+	String anotherStr = gson.fromJson("[\"abc\"]", String.class);
 
-    ③.写一个BaseInfo<T>,比如智慧警务登录示例,详细见外面文件夹
-	Gson gson = new Gson();
-	BaseAPIResult<LoginData> loginResult = gson.fromJson(response, new TypeToken<BaseAPIResult<LoginData>>() {}.getType());
+	RegisterGson info = GsonUtils.fromJson(json, RegisterGson.class);
 
-2.Gson生成Json
-    Gson gson = new Gson();
-    String json = gson.toJson(userApps);//长度好像最多11493?,感觉有缺陷(EDU的坑,应该是特殊字符的锅)
+2.反序列化 List(json以"["开头)
+	//TypeToken<List<QueryThemeGson>> typeToken = new TypeToken<List<QueryThemeGson>>() {};
+	//Type type = typeToken.getType();
+	Type type = GsonUtils.getListType(QueryThemeGson.class);//或者这样获取 Type
+	List<QueryThemeGson> list = GsonUtils.fromJson(json, type);
+
+3.反序列化 Object[]
+	//QueryThemeGson[] array = GsonUtils.getArrayType(QueryThemeGson.class);//或者这样获取 Type
+	QueryThemeGson[] array = GsonUtils.fromJson(json, QueryThemeGson[].class);
+
+4.反序列化 Set
+	//Type type = new TypeToken<HashSet<Founder>>() {}.getType();
+	Type type = GsonUtils.getSetType(Founder.class);//或者这样获取 Type
+	HashSet<Founder> founderSet = gson.fromJson(json, type); 
+
+5.反序列化 Map
+	//TypeToken<HashMap<QueryThemeGson>> typeToken = new TypeToken<HashMap<QueryThemeGson>>() {};
+	//Type type = typeToken.getType();
+	Type type = GsonUtils.getMapType(String.class, QueryThemeGson.class);//或者这样获取 Type
+	Map<QueryThemeGson> map = GsonUtils.fromJson(json, type);
+
+6.解析成 BaseInfo<T>
+	//Type type = new TypeToken<BaseInfo<LoginData>>() {}.getType();
+	Type type = GsonUtils.getType(BaseInfo.class, LoginData.class);//或者这样获取 Type
+	BaseInfo<LoginData> info = GsonUtils.fromJson(json, type);
+
+
+7.序列化Json
+	gson.toJson(1);            ==> prints 1
+	gson.toJson("abcd");       ==> prints "abcd"
+	gson.toJson(new Long(10)); ==> prints 10
+	int[] values = { 1 };
+	gson.toJson(values);       ==> prints [1]
+
+	//String json = new Gson().toJson(info);//长度好像最多11493?,感觉有缺陷(EDU的坑, 有可能是特殊字符的锅)
+    String json = GsonUtils.toJson(info);
 
     后来的解决方法:
     Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
@@ -27,7 +63,7 @@ gson好像有个Double-->Integer的bug:https://github.com/google/gson/issues/692
     EDU生成失败分析:有可能是versionName里有特殊字符
     参考地址:http://blog.csdn.net/myf0908/article/details/70799781
 
-3.解析成JsonObject
+6.解析成JsonObject
 //{"success":true,"data":0,"message":"处理成功","errorMessages":[],"businessStatusCode":"success","enabled":true,"httpStatusCode":200}
 JsonObject info = GsonUtils.fromJson(json, JsonObject.class);
 boolean enabled = info.getAsJsonObject("enabled").getAsBoolean();

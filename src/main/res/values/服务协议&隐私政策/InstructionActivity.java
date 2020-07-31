@@ -28,6 +28,8 @@ public class InstructionActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
+    public static final String HAS_SHOW_PRIVACY_POLICY_DIALOG = "HAS_SHOW_PRIVACY_POLICY_DIALOG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

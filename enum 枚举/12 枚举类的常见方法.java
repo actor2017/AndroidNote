@@ -153,6 +153,6 @@ public enum Week3 {
 		return name;
 	}
 	
-	public abstract void show();
+	public abstract void show();//³éÏó·½·¨
 	
 }

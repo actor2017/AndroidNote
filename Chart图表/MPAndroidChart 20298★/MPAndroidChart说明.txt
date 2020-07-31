@@ -1,2 +1,5 @@
 https://github.com/PhilJay/MPAndroidChart
-使用教程:http://blog.csdn.net/hejjunlin/article/details/51774964
+使用教程:
+http://blog.csdn.net/hejjunlin/article/details/51774964
+
+implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

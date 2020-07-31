@@ -68,14 +68,14 @@ android:useLevel="false" ★★必须写★★boolean值，如果当做是 Level
 </shape>
 
 //==============================================================
-划线示例:
+划线示例: line_dash_gray_e8e8e8.xml
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="line">
     <!--1.引用虚线的view需要添加属性android:layerType="software"
     否则显示不了虚线.
         2.引用虚线的view的高度必须大于虚线的width, 否则不显示.-->
     <stroke
-        android:width="1dp"
+        android:width="1px"
         android:color="#e8e8e8"
         android:dashWidth="5dp"
         android:dashGap="5dp"/>

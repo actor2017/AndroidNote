@@ -3,14 +3,15 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:choiceMode="singleChoice"			//单选
-	android:divider="@android:color/transparent"//设置分割线Divider样式
 	android:cacheColorHint="@android:color/transparent"//item按下有个默认颜色,所以设置透明
 	android:descendantFocusability=""	//afterDescendants:viewgroup只有当其子类控件不需要获取焦点时才获取焦点
 										//beforeDescendants:viewgroup会优先其子类控件而获取到焦点
 										//blocksDescendants:viewgroup会覆盖子类控件而直接获得焦点
-    android:divider="@drawable/line"	//虚线
+
+	android:divider="@android:color/transparent"//设置分割线Divider样式(颜色/drawable)
 	android:dividerHeight="5dp"			//分隔线高度
 	android:layerType="software"		//没有这一句就没有虚线效果
+	android:listSelector="@android:color/transparent"	//item 的 selector
 	android:stackFromBottom="true"  	//内容只有几条的时候，它会从底部开始依次填充,上部分留白
 	android:transcriptMode="alwaysScroll"//总是滚动到最后一条
 	android:scrollbars="none"			//总是隐藏滚动条
@@ -20,6 +21,7 @@
 										//insideInset:在padding区域内并且插入在view后面
 										//outsideOverlay:在padding区域外并且覆盖在view上,推荐
 										//outsideInset:在padding区域外并且插入在view后面
+    android:entries="@array/list"		//本地数据
     tools:listheader="@layout/item_header"//预览 header
 	tools:listfooter="@layout/item_footer"//预览 footer
 	tools:listitem="@layout/item_list" >//预览 items

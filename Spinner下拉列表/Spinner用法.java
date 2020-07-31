@@ -12,7 +12,7 @@ android:Theme.Light很丑,见 "1.Spinner数据源于xml数组" 图片.
             android:id="@+id/spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:entries="@array/languages"	//dropdown 模式时这样写, 绑定数据源,  arrays.xml
+			android:entries="@array/languages"	//绑定数据源, 写在values/arrays.xml
             android:prompt="@string/please_choose_sex"//(请选择性别)在dialog模式下才有效,不能直接写汉字在这里
             android:spinnerMode="dropdown|dialog"//菜单显示方式:下拉菜单,弹出框(在android2.3上没有这个属性,系统默认将Spinner弹出菜单显示成dialog)
             android:dropDownVerticalOffset="25.5dp"//spinnerMode=”dropdown”时，下拉的项目选择窗口在垂直方向相对于Spinner窗口的偏移量。
@@ -26,7 +26,7 @@ android:Theme.Light很丑,见 "1.Spinner数据源于xml数组" 图片.
             //android:dropDownWidth="50dp"//在spinnerMode=”dropdown”时，设定下拉框的宽度。
 			/>
     </LinearLayout>
-<string-array name="please_choose_sex">//values/arrays还是strings???.xml
+<string-array name="please_choose_sex">//values/arrays.xml(虽然strings.xml也可以...)
     <item>男</item>
     <item>女</item>
 </string-array>

@@ -1,5 +1,8 @@
 https://github.com/google/flexbox-layout
 
+https://www.jianshu.com/p/8060f7623f1c	//b乎示例
+
+
 FlexboxLayout可以理解成一个高级版的LinearLayout，因为两个布局都把子view按顺序排列。两者之间最大的差别在于FlexboxLayout具有换行的特性。
 
 implementation 'com.google.android:flexbox:1.0.0'//非 androidx
@@ -21,6 +24,7 @@ implementation 'com.google.android:flexbox:2.0.1'//1.1.0及以上是 androidx
 * </ul>
 * for the FlexboxLayout.
 *
+* 子元素支持属性:
 * And for the children of the FlexboxLayout, you can use:
 * <ul>
 * <li>{@code layout_order}</li>
@@ -38,11 +42,14 @@ https://www.cnblogs.com/huolongluo/p/6607877.html
 <com.google.android.flexbox.FlexboxLayout
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	app:alignContent="stretch"
-	app:alignItems="stretch"
-	app:flexDirection(见图片)="row|row_reverse|column|column_reverse"//主轴的方向,即子Item的排列方向(默认row,水平方向,从左到右)
-	app:flexWrap="wrap			//单行还是多行,副轴(与主轴垂直的轴)的方向,wrap:按正常方向换行
-				 |noWrap		//不换行，一行显示完子元素
+
+    app:flexDirection(见图片)="row				//主轴的方向,即子Item的排列方向(默认row,水平方向,从左到右)
+                               |row_reverse		//水平方向，起点在右端，从右到左
+							   |column			//竖直方向，起点在上端，从上到下
+							   |column_reverse"	//竖直方向，起点在下端，从下往上
+
+	app:flexWrap="wrap			//单行还是多行,并且决定副轴(与主轴垂直的轴)的方向,wrap:按正常方向换行
+				 |nowrap		//不换行，一行显示完子元素
 				 |wrap_reverse"	//按反方向换行
 				 
 	//控制元素主轴方向上的对齐方式.
@@ -94,16 +101,27 @@ https://www.cnblogs.com/huolongluo/p/6607877.html
 		//子元素的排列顺序,FlexboxLayout子元素默认按照xml文件中出现的顺序。
 		app:layout_order="1"//默认值为1，值越小排在越靠前
 		
-		//子元素的放大比例， 决定如何分配剩余空间（如果存在剩余空间的话），默认值为0,不会分配剩余空间，如果有一个item的 layout_flexGrow 是一个正值，那么会将全部剩余空间分配给这个Item,如果有多个Item这个属性都为正值，那么剩余空间的分配按照layout_flexGrow定义的比例（有点像LinearLayout的layout_weight属性）。
+		//子元素的放大比例， 决定如何分配剩余空间（如果存在剩余空间的话），默认值为0,不会分配剩余空间，
+		//如果有一个item的 layout_flexGrow 是一个正值，那么会将全部剩余空间分配给这个Item,
+		//如果有多个Item这个属性都为正值，那么剩余空间的分配按照layout_flexGrow定义的比例（有点像 LinearLayout 的 layout_weight 属性）。
 		app:layout_flexGrow="0.0"
 		
-		//子元素缩小比例，当空间不足时，子元素需要缩小（设置了换行则无效），默认值为1，如果所有子元素的layout_flexShrink 值为1,空间不足时，都等比缩小，如果有一个为0，其他为1，空间不足时，为0的不缩小，负值无效。
+		//子元素缩小比例，当空间不足时，子元素需要缩小（设置了换行则无效），默认值为1，
+		//如果所有子元素的layout_flexShrink 值为1,空间不足时，都等比缩小，
+		//如果有一个为0，其他为1，空间不足时，为0的不缩小，负值无效。
 		app:layout_flexShrink="1.0"
 		
-		//给子元素设置对齐方式，上面讲的alignItems属性可以设置对齐，这个属性的功能和alignItems一样，只不过alignItems作用于所有子元素，而layout_alignSelf 作用于单个子元素。默认值为auto, 表示继承alignItems属性，如果为auto以外的值，则会覆盖alignItems属性。
-		app:layout_alignSelf="auto|flex_start|flex_end|center|baseline|stretch"
+		//给子元素设置对齐方式，上面讲的 alignItems 属性可以设置对齐，这个属性的功能和 alignItems 一样，
+		//只不过alignItems作用于所有子元素，而layout_alignSelf 作用于单个子元素。默认值为auto, 表示继承alignItems属性，如果为auto以外的值，则会覆盖alignItems属性。
+        app:layout_alignSelf="auto			//默认值为auto, 表示继承alignItems属性
+                              |flex_start
+							  |flex_end
+							  |center
+							  |baseline
+							  |stretch"
 		
-		//设置子元素的长度为它父容器长度的百分比，如果设置了这个值，那么通过这个属性计算的值将会覆盖layout_width或者layout_height的值。但是需要注意，这个值只有设置了父容器的长度时才有效（也就是MeasureSpec mode 是 MeasureSpec.EXACTLY）。默认值时-1。
+		//设置子元素的长度为它父容器长度的百分比，如果设置了这个值，那么通过这个属性计算的值将会覆盖layout_width或者layout_height的值。
+		//但是需要注意，这个值只有设置了父容器的长度时才有效（也就是MeasureSpec mode 是 MeasureSpec.EXACTLY）。默认值时-1。
 		app:layout_flexBasisPercent="50%"
 		
 		//强制限制 FlexboxLayout的子元素（宽或高）不会小于最小值，不管layout_flexShrink这个属性的值为多少，子元素不会被缩小到小于设置的这个最小值。

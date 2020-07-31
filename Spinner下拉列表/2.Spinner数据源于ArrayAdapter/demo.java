@@ -4,10 +4,13 @@ Spinner spinner = (Spinner) findViewById(R.id.spinner1);
 String[] mItems = getResources().getStringArray(R.array.languages);
 // 建立Adapter并且绑定数据源
 //第二个参数是Spinner未展开菜单时Spinner的默认样式，android.R.layout.simple_spinner_item, android.R.layout.simple_list_item_1 是系统自带的内置布局。
-ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, mItems);
+ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,/* android.R.id.text1,*/ mItems);
+
 //设置的是展开的时候下拉菜单的样式，同理 android.R.layout.simple_spinner_dropdown_item 也是内置布局。
 //不设置setDropDownViewResource, Spinner未展开和展开都是用的一样的布局(android.R.layout.simple_spinner_item)
+//可设置自定义下拉: R.layout.item_textview
 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+adapter.setDropDownViewResource(android.support.v7.appcompat.R.layout.support_simple_spinner_dropdown_item);//v7
 //绑定 Adapter到控件
 spinner.setAdapter(adapter);
 

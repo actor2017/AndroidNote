@@ -18,13 +18,12 @@ import com.actor.myandroidframework.utils.SPUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.ly.bridgeemergency.R;
 import com.ly.bridgeemergency.activity.InstructionActivity;
-import com.ly.bridgeemergency.utils.Global;
 
 /**
  * description: 隐私政策
  *
  * //如果未显示过/未同意 隐私政策
- * if (!SPUtils.getBoolean(Global.HAS_SHOW_PRIVACY_POLICY_DIALOG, false)) {
+ * if (!SPUtils.getBoolean(InstructionActivity.HAS_SHOW_PRIVACY_POLICY_DIALOG, false)) {
  *     new PrivacyPolicyDialog(this).show();//隐私政策
  * }
  *
@@ -86,7 +85,7 @@ public class PrivacyPolicyDialog extends BaseDialog implements View.OnClickListe
                 }
                 break;
             case R.id.tv_agree://同意
-                SPUtils.putBoolean(Global.HAS_SHOW_PRIVACY_POLICY_DIALOG, true);
+                SPUtils.putBoolean(InstructionActivity.HAS_SHOW_PRIVACY_POLICY_DIALOG, true);
                 dismiss();
                 break;
             default:

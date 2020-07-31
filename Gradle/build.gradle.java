@@ -37,7 +37,11 @@ android {
         ]
     }
     signingConfigs {//签名配置,写在 buildTypes 前面
-        debug {
+	    mySign {//可自定义名称
+			
+		}
+		
+        debug {//如果debug版本要使用不同的秘钥签名
             keyAlias 'actor'
             keyPassword '123456'
             storeFile file('actorKey.jks')
@@ -52,11 +56,16 @@ android {
         }
     }
     buildTypes {
+		myCustom111 {//可自定义名称
+			signingConfig signingConfigs.mySign
+		}
+		
         release {
             minifyEnabled true// 混淆
             zipAlignEnabled true// Zipalign优化
             shrinkResources false// 移除无用的resource文件,最好不移除,比如这次出错:Error inflating class android.support.design.widget.TextInputLayout
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
             signingConfig signingConfigs.releaseConfig//使用下面的正式签名配置
 			
 			//buildConfigField 用于给 "BuildConfig" 文件添加一个字段
@@ -69,8 +78,11 @@ android {
         }
         debug {
             signingConfig signingConfigs.debug
+			signingConfig signingConfigs.release	//debug 使用 release 签名
+			
             debuggable true
             zipAlignEnabled false
+			
             signingConfig signingConfigs.releaseConfig//使用下面的正式签名配置
 			
 			buildConfigField "boolean", "LOG_DEBUG", "true"

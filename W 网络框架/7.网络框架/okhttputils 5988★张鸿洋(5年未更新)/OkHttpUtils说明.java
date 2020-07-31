@@ -67,6 +67,45 @@ HttpsUtils.getSslSocketFactory(
 	本地证书的密码)
 //同样的，框架中只是提供了几个实现类，你可以自行实现SSLSocketFactory，传入sslSocketFactory即可。
 
+7.??
+builder.hostnameVerifier(new HostnameVerifier() {
+    @Override
+    public boolean verify(String hostname, SSLSession session) {
+        return true;
+    }
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////
+智慧机关配置:
+//忽略ssl
+try {
+    final TrustManager[] trustAllCerts = new TrustManager[]{
+            new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return new java.security.cert.X509Certificate[]{};
+                }
+            }
+    };
+    final SSLContext sslContext = SSLContext.getInstance("SSL");
+    sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+    final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+    builder.sslSocketFactory(sslSocketFactory);
+    builder.hostnameVerifier((hostname, session) -> true);
+} catch (NoSuchAlgorithmException | KeyManagementException e) {
+    e.printStackTrace();
+}
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
 7.自定义CallBack
 目前内部包含StringCallBack,FileCallBack,BitmapCallback，可以根据自己的需求去自定义Callback，例如希望回调User对象：
 public abstract class UserCallback extends Callback<User> {

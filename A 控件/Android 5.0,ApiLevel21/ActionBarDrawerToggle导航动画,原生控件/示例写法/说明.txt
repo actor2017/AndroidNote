@@ -5,7 +5,10 @@ Android DrawerLayout ¸ß·ÂQQ5.2Ë«Ïò²à»¬²Ëµ¥)£¬È»ºóÈ¥³õÊ¼»¯mActionBarDrawerToggle£
 
 ÎÒÃÇµÄĞ§¹ûÍ¼£¬×ó²à²Ëµ¥ÎªFragment£¬ÄÚÈİÇøÓòÎªFragment£¬µã»÷×ó²à²Ëµ¥ÇĞ»»ÄÚÈİÇøÓòµÄFragment¼´¿É¡£¹ØÓÚFragmentµÄÖªÊ¶£¬¿ÉÒÔ²é¿´£ºAndroid Fragment ÄãÓ¦¸ÃÖªµÀµÄÒ»ÇĞ
 
-private ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-drawerLayout.setDrawerListener(toggle);
+ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+
+drawerLayout.setDrawerListener(toggle);//¹ıÊ±
+drawerLayout.addDrawerListener(actionBarDrawerToggle);//toggle implements DrawerLayout.DrawerListener
+
 toggle.syncState();
 toggle.onConfigurationChanged(newConfig);//Configuration

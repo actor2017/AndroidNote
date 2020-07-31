@@ -27,7 +27,7 @@ jsonObj.put("features", new HashMap<String, Integer>() {
 		put("weight", 70);
 	}
 });
-System.out.println(jsonObj);
+System.out.println(jsonObj/*.toString()*/);//json
 {
 	"features": {
 		"weight": 70,
@@ -43,9 +43,13 @@ System.out.println(jsonObj);
 jsonObj.getBoolean("female")
 jsonObj.getDouble("discount")
 jsonObj.getLong("age")
-String s = jsonObj.getString("versionName");
+String s = jsonObj.getString("versionName");//getString 方法, 当JSONObject中不存在某 key 的时候就抛异常
 jsonObj.getJSONObject("features")
 
+3.opt方法
+String pic = jsonObj.optString("data");//不会抛异常, 如果=null, 返回 ""
+
+boolean has = jsonObj.has("title");//判断
 String[] names = JSONObject.getNames(jsonObj);//names
 
 JSONArray hobbies = jsonObj.getJSONArray("hobbies");

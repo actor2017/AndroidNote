@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".dialog.ProgressDialog">
+    <!--如果使用ConstraintLayout, RatioLayout设置背景无效...-->
+
+    <com.actor.myandroidframework.widget.RatioLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_rec_gray333_cor8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:ratio="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progress_dialog_progress"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:indeterminateDrawable="@drawable/dialog_progress_for_progress_bar" />
+
+            <TextView
+                android:id="@+id/progress_dialog_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="加载中..." />
+        </LinearLayout>
+    </com.actor.myandroidframework.widget.RatioLayout>
+</RelativeLayout>

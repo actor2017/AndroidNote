@@ -1,0 +1,35 @@
+﻿https://github.com/JakeWharton/hugo
+一个注解查看方法执行多少时间
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+  }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.hugo'
+
+
+打开关闭:
+hugo {
+  enabled false
+}
+或:
+Hugo.setEnabled(true|false);
+
+
+示例:
+@DebugLog
+public String getName(String first, String last) {
+  SystemClock.sleep(15); // Don't ever really do this!
+  return first + " " + last;
+}
+
+//结果: 方法耗时16ms
+V/Example: ⇢ getName(first="Jake", last="Wharton")
+V/Example: ⇠ getName [16ms] = "Jake Wharton"

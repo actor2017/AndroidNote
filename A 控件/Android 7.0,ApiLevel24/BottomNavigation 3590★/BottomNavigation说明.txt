@@ -1,6 +1,7 @@
 https://github.com/Ashok-Varma/BottomNavigation
 
-2.添加依赖:compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+
 	   如果发现不能运行,可以下载文件,也可以把它该成低版本,例:1.3.0'
 
 2.5	allowBackUp="false"如果出错后，可以在<application>标签中加入；tools:replace="android:allowBackup"

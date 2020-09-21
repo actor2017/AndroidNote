@@ -1,0 +1,41 @@
+https://github.com/Kaopiz/KProgressHUD
+
+dependencies {
+    // Other dependencies
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+}
+
+
+1.Indeterminate HUD(不确定的 HUD, 一直转)
+
+KProgressHUD.create(MainActivity.this)
+	.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+	.setLabel("Please wait")
+	.setDetailsLabel("Downloading data")
+	.setCancellable(true)
+	.setAnimationSpeed(2)
+	.setDimAmount(0.5f)
+	.show();
+
+
+2.Determinate HUD(确定的 HUD, 进度条)
+
+KProgressHUD hud = KProgressHUD.create(MainActivity.this)
+					.setStyle(KProgressHUD.Style.ANNULAR_DETERMINATE)
+					.setLabel("Please wait")
+					.setMaxProgress(100)
+					.show();
+hud.setProgress(90);
+
+
+3.You can also create a custom view to be displayed.(自定义view)
+
+ImageView imageView = new ImageView(this);
+imageView.setBackgroundResource(R.drawable.spin_animation);
+AnimationDrawable drawable = (AnimationDrawable) imageView.getBackground();
+drawable.start();
+KProgressHUD.create(MainActivity.this)
+   .setCustomView(imageView)
+   .setLabel("This is a custom view")
+   .show();
+

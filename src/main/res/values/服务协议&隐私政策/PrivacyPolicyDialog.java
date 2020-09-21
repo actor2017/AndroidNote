@@ -1,4 +1,4 @@
-package com.ly.bridgeemergency.dialog;
+package com.leipaiyun.lpsj.dialog;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,15 +16,15 @@ import android.widget.TextView;
 import com.actor.myandroidframework.dialog.BaseDialog;
 import com.actor.myandroidframework.utils.SPUtils;
 import com.blankj.utilcode.util.ActivityUtils;
-import com.ly.bridgeemergency.R;
-import com.ly.bridgeemergency.activity.InstructionActivity;
+import com.leipaiyun.lpsj.R;
+import com.leipaiyun.lpsj.activity.login.InstructionActivity;
 
 /**
  * description: 隐私政策
  *
  * //如果未显示过/未同意 隐私政策
  * if (!SPUtils.getBoolean(InstructionActivity.HAS_SHOW_PRIVACY_POLICY_DIALOG, false)) {
- *     new PrivacyPolicyDialog(this).show();//隐私政策
+ *     new PrivacyPolicyDialog(this, onClickListener).show();//隐私政策
  * }
  *
  * @author : 李大发
@@ -33,7 +33,8 @@ import com.ly.bridgeemergency.activity.InstructionActivity;
  */
 public class PrivacyPolicyDialog extends BaseDialog implements View.OnClickListener {
 
-    private static final String appName = "桥梁应急";
+    private View.OnClickListener onClickListener;
+    private static final String appName = "雷牌云服";
     private static final String str1 = "感谢您信任并使用" + appName + "! 我们依据最新法律法规及监管要求, 更新了";
     private static final String link1 = "《" + appName + "隐私政策》";
     private static final String str2 = ", 请您务必仔细阅读并透彻理解相关内容, 在确认充分理解并同意后使用" +
@@ -41,9 +42,10 @@ public class PrivacyPolicyDialog extends BaseDialog implements View.OnClickListe
 
             "我们将按法律法规要求, 采取相应安保措施, 尽力保护您的个人信息安全可控。";
 
-    public PrivacyPolicyDialog(@NonNull Context context) {
+    public PrivacyPolicyDialog(@NonNull Context context, View.OnClickListener onClickListener) {
         super(context);
         setCancelAble(false);
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -85,6 +87,9 @@ public class PrivacyPolicyDialog extends BaseDialog implements View.OnClickListe
                 }
                 break;
             case R.id.tv_agree://同意
+                if (onClickListener != null) {
+                    onClickListener.onClick(v);
+                }
                 SPUtils.putBoolean(InstructionActivity.HAS_SHOW_PRIVACY_POLICY_DIALOG, true);
                 dismiss();
                 break;

@@ -27,5 +27,22 @@ public class AddHeaderInterceptor implements Interceptor {
                 .addHeader(Global.Authorization, authorization)//添加验证到请求头, key & value不能为null
                 .build();
         return chain.proceed(request);//继续进行
+		
+		
+
+或者下方也行
+		//核心也是通过newBuilder 拿到Builder
+        Headers.Builder builder = request.headers()
+                .newBuilder();
+
+        //统一追加header参数
+        Headers newHeader = builder
+                .add("header1", "iam header1")
+                .build();
+
+        Request newRequest = request.newBuilder()
+                .headers(newHeader)
+                .build();
+		return chain.proceed(newRequest);//继续进行
     }
 }

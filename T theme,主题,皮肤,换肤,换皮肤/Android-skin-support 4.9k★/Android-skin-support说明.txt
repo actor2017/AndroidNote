@@ -1,0 +1,28 @@
+https://github.com/ximsfei/Android-skin-support
+Android 换肤框架, 极低的学习成本, 极好的用户体验. "一行"代码就可以实现换肤, 你值得拥有!!!
+
+只需要一行代码, 就可以实现换肤, 你值得拥有!!!
+SkinCompatManager.withoutActivity(this).loadSkin();
+
+如果项目中还在使用support库，添加以下依赖
+implementation 'skin.support:skin-support:3.1.4'                   // skin-support 基础控件支持
+implementation 'skin.support:skin-support-design:3.1.4'            // skin-support-design material design 控件支持[可选]
+implementation 'skin.support:skin-support-cardview:3.1.4'          // skin-support-cardview CardView 控件支持[可选]
+implementation 'skin.support:skin-support-constraint-layout:3.1.4' // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
+
+第三方控件适配库
+hdodenhof/CircleImageView
+H07000223/FlycoTabLayout, 需要添加依赖: implementation 'skin.support:flycotablayout:2.1.2.2'
+
+
+在Application的onCreate中初始化
+@Override
+public void onCreate() {
+    super.onCreate();
+    SkinCompatManager.withoutActivity(this)                         // 基础控件换肤初始化
+            .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
+            .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
+            .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
+            .setSkinStatusBarColorEnable(false)                     // 关闭状态栏换肤，默认打开[可选]
+            .setSkinWindowBackgroundEnable(false)                   // 关闭windowBackground换肤，默认打开[可选]
+            .loadSkin();

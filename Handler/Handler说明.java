@@ -1,8 +1,8 @@
 Handler在哪个线程创建,handler就会把消息发送到这个线程的消息队列.
-当App启动的时候，就启动了一条线程来操作UI，成为UI线程或者主线程,
-在主线程启动的时候，Looper就调用了looper.prepareMainLooper(),为当前的线程绑定了一个looper对象,
+当App启动的时候，就启动了一条线程来操作UI，称为UI线程或者主线程,
+在主线程启动的时候，Looper就调用了 looper.prepareMainLooper(), 为当前的线程绑定了一个looper对象,
 因为每个looper对象都有自己的消息队列，因此主线程也间接拥有的了自己的消息队列,
-之后looper.loop();开始轮询消息队列的消息
+之后 looper.loop();开始轮询消息队列的消息
 
 Handler在发送消息进入消息队列之前，Message会保存一个对Handler的引用target。
 然后当轮询到这个消息的时候，就可以通过target来获取发送自己的handler,然后把消息处理掉。
@@ -45,7 +45,7 @@ void handleMessage(Message msg);
 void dispatchMessage(Message msg);
 
 boolean sendEmptyMessage(int what);
-boolean sendEmptyMessageDelayed(int what, long delayMillis);//0, 2000
+boolean sendEmptyMessageDelayed(int what, long delayMillis);//发送延时消息, 0, 2000
 boolean sendEmptyMessageAtTime(int what, long uptimeMillis);
 boolean sendMessage(Message msg);							//发送普通消息
 boolean sendMessageDelayed(Message msg, long delayMillis);

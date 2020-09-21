@@ -27,7 +27,7 @@
 		android:usesCleartextTraffic="true"	<!--usesCleartextTraffic: Android P(9.0)的默认所有Http的请求都被阻止, 并且这个属性的默认值从true改变为false-->
         android:theme="@style/DefaultTheme"
 		android:resizeableActivity="true"	<!--resizeableActivity: 支持分屏(<application 或 <activity 设置)-->
-		tools:replace="android:label,android:allowBackup"	<!--replace 可用多个拼接-->
+		tools:replace="android:label,android:allowBackup"	<!--替换library中已有 <Activity 的属性, replace 可用多个拼接-->
 		>
 		
 		<!-- label:会在桌面创建一个这个名称的图标 -->

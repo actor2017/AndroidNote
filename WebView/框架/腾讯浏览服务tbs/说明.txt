@@ -2,7 +2,10 @@ https://x5.tencent.com
 https://x5.tencent.com/tbs/guide.html
 
 1. 第一步
-下载 SDK jar 包放到工程的libs目录下，将源码和XML里的系统包和类替换为SDK里的包和类，具体对应如下：
+
+api 'com.tencent.tbs.tbssdk:sdk:43903'
+
+或下载 SDK jar 包放到工程的libs目录下，将源码和XML里的系统包和类替换为SDK里的包和类，具体对应如下：
 即:不能有android.webkit,只能替换为com.tencent.smtt.
 系统内核					SDK内核
 android.webkit.ConsoleMessage		com.tencent.smtt.export.external.interfaces.ConsoleMessage

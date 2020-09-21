@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.me.LotteryActivity">
+
+    <com.runman.baselibrary.view.CustomTitleView
+        android:id="@+id/custom_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--
+    app:typenum="7"
+    app:colors="@array/colors"
+        app:deses="@array/names"
+        app:icons="@array/icons"
+    -->
+    <com.cretin.www.wheelsruflibrary.view.WheelSurfView
+        android:id="@+id/wheel_surf_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        app:goImg="@mipmap/node"
+        app:huanImg="@mipmap/yuanhuan"
+        app:mainImg="@drawable/server"
+        app:minTimes="5"
+        app:textColor="#FF0000"
+        app:textSize="16sp"
+        app:type="1"
+        app:typenum="-1"
+        app:vartime="175" />
+
+    <Button
+        android:id="@+id/btn_lottery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_button_orange2"
+        android:text="抽奖(剩余 0 次)"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="增加一次抽奖次数(debug环境可见)"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</LinearLayout>

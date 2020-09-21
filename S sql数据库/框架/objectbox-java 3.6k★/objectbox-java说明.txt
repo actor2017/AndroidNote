@@ -1,0 +1,4 @@
+https://github.com/objectbox/objectbox-java
+https://objectbox.io/
+ObjectBox is a superfast object-oriented database with strong relation support. ObjectBox is embedded into your Android, Linux, macOS, or Windows app.
+

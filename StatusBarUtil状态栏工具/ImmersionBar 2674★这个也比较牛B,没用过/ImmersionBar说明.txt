@@ -1,3 +1,17 @@
 https://github.com/gyf-dev/ImmersionBar
 http://www.jianshu.com/p/2a884e211a62
 
+//2.x版本
+implementation 'com.gyf.barlibrary:barlibrary:2.2.9'
+
+
+// 基础依赖包，必须要依赖
+implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+// fragment快速实现（可选）
+implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+// kotlin扩展（可选）
+implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+
+
+
+ImmersionBar.with(this).init();

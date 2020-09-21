@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--6.0以下手机, 状态栏颜色-->
+    <color name="colorStatusBar">@color/gray_trans_60000000</color>
+
+    <color name="navigationBarColor">@color/trans</color>
+
+
+    <color name="a">#fef9f7</color>
+    <color name="b">#fbc6a9</color>
+    <color name="c">#ffdecc</color>
+    <color name="d">#fbc6a9</color>
+    <color name="e">#ffdecc</color>
+    <color name="f">#fbc6a9</color>
+    <color name="g">#ffdecc</color>
+</resources>

@@ -65,9 +65,20 @@ compile 'com.google.code.gson:gson:2.8.2'
 
 6.解析成JsonObject
 //{"success":true,"data":0,"message":"处理成功","errorMessages":[],"businessStatusCode":"success","enabled":true,"httpStatusCode":200}
-JsonObject info = GsonUtils.fromJson(json, JsonObject.class);
-boolean enabled = info.getAsJsonObject("enabled").getAsBoolean();
-String message = info.getAsJsonObject("message").getAsString();
+JsonObject jsonObject = GsonUtils.fromJson(json, JsonObject.class);
+boolean enabled = jsonObject.getAsJsonObject("enabled").getAsBoolean();
+String message = jsonObject.getAsJsonObject("message").getAsString();
+
+int id = jsonObject.get("id").getAsInt();
+String id1 = jsonObject.get("id1").getAsString();
+String desc = jsonObject.get("hobbyDesc").getAsJsonObject().get("sport_desc").getAsString();//多层获取
+
+
+7.JsonParser
+JsonObject jsonObject = (JsonObject) new JsonParser().parse(jsonStr);
+
+8.JSONArray
+JSONArray jsonArray = new JSONArray(jsonStr);//json是array类型: [{},{}]
 
 
 添加混淆

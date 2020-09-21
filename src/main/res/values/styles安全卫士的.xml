@@ -1,4 +1,14 @@
 <resources>
+    <!--常用配置-->
+    <style name="AppTheme" parent="AppThemeForMyAndroidFrameWork">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorStatusBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+	
+	
+	
     <!-- Base application theme. -->
 	<!--NoActionBar: 没有标题栏, 默认: Theme.AppCompat.Light.DarkActionBar-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">

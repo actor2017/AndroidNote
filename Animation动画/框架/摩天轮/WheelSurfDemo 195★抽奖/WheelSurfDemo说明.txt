@@ -1,0 +1,6 @@
+https://github.com/MZCretin/WheelSurfDemo
+https://blog.csdn.net/u010998327/article/details/78920351
+自定义Android原生转盘抽奖demo
+
+compile 'com.github.MZCretin:WheelSurfDemo:v1.1.0'
+

@@ -1,0 +1,19 @@
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:nestedScrollingEnabled="false"
+    app:layoutManager="android.support.v7.widget.GridLayoutManager"
+    app:spanCount="4"
+    tools:itemCount="5"
+    tools:listitem="@layout/item_pic_add" />
+
+
+private AddPicAdapter mAdapter;
+private List<AddPicBean> items = new ArrayList<>();
+
+items.clear();
+items.add(null);//添加一个+号
+int dp5 = MyAppliction.getInstance().dp1 * 10;
+recyclerView.addItemDecoration(new BaseItemDecoration(dp5, dp5));//增加间隔
+recyclerView.setAdapter(mAdapter = new AddPicAdapter(5, items));

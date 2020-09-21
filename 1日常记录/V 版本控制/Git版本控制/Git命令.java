@@ -34,6 +34,10 @@ $ git clone user@server:project.git
 Git 协议
     接下来是 Git 协议。 这是包含在 Git 里的一个特殊的守护进程；它监听在一个特定的端口（9418），类似于 SSH 服务，但是访问无需任何授权。 要让版本库支持 Git 协议，需要先创建一个 git-daemon-export-ok 文件 —— 它是 Git 协议守护进程为这个版本库提供服务的必要条件 —— 但是除此之外没有任何安全措施。 要么谁都可以克隆这个版本库，要么谁也不能。 这意味着，通常不能通过 Git 协议推送。 由于没有授权机制，一旦你开放推送操作，意味着网络上知道这个项目 URL 的人都可以向项目推送数据。 不用说，极少会有人这么做。
 
+$ cat ~/.ssh/id_rsa.pub		//★★★获取公钥, 可用于阿里云代码平台★★★
+							//阿里云代码平台私人仓库: https 需要账号密码, ssh 配置公钥就可直接下载
+
+
 $ git config --global core.autocrlf true	//#提交时转换为LF，检出时转换为CRLF(windows的回车)
 $ git config --global core.autocrlf false	//#提交检出均不转换(windows也可这样设置)
 $ git config --global core.autocrlf input	//#提交时转换为LF，检出时不转换(linux,mac)
@@ -84,6 +88,7 @@ git reset --hard 02f1dfb40e5aa95842cb7e761fea60a3dd5050ea	//修改HEAD的位置，将HE
 git revert -n 8b89621019c9adc6fc4d242cd41daeb13aeb9861		//“反做”某一个版本,以达到撤销该版本的修改的目的(如果不小心反做了, 可以↑)
 git commit -m "revert add 版本名称"					//上一条反做后需要提交
 
+git push										//提交(已验证)
 git push origin HEAD --force								//撤销操作
 
 rm a.txt		//不管是否在已跟踪文件清单中,都删除
@@ -145,7 +150,9 @@ git status -s		//也可写成--short,显示文件状态,更为紧凑的格式输出,文件前面标志:
 
 grow, mark and tweak your common history
    branch     List, create, or delete branches
-   checkout   Switch branches or restore working tree files
+
+git checkout e3c15136b2f50a1bc529ac8ff619665b133fe38e :克隆某个历史版本(新建文件夹, 先把整个项目clone下来, 然后再执行这条命令)
+
 git commit		//提交,在弹出的文本内第1行必须输入提交注释,提交后输出那个分支(master)提交的&完整sha-1校验
 git commit -v		//提交,并显示修改内容(diff),需在第1行必须输入提交注释
 git commit -m "提交了xx"//直接输入提交注释

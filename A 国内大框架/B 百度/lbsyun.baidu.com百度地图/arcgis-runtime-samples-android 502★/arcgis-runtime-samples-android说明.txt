@@ -1,0 +1,8 @@
+https://github.com/Esri/arcgis-runtime-samples-android
+https://developers.arcgis.com/android/latest/
+
+maven { url 'https://esri.bintray.com/arcgis' }
+
+dependencies {
+    implementation 'com.esri.arcgisruntime:arcgis-android:100.9.0'
+}

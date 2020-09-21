@@ -12,4 +12,10 @@
     <color name="gray">#a000</color>
     <color name="blue">#459FD7</color>
     <color name="green">#99FFCC</color>
+
+
+    <!--6.0以下手机, 状态栏颜色-->
+    <color name="colorStatusBar">@color/gray_trans_60000000</color>
+
+    <color name="navigationBarColor">@color/trans</color>
 </resources>

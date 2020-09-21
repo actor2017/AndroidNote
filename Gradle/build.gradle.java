@@ -8,6 +8,10 @@ allprojects {
 }
 
 android {
+	
+	compileSdkVersion compileSdk
+	flavorDimensions('abi', 'version')	//风味维度, https://blog.csdn.net/weixin_37625173/article/details/100867037
+	
     defaultConfig {
         multiDexEnabled true//1. ★★解决安卓的方法数量不够，只能6K(6x1024)个方法的错误.★★
         versionCode 2018050901//int最大值2³¹-1=2147483647
@@ -95,6 +99,7 @@ android {
             dirs 'libs', '../easeui/libs'//第2参数:引用某个module下的.aar文件,如果引用module下的.jar文件不用写第2个参数
         }
     }
+	
     //添加so库, android内(不添加的话, 不会打包进apk)
 	//如果是在eclipse中，需要放到libs下对应库的目录。
 	//如果是在Android Studio中，则会默认匹配main下的jniLibs目录，如果没有目录需要自己手动创建。并且库的名称也不能随便更改。
@@ -104,6 +109,10 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    productFlavors { //产品风味
+		//??
+	}
 
 	/**
 	 * Android Studio 引入Lambda表达式:
@@ -137,7 +146,7 @@ provided			compileOnly		//只在编译的时候有效， 不参与打包(编译�
 apk					runtimeOnly				//只在打包的时候有效，编译不参与(很少用)
 testCompile			tesImplementation		//在单元测试代码的编译(src/test) 和 打包测试apk的时候有效
 debugCompile		debugImplementation		// 只在 "debug 模式的编译" 和 "最终的 debug apk 打包" 时有效
-releaseCompile		releaseImplementation	//仅针对 "Release 模式的编译" 和 "最终的 Release apk 打包"
+releaseCompile		releaseImplementation	//仅针对 "Release 模式的编译" 和 "最终的 Release apk 打包"(例如debug的时候不抓取错误, release抓取)
 
 //待考证
 androidTestCompile	androidTestImplementation	//在单元测试代码的编译(src/androidTest) 和 打包测试apk的时候有效?

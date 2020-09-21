@@ -1,0 +1,35 @@
+﻿https://github.com/BolexLiu/AutoEx/tree/4a69c46ea7d64337d57c07e29b757631cd9c234d
+
+🌞帮助Android开发者，让项目在崩溃时从异常堆栈中，自动寻找Stack Overflow的回答。
+
+┌—————————————————————AutoEx——————————————————————
+├ 错误类型:android.content.res.Resources$NotFoundException: Resource ID #0x7f0b0056 type #0x12 is not valid。↑详细异常请往上滚动查看↑
+├ 推荐参考Stack Overflow上4条同类问题。↓点击下方连接查看↓
+├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+├ 标题:Android Resources$NotFoundException: Resource ID #0x7f030027
+├ 链接:https://stackoverflow.com/questions/21269502/android-resourcesnotfoundexception-resource-id-0x7f030027
+├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+├ 标题:android.content.res.Resources$NotFoundException: Resource ID #0x7f07007e
+├ 链接:https://stackoverflow.com/questions/48161713/android-content-res-resourcesnotfoundexception-resource-id-0x7f07007e
+├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+├ 标题:App crashes when adding an ImageView?
+├ 链接:https://stackoverflow.com/questions/47600747/app-crashes-when-adding-an-imageview
+├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+├ 标题:XML Android app will not load on phone
+├ 链接:https://stackoverflow.com/questions/48310838/xml-android-app-will-not-load-on-phone
+└—————————————————————AutoEx——————————————————————
+
+allprojects {
+    repositories {maven { url 'https://jitpack.io' }}
+}
+
+dependencies {
+     debugImplementation 'com.github.BolexLiu.AutoEx:AutoEx-Lib:v1.0.8'
+     releaseImplementation 'com.github.BolexLiu.AutoEx:AutoEx-Lib-No-Op:v1.0.8' //release为空实现
+}
+
+初始化方式(Application)
+ AutoEx.apply();//一行即可
+或者
+ AutoEx.apply( mApp, maxSize, tag, isDebug)//Applicatin 答案数目 日志TAG 是否调试
+

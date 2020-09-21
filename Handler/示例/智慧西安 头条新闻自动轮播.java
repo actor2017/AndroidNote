@@ -17,8 +17,8 @@
     @Override
     protected void onDestroy() {//一定要销毁,否则fragment中会报错
         super.onDestroy();
-        bannerHandler.removeMessages(0);
-        bannerHandler.removeCallbacksAndMessages(null);
+        mHandler.removeMessages(0);
+        mHandler.removeCallbacksAndMessages(null);
     }
 
 

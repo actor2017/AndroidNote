@@ -1,0 +1,4 @@
+https://github.com/Lichenwei-Dev/ImagePicker
+高仿微信图片选择器（支持单图，多图，视频选择，支持图片自由缩放，视频播放等功能）
+
+implementation 'com.lcw.library:imagepicker:2.2.7'

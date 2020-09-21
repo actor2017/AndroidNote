@@ -1,0 +1,17 @@
+https://github.com/zjun615/RulerView
+卷尺系列控件，包含：普通卷尺（如：体重）、金额尺、时间尺
+
+implementation 'com.zjun:rule-view:0.0.1'
+
+<com.zjun.widget.RuleView
+   android:layout_width="match_parent"
+   android:layout_height="70dp"
+   app:zjun_textSize="18sp" />
+ 
+<com.zjun.widget.MoneySelectRuleView
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content" />
+ 
+<com.zjun.widget.TimeRuleView
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content" />

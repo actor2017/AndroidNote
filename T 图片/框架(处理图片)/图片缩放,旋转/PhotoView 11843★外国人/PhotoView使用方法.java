@@ -31,10 +31,17 @@ Allows the application to be notified when the user taps on the Photo.
 
 
 2.布局文件中是PhotoView
-<com.github.chrisbanes.photoview.PhotoView
+<com.github.chrisbanes.photoview.PhotoView	//1.2.4
     android:id="@+id/photo_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
+
+<uk.co.senab.photoview.PhotoView			//1.2.6
+    android:id="@+id/photoview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    />
 
 PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);
 photoView.setImageResource(R.drawable.image);

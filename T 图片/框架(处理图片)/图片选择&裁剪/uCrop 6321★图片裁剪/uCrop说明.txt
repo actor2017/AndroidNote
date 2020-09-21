@@ -13,7 +13,9 @@ allprojects {
 }
 
 
-compile 'com.github.open-android:uCrop:v1.0.0'
+implementation 'com.github.yalantis:ucrop:2.2.5' - lightweight general solution
+
+implementation 'com.github.yalantis:ucrop:2.2.5-native' - get power of the native code to preserve image quality (+ about 1.5 MB to an apk size)
 
 
 

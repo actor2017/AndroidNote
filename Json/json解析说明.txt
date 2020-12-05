@@ -3,9 +3,28 @@ JSONObject(安卓原生,org.json包)、第三方jar包（Gson，fastJson）
 如何解析Json数据
 1.解析成javabean
 
+一般情况下，我会在解析json数据的时候使用Gson来进行解析，因为它的使用非常的方便.
+但是，在下述的情况下，我会使用JsonObject来进行解析
+1、当json数据相当复杂的情况之下，使用JsonObject来进行解析，因为它的效率高
+2、当json数据相当简单的情况之下，使用JsonObject来进行解析，{"sucess":"true"}
+
+
 2.手动解析json(不用创建bean.class对象)
   {}--->类
   []-->List 或 Object[].class
   无符号-->String或者基本的数据类型
   当集合没有字段名称的时候，TypeToken
+
+3.datas内是String, 不是对象.
+{
+    "responseCode": "1",
+    "responseMsg": "success",
+    "datas": "{\"appid\":\"wxcf29ca4b33216767\",\
+"partnerid\":\"1492718172\"}"
+}
+BaseInfo info = GsonUtils.fromJson(json, BaseInfo.class);
+String datas = info.datas;	//{"appid":"wxcf29ca4b33216767",
+"partnerid":"1492718172"}
+
+现在这个 datas 可以解析成实体了.
 

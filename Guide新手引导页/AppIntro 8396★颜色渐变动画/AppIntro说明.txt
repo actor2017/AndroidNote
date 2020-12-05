@@ -1,2 +1,4 @@
 https://github.com/AppIntro/AppIntro
+https://gitee.com/mirrors/appintro?_from=gitee_search
+
 Make a cool intro for your Android app.

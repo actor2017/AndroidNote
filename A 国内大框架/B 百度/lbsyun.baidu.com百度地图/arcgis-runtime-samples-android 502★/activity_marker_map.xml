@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MarkerMapActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_layout" />
+
+<!--    <com.esri.arcgisruntime.mapping.view.MapView-->
+<!--        android:id="@+id/map_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@+id/title" />-->
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title" />
+
+    <!--切换图层-->
+    <ImageView
+        android:id="@+id/iv_change"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/title"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/icon_switch" />
+
+    <LinearLayout
+        android:id="@+id/ll_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_loc"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_po"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/poauto_selector" />
+
+        <ImageView
+            android:id="@+id/iv_compass"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/compass_selector" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_loc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_loc" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_save"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/icon_save" />
+
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_clear" />
+    </LinearLayout>
+
+    <!--已隐藏-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/icon_add" />
+
+        <ImageView
+            android:id="@+id/iv_surplus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_surplus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/map_record_bg"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ic_recicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/icon_record" />
+
+        <TextView
+            android:id="@+id/keepTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记录位置"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_record"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/search_bg"
+        android:padding="5dp"
+        android:visibility="gone"
+        tools:text="面积: 115722.5㎡/173.5837亩\n
+            周长: 2693.2m"
+        tools:visibility="visible" />
+</RelativeLayout>

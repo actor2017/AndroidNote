@@ -34,8 +34,20 @@ public void setColorMode(@ActivityInfo.ColorMode int colorMode)
 public int getColorMode()
 public boolean isWideColorGamut()
 public void setDimAmount(float amount);//背景透明度
-public void setAttributes(WindowManager.LayoutParams a)
+
+//获取当前窗口的属性, 布局参数
 public final WindowManager.LayoutParams getAttributes()
+WindowManager.LayoutParams params;
+params.width = 150dp;
+params.height = 150dp;
+params.x = 0;
+params.y = 0;//相对上方的偏移,负值忽略.
+params.dimAmount = dimAmount;//背景透明度
+params.gravity = /*android.view.*/Gravity.CENTER;//设置Window居中!
+
+public void setAttributes(WindowManager.LayoutParams a)
+
+
 public void setSustainedPerformanceMode(boolean enable)
 public boolean requestFeature(int featureId)
 public final void makeActive()

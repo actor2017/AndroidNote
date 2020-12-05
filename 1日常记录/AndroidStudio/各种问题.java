@@ -22,3 +22,8 @@
 3.右键不能创建Activity
   1.signingConfigs 写在 buildTypes 之前
   2.signingConfigs 中不能有 debug 签名配置
+
+
+5.Android studio光标变成黑长方形的情况
+1.网上说按insert键/shift+insert键
+2.把数字键盘锁定，按数字0键（数字0也是ins）

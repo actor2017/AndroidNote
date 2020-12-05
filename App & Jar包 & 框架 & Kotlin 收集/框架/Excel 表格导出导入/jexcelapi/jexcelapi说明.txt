@@ -17,4 +17,5 @@ https://github.com/DmrfCoder/AndroidExcelDemo
 //compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.12'
 implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
 
-
+# ²»»ìÏý excel µ¼³ö
+ -keep class com.actor.sample.bean.** { *; }

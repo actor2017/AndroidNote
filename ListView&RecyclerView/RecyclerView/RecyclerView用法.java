@@ -5,6 +5,22 @@ compile 'com.android.support:recyclerview-v7:25.0.1'
 示例:
 android:descendantFocusability="blocksDescendants"//写在parent上,解决recyclerview自动跳转到最后的问题
 
+3.NestedScrollView 中添加一些View, 然后再添加 RecyclerView, 会造成一直上拉加载的问题:
+https://github.com/CymChad/BaseRecyclerViewAdapterHelper/issues/2229
+//加载更多(空实现, 为了触发加载样式)
+setLoadMore$Empty(mAdapter, recyclerView, () -> {
+});
+
+//设置scrollview的加载更多监听，滑动底部进行加载数据
+nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+    if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+        //加载更多
+        getList(false);
+    }
+});
+
+
+
 <android.support.v7.widget.RecyclerView
 	android:id="@+id/rlv_recyclerview"
 	android:layout_width="match_parent"

@@ -1,0 +1,30 @@
+﻿https://github.com/WVector/AppUpdate
+🚀 Android 版本更新 🚀 a library for android version update 🚀
+
+dependencies {
+    compile 'com.qianwen:update-app:3.5.2'
+}
+
+功能介绍
+ 实现android版本更新
+ 对kotlin适配，调用更简单
+ 自定义接口协议，可以不改变现有项目的协议就能使用
+ 支持get,post请求
+ 支持进度显示，对话框进度条，和通知栏进度条展示
+ 支持后台下载
+ 支持强制更新
+ 支持简单主题色配置(可以自动从顶部图片提取主色)
+ 支持自定义对话框（可以监听下载进度）
+ 支持静默下载（可以设置wifi状态下）
+ 支持android7.0
+
+	new UpdateAppManager
+                .Builder()
+                //当前Activity
+                .setActivity(this)
+                //更新地址
+                .setUpdateUrl(mUpdateUrl)
+                //实现httpManager接口的对象
+                .setHttpManager(new UpdateAppHttpUtil())
+                .build()
+                .update();

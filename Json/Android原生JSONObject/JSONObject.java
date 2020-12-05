@@ -5,11 +5,6 @@ Android原生JSONObject
 	<version>20160810</version>
 </dependency>
 
-一般情况下，我会在解析json数据的时候使用Gson来进行解析，因为它的使用非常的方便.
-但是，在下述的情况下，我会使用JsonObject来进行解析
-1、当json数据相当复杂的情况之下，使用JsonObject来进行解析，因为它的效率高
-2、当json数据相当简单的情况之下，使用JsonObject来进行解析，{"sucess":"true"}
-
 
 1.JSONObject -> json
 JSONObject jsonObj = new JSONObject(/*json*/);
@@ -44,12 +39,18 @@ jsonObj.getBoolean("female")
 jsonObj.getDouble("discount")
 jsonObj.getLong("age")
 String s = jsonObj.getString("versionName");//getString 方法, 当JSONObject中不存在某 key 的时候就抛异常
-jsonObj.getJSONObject("features")
+Object data = jsonObj.get("data");
+String data = jsonObject.get("data").toString();	//获取成String(获取前要判断 has 和 isNull)
+JSONObject jsonObject = jsonObj.getJSONObject("features")
 
 3.opt方法
 String pic = jsonObj.optString("data");//不会抛异常, 如果=null, 返回 ""
 
 boolean has = jsonObj.has("title");//判断
+boolean isNull = jsonObject.isNull("title");//是否为空: null 或 "null"
+if (jsonObject.has("data") && !jsonObject.isNull("data"))) {
+	
+}
 String[] names = JSONObject.getNames(jsonObj);//names
 
 JSONArray hobbies = jsonObj.getJSONArray("hobbies");

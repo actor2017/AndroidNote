@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ChoiceActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_layout" />
+
+    <!--com.esri.arcgisruntime.mapping.view.MapView-->
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_confirm"
+        android:layout_below="@+id/title" />
+
+    <LinearLayout
+        android:id="@+id/ll_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lines="2"
+            android:text="点击地图选点"
+            android:textColor="@color/red" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/orange_cd9350"
+            android:text="确定"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_confirm"
+        android:layout_margin="10dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/icon_add" />
+
+        <ImageView
+            android:id="@+id/iv_surplus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_surplus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_confirm"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/map_control_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_compass"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/compass_selector" />
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/icon_location" />
+
+        <ImageView
+            android:id="@+id/iv_change"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_switch" />
+    </LinearLayout>
+</RelativeLayout>

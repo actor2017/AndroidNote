@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.cmcc.yyn.view.ArcView
+        android:id="@+id/rl_bg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:arcHeight="@dimen/dp50"
+        app:bgColor="@color/new_app_theme" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cq_item_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/cq_home_margin"
+        android:layout_marginTop="@dimen/cq_home_margin"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/cq_home_margin"
+        android:background="@drawable/shape_rec_white_cor6dp"
+        android:nestedScrollingEnabled="false"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+        app:spanCount="5"
+        tools:listitem="@layout/cq_product_item_child" />
+</RelativeLayout>

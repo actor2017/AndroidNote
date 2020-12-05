@@ -69,7 +69,11 @@ JsonObject jsonObject = GsonUtils.fromJson(json, JsonObject.class);
 boolean enabled = jsonObject.getAsJsonObject("enabled").getAsBoolean();
 String message = jsonObject.getAsJsonObject("message").getAsString();
 
-int id = jsonObject.get("id").getAsInt();
+jsObject.get("errorMessages").getAsString();//不能写成, 否则报错
+//但是这样写貌似也不对, 如果errorMessages的value是对象还好, 如果value本来就是"string", 结果得到的确是: ""string""...
+String errorMessages = jsObject.get("errorMessages").toString();
+
+int id = jsonObject.get("code").getAsInt();
 String id1 = jsonObject.get("id1").getAsString();
 String desc = jsonObject.get("hobbyDesc").getAsJsonObject().get("sport_desc").getAsString();//多层获取
 

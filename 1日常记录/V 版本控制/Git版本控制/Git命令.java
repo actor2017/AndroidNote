@@ -1,4 +1,9 @@
 https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE
+
+AndroidStudio中查看执行的git命令:
+Alt+9  =>  Version Control  =>  Console
+
+
 1.Git 可以使用四种主要的协议(protocol)：
 本地协议（Local）:
     git clone /opt/git/project.git(应该不要.git)
@@ -80,7 +85,9 @@ git remote add 简称 url	//添加一个远程仓库
 
 work on the current change (see also: git help everyday)
 git add a.txt		//添加文件到下一次提交中(新增/修改文件后)
-git mv fileFrom fileTo	//移动/改名某个文件/夹
+
+git mv fileFrom fileTo	//重命名文件/夹
+
 
    reset      Reset current HEAD to the specified state //回滚
 git reset --hard 02f1dfb40e5aa95842cb7e761fea60a3dd5050ea	//修改HEAD的位置，将HEAD指向的位置改变为之前存在的这个版本(reset后,HEAD之后的版本不见了)
@@ -91,7 +98,7 @@ git commit -m "revert add 版本名称"					//上一条反做后需要提交
 git push										//提交(已验证)
 git push origin HEAD --force								//撤销操作
 
-rm a.txt		//不管是否在已跟踪文件清单中,都删除
+rm a.txt			//删除文件/夹, 不管是否在已跟踪文件清单中,都删除
 git rm a.txt		//从已跟踪文件清单中移除 & 删除文件
 git rm --cached a.txt	//从 Git 仓库中删除(也从暂存区域移除)但仍保留在磁盘中
 
@@ -160,6 +167,10 @@ git commit -a -m "xxx"	//自动把以跟踪过的文件暂存一起提交,跳过git add步骤
 git diff		//显示具体哪些行发生了改变Show changes between commits, commit and working tree, etc
 git diff --cached	//显示已暂存的将要添加到下次提交里的内容
 git diff --staged	//1.6版本+,上面一样效果
+
+5.移动文件/夹
+rename {Android/appleipai => appleipai}/.gitignore		将.gitignore 从 "Android/appleipai/文件夹" 移动到 "appleipai/文件夹"(移动到上一目录)
+
    merge      Join two or more development histories together
    rebase     Reapply commits on top of another base tip
    tag        Create, list, delete or verify a tag object signed with GPG

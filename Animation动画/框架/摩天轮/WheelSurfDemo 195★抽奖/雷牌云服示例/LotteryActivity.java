@@ -47,22 +47,16 @@ public class LotteryActivity extends BaseActivity {
     @BindView(R.id.wheel_surf_view)
     WheelSurfView   wheelSurfView;
     @BindView(R.id.btn_lottery)
-    Button btnLottery;
+    Button          btnLottery;
     @BindView(R.id.btn_add)
-    Button btnAdd;
+    Button          btnAdd;
 
-    private int[]                               allColors = {
-            R.color.a,
-            R.color.b,
-            R.color.c,
-            R.color.d,
-            R.color.e,
-            R.color.f,
-            R.color.g};
+    private int[] allColors;
+
     private List<LuckdrawDrawoneInfo> datas;
-    private int                                 lotteryCount;
-    private Bitmap iconBitmap;
-    private List<Bitmap> icons = new ArrayList<>();
+    private int                       lotteryCount;
+    private Bitmap                    iconBitmap;
+    private List<Bitmap>              icons = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +74,19 @@ public class LotteryActivity extends BaseActivity {
         if (ConfigUtils.isDebugMode) {
             btnAdd.setVisibility(View.VISIBLE);
         }
-//        iconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_leipai_logo);
+//        allColors = new int[] {
+//            getResources().getColor(R.color.a),
+//            getResources().getColor(R.color.b),
+//            getResources().getColor(R.color.c),
+//            getResources().getColor(R.color.d),
+//            getResources().getColor(R.color.e),
+//            getResources().getColor(R.color.f),
+//            getResources().getColor(R.color.g)};
+        allColors = new int[]{
+                getResources().getColor(R.color.yellow_f8c333),
+                getResources().getColor(R.color.yellow_ee7e33)};
+
+//        iconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_leipai_logo_bold);
         //透明图片
         Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -97,9 +103,11 @@ public class LotteryActivity extends BaseActivity {
                         .btnText("确定")
                         .show();
             }
+
             @Override
             public void rotating(ValueAnimator valueAnimator) {
             }
+
             @Override
             public void rotateBefore(ImageView imageView) {
             }
@@ -125,6 +133,7 @@ public class LotteryActivity extends BaseActivity {
 
     /**
      * 用户剩余抽奖次数
+     *
      * @param isStartLottery 是否开始抽奖
      */
     private void getCount(boolean isStartLottery) {
@@ -182,7 +191,7 @@ public class LotteryActivity extends BaseActivity {
                                 .setmTypeNum(texts.length)
                                 .setmColors(colors)//每一片背景颜色
                                 .setmDeses(texts)//每一片描述
-//                                .setmTextColor(R.color.colorAccent)//字体颜色
+                                .setmTextColor(getResources().getColor(R.color.white))//字体颜色
 //                                .setmMainImgRes()
                                 .setmIcons(icons)//必须设置
                                 .build());
@@ -211,9 +220,10 @@ public class LotteryActivity extends BaseActivity {
             public void onBefore(@Nullable Request request, int id) {
 //                super.onBefore(request, id);
             }
+
             @Override
             public void onOk(@NonNull BaseInfo<LuckdrawRandomInfo> info, int id) {
-                btnLottery.setText(getStringFormat("抽奖(剩余 %d 次)", -- lotteryCount));
+                btnLottery.setText(getStringFormat("抽奖(剩余 %d 次)", --lotteryCount));
                 if (info.isSuccess()) {
                     LuckdrawRandomInfo infos = info.datas;
                     if (infos != null) {

@@ -6,3 +6,15 @@ maven { url 'https://esri.bintray.com/arcgis' }
 dependencies {
     implementation 'com.esri.arcgisruntime:arcgis-android:100.9.0'
 }
+
+1.清单文件<manifest 内, <application 同级:
+    <!--OpenGL ES支持, arcgis-runtime-samples-android -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+2.xml中
+<com.esri.arcgisruntime.mapping.view.MapView
+    android:id="@+id/map_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />

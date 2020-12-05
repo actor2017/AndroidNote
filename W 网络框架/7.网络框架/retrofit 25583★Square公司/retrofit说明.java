@@ -58,6 +58,7 @@ compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 @HEAD
 @OPTIONS
 @PATCH
+@POST(Global.getList + "?xzqylb=3&sjxzqydm=500100")	//可以这样写, 参数添加在后面
 @POST	//1.必须有baseUrl.
 		//2.如果只有baseUrl而@POST()参数内没值,那么baseUrl必须以/结尾 且 @POST 应该写成@POST(".")
 		//3.如果@POST 有值,则baseUrl可不以/结尾,@POST(应该以/开头,可不/结尾)

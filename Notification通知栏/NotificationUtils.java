@@ -71,7 +71,7 @@ public class NotificationUtils {
      * @param title 通知的标题
      * @param content 这是一个通知的内容
      * @param tag 这个通知的字符串标识符,示例:task,alarm,msg
-     * @param id 如果之前的通知还未被取消,则会直接更新该通知相关的属性.如果之前的通知已经被取消,则会重新创建一个新通知
+     * @param id 如果之前的通知还未被取消,则会直接更新该通知相关的属性.如果之前的通知已经被取消,则会重新创建一个新通知(标记是否是同一条通知)
      * @param soundRawId 自定义声音,示例:R.raw.you_received_an_new_alarm(res/raw这个文件夹)
      */
     public static void showNotification(Intent intent, String ticker, String title, String content, String tag, int id, int soundRawId) {
@@ -90,7 +90,7 @@ public class NotificationUtils {
 //                .setWhen(System.currentTimeMillis())
                 //设置该通知优先级
                 .setPriority(Notification.PRIORITY_DEFAULT)
-                //设置这个标志当用户单击面板就可以让通知将自动取消
+                //设置这个标志当用户单击/点击/左滑/右滑/滑动 面板就可以让通知将自动取消
                 .setAutoCancel(true)
                 //设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用
                 //户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)

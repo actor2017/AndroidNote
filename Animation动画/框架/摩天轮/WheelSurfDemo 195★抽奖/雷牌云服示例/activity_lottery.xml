@@ -13,10 +13,12 @@
         android:layout_height="wrap_content" />
 
     <!--
-    app:typenum="7"
-    app:colors="@array/colors"
+        app:typenum="7"
+        app:colors="@array/colors"
         app:deses="@array/names"
         app:icons="@array/icons"
+        app:mainImg="@drawable/server"
+        app:textColor="@color/white"//设置了无用
     -->
     <com.cretin.www.wheelsruflibrary.view.WheelSurfView
         android:id="@+id/wheel_surf_view"
@@ -25,9 +27,7 @@
         android:layout_margin="20dp"
         app:goImg="@mipmap/node"
         app:huanImg="@mipmap/yuanhuan"
-        app:mainImg="@drawable/server"
         app:minTimes="5"
-        app:textColor="#FF0000"
         app:textSize="16sp"
         app:type="1"
         app:typenum="-1"

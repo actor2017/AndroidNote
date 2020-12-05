@@ -10,7 +10,12 @@ allprojects {
 android {
 	
 	compileSdkVersion compileSdk
-	flavorDimensions('abi', 'version')	//风味维度, https://blog.csdn.net/weixin_37625173/article/details/100867037
+	useLibrary 'org.apache.http.legacy'	//在targetSdkVersion>=28时, 在Android 9.0的手机上, 如果你需要在你的"模块的代码"中中使用httpclient, 需要添加这个依赖, 并且需要在清单文件中添加↓
+										//如果在"模块的代码中不使用", 但是其它依赖需要, 可只在清单文件中添加下方↓
+										//<uses-library
+										//	android:name="org.apache.http.legacy"
+										//	android:required="false" />
+	
 	
     defaultConfig {
         multiDexEnabled true//1. ★★解决安卓的方法数量不够，只能6K(6x1024)个方法的错误.★★
@@ -92,6 +97,8 @@ android {
 			buildConfigField "boolean", "LOG_DEBUG", "true"
 			buildConfigField("String", "HTTP_BASE", '"https://www.baidu.com/api/debug"')
 			buildConfigField("String","HAHA","\"haahahah\"")
+			
+			applicationIdSuffix ".debug"//为debug版本的包名添加.debug后缀, 让手机可以安装debug和release两个包(有些sdk会检查包名...)
         }
     }
     repositories {
@@ -110,9 +117,51 @@ android {
         }
     }
 
+
+    /*
+	 * 打出不同应用名，不同应用图标,不同包名,不同版本，不同版本号的包
+	 */
+    flavorDimensions('abi', 'version')	//风味维度, https://blog.csdn.net/weixin_37625173/article/details/100867037	
     productFlavors { //产品风味
-		//??
+		app1 {
+            manifestPlaceholders = [str: "releaseStr", package_name: "com.nade.androidsqdemo1"]
+            applicationId "com.nade.androidsqdemo1"
+            versionCode 1
+            versionName "1.0"
+            resValue "string", "app_name", "app1"
+            resValue "bool", "isrRank", 'true'
+            buildConfigField "int", "TYPE", "1"
+            manifestPlaceholders = [ENVIRONMENT: "app1", app_icon   : "@mipmap/freechat_logo"]
+           
+        }
+        app2 {
+            manifestPlaceholders = [str: "releaseStr", package_name: "com.nade.androidsqdemo2"]
+            applicationId "com.nade.androidsqdemo2"
+            versionCode 2
+            versionName "2.0"
+            resValue "string", "app_name", "app2"
+            resValue "bool", "isrRank", 'true'
+            buildConfigField "int", "TYPE", "2"
+            manifestPlaceholders = [ENVIRONMENT: "app2", app_icon   : "@mipmap/ic_launcher"]
+         
+        }
 	}
+
+    //https://blog.csdn.net/xx326664162/article/details/81779475
+	//调试的时候，都没有问题，但是在打包的时候，报出下面的错误:
+    //提示中，关闭lint checkReleaseBuilds 的检查，虽然这样可以解决问题，但是没有解决根本问题。也就是说隐患依旧会存在
+    //错误报告会生成在 [app module]/build/reports/lint-results-yourBuildName-fatal.html
+    Lint found fatal errors while assembling a release target.
+    To proceed, either fix the issues identified by lint, or modify your build script as follows:
+    ...
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
 
 	/**
 	 * Android Studio 引入Lambda表达式:
@@ -174,6 +223,15 @@ dependencies {
 	implementation project(path: ':base')//依赖其它模块(base模块必须是library)
 	
     compileOnly  'com.android.support:recyclerview-v7:28.0.0'//见BaseRecyclerViewAdapterHelper
+}
+
+//强制使用某些版本
+configurations.all{
+    resolutionStrategy {
+        force 'com.android.support:support-v4:27.0.0'
+        force 'com.github.bumptech.glide:glide:4.7.1'
+        force 'com.github.bumptech.glide:compiler:4.7.1'
+    }
 }
 
 

@@ -1,16 +1,16 @@
-File and Code Templates:
+ï»¿Editor -> File and Code Templates -> File Header:
 /**
- * description: ÃèÊö
- * company    : ÖØÇìÊĞÁËÓ®¿Æ¼¼ÓĞÏŞ¹«Ë¾ http://www.liaoin.com/
- * @author    : Àî´ó·¢
- * date       : $DATE$ on $HOUR$
+ * description: æè¿°
+ * company    : é‡åº†å…ƒå±±å…ƒç§‘æŠ€æœ‰é™å…¬å¸ http://www.ysytech.net/
+ * @author    : æå¤§å‘
+ * date       : ${DATE} on ${HOUR}
  * @version 1.0
  */
 
-Live Templates -> user -> declaration(ÊÖ¶¯ÊäÈëdec...,Ò»°ãÓÃÓÚActivity/FragmentÖĞ):
+Editor -> Live Templates -> user -> declaration(æ‰‹åŠ¨è¾“å…¥dec...,ä¸€èˆ¬ç”¨äºActivity/Fragmentä¸­):
 /**
- * description: ÃèÊö
- * company    : ÖØÇìÊĞÁËÓ®¿Æ¼¼ÓĞÏŞ¹«Ë¾ http://www.liaoin.com/
- * @author    : Àî´ó·¢
+ * description: æè¿°
+ * company    : é‡åº†å…ƒå±±å…ƒç§‘æŠ€æœ‰é™å…¬å¸ http://www.ysytech.net/
+ * @author    : æå¤§å‘
  * date       : $DATE$ on $HOUR$
  */

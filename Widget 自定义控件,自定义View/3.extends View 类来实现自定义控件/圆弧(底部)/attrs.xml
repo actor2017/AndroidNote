@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LHImageViewRound">
+        <attr name="radius" format="dimension" />
+        <attr name="type" format="integer" />
+    </declare-styleable>
+
+    <!--弧形的界面属性-->
+    <declare-styleable name="ArcView">
+        <attr name="arcHeight" format="dimension" />
+        <attr name="lgColor" format="color" />
+        <attr name="bgColor" format="color" />
+    </declare-styleable>
+</resources>

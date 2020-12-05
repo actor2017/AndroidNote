@@ -75,16 +75,16 @@ mounted(){
 //--------------------------------------------------------------------------------------
 2. js调android:
 /**
- * windows:固定写法?
+ * window:固定写法
  * android:随意写,比如可写成hehe
  * 方法名 :js调用Android方法所对应方法名
  */
-需要在html写"windows.android.方法名"
+需要在html写"window.android.方法名"
 
 /**
  * 往webView中存了一个js接口，这个接口的名称叫做android(是自定义名称)
  * @params object 第一个参数:js要调用的方法由哪个类实现(可写this,或new XxxObject())
- * @params name   第二个参数:js的对象，比如windows.android.方法名 的这个android对象。
+ * @params name   第二个参数:js的对象，比如 window.android.方法名 的这个android对象。
  */
 webView.addJavascriptInterface(this,"android");
 		

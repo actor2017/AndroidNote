@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">农村产权流转</string>
+    <string name="action_settings">Settings</string>
+<!--    <string name="vector_layer">http://www.digitalcq.com/tianditu/hlvdl/044fe82c2df24123adfc0e3e8e20d81b</string>-->
+<!--    <string name="image_layer">http://www.digitalcq.com/tianditu/kxrgo/3f6638f318ab4f68b84164ca2c1e4331</string>-->
+<!--    <string name="address_layer">http://www.digitalcq.com/tianditu/ewfwz/7399b3ab9e354836ab87556caf96778a</string>-->
+    <string name="vector_layer">http://zhsq.digitalcq.com/gw/portal/ZH92HN71/EUbyW/jijgu0cd/arcgis</string>
+    <string name="image_layer">	http://zhsq.digitalcq.com/gw/portal/ZH70TO94/mriwh/jijgu0cd/arcgis</string>
+    <string name="address_layer">http://zhsq.digitalcq.com/gw/portal/ZH79GO99/c7ui3/jijgu0cd/arcgis</string>
+</resources>

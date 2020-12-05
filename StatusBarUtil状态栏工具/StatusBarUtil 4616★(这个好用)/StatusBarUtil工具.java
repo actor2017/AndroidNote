@@ -10,7 +10,7 @@ Android6.0ÒÔÉÏÏµÍ³»òÕßĞ¡Ã×µÄMIUI V6ÒÔÉÏ°æ±¾»òÕß£¬÷È×åµÄFlyme4.0ÒÔÉÏ°æ±¾²Å¿ÉÒÔÉèÖ
 
 Ê¹ÓÃ
 1.ÔÚ build.gradle ÎÄ¼şÖĞÌí¼ÓÒÀÀµ, StatusBarUtil ÒÑ¾­·¢²¼ÔÚ JCenter:
-compile 'com.jaeger.statusbarutil:library:1.4.0'
+compile 'com.jaeger.statusbarutil:library:1.5.1'
 
 2.ÔÚ setContentView() Ö®ºóµ÷ÓÃÄãĞèÒªµÄ·½·¨£¬ÀıÈç:
 setContentView(R.layout.main_activity);

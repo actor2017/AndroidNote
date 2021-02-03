@@ -2,12 +2,14 @@
 <resources>
 
     <style name="AppTheme" parent="AppThemeForMyAndroidFrameWork">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorStatusBar</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <!--android 5.0(21), 修改导航栏颜色-->
-        <item name="android:navigationBarColor">@color/navigationBarColor</item><!--透明-->
+        <!--页面背景颜色-->
+        <item name="android:windowBackground">@color/gray_f6f7f9</item>
+
+        <!--android 5.0(21)+, 导航栏颜色-->
+        <item name="android:navigationBarColor">@color/trans</item><!--透明-->
     </style>
 </resources>

@@ -117,6 +117,22 @@ public interface JsCallback {
 //js
 <a onClick="window.demo.onJsCallback()">Click me!</a>
 
+
+//添加混淆: https://www.jianshu.com/p/52ec85259ccc --------------------------------------------------------------------------------------
+-keepattributes *Annotation*  
+-keepattributes *JavascriptInterface*
+-keep public class org.mq.study.webview.DemoJavaScriptInterface{
+    public <methods>;
+}
+如果是内部类：
+-keepattributes *Annotation*  
+-keepattributes *JavascriptInterface*
+-keep public class org.mq.study.webview.webview.DemoJavaScriptInterface$InnerClass{
+    public <methods>;
+}
+
+
+
 //--------------------------------------------------------------------------------------
 Js调用Android的方式具有版本兼容问题. 经测试, 在2.2, 4.0+ 系统上运行稳定, 可以正常调用, 
 但是在2.3系统上运行时出现崩溃.原因是底层进行JNI调用时，把一个Java中的String对象当数组来

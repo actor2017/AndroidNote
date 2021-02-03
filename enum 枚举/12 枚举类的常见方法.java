@@ -1,5 +1,10 @@
 ###27.16_JDK5新特性(枚举类的常见方法)
 
+public enum MyEnum {
+	GET("get"),
+	POST("post");
+}
+
 MyEnum myEnum = Enum.valueOf(MyEnum.class, "get");//Enum 静态方法
 
 //子类静态方法
@@ -7,7 +12,7 @@ MyEnum myEnum = MyEnum.valueOf("post"); //根据值获取 Enum
 MyEnum[] values = MyEnum.values();      //获取所有枚举类型
 
 //普通方法
-String name = myEnum.name();            //获取名称, "get", "post"
+String name = myEnum.name();            //获取名称(大写那个 key), GET, POST
 int compare = myEnum.compareTo(myEnum2);//比较
 int ordinal = myEnum.ordinal();         //顺序, 枚举项都是有编号的
 String string = myEnum.toString();      //和.name 返回一样的值

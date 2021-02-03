@@ -1,4 +1,6 @@
 
+android:elevation="5dp"//阴影高度
+
 android:rotation="180"//按照z轴顺时针旋转180°
 
 

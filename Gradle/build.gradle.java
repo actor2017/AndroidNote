@@ -183,6 +183,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    //打包
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "智慧城管_${versionName}.apk"
+        }
+    }
 }
 
 https://blog.csdn.net/wangliblog/article/details/81366095
@@ -225,12 +232,33 @@ dependencies {
     compileOnly  'com.android.support:recyclerview-v7:28.0.0'//见BaseRecyclerViewAdapterHelper
 }
 
-//强制使用某些版本
+//在 模块的gradle中(基类模块), 强制使用某些版本
 configurations.all{
     resolutionStrategy {
         force 'com.android.support:support-v4:27.0.0'
         force 'com.github.bumptech.glide:glide:4.7.1'
         force 'com.github.bumptech.glide:compiler:4.7.1'
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'androidx.core') {//如果是 androidx.core
+                details.useVersion "1.3.1"//1.1.0
+            }
+            if (details.requested.group == 'androidx.lifecycle') {
+                details.useVersion "2.0.0"
+            }
+            if (details.requested.group == 'androidx.versionedparcelable') {
+                details.useVersion "1.0.0"
+            }
+            if (details.requested.group == 'androidx.fragment') {
+                details.useVersion "1.0.0"
+            }
+            if (details.requested.group == 'androidx.appcompat') {
+                details.useVersion "1.0.1"
+            }
+        }
     }
 }
 

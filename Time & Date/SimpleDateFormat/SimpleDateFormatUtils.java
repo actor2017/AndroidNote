@@ -30,9 +30,21 @@ import java.util.Date;
  * a 上午 / 下午 标记符
  * k 时 (24小时制,其值与H的不同点在于,当数值小于10时,前面不会有0)
  * K 时 (12小时值,其值与h的不同点在于,当数值小于10时,前面不会有0)
- * z 时区
+ * z 时区 General time zone(格林时区?)  			Pacific Standard Time; PST; GMT-08:00 
+ * Z  RFC 822 time zone(被解析为UTC时区指示符?)  	-0800
+ * X - 时区 - ISO 8601时区							-08; -0800; -08:00 
  */
 public class SimpleDateFormatUtils {
+
+    /**
+     * ISO8601 转换成日期, 来自 api.github 的 created_at
+     * @param iso8601 "2020-12-01T00:56:44Z"    //最后是Z...
+     * @return 2020-12-01 08:56:44
+     */
+    private String ISO8601ToDate(String iso8601) {
+        Date date = TimeUtils.string2Date(iso8601, "yyyy-MM-dd'T'HH:mm:ssX");//X ISO 8601时区, api.github的时区
+        return TimeUtils.date2String(date, "yyyy-MM-dd HH:mm:ss");
+    }
 
     public String date2String(String pattern, Date date) {//"现在是yyyy年MM月dd日 HH(hh)时   mm分 ss秒 S毫秒
         //星期E 今年的第D天  这个月的第F星期   今年的第w个星期   这个月的第W个星期  今天的a k1~24制时间 K0-11小时制时间 z时区"

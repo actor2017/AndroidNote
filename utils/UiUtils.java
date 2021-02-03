@@ -373,15 +373,17 @@ public class UiUtils {
     /**
      * xml文件中的color
      */
-    public static ColorDrawable getColor() {
-        ColorDrawable cd = new ColorDrawable();//还有一个构造方法
+    public static ColorDrawable getColor(@ColorInt int color) {
+        ColorDrawable cd = new ColorDrawable(/*color*/);//还有一个构造方法
         return cd;
     }
 
     /**
-     * xml文件中的shape
+     * 渐变 Drawable, xml文件中的shape
      */
     public static GradientDrawable getShape(int radius, @ColorInt int color) {
+		//参1: 颜色渐变方向: 从上到下.   参2: 颜色渐变值, 可多个
+        //GradientDrawable shape = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, color);
         GradientDrawable shape = new GradientDrawable();
         shape.setShape(GradientDrawable.RECTANGLE);
         shape.setCornerRadius(radius);

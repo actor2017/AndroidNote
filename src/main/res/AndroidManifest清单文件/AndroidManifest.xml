@@ -27,6 +27,7 @@
 		android:usesCleartextTraffic="true"	<!--usesCleartextTraffic: Android P(9.0)的默认所有Http的请求都被阻止, 并且这个属性的默认值从true改变为false-->
         android:theme="@style/DefaultTheme"
 		android:resizeableActivity="true"	<!--resizeableActivity: 支持分屏(<application 或 <activity 设置)-->
+		android:process="com.package.name"	<!-- 在 application 中可设置进程名, 默认包名 -->
 		tools:replace="android:label,android:allowBackup"	<!--替换library中已有 <Activity 的属性, replace 可用多个拼接-->
 		>
 		
@@ -37,7 +38,15 @@
 			android:exported="false"			<!--★是否支持其它应用调用当前组件. 有intent-filter 默认true; 没有intent-filter默认false, 四大组件都有这个属性-->
 			android:excludeFromRecents="true"	<!--从最近的排除-->
 			android:clearTaskOnLaunch="false"	<!--每次从桌面进入都启动这个根Activity(只有在根Activity有效)-->
-			android:process="remote"			<!--多进程就是在Service或Activity的属性里面设置remote属性-->
+			
+			android:process=":remote"			<!--多进程就是在Service或Activity的属性里面设置remote属性, remote: 进程名,没特殊含义
+													1.让一个组件运行在单独的进程中，可以减少主进程所占用的内存
+													2.如果子进程因为某种原因崩溃了，不会直接导致主程序的崩溃，可以降低我们程序的崩溃率。
+													3.即使主进程退出了，我们的子进程仍然可以继续工作，假设子进程是推送服务，在主进程退出的情况下，仍然能够保证用户可以收到推送消息。
+													-->
+			android:process=":secondProcess"	<!-- 如果android:process的值以冒号开头的话，那么该进程就是"私有进程", 进程名: com.package.name:secondProcess -->
+			android:process="com.secondProcess"	<!-- 以小写字母开头(如com.secondProcess)，那么就是公有进程, 值一定要有个点号, 进程名: com.secondProcess -->
+			
 			android:stateNotNeeded="false"		<!--默认false. if=true: 当Activity重启时不会调用onSaveInstanceState(),
 												//onCreate()方法中的Bundle参数将会用null值传进去, Activity每次启动都跟第一次启动一样。-->
 												

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--6.0以上手机, 状态栏颜色-->
+    <!--android 6.0(23)+, 状态栏颜色-->
     <color name="colorStatusBar">@color/white</color>
 </resources>

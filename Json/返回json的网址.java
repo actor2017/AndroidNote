@@ -8,6 +8,9 @@ http://kalle.nohttp.net/
 5.Github的API:
 https://api.github.com/repos/square/retrofit	@GET("/repos/{owner}/{repo}")
 一篇文章搞定Github API 调用 (v3）: https://segmentfault.com/a/1190000015144126?utm_source=tag-newest
+All timestamps return in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ, 具体怎么解析请看 "Time & Date" 文件夹
+
+
 
 5.快递100: https://www.kuaidi100.com/
 示例: http://www.kuaidi100.com/query?type=yuantong&postid=11111111111

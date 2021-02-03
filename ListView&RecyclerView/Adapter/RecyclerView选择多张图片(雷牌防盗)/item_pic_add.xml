@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:ratio="1">
+    app:ratio="1"
+    tools:context=".adapter.AddPicAdapter">
 
     <ImageView
         android:id="@+id/iv"

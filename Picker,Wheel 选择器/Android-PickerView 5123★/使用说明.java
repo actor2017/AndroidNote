@@ -1,5 +1,6 @@
 https://github.com/Bigkoo/Android-PickerView
-1.添加依赖compile 'com.contrarywind:Android-PickerView:4.1.8'
+1.添加依赖
+compile 'com.contrarywind:Android-PickerView:4.1.8'
 
 2.布局文件不用写,例给textview设置点击事件,show出来
 

@@ -1,5 +1,19 @@
+<com.contrarywind.view.WheelView
+    android:id="@+id/min"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1.1"
+    //下方自定义属性, 不知道有什么卵用, 设置了没看见效果...感觉应该是单独使用的时候才起作用吧.
+    app:wheelview_dividerColor="@color/red"
+    app:wheelview_dividerWidth="1dp"
+    app:wheelview_gravity="left"             //显示内容位置: center, left, right
+    app:wheelview_lineSpacingMultiplier="2.5"//条目间距倍数, float, [1.0, 4.0]
+    app:wheelview_textColorCenter="@color/blue_00b1ff"
+    app:wheelview_textColorOut="@color/red"
+    app:wheelview_textSize="20sp" />
+
+
 private TimePickerView    timePickerView;
-timePickerView.show();
 
         Calendar startData = Calendar.getInstance();
         startData.set(1919, 1, 9);
@@ -44,7 +58,12 @@ timePickerView.show();
                 })
                 .build();
 
+timePickerView.show();
 
+
+    //v4.1.8 版本这样设置,   v4.1.9 版本设置方法:
+    //WheelView year = (WheelView) timePickerView.findViewById(R.id.year);
+    //year.setItemsVisibleCount(5);
     private void resetItem(View view) {
         Class<? extends View> aClass = view.getClass();
         try {

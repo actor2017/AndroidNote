@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_e9e9e9"
+    android:orientation="vertical"
+    tools:context=".widget.SelectDateView">
+
+    <CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_week"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shape_rec_white_cor3dp_stroke_1dp_gray_d6d6d6"
+            android:gravity="center"
+            android:text="本周"
+            android:textColor="@color/gray_666"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="70dp"
+            android:background="@drawable/shape_rec_green3acc9e_cor5dp"
+            android:gravity="center"
+            android:text="今天"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>

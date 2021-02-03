@@ -14,6 +14,10 @@ Kotlin:
   compile 'com.jakewharton:butterknife:8.8.1'
   kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
+//androidx, 10.+
+implementation 'com.jakewharton:butterknife:10.2.3'
+annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
 
 4.添加混淆
 ##---------Begin: proguard configuration for ButterKnife---------
@@ -82,7 +86,7 @@ Kotlin:
 
 
 使用findById：
-Butter Knife仍然包含了findById()方法，用于仍需从一个view ，Activity，或者Dialog上初始化view的时候，并且它可以自动转换类型。
+Butter Knife仍然包含了findById()方法，用于仍需从一个view ，Activity，或者 Dialog 上初始化view的时候，并且它可以自动转换类型。
 View view = LayoutInflater.from(context).inflate(R.layout.thing, null);  
 TextView firstName = ButterKnife.findById(view, R.id.first_name);  
 TextView lastName = ButterKnife.findById(view, R.id.last_name);  
@@ -90,6 +94,15 @@ ImageView iv = ButterKnife.findById(view, R.id.iv);
   public static <T extends View> T findById(@NonNull View view, @IdRes int id) {//他的写法
     return (T) view.findViewById(id);
   }
+
+
+15.在 Dialog 中使用:
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+	//ButterKnife.bind(this, view);//或者↓
+    ButterKnife.bind(this, window.getDecorView());
+}
 
 
 //自定义一个特定类型，它将自动被转换

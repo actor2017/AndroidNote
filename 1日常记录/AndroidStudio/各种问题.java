@@ -27,3 +27,8 @@
 5.Android studio光标变成黑长方形的情况
 1.网上说按insert键/shift+insert键
 2.把数字键盘锁定，按数字0键（数字0也是ins）
+
+
+6.LogCat 不显示过滤栏
+LogCat 右上角"设置" -> View Mode -> Window,
+然后再换回来

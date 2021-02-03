@@ -1,0 +1,3 @@
+﻿https://github.com/AAChartModel/AAChartCore
+
+📈📊☕️☕️☕️An elegant modern declarative data visualization chart framework for Android. Extremely powerful, supports line, spline, area, areaspline, column, bar, pie, scatter, angular gauges, arearange, areasplinerange, columnrange, bubble, box plot, error bars, funnel, waterfall and polar chart types.极其精美而又强大的 Android 数据可视化图表框架,支持柱状图、条形图、折线图、曲线图…

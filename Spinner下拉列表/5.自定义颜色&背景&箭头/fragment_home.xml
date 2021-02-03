@@ -1,0 +1,31 @@
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv">
+
+        <com.actor.myandroidframework.widget.BaseSpinner
+            android:id="@+id/spinner_areas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownWidth="80dp"
+            android:dropDownVerticalOffset="25.5dp"
+            android:gravity="center"
+            android:paddingStart="13.5dp"
+            android:paddingEnd="7dp"
+            android:textAlignment="center"
+            app:bsEntriesString="珞璜站,重庆市"
+            app:bsResource="@layout/item_textview_textcolor_white"
+            tools:bsEntriesString="珞璜站,重庆市" />
+
+        <!--        <ImageView-->
+        <!--            android:layout_width="9dp"-->
+        <!--            android:layout_height="5.14dp"-->
+        <!--            android:scaleType="fitXY"-->
+        <!--            android:src="@drawable/triangle_bottom_white" />-->
+    </LinearLayout>

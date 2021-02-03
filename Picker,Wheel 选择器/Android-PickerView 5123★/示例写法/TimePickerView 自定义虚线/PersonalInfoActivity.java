@@ -112,6 +112,9 @@ public class PersonalInfoActivity extends BaseActivity {
                 .build();
     }
 
+    //v4.1.8 版本这样设置,   v4.1.9 版本设置方法:
+    //WheelView year = (WheelView) timePickerView.findViewById(R.id.year);
+    //year.setItemsVisibleCount(5);
     private void resetItem(View view) {
         Class<? extends View> aClass = view.getClass();
         try {

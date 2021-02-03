@@ -122,6 +122,17 @@ textView.setText(R.string.text_ack_msg);//@StringRes int resid
 textView.setText(span, BufferType.SPANNABLE);//CharSequence text, BufferType type,一般用于富文本表情显示
 
 textView.setText("酒店入住\n信息登记");//换行
+
+textview.setText("你\u3000好");		//空格
+<TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+		android:text="你\u3000\u3000好"
+        android:text="你&#160;&#160;&#160;&#160;好"/>//xml布局里，空格使用 (&#160;) 和 ( \u3000 ) 都生效
+<string name="str">你\u3000\u3000\u3000好</string>	//string.xml 文件里，空格使用 ( \u3000 ) 生效
+
 textView.append(CharSequence text);//添加在后面
 textView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
 textView.getPaint().setAntiAlias(true);//抗锯齿

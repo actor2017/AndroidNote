@@ -40,11 +40,12 @@ public class AddParamsInterceptor implements Interceptor {
 
 
 
-        //获取post方法的"所有参数"(b=1&a=2), get不知是否能获取, 没试
+        //获取post方法的"所有参数"(b=1&a=2) 或 发送的(String/json), get不知是否能获取, 没试
         RequestBody body = request.body();
         Buffer buffer = new Buffer();
         body.writeTo(buffer);
-        String params = buffer.readString(Charset.forName("UTF-8"));
+		//String params = buffer.readString(Charset.forName("UTF-8"));//kotlin.text.Charsets.UTF_8
+		String params = buffer.readUtf8();
 
 
 

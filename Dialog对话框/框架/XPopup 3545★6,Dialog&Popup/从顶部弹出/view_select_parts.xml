@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_e9e9e9"
+    android:orientation="vertical"
+    tools:context=".widget.SelectPartsView">
+
+    <com.actor.myandroidframework.widget.ItemTextInputLayout
+        android:id="@+id/itil_xtmc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itilGravity="end|center_vertical"
+        app:itilImeOptions="actionNext"
+        app:itilInputType="text"
+        app:itilItemName="系统名称"
+        app:itilMarginTop="0dp"
+        app:itilRedStarVisiable="invisible" />
+
+    <com.actor.myandroidframework.widget.ItemTextInputLayout
+        android:id="@+id/itil_sbmc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itilGravity="end|center_vertical"
+        app:itilImeOptions="actionNext"
+        app:itilInputType="text"
+        app:itilItemName="设备名称"
+        app:itilRedStarVisiable="invisible" />
+
+    <com.actor.myandroidframework.widget.ItemTextInputLayout
+        android:id="@+id/itil_lbjmc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itilGravity="end|center_vertical"
+        app:itilImeOptions="actionDone"
+        app:itilInputType="text"
+        app:itilItemName="零部件名称"
+        app:itilRedStarVisiable="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_reset"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="重  置"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_dcdcdc" />
+
+        <TextView
+            android:id="@+id/tv_yes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确 定"
+            android:textColor="@color/green_15af7e"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

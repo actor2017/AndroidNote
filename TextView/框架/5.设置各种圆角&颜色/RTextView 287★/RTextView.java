@@ -1,4 +1,5 @@
 https://github.com/RuffianZhong/RTextView
+implementation 'com.ruffian.library:RTextView:1.0.11'
 
 基于TextView 1.直接设置selector背景2.直接设置drawableLeft大小 3.圆角，圆形，背景/边框/文字根据状态变色
 

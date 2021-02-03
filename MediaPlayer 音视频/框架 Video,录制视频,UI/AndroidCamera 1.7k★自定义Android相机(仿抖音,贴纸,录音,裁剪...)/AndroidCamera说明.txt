@@ -1,0 +1,18 @@
+﻿https://github.com/aserbao/AndroidCamera
+🔥🔥🔥自定义Android相机(仿抖音 TikTok)，其中功能包括视频人脸识别贴纸，分段录制，视频裁剪，视频帧处理，获取视频关键帧，视频旋转，添加滤镜，添加水印，合成Gif到视频，文字转视频，图片转视频，音视频合成，音频变声处理，SoundTouch，Fmod音频处理。 Android camera(imitation Tik Tok), which includes video editor,audio editor,video face recognition stickers, segment recording,video cropping, video frame processing, get the first video frame, key frame, vide…
+
+项目目前功能有：
+
+分段录制 RecorderActivity
+多段视频合成 RecorderActivity
+倒计时录制 RecorderActivity
+删除回滚 RecorderActivity
+添加滤镜 RecorderActivity
+视频裁剪 LocalVideoActivity
+视频方向横竖屏切换 LocalVideoActivity
+视频旋转 LocalVideoActivity
+视频帧处理 SelCoverTimeActivity
+添加水印 VideoEditActivity
+添加动态贴纸 VideoEditActivity
+添加动态字幕 VideoEditActivity
+文字转视频 PrimaryMediaCodecActivity

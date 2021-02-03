@@ -1,6 +1,7 @@
 https://github.com/googlecodelabs/constraint-layout
 
-compile 'com.android.support.constraint:constraint-layout:1.1.2'
+compile 'com.android.support.constraint:constraint-layout:1.1.3'//最新版本2.0.4, 可在AndroidStudio的Project Structure里搜索
+//版本2.0.4 不显示LoadingDialog !!!, 1.1.3就显示
 
 ConstraintLayout 翻译为 约束布局，也有人把它称作"增强型的相对布局"，由 2016 年 Google I/O 推出。
 扁平式的布局方式，无任何嵌套，减少布局的层级，优化渲染性能。从支持力度而言，将成为主流布局样式，完全代替其他布局。

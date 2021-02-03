@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+	
+	<!--6.0以下手机, 状态栏颜色-->
+    <color name="colorPrimaryDark">@color/colorStatusBar</color><!-- #303F9F -->
     <color name="colorAccent">#FF4081</color>
+
+    <!--状态栏颜色, 默认: 灰色透明. android 6.0(23)+, 白色-->
+    <color name="colorStatusBar">@color/gray_trans_60000000</color>
+	
+	
+	
     <color name="black">#000</color>
     <color name="red">#f00</color>
     <color name="white">#fff</color>
@@ -14,8 +22,6 @@
     <color name="green">#99FFCC</color>
 
 
-    <!--6.0以下手机, 状态栏颜色-->
-    <color name="colorStatusBar">@color/gray_trans_60000000</color>
+    
 
-    <color name="navigationBarColor">@color/trans</color>
 </resources>

@@ -23,7 +23,7 @@
 	app:tabTextColor="@android:color/white"
 	app:tabSelectedTextColor="@color/colorAccent"
 	//app:tabTextAppearance="@android:style/TextAppearance.Holo.Large"//设置文字的外貌,大小
-	app:tabTextAppearance="@style/TabLayoutText"//直接设置字体的大小方法
+	app:tabTextAppearance="@style/TabLayoutText"//自定义字体, 直接设置字体的大小方法
 
 	//app:tabContentStart="100dp"		//TabLayout开始位置的偏移量
 	//app:tabPaddingg="xxdp"		//TabItem指示器内边距
@@ -48,6 +48,7 @@ android:icon="@drawable/"	//图标
 <!--设置tabLayout字体大小-->
 <style name="TabLayoutText">
 	<item name="android:textSize">14sp</item>
+	<item name="android:textStyle">bold</item>
 </style>
 
 
@@ -65,7 +66,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent">
 
 <android.support.design.widget.TabLayout	//写在ViewPager里面,不需要 tablayout.setupWithViewPager(viewpage);(自定义 TabItem 还是要写)
-											//如果有 title, 还是要在代码里设置 title, xml 中设置 TabItem 没用(运行起来后, TabLayout 不会实际显示标题).
+											//如果有 title, 不管是否写在ViewPager里面, 都还是要在代码里设置 title, xml 中设置 TabItem 没用(运行起来后, TabLayout 不会实际显示标题).
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_gravity="top">

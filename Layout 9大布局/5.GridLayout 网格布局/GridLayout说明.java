@@ -7,7 +7,7 @@ GridLayout是在Android4.0中引进的新布局，使用它的理由有两个：
 3.布局方向:分为水平和垂直两种方式，默认是水平布局，一个控件挨着一个控件从左到右依次排列，但是通过指定android:columnCount设置列数的属性后，控件会自动换行进行排列。
 如果设置为垂直方向布局，控件则是从上到下依次排列，但是通过指定android:rowCount设置行数的属性后，控件会自动换列进行排列。
 
-在实际使用中，强烈建议每一个子View都明确设置android:layout_row和android:layout_column，不要使用GridLayout的自动确定子View坐标功能。
+在实际使用中，强烈建议每一个子View都明确设置android:layout_row 和 android:layout_column，不要使用GridLayout的自动确定子View坐标功能。
 
 GridLayout确定的宽高的算法是（以第1行和第1列为例）：
 
@@ -19,7 +19,7 @@ GridLayout确定的宽高的算法是（以第1行和第1列为例）：
 第1列的宽：
 测量第1列中所有子View的宽，取最大值作为该列的宽，如果该列没有子View，列宽设为0。
 
-GridLayout的子View不需要设置layout_width和layout_height属性，因为GridLayout会把所有的子View的这两个属性设置为WRAP_CONTENT，所以你设置了也没有用。?????子控件可以设置宽高并且有效?????
+GridLayout的子View不需要设置 layout_width 和 layout_height 属性，因为GridLayout会把所有的子View的这两个属性设置为WRAP_CONTENT，所以你设置了也没有用。?????子控件可以设置宽高并且有效?????
 
     <android.support.v7.widget.GridLayout
         android:layout_width="wrap_content"

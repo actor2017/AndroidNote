@@ -45,6 +45,15 @@ compile 'com.google.code.gson:gson:2.8.2'
 	Type type = GsonUtils.getType(BaseInfo.class, LoginData.class);//或者这样获取 Type
 	BaseInfo<LoginData> info = GsonUtils.fromJson(json, type);
 
+7.解析对象报错(登录成功返回对象, 失败返回空串)
+    //用户不存在: {"responseCode":"0","responseMsg":"该用户不存在 ","datas":""}
+    //登录成功  : {"responseCode":"1","responseMsg":"登录成功 ","datas":{"id":"2c90c1c","token":"eyJ0eXAiOi"}}
+	//1.如果返回的是第 1 个json, 这种解析方式会报错(字符串解析成对象)
+    BaseInfo<LoginInfo> baseInfo = GsonUtils.fromJson(info, GsonUtils.getType(BaseInfo.class, LoginInfo.class));
+	//2.如果返回的是第 2 个json, 这种解析方式也会报错(期望解析成String,但是返回是一个对象... Expected a string but was BEGIN_OBJECT at line 1 column 54 path $.datas)
+    BaseInfo<String> baseInfo = GsonUtils.fromJson(info, GsonUtils.getType(BaseInfo.class, String.class));
+	//所以, 遇到这种情况, 直接判断返回的json吧: if (info.contains("\"responseCode\":\"1\"") {}
+
 
 7.序列化Json
 	gson.toJson(1);            ==> prints 1

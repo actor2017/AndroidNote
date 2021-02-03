@@ -140,14 +140,17 @@ mEditText.setOnKeyListener(new View.OnKeyListener() {
   });
 
 //¶¯Ì¬ÏÔÊ¾/Òş²ØÃÜÂë
-int inputType = etPassword.getInputType();
-if (inputType == 129) {
-	etPassword.setInputType(128);
-	ivShowPassword.setImageResource(R.mipmap.img_register_hide_password);
-} else {
-	etPassword.setInputType(129);
-	ivShowPassword.setImageResource(R.mipmap.img_register_show_password);
-}
+etPassword.setInputType(257 - etPassword.getInputType());//128+129
+viewEye.setSelected(!view.isSelected());//ÑÛ¾¦, ÏÔÊ¾/Òş²ØÃÜÂë
+//int inputType = etPassword.getInputType();
+//if (inputType == 129) {
+//    etPassword.setInputType(128);
+//    ivShowPassword.setImageResource(R.mipmap.img_register_hide_password);
+//} else {
+//    etPassword.setInputType(129);
+//    ivShowPassword.setImageResource(R.mipmap.img_register_show_password);
+//}
+
 
 //¾¯ÓÃ¶ËÊ¾ÀıÒş²Ø:
     private InputMethodManager imm;//ĞéÄâ¼üÅÌ(ÊäÈë·¨)

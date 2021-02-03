@@ -8,6 +8,7 @@ ctrl + I	:Select Methods to Implement(重写接口未重写的方法)
 ctrl + N	:查找某个类,源码
 ctrl + O	:★查看本类中可以重写的方法	例:重写handleMessage方法★
 ctrl + p	:★可以看()传什么参数★
+ctrl + Q	:文档提示
 ctrl + r	:替换
 ctrl + x	:★剪切一行(不选中)
 ctrl + y	:删除一行		ctrl + d

@@ -1,71 +1,79 @@
-ctrl + /	:★加注释, 在xml中会跑到这行开头...
-ctrl + Shift + /	:多行注释, 在xml中不会跑到这行开头
-ctrl + d	:★复制一行
-ctrl + f	:★查找
-ctrl + g	:跳到某一行	Go to Line
-ctrl + h	:类的继承体系(也可以点右上角Hierarchy窗口)		ctrl + t
-ctrl + I	:Select Methods to Implement(重写接口未重写的方法)
-ctrl + N	:查找某个类,源码
-ctrl + O	:★查看本类中可以重写的方法	例:重写handleMessage方法★
-ctrl + p	:★可以看()传什么参数★
-ctrl + Q	:文档提示
-ctrl + r	:替换
-ctrl + x	:★剪切一行(不选中)
-ctrl + y	:删除一行		ctrl + d
-ctrl + z	:★撤销
-ctrl + alt + 	:提示			ctrl + /
-ctrl + Enter	:普通换行,但光标不换行(没什么卵用)
-ctrl + home	:跳到最前面
-ctrl + end	:跳到最后面
-ctrl + 左键	:★点击tabs = "Show in Explore"★
-ctrl + F11	:★添加书签,并添加Bookmark Mnemonic(书签助记符)★, 或者按F11也可以
-ctrl + F12	:★快速查找/定位类中某个方法或属性, 根据名称排序, 使用"alt + 7" 效果更好★
-ctrl + alt + ←	:上一步
-ctrl + alt + →	:下一步
-ctrl + alt + b	:查看继承关系,或者谁实现了这个方法
-ctrl + alt + c	:Extract Constant(提取常量)
-ctrl + alt + Ent:跳到上一行,Shift + Enter:跳到下一行
-ctrl + alt + f	:★Extract Field(提取字段) 生成全局变量		ctrl + 1
-ctrl + alt + l	:★代码格式化		ctrl + alt + f★
-ctrl + alt + m	:Extract Variable(提取方法) (右击→Refactor→Extract→Method...)	eclipse:alt + Shift + m
-ctrl + alt + p	:Extract Parameter(提取参数)
-ctrl + alt + t	:自动try-catch
-ctrl + alt + v	:★Extract Variable(提取变量) 生成局部变量(Eclipse的ctrl + 1),如果按键失灵,检查是不是有道词典占用了
+Ctrl + /	:★加注释, 在xml中会跑到这行开头...
+Ctrl + Shift + /	:多行注释, 在xml中不会跑到这行开头
+Ctrl + d	:★复制一行
+Ctrl + e	:★最近打开的文件★
+Ctrl + f	:★查找
+Ctrl + g	:跳到某一行	Go to Line
+Ctrl + h	:类的继承体系(也可以点右上角Hierarchy窗口)		Ctrl + t
+Ctrl + I	:Select Methods to Implement(重写接口未重写的方法)
+Ctrl + N	:★查找某个类,源码★
+Ctrl + O	:★查看本类中可以重写的方法	例:重写handleMessage方法★
+Ctrl + p	:★可以看()传什么参数★
+Ctrl + Q	:文档提示
+Ctrl + r	:替换
+Ctrl + x	:★剪切一行(不选中)
+Ctrl + y	:删除一行		Ctrl + d
+Ctrl + z	:★撤销
+Ctrl + Alt + 	:提示			Ctrl + /
+Ctrl + Enter	:普通换行,但光标不换行(没什么卵用)
+Ctrl + home	:跳到最前面
+Ctrl + end	:跳到最后面
+Ctrl + 左键	:★点击tabs = "Show in Explore"★
+Ctrl + F11	:★添加书签,并添加Bookmark Mnemonic(书签助记符)★, 或者按F11也可以
+Ctrl + F12	:★快速查找/定位类中某个方法或属性, 根据名称排序, 使用"Alt + 7" 效果更好★
+Ctrl + Alt + ←	:上一步
+Ctrl + Alt + →	:下一步
+Ctrl + Alt + b	:查看继承关系,或者谁实现了这个方法
+Ctrl + Alt + c	:Extract Constant(提取常量)
+Ctrl + Alt + Ent:跳到上一行,Shift + Enter:跳到下一行
+Ctrl + Alt + f	:★Extract Field(提取字段) 生成全局变量		Ctrl + 1
+Ctrl + Alt + l	:★代码格式化		Ctrl + Alt + f★
+Ctrl + Alt + m	:Extract Variable(提取方法) (右击→Refactor→Extract→Method...)	eclipse:Alt + Shift + m
+Ctrl + Alt + p	:Extract Parameter(提取参数)
+Ctrl + Alt + t	:自动try-catch
+Ctrl + Alt + v	:★Extract Variable(提取变量) 生成局部变量(Eclipse的 Ctrl + 1),如果按键失灵,检查是不是有道词典占用了
 
-ctrl +Shift+空格:自动补全(StringBuffer buffer = new )
-ctrl +Shift + a :万能命令行, 输入某些命令, 快速多某些事情. 还可以快速使用某个插件??
+Ctrl +Shift+空格:自动补全(StringBuffer buffer = new )
+Ctrl +Shift + a :万能命令行, 输入某些命令, 快速多某些事情. 还可以快速使用某个插件??
 				 比如搜索: set background image, 设置背景图片
+Ctrl +Shift + c :复制当前文件绝对路径
 
-ctrl + e	:★最近打开的文件★
-ctrl + n	:★查找Class★
-ctrl +Shift + f :全局查找
-ctrl +Shift + g :显示/隐藏Code Glance(https://plugins.jetbrains.com/plugin/7275-codeglance)
-ctrl +Shift + n :搜索文件,快速跳到这个文件(.java, .xml, .gradle...)
-ctrl +Shift + r :全局查找替换
-ctrl +shift + U :★大小写转换快捷键★
-ctrl +Shift+  V :剪贴板(复制过的历史内容)
-ctrl +Shift+↑↓:移动代码(可多行)
-alt  +Shift+↑↓:移动代码(可多行)
+Ctrl +Shift + f :★★★全局查找★★★
+Ctrl +Shift + g :显示/隐藏Code Glance(https://plugins.jetbrains.com/plugin/7275-codeglance)
+Ctrl +Shift + n :搜索文件,快速跳到这个文件(.java, .xml, .gradle...)
+Ctrl +Shift + r :全局查找替换
+Ctrl +Shift + U :★大小写转换快捷键★
+Ctrl +Shift+  V :剪贴板(复制过的历史内容)
+Ctrl +Shift+  Y :★★★Translation(Yii.Guxing) 插件的翻译功能★★★
+Ctrl+ Shift+  Z :重做		Ctrl + z:撤销
+Ctrl +Shift+↑↓:移动代码(可多行)
+Alt  +Shift+↑↓:移动代码(可多行)
 
-alt+鼠标↑↓拖动:★可多行同时选中/输入★
-alt + F7	:或 alt + 3, 查看哪些地方在使用
-alt + 7		:★★打开左侧7:Structure, 查看全部方法★★
-alt + 9		:打开下方9:Version Control版本控制(非小键盘的9)
-alt + R		:点击Convert Anonymous to Inner...抽取内部类
-alt + enter	:★提示★,报错后自动修复		ctrl + 1
-alt + ←	:切换左边一个tab
-alt + →	:切换右边一个tab
-alt + ins	:方法重写	重写toString等
-ctrl+ Shift+ z  :重做		ctrl + z:撤销
-alt + Shift+↑↓:移动代码(可多行)
-alt + Shift+ ins:开启/关闭列选择模式	★解决光标不跳到每行的最后,而是点哪儿就在哪儿的问题★
-ctrl +Shift+↑↓:移动代码(可多行)
+
+
+Alt+鼠标↑↓拖动:★可多行同时选中/输入★
+Alt + F7	:或 Alt + 3, 查看哪些地方在使用
+Alt + 7		:★★打开左侧7:Structure, 查看全部方法★★
+Alt + 9		:打开下方9:Version Control版本控制(非小键盘的9)
+Alt + enter	:★提示★,报错后自动修复		Ctrl + 1
+Alt + ←	:切换左边一个tab
+Alt + →	:切换右边一个tab
+Alt + ins	:方法重写	重写toString等
+Alt + C     :★★★打开 Color Picker(需要自己设置快捷键: Settings -> keymap -> Other -> Show Color Picker)★★★
+Alt + R		:点击Convert Anonymous to Inner...抽取内部类
+
+Alt + Shift+↑↓:移动代码(可多行)
+Alt + Shift+ ins:开启/关闭列选择模式	★解决光标不跳到每行的最后,而是点哪儿就在哪儿的问题★
+
+
 
 Shift + F6	:改名			F2
 Shift + F11	:查看书签列表
 Shift + Tab	:往左跳
-Shift + Enter	:★跳到下一行,ctrl + alt + Ent:跳到上一行★
+Shift + Enter	:★跳到下一行,Ctrl + Alt + Ent:跳到上一行★
 Shift + Shift	:★★★Shift双击,查找全部,包括:Recent&Class&File&Symbol...★★★
+
+
 
 fori		:for循环		Settings,Live Templates里面可更改快捷方式(if,for,fbi)
 arr.for		:★遍历数组,集合,Map...★

@@ -1,0 +1,6 @@
+https://github.com/YiiGuxing/TranslationPlugin
+🔌Translation plugin for IntelliJ based IDEs/Android Studio
+
+安装: 在Plugins中搜索: Translation
+
+选中文字快捷翻译: Ctrl + Shift + Y

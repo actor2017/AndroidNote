@@ -2,7 +2,7 @@
 /**
  * description: 描述
  * company    : 重庆元山元科技有限公司 http://www.ysytech.net/
- * @author    : 李大发
+ * @author    : ldf
  * date       : ${DATE} on ${HOUR}
  * @version 1.0
  */
@@ -11,6 +11,6 @@ Editor -> Live Templates -> user -> declaration(手动输入dec...,一般用于A
 /**
  * description: 描述
  * company    : 重庆元山元科技有限公司 http://www.ysytech.net/
- * @author    : 李大发
+ * @author    : ldf
  * date       : $DATE$ on $HOUR$
  */

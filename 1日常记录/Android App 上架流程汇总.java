@@ -1,4 +1,8 @@
+https://www.zhihu.com/question/67115261/answer/733238523
+上架app的流程，需要提供什么资料，找人代上架靠谱？ - 知乎.html
+
 https://www.jianshu.com/p/17d42cb187fa
+Android App 上架流程汇总 - 简书.html
 
 1、软件著作(软著版权证明):自己申请 or ↓
 腾讯应用宝推荐: https://c.qq.com/ListSku/view?firstCateId=100002&thirdCateId=100090&zctag=1.3.2.3

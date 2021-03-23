@@ -189,6 +189,16 @@ android {
         variant.outputs.all {
             outputFileName = "智慧城管_${versionName}.apk"
         }
+
+        //打包时排除assets文件夹下的某些文件: https://blog.csdn.net/zengd0/article/details/91417921
+        if (variant.buildType.name == 'release') {//release版本
+            variant.mergeAssets.doLast {
+                //删除assets文件夹下的某个文件
+                delete(fileTree(dir: variant.mergeAssets.outputDir, includes: ['html_call_java.html']))
+                //删除assets文件夹下的所有zip文件
+                delete(fileTree(dir: variant.mergeAssets.outputDir, includes: ['*.zip']))
+            }
+        }
     }
 }
 

@@ -6,7 +6,7 @@
     //android:background="@drawable/selector_checkbox"	//还要设android:button="@null",即整个CheckBox都是自定义样式
     android:button="@drawable/selector_checkbox"//自定义button样式
     android:checked="true"
-    android:paddingLeft="@dimen/margin_5_dp"	//文字和左边button间距
+    android:paddingLeft="5dp"			//文字和左边button间距
     android:text="记住密码"/>
 
 

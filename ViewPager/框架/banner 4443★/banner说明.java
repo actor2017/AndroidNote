@@ -125,7 +125,7 @@ public class GlideImageLoader extends ImageLoader {
     @Override
     public ImageView createImageView(Context context) {
         //使用fresco，需要创建它提供的ImageView，当然你也可以用自己自定义的具有图片加载功能的ImageView
-        SimpleDraweeView simpleDraweeView=new SimpleDraweeView(context);
+        SimpleDraweeView simpleDraweeView = new SimpleDraweeView(context);
         return simpleDraweeView;
     }
 }
@@ -133,11 +133,13 @@ public class GlideImageLoader extends ImageLoader {
 
 Step 5.在Activity或者Fragment中配置Banner
 --------------------------简单使用-------------------------------
+
+List<Object> images = new ArrayList();
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Banner banner = (Banner) findViewById(R.id.banner);
+    Banner banner = findViewById(R.id.banner);
     //设置图片加载器
     banner.setImageLoader(new GlideImageLoader());
     //设置图片集合
@@ -150,7 +152,7 @@ protected void onCreate(Bundle savedInstanceState) {
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Banner banner = (Banner) findViewById(R.id.banner);
+    Banner banner = findViewById(R.id.banner);
     //设置banner样式
     banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
     //设置图片加载器

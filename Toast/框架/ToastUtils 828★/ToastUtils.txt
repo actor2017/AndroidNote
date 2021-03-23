@@ -1,9 +1,0 @@
-https://github.com/getActivity/ToastUtils
-https://www.jianshu.com/p/9b174ee2c571
-
-This is a very functional Toast
-博客地址：只需体验三分钟，你就会跟我一样，爱上这款Toast
-
-已投入公司项目多时，没有任何毛病，可胜任任何需求，点击此处下载Demo
-
-想了解实现原理的可以点击此链接查看：ToastUtils 源码

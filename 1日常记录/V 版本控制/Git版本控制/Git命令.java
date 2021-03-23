@@ -52,12 +52,22 @@ git config --global core.safecrlf false		//#允许提交包含混合换行符的文件
 git config --global core.safecrlf warn		//#提交包含混合换行符的文件时给出警告
 
 
+//项目修改用户名
+git config user.name "ldf"
+git config user.email 1455198886@qq.com
+//会在项目/.git/config 文件中生成:
+[user]
+	namegit = config
+	name = ldf
+	email = 1455198886@qq.com
+
 //设置/修改用户名,--global:全局修改. 如果特殊项目使用不同的名称,可在那个项目目录下运行没有--global的命令来配置.
 git config --global user.name "actor20170211030627"
-git config --global user.email 1455198886@qq.com//★★★name和email必须配置
+git config --global user.email 1455198886@qq.com//配置 email
 git config --global core.editor "D:/'Program Files (x86)'/Notepad++/notepad++.exe"//设置文本编辑器(默认Vim)
 
 //使用get参数显示设置后的信息
+git config user.name	//查看用户名(可省略 --get)
 git config --global --get user.name
 git config --global --get user.email
 
@@ -74,7 +84,7 @@ git version		//版本
 git init       		//在现有目录中初始化仓库
 pwd			//★★★显示当前目录,示例:/c/Users/actor/Desktop/test
 git config --list	//配置列表
-git config user.name	//查看某个配置的值...
+
 
 
 git clone url		//克隆项目到现在这个文件夹里,示例克隆本地:git clone /c/Users/actor/Desktop/test

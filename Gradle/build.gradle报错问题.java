@@ -1,7 +1,7 @@
 这里包括project的gradle 和 module的gradle.
+1.镜像一览:
+https://blog.dteam.top/mirrors.html
 
-Error:Failed to resolve: com.android.support:appcompat-v7:27.0.1
-修改project的gradle,示例:
 allprojects {
     repositories {
 		//url详情见: Settings => Build => Remote Jar Repositories
@@ -9,17 +9,25 @@ allprojects {
         jcenter()	//https://jcenter.bintray.com/
 				比如:implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC2"
 					 https://jcenter.bintray.com/io/reactivex/rxjava2/rxjava/2.2.6/rxjava-2.2.6.jar
-        maven { url "https://jitpack.io"}
+
 //        mavenCentral()//https://oss.sonatype.org/content/repositories/releases/老版本Studio默认
-//        mavenCentral()//https://sonatype.org
+//        mavenCentral()//https://repo.maven.apache.org/maven2/
+//        mavenCentral()//https://sonatype.org 好像不是这个???
+
+        maven { url "https://jitpack.io"}
 //        maven { url "https://maven.google.com" }
-//        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }//阿里云仓库
+//        maven { url "http://maven.aliyun.com/nexus/content/groups/public" } //阿里云仓库
 		maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
 		maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-//        maven { url 'http://maven.oschina.net/content/groups/public/'}//oschian的镜像,已经不能用
+//        maven { url 'http://maven.oschina.net/content/groups/public/'} //oschian的镜像,已经不能用
+
+        //例: 下载 CameraView 时是这个.
+        maven { url 'https://dl.bintray.com/cjt/maven' }
 }
 
 
+Error:Failed to resolve: com.android.support:appcompat-v7:27.0.1
+修改project的gradle,示例:
 问题应该是由于某些框架依赖于26版本,所以添加依赖的时候,最好不要用+代替版本号.
 Error:(15, 21) No resource found that matches the given name: attr ‘android:keyboardNavigationCluster’.
 修改module的gradle 
@@ -32,6 +40,16 @@ Error:Unable to find method 'com.android.build.gradle.tasks.factory.AndroidJavaC
 Re-download dependencies and sync project (requires network)
 Stop Gradle build processes (requires restart)
 找到项目\gradle\wrapper\gradle-wrapper.properties, 修改里面gradle-x.x-all.zip版本
+
+
+打包时报错:
+No cached version of com.android.tools.lint:lint-gradle:26.4.0 available for
+// android{
+　　lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+// }
 
 
 莫名其妙的bug, AndroidStudio的Terminal中输入:

@@ -17,24 +17,31 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.ysytech.zhongjiao.R;
-import com.ysytech.zhongjiao.bean.AddPicBean;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * description: 添加视频
+ * description: 添加视频, 使用示例: {@link AddLocalMediaAble}
  *
  * @author : 李大发
  * date       : 2020/9/18 on 20:28
  * @version 1.0
  */
-public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> {
+public class AddVideoAdapter extends BaseQuickAdapter<LocalMedia, BaseViewHolder> implements AddLocalMediaAble<String> {
 
-    private int maxPic;//最多选择多少个
-    private int actiontype = 1;//动作类型
     public static final int TYPE_TAKE_VIDEO = 0;//拍视频
     public static final int TYPE_SELECT_VIDEO = 1;//选择视频
     public static final int TYPE_TAKE_SELECT_VIDEO = 2;//拍视频&选择视频
+
+    private int maxPic;//最多选择多少个
+    private int actiontype = 1;//动作类型
+
+    private List<LocalMedia>    localMedias    = new ArrayList<>();
+    private Map<String, String> uploads        = new LinkedHashMap<>();
+    private Map<String, String> alreadyUploads = new LinkedHashMap<>();
 
     /**
      * @param maxPic 最多选择多少个视频
@@ -43,7 +50,8 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
         super(R.layout.item_pic_add);
         this.maxPic = maxPic;
         this.actiontype = type;
-        addData((AddPicBean) null);//添加一个+号
+        initAddLocalMediaAble();
+        addData(EXTRA_LAST_MEDIA);//添加一个+号
 
         setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
@@ -66,7 +74,9 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
                                         PictureSelectorUtils.recordVideo(topActivity, new OnResultCallbackListener<LocalMedia>() {
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
-                                                addData(position, new AddPicBean(result.get(0).getPath()));
+                                                LocalMedia localMedia = result.get(0);
+                                                localMedias.add(localMedia);
+                                                addData(getData().size() - 1, localMedia);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -74,10 +84,13 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
                                         });
                                         break;
                                     case TYPE_SELECT_VIDEO://选择视频
-                                        PictureSelectorUtils.selectVideo(topActivity, false, new OnResultCallbackListener<LocalMedia>() {
+                                        PictureSelectorUtils.selectVideos(topActivity, false, maxPic, localMedias, new OnResultCallbackListener<LocalMedia>() {
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
-                                                addData(position, new AddPicBean(result.get(0).getPath()));
+                                                localMedias.clear();
+                                                localMedias.addAll(result);
+                                                result.add(EXTRA_LAST_MEDIA);
+                                                setNewData(result);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -85,10 +98,13 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
                                         });
                                         break;
                                     case TYPE_TAKE_SELECT_VIDEO://拍视频&选择视频
-                                        PictureSelectorUtils.selectVideo(topActivity, true, new OnResultCallbackListener<LocalMedia>() {
+                                        PictureSelectorUtils.selectVideos(topActivity, true, maxPic, localMedias, new OnResultCallbackListener<LocalMedia>() {
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
-                                                addData(position, new AddPicBean(result.get(0).getPath()));
+                                                localMedias.clear();
+                                                localMedias.addAll(result);
+                                                result.add(EXTRA_LAST_MEDIA);
+                                                setNewData(result);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -102,17 +118,17 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
                             }
                         } else {//预览
                             Activity topActivity = ActivityUtils.getTopActivity();
-                            if (topActivity == null) {
-                                return;
-                            }
-                            AddPicBean item = getItem(position);
-                            if (item != null) {
-                                PictureSelectorUtils.previewVideo(topActivity, item.picPath);
+                            if (topActivity != null) {
+                                LocalMedia item = getItem(position);
+                                if (item != null) {
+                                    PictureSelectorUtils.previewVideo(topActivity, item.getPath());
+                                }
                             }
                         }
                         break;
                     case R.id.iv_delete://删除
                         remove(position);
+                        localMedias.remove(position);
                         break;
                     default:
                         break;
@@ -122,7 +138,7 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
     }
 
     @Override
-    protected void convert(@NonNull BaseViewHolder helper, AddPicBean item) {
+    protected void convert(@NonNull BaseViewHolder helper, LocalMedia item) {
         //是否是最后一个pos
         boolean isLastPos = helper.getAdapterPosition() == getItemCount() - 1;
         ImageView iv = helper.setGone(R.id.iv_delete, !isLastPos)
@@ -131,23 +147,22 @@ public class AddVideoAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder
         if (isLastPos) {
             Glide.with(iv).load(R.drawable.video_gray).into(iv);
         } else {
-            Glide.with(iv).load(item.picPath).into(iv);
+            Glide.with(iv).load(item.getPath()).into(iv);
         }
     }
 
-    /**
-     * 是否有视频选择, 最后一个对象=null
-     */
-    public boolean hasPicSelected() {
-        return getData().size() > 1;
+    @Override
+    public List<LocalMedia> getLocalMedias() {
+        return localMedias;
     }
 
-    /**
-     * 注意: item有可能 = null(最后一张)
-     */
-    @NonNull
     @Override
-    public List<AddPicBean> getData() {
-        return super.getData();
+    public Map<String, String> getUploads() {
+        return uploads;
+    }
+
+    @Override
+    public Map<String, String> getAlreadyUploads() {
+        return alreadyUploads;
     }
 }

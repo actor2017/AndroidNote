@@ -17,26 +17,31 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.ysytech.zhongjiao.R;
-import com.ysytech.zhongjiao.bean.AddPicBean;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * description: 添加图片
+ * description: 添加图片, 使用示例: {@link AddLocalMediaAble}
  *
  * @author : 李大发
  * date       : 2020/9/18 on 20:28
  * @version 1.0
  */
-public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> {
+public class AddPicAdapter extends BaseQuickAdapter<LocalMedia, BaseViewHolder> implements AddLocalMediaAble<String> {
 
-    private int maxPic;//最多选择多少个
-    private int actiontype = 1;//动作类型
     public static final int TYPE_TAKE_PHOTO = 0;//拍照
     public static final int TYPE_SELECT_PHOTO = 1;//选择图片
     public static final int TYPE_TAKE_SELECT_PHOTO = 2;//拍照&选择图片
-    private List<LocalMedia> localMedias = new ArrayList<>();
+
+    private int maxPic;//最多选择多少个
+    private int actiontype;//动作类型
+
+    private List<LocalMedia>    localMedias = new ArrayList<>();
+    private Map<String, String> uploads     = new LinkedHashMap<>();
+    private Map<String, String> alreadyUploads = new LinkedHashMap<>();
 
     /**
      * @param maxPic 最多选择多少张图片
@@ -45,7 +50,8 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
         super(R.layout.item_pic_add);
         this.maxPic = maxPic;
         this.actiontype = type;
-        addData((AddPicBean) null);//添加一个+号
+        initAddLocalMediaAble();
+        addData(EXTRA_LAST_MEDIA);
 
         setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
@@ -69,8 +75,8 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
                                                 LocalMedia localMedia = result.get(0);
-                                                addData(position, new AddPicBean(localMedia.getPath()));
                                                 localMedias.add(localMedia);
+                                                addData(getData().size() - 1, localMedia);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -78,12 +84,13 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
                                         });
                                         break;
                                     case TYPE_SELECT_PHOTO://选择图片
-                                        PictureSelectorUtils.selectImage/*s*/(topActivity, false, false, localMedias,/* maxPic,*/ new OnResultCallbackListener<LocalMedia>() {
+                                        PictureSelectorUtils.selectImages(topActivity, false, false, localMedias, maxPic, new OnResultCallbackListener<LocalMedia>() {
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
-                                                LocalMedia localMedia = result.get(0);
-                                                addData(position, new AddPicBean(localMedia.getPath()));
-                                                localMedias.add(localMedia);
+                                                localMedias.clear();
+                                                localMedias.addAll(result);
+                                                result.add(EXTRA_LAST_MEDIA);
+                                                setNewData(result);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -91,12 +98,13 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
                                         });
                                         break;
                                     case TYPE_TAKE_SELECT_PHOTO://拍照&选择图片
-                                        PictureSelectorUtils.selectImage/*s*/(topActivity, true, false, localMedias,/* maxPic,*/ new OnResultCallbackListener<LocalMedia>() {
+                                        PictureSelectorUtils.selectImages(topActivity, true, false, localMedias, maxPic, new OnResultCallbackListener<LocalMedia>() {
                                             @Override
                                             public void onResult(List<LocalMedia> result) {
-                                                LocalMedia localMedia = result.get(0);
-                                                addData(position, new AddPicBean(localMedia.getPath()));
-                                                localMedias.add(localMedia);
+                                                localMedias.clear();
+                                                localMedias.addAll(result);
+                                                result.add(EXTRA_LAST_MEDIA);
+                                                setNewData(result);
                                             }
                                             @Override
                                             public void onCancel() {
@@ -127,7 +135,7 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
     }
 
     @Override
-    protected void convert(@NonNull BaseViewHolder helper, AddPicBean item) {
+    protected void convert(@NonNull BaseViewHolder helper, LocalMedia item) {
         //是否是最后一个pos
         boolean isLastPos = helper.getAdapterPosition() == getItemCount() - 1;
         ImageView iv = helper.setGone(R.id.iv_delete, !isLastPos)
@@ -136,23 +144,22 @@ public class AddPicAdapter extends BaseQuickAdapter<AddPicBean, BaseViewHolder> 
         if (isLastPos) {
             Glide.with(iv).load(R.drawable.camera_gray).into(iv);
         } else {
-            Glide.with(iv).load(item.picPath).into(iv);
+            Glide.with(iv).load(item.getPath()).into(iv);
         }
     }
 
-    /**
-     * 是否有图片选择, 最后一个对象=null
-     */
-    public boolean hasPicSelected() {
-        return getData().size() > 1;
+    @Override
+    public List<LocalMedia> getLocalMedias() {
+        return localMedias;
     }
 
-    /**
-     * 注意: item有可能 = null(最后一张)
-     */
-    @NonNull
     @Override
-    public List<AddPicBean> getData() {
-        return super.getData();
+    public Map<String, String> getUploads() {
+        return uploads;
+    }
+
+    @Override
+    public Map<String, String> getAlreadyUploads() {
+        return alreadyUploads;
     }
 }

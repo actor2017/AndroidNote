@@ -1,0 +1,22 @@
+https://github.com/ButterAndButterfly/GithubHost
+提供最新的GithubHost文件，解决github图片无法访问的问题。
+
+功能
+利用海外的机器进行相关网站的DNS查询, 将得到的结果发布到issue页面和release附件。
+
+支持周期性自动发布
+	每月1/16号发布issue
+
+支持自动回复
+	如果想查询最新的host，可以自己开个issue，自动回复。
+	举例issue #1
+
+支持通过http链接获取host文件
+	你可以通过以下的地址获取附件中的host文件
+		Github源地址: https://github.com/ButterAndButterfly/GithubHost/releases/download/v1/host.txt
+		Github镜像: https://hub.fastgit.org/ButterAndButterfly/GithubHost/releases/download/v1/host.txt
+
+host文件将由Github Actions机器人每天定时刷新，当有issue提交时也会触发构建
+
+
+win10 hosts文件路径: C:\Windows\System32\drivers\etc

@@ -19,7 +19,9 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 
 /**
- * Description: 拦截器
+ * Description: 拦截器, 参考: com.zhy.http.okhttp.log.LoggerInterceptor;
+ *                            builder.addInterceptor(new LoggerInterceptor(getPackageName() + ",Interceptor:", isAppDebug()))//tag, showResponse
+ *
  * Copyright  : Copyright (c) 2019
  * Company    : 重庆市了赢科技有限公司 http://www.liaoin.com/
  * Author     : 李大发

@@ -1,0 +1,45 @@
+https://github.com/ShowMeThe/Orca
+https://github.com/ShowMeThe/Orca/blob/master/README-ZH.md
+
+简单的利用plugin添加C++代码实现把需要加密的字符串存储在.So文件内
+
+如何实现?
+利用gradle plugin实现C++的代码拷贝和环境配置，把加密内容添加到C++的头文件生成对应的.So文件，并对应生成JAVA的访问类
+
+1、 先在项目的build.gradle的buildscript下的dependencies添加以下内容:
+
+  //根目录的build.gradle
+  buildscript {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+  dependencies {
+        classpath "com.github.ShowMeThe:Orca:2.0.0-release09"
+    }
+2、进入你的项目build.gradle添加plugin的配置，能独立兼容:app项目及:Library项目，但会生成各自不同的.So，建议把加密的内容添加到单独Library中，让主项目引入此Library
+
+plugins {
+   id 'com.android.application'
+   id 'Orca.So'
+}
+
+
+:app和:library的build.gradle进行配置
+Orca.go{
+        storeSet{
+            "data"{
+                value "123456"
+            }
+        }
+        secretKey = "FTat46cvyia6758@243lid66wxzvwe23dgfhcfg76wsd@5as431aq1256dsaa211" //This is the default key , you must replace it
+    }
+
+
+
+在项目中调用CoreClient解密后的内容
+val data = CoreClient.getData()
+
+

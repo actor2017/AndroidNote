@@ -1,0 +1,6 @@
+https://github.com/mmin18/RealtimeBlurView
+
+A realtime blurring overlay for Android (like iOS UIVisualEffectView)
+Android的实时模糊覆盖(像iOS的UIVisualEffectView)
+
+可变模糊度.

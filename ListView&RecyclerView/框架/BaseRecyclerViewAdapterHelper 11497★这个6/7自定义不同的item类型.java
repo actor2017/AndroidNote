@@ -43,7 +43,7 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
 
 如有多布局有两行布局的item都是一样的，如图"7自定义不同的item类型2"：
 
-通过以上图片，我们可以看到，第二行还第三行的item都是ImageView，这个时候ImageView是可以被复用的，我们可以使用GridLayoutManager
+通过以上图片，我们可以看到，第二行还第三行的item都是ImageView，这个时候ImageView是可以被复用的，我们可以使用 GridLayoutManager
   multipleItemAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
             @Override
             public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
@@ -51,6 +51,6 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
             }
         });
 
-通过重写他的SapnSize来重用ImageView。 假设GridLayoutManager的spanCount是3，
+通过重写他的SapnSize来重用ImageView。 假设 GridLayoutManager 的 spanCount 是3，
 那么第一个、第二个、item的spanSize就是3，因为要占据一行（和权重差不多的意思）,
 然后第三个、第四个、第五个、item的spanSize就是1。

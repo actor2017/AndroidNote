@@ -14,3 +14,12 @@ public Dialog(@NonNull Context context, @StyleRes int themeResId);//R.style.dial
         <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
         <item name="android:backgroundDimEnabled">false</item><!--模糊-->
     </style>
+
+
+
+https://blog.csdn.net/baidu_27419681/article/details/108642369
+/**
+ * 弹出Dialog的同时，可以点击Dialog外面的按钮等.
+ * 可设置并测试: setCanceledOnTouchOutside(false);
+ */
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);

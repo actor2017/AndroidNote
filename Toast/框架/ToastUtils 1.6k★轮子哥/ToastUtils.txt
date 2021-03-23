@@ -1,0 +1,34 @@
+https://github.com/getActivity/ToastUtils
+https://www.jianshu.com/p/9b174ee2c571
+
+Android 吐司框架，专治 Toast 各种疑难杂症
+
+
+博客地址：只需体验三分钟，你就会跟我一样，爱上这款Toast
+
+已投入公司项目多时，没有任何毛病，可胜任任何需求，点击此处下载Demo
+
+想了解实现原理的可以点击此链接查看：ToastUtils 源码
+
+
+dependencies {
+    implementation 'com.hjq:toast:8.8'
+}
+
+// 在 Application 中初始化
+ToastUtils.init(this);
+
+显示 Toast
+ToastUtils.show("我是吐司");
+其他 API
+// 设置Toast布局
+ToastUtils.setView();
+
+// 设置吐司重心
+ToastUtils.setGravity();
+
+// 获取Toast对象
+ToastUtils.getToast();
+
+如果对Toast的默认样式不满意，可以在Application初始化样式，具体可参考ToastBlackStyle类的实现
+ToastUtils.initStyle(new IToastStyle());

@@ -4,3 +4,10 @@ https://github.com/li-xiaojun/XPopup
 implementation 'com.lxj:xpopup:1.8.11'
 //for androidx.
 implementation 'com.lxj:xpopup:1.8.10-x'
+
+Confirm弹窗:
+        new XPopup.Builder(this)
+                //.maxWidth()
+                //.autoDismiss(true)//操作完毕后是否自动关闭弹窗，默认为true。比如：点击Confirm弹窗的确认按钮默认是关闭弹窗
+                .asConfirm("标题", "内容", super::onBackPressed)
+                .show();

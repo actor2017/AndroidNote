@@ -113,7 +113,8 @@ android {
 	//但是这里会有一个问题，就是如果使用的是AndroidStudio，但是想用libs下的库，还需要手动去指定库的位置
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['src/main/jniLibs']  //将第三方库放在 src/main/jniLibs 路径下
+            jniLibs.srcDirs = ['libs']              //将第三方库放在 libs 路径下
         }
     }
 
@@ -187,17 +188,31 @@ android {
     //打包
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "智慧城管_${versionName}.apk"
+			outputFileName = "智慧城管_${variant.buildType.name}_${versionName}.apk"//智慧城管_debug_1.0.0.apk
         }
 
         //打包时排除assets文件夹下的某些文件: https://blog.csdn.net/zengd0/article/details/91417921
         if (variant.buildType.name == 'release') {//release版本
             variant.mergeAssets.doLast {
-                //删除assets文件夹下的某个文件
+                //排除assets文件夹下的某个文件
                 delete(fileTree(dir: variant.mergeAssets.outputDir, includes: ['html_call_java.html']))
-                //删除assets文件夹下的所有zip文件
+                //排除assets文件夹下的所有zip文件
                 delete(fileTree(dir: variant.mergeAssets.outputDir, includes: ['*.zip']))
             }
+        }
+
+        //或者合并↓
+        variant.outputs.all {
+            if (variant.buildType.name == 'release') {//release版本
+                variant.mergeAssets.doLast {
+                    //打正式包时, 排除测试文件
+                    delete(fileTree(dir: variant.mergeAssets.outputDir, includes: ['html_call_java.html']))
+                }
+//                outputFileName = "yyn_release_${versionName}.apk"
+//            } else {
+//                outputFileName = "yyn_debug_${versionName}.apk"
+            }
+			outputFileName = "智慧城管_${variant.buildType.name}_${versionName}.apk"
         }
     }
 }

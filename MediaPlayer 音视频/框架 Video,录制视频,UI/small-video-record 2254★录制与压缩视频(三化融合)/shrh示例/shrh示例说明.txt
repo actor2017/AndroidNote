@@ -1,47 +1,5 @@
-implementation 'com.mabeijianxi:small-video-record2:2.0.3@aar'
 
-<activity android:name="com.mabeijianxi.smallvideorecord2.MediaRecorderActivity"/>
-
-    //Application中初始化视频录制
-    private void initVideo() {
-        File dcim = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
-        if (DeviceUtils.isZte()) {
-            if (dcim.exists()) {
-                JianXiCamera.setVideoCachePath(dcim + "/muvideo/");
-            } else {
-                JianXiCamera.setVideoCachePath(dcim.getPath().replace("/sdcard/", "/sdcard-ext/") + "/muvideo/");
-            }
-        } else {
-            JianXiCamera.setVideoCachePath(dcim + "/muvideo/");
-        }
-        // 初始化拍摄，遇到问题可选择开启此标记，以方便生成日志
-        JianXiCamera.initialize(isDebugMode, null);
-    }
-
-//初始化配置, 只初始化一次, 在Application or Activity中
-MediaRecorderConfig config = new MediaRecorderConfig.Buidler()
-		
-                .fullScreen(false)
-                .smallVideoWidth(360)
-                .smallVideoHeight(480)
-                .recordTimeMax(6000)
-                .recordTimeMin(1500)
-                .maxFrameRate(20)
-                .videoBitrate(600000)
-                .captureThumbnailsTime(1)
-                .build();
-
-//开始录制视频
-MediaRecorderActivity.goSmallVideoRecorder(this, SendSmallVideoActivity.class.getName(), config);
-
-// 选择本地视频压缩
-LocalMediaConfig.Buidler buidler = new LocalMediaConfig.Buidler();
-                        final LocalMediaConfig config = buidler
-                                .setVideoPath(path)
-                                .captureThumbnailsTime(1)
-                                .doH264Compress(new AutoVBRMode())
-                                .setFramerate(15)
-				.setScale(1.0f)
-                                .build();
+//开始压缩
 OnlyCompressOverBean onlyCompressOverBean = new LocalMediaCompress(config).startCompress();	
 
+更多配置见说明

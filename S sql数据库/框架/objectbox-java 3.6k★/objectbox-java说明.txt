@@ -16,6 +16,7 @@ MyApplication中初始化:
 
 //数据库
 public BoxStore boxStore;
+//MyObjectBox: 运行起来后, 会在build/generated/ap_generated_source/debug/out/com.yys.land/bean 目录下生成.
 boxStore = MyObjectBox.builder().androidContext(this).build();
 
 Activity中使用:

@@ -15,3 +15,33 @@ parentFolderName:Sounds
 path:		content://media/external/file/119621
 realPath:	/storage/emulated/0/Sounds/20210203_112116.amr
 size:		7174
+
+选择图片并压缩后返回:
+{
+    "androidQToPath": "/storage/emulated/0/Android/data/com.yys.land/files/Pictures/IMG_CMP_120285226.jpeg",
+    "bucketId": -1739773001,
+    "chooseModel": 1,
+    "compressPath": "/storage/emulated/0/Android/data/com.yys.land/files/Pictures/IMG_CMP_120285226.jpeg",
+    "compressed": true,
+    "cutPath": null,
+    "duration": 0,
+    "fileName": "IMG_20210321_170013.jpg",
+    "height": 2736,
+    "id": 122063,
+    "isChecked": false,
+    "isCut": false,
+    "isLongImage": false,
+    "isMaxSelectEnabledMask": false,
+    "isOriginal": false,
+    "loadLongImageStatus": 0,
+    "mimeType": "image/jpeg",
+    "num": 1,
+    "orientation": 0,
+    "originalPath": null,		//选择"原图"才回返回原图路径.
+    "parentFolderName": "Camera",
+    "path": "content://media/external/file/122063",
+    "position": 17,
+    "realPath": "/storage/emulated/0/DCIM/Camera/IMG_20210321_170013.jpg",
+    "size": 3610249,
+    "width": 3648
+}

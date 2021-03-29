@@ -1,7 +1,17 @@
 https://github.com/Esri/arcgis-runtime-samples-android
 https://developers.arcgis.com/android/latest/
 
-maven { url 'https://esri.bintray.com/arcgis' }
+
+allprojects {
+    repositories {
+
+//https://esri.jfrog.io/artifactory/arcgis/com/esri/arcgisruntime/arcgis-android/100.4.0/arcgis-android-100.9.0.aar
+//        maven { url 'https://esri.bintray.com/arcgis' }
+
+        maven { url 'https://esri.jfrog.io/artifactory/arcgis' }//TODO µØÍ¼, ÄÜÉ¾³ý·ñ?
+    }
+}
+
 
 dependencies {
     implementation 'com.esri.arcgisruntime:arcgis-android:100.9.0'

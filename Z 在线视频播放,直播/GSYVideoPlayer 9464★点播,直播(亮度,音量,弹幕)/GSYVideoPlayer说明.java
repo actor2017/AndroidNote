@@ -1,6 +1,20 @@
 https://github.com/CarGuo/GSYVideoPlayer
-1.添加依赖
-compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.3'//直播,点播,列表播放,同时播放多个视频
+1.添加依赖, 非 androidx 版本为 6.0.3 以下版本。更多兼容版本请查阅版本更新。
+//完整版引入
+implementation 'com.shuyu:GSYVideoPlayer:8.1.2'//直播,点播,列表播放,同时播放多个视频
+//or 添加java和你想要的so支持：
+implementation 'com.shuyu:gsyVideoPlayer-java:8.1.2'
+
+//是否需要ExoPlayer模式
+implementation 'com.shuyu:GSYVideoPlayer-exo2:8.1.2'
+
+//根据你的需求ijk模式的so
+implementation 'com.shuyu:gsyVideoPlayer-armv5:8.1.2'
+implementation 'com.shuyu:gsyVideoPlayer-armv7a:8.1.2'
+implementation 'com.shuyu:gsyVideoPlayer-arm64:8.1.2'
+implementation 'com.shuyu:gsyVideoPlayer-x64:8.1.2'
+implementation 'com.shuyu:gsyVideoPlayer-x86:8.1.2'
+
 
 2.https://github.com/CarGuo/GSYVideoPlayer/blob/master/doc/GSYVIDEO_PLAYER_PROJECT_INFO.md
 项目经过多版本调整之后，目前大致结构分为如下 ：

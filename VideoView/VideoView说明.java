@@ -2,6 +2,11 @@
 
 VideoView:
 
+//创建MediaController对象
+MediaController mediaController = new MediaController(this);//有播放,暂停/进度条/时间 等显示
+videoView.setMediaController(mediaController);
+
+
 public void setVideoURI(Uri uri);//设置视频地址, 本地/网络视频:Uri.parse(path)
 public void setVideoURI(Uri uri, Map<String, String> headers);
 public void setOnPreparedListener(MediaPlayer.OnPreparedListener l);//准备完成

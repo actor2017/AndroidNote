@@ -29,24 +29,32 @@ demo中添加视频缓存的例子
 即便是自定义UI，或者对Library有过修改，也是这五步骤来使用播放器。
 
 1.添加类库
-
-compile 'cn.jzvd:jiaozivideoplayer:6.3.1'
-或直接下载 jar包 (不建议)
+implementation 'cn.jzvd:jiaozivideoplayer:7.6.0'
 
 2.添加布局
-
 <cn.jzvd.JzvdStd
-    android:id="@+id/videoplayer"
+    android:id="@+id/jz_video"
     android:layout_width="match_parent"
-    android:layout_height="200dp"/>
+    android:layout_height="200dp" />
+
+
 3.设置视频地址、缩略图地址、标题
-
 JzvdStd jzvdStd = (JzvdStd) findViewById(R.id.videoplayer);
-jzvdStd.setUp("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4"
-                            , Jzvd.SCREEN_WINDOW_NORMAL, "饺子闭眼睛");
-jzvdStd.thumbImageView.setImage("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640");
-4.在Activity中
+//设置缩略图地址
+Glide.with(this).load(url).into(jzvdStd.posterImageView);
+//设置视频地址、标题
+jzvdStd.setUp(url, title);
 
+jzvdStd.setUp("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4", "饺子闭眼睛");
+jzvdStd.thumbImageView.setImage("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640");
+
+
+4.在Activity中
+@Override
+protected void onPause() {
+    super.onPause();
+    Jzvd.releaseAllVideos();
+}
 @Override
 public void onBackPressed() {
     if (Jzvd.backPress()) {
@@ -54,17 +62,26 @@ public void onBackPressed() {
     }
     super.onBackPressed();
 }
-@Override
-protected void onPause() {
-    super.onPause();
-    Jzvd.releaseAllVideos();
-}
-5.在AndroidManifest.xml中
 
+
+5.在AndroidManifest.xml中
 <activity
     android:name=".MainActivity"
     android:configChanges="orientation|screenSize|keyboardHidden"
     android:screenOrientation="portrait" /> <!-- or android:screenOrientation="landscape"-->
+
+
+6.在proguard-rules.pro中按需添加
+-keep public class cn.jzvd.JZMediaSystem {*; }
+-keep public class cn.jzvd.demo.CustomMedia.CustomMedia {*; }
+-keep public class cn.jzvd.demo.CustomMedia.JZMediaIjk {*; }
+-keep public class cn.jzvd.demo.CustomMedia.JZMediaSystemAssertFolder {*; }
+
+-keep class tv.danmaku.ijk.media.player.** {*; }
+-dontwarn tv.danmaku.ijk.media.player.*
+-keep interface tv.danmaku.ijk.media.player.** { *; }
+
+
 Wiki
 常规使用
 QuickStart

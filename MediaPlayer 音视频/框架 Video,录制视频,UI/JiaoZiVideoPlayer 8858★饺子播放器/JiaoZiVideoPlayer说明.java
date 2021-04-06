@@ -72,6 +72,7 @@ public void onBackPressed() {
 
 
 6.在proguard-rules.pro中按需添加
+##------Begin: proguard configuration for JiaoZiVideoPlayer------
 -keep public class cn.jzvd.JZMediaSystem {*; }
 -keep public class cn.jzvd.demo.CustomMedia.CustomMedia {*; }
 -keep public class cn.jzvd.demo.CustomMedia.JZMediaIjk {*; }
@@ -80,6 +81,7 @@ public void onBackPressed() {
 -keep class tv.danmaku.ijk.media.player.** {*; }
 -dontwarn tv.danmaku.ijk.media.player.*
 -keep interface tv.danmaku.ijk.media.player.** { *; }
+##-------End: proguard configuration for JiaoZiVideoPlayer-------
 
 
 Wiki

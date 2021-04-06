@@ -7,7 +7,7 @@
                 android:width="1dp"
                 android:color="@color/red" />
 
-            <!--left: 箭头离左侧的距离-->
+            <!--left: 箭头离左侧的距离? 写0貌似也可以.-->
             <padding
                 android:bottom="5dp"
                 android:left="35dp"

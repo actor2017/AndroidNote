@@ -1,5 +1,5 @@
-android:Theme.LightºÜ³ó,¼û "1.SpinnerÊı¾İÔ´ÓÚxmlÊı×é" Í¼Æ¬.
-Ïë±ØÕâÒ²ÊÇºÜ¶àÈË²»ÏëÊ¹ÓÃSpinnerµÄÔ­ÒòÁË°É¡£Èç¹ûÏë¼æÈİ2.3£¬ÔòÖ»ÄÜÈÌÊÜÕâÑùµÄĞ§¹û¡£
+1.android:Theme.LightºÜ³ó,¼û "1.SpinnerÊı¾İÔ´ÓÚxmlÊı×é" Í¼Æ¬.
+  Ïë±ØÕâÒ²ÊÇºÜ¶àÈË²»ÏëÊ¹ÓÃSpinnerµÄÔ­ÒòÁË°É¡£Èç¹ûÏë¼æÈİ2.3£¬ÔòÖ»ÄÜÈÌÊÜÕâÑùµÄĞ§¹û¡£
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,6 +32,9 @@ android:Theme.LightºÜ³ó,¼û "1.SpinnerÊı¾İÔ´ÓÚxmlÊı×é" Í¼Æ¬.
 </string-array>
 
 
+2.×Ô¶¨ÒåÑÕÉ«&±³¾°, ¼ûÎÄ¼ş¼Ğ: 5.×Ô¶¨ÒåÑÕÉ«&±³¾°&¼ıÍ·
+
+
 --------------------------------´úÂë----------------------------------
 spinner.setPopupBackgroundResource(int);//ÔÚspinner=¡±dropdown¡±Ê±£¬Ê¹ÓÃÕâ¸öÊôĞÔÀ´ÉèÖÃÏÂÀ­ÁĞ±íµÄ±³¾°¡£
 spinner.setDropDownHorizontalOffset(int);//spinnerMode=¡±dropdown¡±Ê±£¬ÏÂÀ­µÄÏîÄ¿Ñ¡Ôñ´°¿ÚÔÚË®Æ½·½ÏòÏà¶ÔÓÚSpinner´°¿ÚµÄÆ«ÒÆÁ¿¡£
@@ -39,7 +42,8 @@ spinner.setDropDownVerticalOffset(int);//spinnerMode=¡±dropdown¡±Ê±£¬ÏÂÀ­µÄÏîÄ¿Ñ
 spinner.setDropDownWidth(int);//ÔÚspinnerMode=¡±dropdown¡±Ê±£¬Éè¶¨ÏÂÀ­¿òµÄ¿í¶È¡£
 
 
-spinner.getSelectedItemPosition();//»ñÈ¡Ñ¡ÔñµÄÄÄÒ»Ïî
+Object item = spinner.getSelectedItemPosition();  //»ñÈ¡Ñ¡ÖĞµÄÄÇÒ»Ïî
+Object item = spinner.getItemAtPosition(position);//»ñÈ¡Ö¸¶¨Ïî
 spinner.setSelection(0);//ÉèÖÃÑ¡ÖĞÄÄÒ»Ïî
 spinner.getCount();//»ñÈ¡itemÊıÁ¿
 
@@ -53,9 +57,7 @@ spinner.getCount();//»ñÈ¡itemÊıÁ¿
 3.Ñ¡ÖĞ¼àÌı:
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, 
-                    int pos, long id) {
-           
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 String language = getResources().getStringArray(R.array.languages)[pos];
                 Toast.makeText(MainActivity.this, "Äãµã»÷µÄÊÇ:"+language, 2000).show();
             }

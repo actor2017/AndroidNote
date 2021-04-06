@@ -83,7 +83,10 @@ rvItems.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDec
 rvItems.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
 
 8.改变某一个item的值
-adapter.notifyItemChanged(int position);
+adapter.notifyItemChanged(int position);//BaseQuickAdapter 会回调 onBindViewHolder(BaseViewHolder, int, List<Object>) 3个参数的方法
+adapter.notifyItemChanged(int position, @Nullable Object payload);//BaseQuickAdapter 会回调 onBindViewHolder(BaseViewHolder, int, List<Object>) 3个参数的方法
+                        //★★★BaseQuickAdapter 也会回调 convert(@NonNull BaseViewHolder helper, String item)方法, 所以不用重写 onBindViewHolder 方法!!!
+
 adapter.notifyItemInserted(position);
 adapter.notifyItemRemoved2(position);
 
@@ -156,11 +159,16 @@ recyclerView.setHasFixedSize(true);
             myViewHolder.itemView.setOnLongClickListener(onLongClickListener());
         }
 
+        @Override
+        public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+            super.onBindViewHolder(holder, position);
+        }
+
         //局部刷新, 静态刷新 myAdapter.notifyItemChanged(position, countDownTime);
 		//					 myAdapter.notifyItemChanged(position, countDownTime + "1");//多个参数多次调用
         @Override
         public void onBindViewHolder(@NonNull BaseViewHolder holder, int position, @NonNull List<Object> payloads) {
-            if (payloads.isEmpty()) {
+            if (payloads.isEmpty()) {//myAdapter.notifyItemChanged() 必须传2个参, 才不为空!!!
                 onBindViewHolder(holder, position);
             } else {
                 String countDownTime = (String) payloads.get(0);

@@ -17,7 +17,7 @@ dependencies {
     implementation 'com.esri.arcgisruntime:arcgis-android:100.9.0'
 }
 
-1.清单文件<manifest 内, <application 同级:
+1.清单文件 AndroidManifest.xml 中, <application 同级:
     <!--OpenGL ES支持, arcgis-runtime-samples-android -->
     <uses-feature
         android:glEsVersion="0x00020000"

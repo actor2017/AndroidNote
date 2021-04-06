@@ -34,7 +34,7 @@ compile 'com.google.code.gson:gson:2.8.2'
 	Type type = GsonUtils.getSetType(Founder.class);//或者这样获取 Type
 	HashSet<Founder> founderSet = gson.fromJson(json, type); 
 
-5.反序列化 Map
+5.反序列化 Map: json示例: {"山东":13,"台湾":32,"福建":16,"河北":5,"河南":7,"重庆":4,"湖北":17,"湖南":18,"江西":21,"海南":23}
 	//TypeToken<HashMap<QueryThemeGson>> typeToken = new TypeToken<HashMap<QueryThemeGson>>() {};
 	//Type type = typeToken.getType();
 	Type type = GsonUtils.getMapType(String.class, QueryThemeGson.class);//或者这样获取 Type

@@ -37,7 +37,7 @@ import java.util.Map;
  * 1.如果视频只在左/上侧播放, 需要把VideoView居中:android:layout_centerInParent="true"(相对布局)
  * 2.默认能播放: mp4/3gp/rtsp/sdp(一种流媒体协议)
  */
-public class VideoView extends SurfaceView implements MediaPlayerControl {
+public class BaseVideoView extends SurfaceView implements MediaPlayerControl {
     private String TAG = "VideoView";
     // settable by the client
     private Uri         mUri;

@@ -1,6 +1,6 @@
 
 Paint paint = new Paint();
-Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);//光滑的线条, 抗锯齿
 
 paint.setAntiAlias(true);//光滑的线条, 抗锯齿
 paint.setColor(Color.RED);

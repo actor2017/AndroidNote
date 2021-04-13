@@ -26,26 +26,30 @@ allprojects {
 }
 
 
-Error:Failed to resolve: com.android.support:appcompat-v7:27.0.1
-修改project的gradle,示例:
-问题应该是由于某些框架依赖于26版本,所以添加依赖的时候,最好不要用+代替版本号.
-Error:(15, 21) No resource found that matches the given name: attr ‘android:keyboardNavigationCluster’.
-修改module的gradle 
-1.把compileSdkVersion改26 
-2.buildToolsVersion改”26.0.1” 
-3.compile ‘com.android.support:appcompat-v7:26.0.1’替换之前的版本
+1.Error:Failed to resolve: com.android.support:appcompat-v7:27.0.1
+	修改project的gradle,示例:
+	问题应该是由于某些框架依赖于26版本,所以添加依赖的时候,最好不要用+代替版本号.
+	Error:(15, 21) No resource found that matches the given name: attr ‘android:keyboardNavigationCluster’.
+	修改module的gradle 
+	1.把compileSdkVersion改26 
+	2.buildToolsVersion改”26.0.1” 
+	3.compile ‘com.android.support:appcompat-v7:26.0.1’替换之前的版本
 
 
-Error:Unable to find method 'com.android.build.gradle.tasks.factory.AndroidJavaCompile.setDependencyCacheDir(Ljava/io/File;)V'.
-Re-download dependencies and sync project (requires network)
-Stop Gradle build processes (requires restart)
-找到项目\gradle\wrapper\gradle-wrapper.properties, 修改里面gradle-x.x-all.zip版本
+2.Error:Unable to find method 'com.android.build.gradle.tasks.factory.AndroidJavaCompile.setDependencyCacheDir(Ljava/io/File;)V'.
+	Re-download dependencies and sync project (requires network)
+	Stop Gradle build processes (requires restart)
+	找到项目\gradle\wrapper\gradle-wrapper.properties, 修改里面gradle-x.x-all.zip版本
 
 
-打包时报错:
+3.No cached version of com.github.bumptech.glide:compiler:4.12.0 available for offline mode.
+	File->Settings->Build,Execution,Deployment->Compiler-> 去掉: –offline
+
+
+4.打包时报错:
 No cached version of com.android.tools.lint:lint-gradle:26.4.0 available for
 // android{
-　　lintOptions {
+    lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }

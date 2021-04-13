@@ -14,16 +14,9 @@ Android 3.0 (API level 11), 开始支持
 如果你的应用执行了自定义的绘画，可以通过在真机上测试开启硬件加速查找问题
 
 硬件加速的级别
-Application
-<application 
-    android:hardwareAccelerated="false" 
-...>
-</application>
-
-
-Activity
 <application 
     android:hardwareAccelerated="true">
+
     <activity ... />
     <activity android:hardwareAccelerated="false" />
 </application>

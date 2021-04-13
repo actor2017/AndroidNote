@@ -122,28 +122,33 @@ android {
     /*
 	 * 打出不同应用名，不同应用图标,不同包名,不同版本，不同版本号的包
 	 */
-    flavorDimensions('abi', 'version')	//风味维度, https://blog.csdn.net/weixin_37625173/article/details/100867037	
+    flavorDimensions('city_test', 'city_release')	//风味维度, https://blog.csdn.net/weixin_37625173/article/details/100867037	
     productFlavors { //产品风味
-		app1 {
+		city_test {
+			//flavorDimensions "versionCode" //如果报错: Flavor 'city_test' has no flavor dimension.
             manifestPlaceholders = [str: "releaseStr", package_name: "com.nade.androidsqdemo1"]
             applicationId "com.nade.androidsqdemo1"
             versionCode 1
             versionName "1.0"
-            resValue "string", "app_name", "app1"
+			// 自动生成@string/app_name 为 city_test(需要把原来 strings.xml 中的 app_name 删掉!)
+            resValue "string", "app_name", "city_test"
             resValue "bool", "isrRank", 'true'
             buildConfigField "int", "TYPE", "1"
-            manifestPlaceholders = [ENVIRONMENT: "app1", app_icon   : "@mipmap/freechat_logo"]
+			buildConfigField "String", "BASE_URL", '"http://222.180.223.118:7273"'//配置字符串
+			// 定义app_icon字段，在AndroidManifest.xml文件中用到
+			manifestPlaceholders = [app_icon : "@mipmap/ic_launcher"]
+            manifestPlaceholders = [ENVIRONMENT: "city_test", app_icon   : "@mipmap/freechat_logo"]
            
         }
-        app2 {
+        city_release {
             manifestPlaceholders = [str: "releaseStr", package_name: "com.nade.androidsqdemo2"]
             applicationId "com.nade.androidsqdemo2"
             versionCode 2
             versionName "2.0"
-            resValue "string", "app_name", "app2"
+            resValue "string", "app_name", "city_release"
             resValue "bool", "isrRank", 'true'
             buildConfigField "int", "TYPE", "2"
-            manifestPlaceholders = [ENVIRONMENT: "app2", app_icon   : "@mipmap/ic_launcher"]
+            manifestPlaceholders = [ENVIRONMENT: "city_release", app_icon   : "@mipmap/ic_launcher"]
          
         }
 	}
@@ -156,6 +161,7 @@ android {
     To proceed, either fix the issues identified by lint, or modify your build script as follows:
     ...
     android {
+		// lint检查，防止打包因为一些警告而停止
         lintOptions {
             checkReleaseBuilds false
             // Or, if you prefer, you can continue to check for errors in release builds,
@@ -215,6 +221,14 @@ android {
 			outputFileName = "智慧城管_${variant.buildType.name}_${versionName}.apk"
         }
     }
+	
+	//时间
+	def releaseTime() {
+		SimpleDateFormat dff = new SimpleDateFormat("yyyyMMddHHmm")
+		dff.setTimeZone(TimeZone.getTimeZone("GMT+08"))
+		return dff.format(new Date())
+	//    return new Date().format(System.currentTimeMillis().toString())
+	}
 }
 
 https://blog.csdn.net/wangliblog/article/details/81366095

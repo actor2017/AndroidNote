@@ -1,6 +1,6 @@
 https://github.com/lipangit/JiaoZiVideoPlayer
 
-高度自定义的安卓视频播放器
+高度自定义的安卓视频播放器, 好像不能直播: http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8
 
 Q群: 490442439 2群: 761899104 验证信息:jzvd
 

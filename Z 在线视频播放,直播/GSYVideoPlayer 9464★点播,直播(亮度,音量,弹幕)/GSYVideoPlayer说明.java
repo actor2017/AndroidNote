@@ -8,12 +8,17 @@ implementation 'com.shuyu:gsyVideoPlayer-java:8.1.2'
 //是否需要ExoPlayer模式
 implementation 'com.shuyu:GSYVideoPlayer-exo2:8.1.2'
 
-//根据你的需求ijk模式的so
+//根据你的需求 ijk 模式的so
 implementation 'com.shuyu:gsyVideoPlayer-armv5:8.1.2'
 implementation 'com.shuyu:gsyVideoPlayer-armv7a:8.1.2'
 implementation 'com.shuyu:gsyVideoPlayer-arm64:8.1.2'
 implementation 'com.shuyu:gsyVideoPlayer-x64:8.1.2'
 implementation 'com.shuyu:gsyVideoPlayer-x86:8.1.2'
+
+<activity
+    android:name=".MpActivity"
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+    android:screenOrientation="portrait" />
 
 
 2.https://github.com/CarGuo/GSYVideoPlayer/blob/master/doc/GSYVIDEO_PLAYER_PROJECT_INFO.md
@@ -28,9 +33,9 @@ Render 渲染控件层：TextureView、SurfaceView、GLSurfaceView（GSYRenderView <- IGS
 
 2.以下设置全局生效
   2.1.PlayerFactory
-PlayerFactory.setPlayManager(new Exo2PlayerManager());//EXO模式
-PlayerFactory.setPlayManager(new SystemPlayerManager());//系统模式
-PlayerFactory.setPlayManager(new IjkPlayerManager());//ijk模式
+PlayerFactory.setPlayManager(Exo2PlayerManager.class);//EXO模式
+PlayerFactory.setPlayManager(SystemPlayerManager.class);//系统模式
+PlayerFactory.setPlayManager(IjkPlayerManager.class);//ijk 模式(默认)
 
 GSYVideoManager.instance().clearAllDefaultCache(MainActivity.this);//清理缓存
 

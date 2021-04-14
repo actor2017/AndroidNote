@@ -2,6 +2,7 @@
 
 直播，类似于新闻联播，视频流在网络上，只要终端接收流就从那一刻开始
 湖南卫视: rtmp://58.200.131.2:1935/livetv/hunantv
+CCTV1: http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8
 
 韩国朝鲜日报: rtmp://live.chosun.gscdn.com/live/tvchosun1.stream
 韩国GoodTV: rtmp://mobliestream.c3tv.com:554/live/goodtv.sdp

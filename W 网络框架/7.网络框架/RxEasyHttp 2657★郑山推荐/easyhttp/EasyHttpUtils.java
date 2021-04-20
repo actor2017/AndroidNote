@@ -493,7 +493,7 @@ public class EasyHttpUtils {
 
     /**
      * 取消订阅
-     * @param tag 传this(activity or fragment or others),在onDestroy的时候:MyOkHttpUtils.cancelTag(this);
+     * @param tag 传this(activity or fragment or others),在onDestroy的时候:EasyHttpUtils.cancelSubscription(this);
      */
     public static void cancelSubscription(Object tag) {
         if (tag != null) {

@@ -34,7 +34,7 @@ android {
         //在 defaultConfig { 中添加ndk
         ndk {
             //"armeabi", "armeabi-v7a", "x86","arm64-v8a","x86_64", 'mips', 'mips64'(最多前面3中就差不多了, 第3个其实也相对不多)
-            abiFilters "armeabi"
+            abiFilters "armeabi", "armeabi-v7a"
         }
 
 		//清单文件替换, 添加在 defaultConfig { 中
@@ -250,6 +250,7 @@ androidTestCompile	androidTestImplementation	//在单元测试代码的编译(sr
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])//app/libs
+	implementation fileTree(dir: 'libs', include: ['*.aar'])
 	testImplementation 'junit:junit:4.12'					//Java单元测试: ExampleUnitTest.java
 	androidTestImplementation 'com.android.support.test:runner:1.0.2'	//设备单元测试, 将在Android设备上运行: ExampleInstrumentedTest.java
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

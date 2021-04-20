@@ -1,0 +1,1 @@
+创建dialog时, 必须传递actvitiy或service对象, 不能是ApplicationContext

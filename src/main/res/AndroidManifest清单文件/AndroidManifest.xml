@@ -28,6 +28,10 @@
         android:theme="@style/DefaultTheme"
 		android:resizeableActivity="true"	<!--resizeableActivity: 支持分屏(<application 或 <activity 设置)-->
 		android:process="com.package.name"	<!-- 在 application 中可设置进程名, 默认包名 -->
+		android:largeHeap="true"			<!-- 请求系统为Dalvik虚拟机分配更大的内存空间 -->
+		android:debuggable="true"			<!-- 设置debug模式 -->
+		android:allowClearUserData="true"	<!-- 用户是否能选择自行清除数据，默认为true -->
+		android:testOnly="true"				<!-- 标记测试用的,带这个标记的包一般情况下不能安装,需要使用特殊的方式安装. AS3.0默认会在run的时候在application节点添加这个属性，然后在安装时会给我们加上 -t flag，所以在自己安装的时候没有问题 -->
 		tools:replace="android:label,android:allowBackup"	<!--替换library中已有 <Activity 的属性, replace 可用多个拼接-->
 		>
 		

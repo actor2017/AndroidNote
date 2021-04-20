@@ -1,0 +1,39 @@
+https://github.com/JavaNoober/BackgroundLibrary
+
+//https://github.com/JavaNoober/BackgroundLibrary 通过标签直接生成形状的框架，无需再次编写shape.xml
+implementation "com.android.support:appcompat-v7:$supportVersion"
+implementation 'com.noober.background:core:1.6.5'
+
+如果项目使用了androidx：
+implementation "androidx.appcompat:appcompat:$supportVersion" 
+implementation 'com.noober.background:core:1.6.5'
+
+
+使用文档
+无需任何代码，直接加入bl标签属性即可，与原生view无缝衔接，具体使用方法以及属性内容请查看wiki
+重要的事情说3遍!!!
+https://github.com/JavaNoober/BackgroundLibrary/wiki
+
+
+使用效果完全和原生shape selector一样，但是只需要直接在xml中加入属性即可，例如
+<TextView
+        android:id="@+id/ttt"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:bl_corners_radius="4dp"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_dashGap="5dp"
+        app:bl_stroke_dashWidth="10dp"
+        app:bl_stroke_width="2dp" />
+
+
+还有很多api, 具体见网页.
+
+
+

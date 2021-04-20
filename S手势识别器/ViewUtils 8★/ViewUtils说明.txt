@@ -1,0 +1,33 @@
+https://github.com/Mosect/ViewUtils
+视图工具库，提供了滑动辅助（ScrollHelper）、测量工具（MeasureUtils）、拦截辅助器（InterceptTouchHelper）、手势辅助器（GestureHelper）
+
+视图工具类，提供了三个视图辅助器：
+GestureHelper（手势辅助器）
+InterceptTouchHelper（拦截辅助器）
+ScrollHelper（滑动辅助器）
+
+此外，还提供了测量工具：
+MeasureUtils
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+implementation 'com.github.Mosect:ViewUtils:1.0.8'
+
+
+手势辅助器，主要是判断手势的，可以在View.onTouchEvent方法中使用：\
+
+public boolean onTouchEvent(MotionEvent event) { 
+gestureHelper.onTouchEvent(event);
+switch (gestureHelper.getGesture()) {
+    case GestureHelper.GESTURE_XX: // 判断手势
+        // todo 做手势相应的处理
+        break;
+    }
+    return true;
+}
+
+...

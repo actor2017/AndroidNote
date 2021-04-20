@@ -8,8 +8,13 @@ Alt+9  =>  Version Control  =>  Console
 本地协议（Local）:
     git clone /opt/git/project.git
     git clone file:///opt/git/project.git(会触发网路传输资料的进程,效率较低)
+
     git remote add 简称 url //(增加一个远程版本到现在的Git项目)
 	//示例: git remote add origin_gitee https://gitee.com/actor20170211030627/MyAndroidFrameWork.git
+	
+	用idea添加远程仓库: Git -> Manage Remotes -> + origin_github, https://github.com/...git
+	然后idea 的Git窗口需要刷新一下
+	
 
 	git remote -v	//查看当前项目的所有远程仓库, 结果:
 	//origin  https://github.com/actor20170211030627/MyAndroidFrameWork.git (fetch)
@@ -17,7 +22,7 @@ Alt+9  =>  Version Control  =>  Console
 	//origin_gitee    https://gitee.com/actor20170211030627/MyAndroidFrameWork.git (fetch)
 	//origin_gitee    https://gitee.com/actor20170211030627/MyAndroidFrameWork.git (push)
 
-	git remote rename origin_gitee origin_gitee2 //远程仓库的重命名
+	git remote rename origin_gitee origin_gitee2 //远程仓库的重命名(用idea也可以重命名)
 
 	//移除一个远程仓库——你已经从服务器上搬走了或不再想使用某一个特定的镜像了， 又或者某一个贡献者不再贡献了
 	//一旦你使用这种方式删除了一个远程仓库，那么所有和这个远程仓库相关的远程跟踪分支以及配置信息也会一起被删除。

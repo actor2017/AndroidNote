@@ -1,4 +1,4 @@
-package com.ysytech.zhongjiao.widget;
+package com.cqzonjo.smartfactory.widget;
 
 import android.content.Context;
 import android.widget.CalendarView;
@@ -6,7 +6,7 @@ import android.widget.CalendarView;
 import androidx.annotation.NonNull;
 
 import com.lxj.xpopup.impl.PartShadowPopupView;
-import com.ysytech.zhongjiao.R;
+import com.cqzonjo.smartfactory.R;
 
 import java.util.Calendar;
 
@@ -73,5 +73,15 @@ public class SelectDateView extends PartShadowPopupView {
          * @param dayOfMonth 日
          */
         void onDataSelected(boolean isThisWeekClicked, int year, int month, int dayOfMonth);
+
+        void onDismiss();
+    }
+
+    @Override
+    protected void onDismiss() {
+        super.onDismiss();
+        if (listener != null) {
+            listener.onDismiss();
+        }
     }
 }

@@ -3,12 +3,18 @@
 public enum MyEnum {
 	GET("get"),
 	POST("post");
+	
+	private String requestMethod;
+	private MyEnum(String requestMethod) {
+		this.requestMethod = requestMethod;
+	}
 }
 
-MyEnum myEnum = Enum.valueOf(MyEnum.class, "get");//Enum 静态方法
+MyEnum myEnum = Enum.valueOf(MyEnum.class, "GET");//Enum 静态方法, 如果没有这个name, 报错: IllegalArgumentException
+String requestMethod = myEnum.requestMethod;	//获取值, get/post
 
 //子类静态方法
-MyEnum myEnum = MyEnum.valueOf("post"); //根据值获取 Enum
+MyEnum myEnum = MyEnum.valueOf("POST"); //根据值获取 Enum
 MyEnum[] values = MyEnum.values();      //获取所有枚举类型
 
 //普通方法
